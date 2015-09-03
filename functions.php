@@ -5,15 +5,15 @@ Function wp_schools_enqueue_scripts()
 {
     //Add jQuery UI
     
-	wp_register_style("bootstrap-css", get_stylesheet_directory_uri() . './bootstrap/css/bootstrap.css');
-	wp_enqueue_style('bootstrap-css');
+	//wp_register_style("bootstrap-css", get_stylesheet_directory_uri() . './bootstrap/css/bootstrap.css');
+	//wp_enqueue_style('bootstrap-css');
     wp_register_style('childstyle', get_stylesheet_directory_uri() . '/style.css');
     wp_enqueue_style('childstyle');
     wp_register_style('bxslider', get_stylesheet_directory_uri() . '/jquery.bxslider.css');
     wp_enqueue_style('bxslider');
 
     
-    wp_enqueue_script("bootstrap", get_stylesheet_directory_uri() . './bootstrap/js/bootstrap.min.js');
+   // wp_enqueue_script("bootstrap", get_stylesheet_directory_uri() . './bootstrap/js/bootstrap.min.js');
     wp_enqueue_script('watuscript', get_stylesheet_directory_uri() . '/watu-script.js', array('watu-script'), false, true);
     wp_enqueue_script('bbScript', get_stylesheet_directory_uri() . '/bb-script.js');
     wp_enqueue_script('bxslider', get_stylesheet_directory_uri() . '/js/jquery.bxslider.min.js');
