@@ -1,0 +1,3326 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Academy S7 Child v1.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2015-06-10 10:05:58+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Poedit 1.5.5\n"
+"X-Poedit-Language: \n"
+"X-Poedit-Country: \n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;\n"
+"X-Poedit-Basepath: ../\n"
+"X-Poedit-Bookmarks: \n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Textdomain-Support: yes"
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/404.php:53
+#@ qode
+msgid "404"
+msgstr "404"
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/404.php:54
+#@ qode
+msgid "Page not found"
+msgstr "Страница не найдена"
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/404.php:62
+#@ qode
+msgid "The page you requested does not exist"
+msgstr "Запрошенная вами страница не существует"
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/404.php:63
+#@ qode
+msgid "Back to homepage"
+msgstr "Вернуться на главную страницу"
+
+#: course-header.php:65
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/archive.php:74
+#@ qode
+msgid "Archive"
+msgstr "Архив"
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/archive.php:123
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/archive.php:141
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/archive.php:155
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/archive.php:176
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/archive.php:200
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/archive.php:218
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/archive.php:232
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/archive.php:253
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/archive.php:287
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/archive.php:305
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/archive.php:319
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/archive.php:340
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/blog-full-width-image-content.php:114
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/blog-full-width-image-content.php:133
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/blog-full-width-image-content.php:161
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/blog-full-width-image.php:114
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/blog-full-width-image.php:133
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/blog-full-width-image.php:161
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/blog-masonry.php:109
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/blog-masonry.php:129
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/blog-masonry.php:158
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/blog-small-image.php:109
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/blog-small-image.php:128
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/blog-small-image.php:156
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/category.php:105
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/category.php:123
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/category.php:137
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/category.php:158
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/category.php:182
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/category.php:200
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/category.php:214
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/category.php:235
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/category.php:269
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/category.php:287
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/category.php:301
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/category.php:322
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/home.php:122
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/home.php:140
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/home.php:154
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/home.php:175
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/home.php:199
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/home.php:217
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/home.php:231
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/home.php:252
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/home.php:286
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/home.php:304
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/home.php:318
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/home.php:339
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/index.php:108
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/index.php:126
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/index.php:140
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/index.php:161
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/index.php:185
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/index.php:203
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/index.php:217
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/index.php:238
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/index.php:272
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/index.php:290
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/index.php:304
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/index.php:325
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/own-archive.php:110
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/own-archive.php:128
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/own-archive.php:142
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/own-archive.php:163
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/own-archive.php:187
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/own-archive.php:205
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/own-archive.php:219
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/own-archive.php:240
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/own-archive.php:274
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/own-archive.php:292
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/own-archive.php:306
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/own-archive.php:327
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/search.php:107
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/search.php:125
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/search.php:139
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/search.php:160
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/search.php:184
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/search.php:202
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/search.php:216
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/search.php:237
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/search.php:271
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/search.php:289
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/search.php:303
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/search.php:324
+#@ qode
+msgid "No posts were found."
+msgstr "Запись не найдена."
+
+#: blog_single-loop.php:48
+#: blog_single-loop.php:84
+#: blog_single-loop.php:122
+#: blog_single-loop.php:167
+#: blog_single-loop.php:209
+#: blog_single-loop.php:251
+#: single-namaste_lesson.php:169
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/blog_full_image-loop.php:44
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/blog_full_image-loop.php:78
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/blog_full_image-loop.php:149
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/blog_full_image-loop.php:216
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/blog_full_image_whole_post-loop.php:44
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/blog_full_image_whole_post-loop.php:78
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/blog_full_image_whole_post-loop.php:149
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/blog_full_image_whole_post-loop.php:219
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/blog_masonry-loop.php:32
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/blog_masonry-loop.php:60
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/blog_masonry-loop.php:81
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/blog_masonry-loop.php:117
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/blog_masonry-loop.php:139
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/blog_masonry-loop.php:168
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/blog_single-loop.php:48
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/blog_single-loop.php:84
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/blog_single-loop.php:122
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/blog_single-loop.php:165
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/blog_single-loop.php:207
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/blog_single-loop.php:247
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/blog_small_image-loop.php:45
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/blog_small_image-loop.php:81
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/blog_small_image-loop.php:154
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/blog_small_image-loop.php:221
+#@ qode
+msgid "In"
+msgstr "В"
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/blog_full_image-loop.php:44
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/blog_full_image-loop.php:78
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/blog_full_image-loop.php:149
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/blog_full_image-loop.php:216
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/blog_full_image_whole_post-loop.php:44
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/blog_full_image_whole_post-loop.php:78
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/blog_full_image_whole_post-loop.php:149
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/blog_full_image_whole_post-loop.php:219
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/blog_small_image-loop.php:45
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/blog_small_image-loop.php:81
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/blog_small_image-loop.php:154
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/blog_small_image-loop.php:221
+#@ qode
+msgid "|"
+msgstr "|"
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/blog_full_image-loop.php:44
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/blog_full_image-loop.php:78
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/blog_full_image-loop.php:149
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/blog_full_image-loop.php:216
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/blog_full_image_whole_post-loop.php:44
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/blog_full_image_whole_post-loop.php:78
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/blog_full_image_whole_post-loop.php:149
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/blog_full_image_whole_post-loop.php:219
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/blog_masonry-loop.php:32
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/blog_masonry-loop.php:60
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/blog_masonry-loop.php:81
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/blog_masonry-loop.php:117
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/blog_masonry-loop.php:139
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/blog_masonry-loop.php:168
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/blog_small_image-loop.php:45
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/blog_small_image-loop.php:81
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/blog_small_image-loop.php:154
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/blog_small_image-loop.php:221
+#@ qode
+msgid "No comment"
+msgstr "Нет комментариев"
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/blog_full_image-loop.php:44
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/blog_full_image-loop.php:78
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/blog_full_image-loop.php:149
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/blog_full_image-loop.php:216
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/blog_full_image_whole_post-loop.php:44
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/blog_full_image_whole_post-loop.php:78
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/blog_full_image_whole_post-loop.php:149
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/blog_full_image_whole_post-loop.php:219
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/blog_masonry-loop.php:32
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/blog_masonry-loop.php:60
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/blog_masonry-loop.php:81
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/blog_masonry-loop.php:117
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/blog_masonry-loop.php:139
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/blog_masonry-loop.php:168
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/blog_small_image-loop.php:45
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/blog_small_image-loop.php:81
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/blog_small_image-loop.php:154
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/blog_small_image-loop.php:221
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/comments.php:2
+#@ qode
+msgid "Comment"
+msgstr "Комментарий"
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/blog_full_image-loop.php:44
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/blog_full_image-loop.php:78
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/blog_full_image-loop.php:149
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/blog_full_image-loop.php:216
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/blog_full_image_whole_post-loop.php:44
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/blog_full_image_whole_post-loop.php:78
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/blog_full_image_whole_post-loop.php:149
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/blog_full_image_whole_post-loop.php:219
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/blog_masonry-loop.php:32
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/blog_masonry-loop.php:60
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/blog_masonry-loop.php:81
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/blog_masonry-loop.php:117
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/blog_masonry-loop.php:139
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/blog_masonry-loop.php:168
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/blog_small_image-loop.php:45
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/blog_small_image-loop.php:81
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/blog_small_image-loop.php:154
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/blog_small_image-loop.php:221
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/comments.php:2
+#@ qode
+msgid "Comments"
+msgstr "Коментарии"
+
+#: blog_single-loop.php:78
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/blog_full_image-loop.php:72
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/blog_full_image_whole_post-loop.php:72
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/blog_masonry-loop.php:52
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/blog_single-loop.php:78
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/blog_small_image-loop.php:74
+#@ qode
+msgid "Your browser don't support audio player"
+msgstr "Ваш браузер не поддерживает аудио плеер"
+
+#: blog_single-loop.php:48
+#: blog_single-loop.php:84
+#: blog_single-loop.php:122
+#: blog_single-loop.php:167
+#: blog_single-loop.php:209
+#: blog_single-loop.php:251
+#: single-namaste_lesson.php:169
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/blog_single-loop.php:48
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/blog_single-loop.php:84
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/blog_single-loop.php:122
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/blog_single-loop.php:165
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/blog_single-loop.php:207
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/blog_single-loop.php:247
+#@ qode
+msgid "By"
+msgstr "Для"
+
+#: blog_single-loop.php:51
+#: blog_single-loop.php:87
+#: blog_single-loop.php:125
+#: blog_single-loop.php:173
+#: blog_single-loop.php:212
+#: blog_single-loop.php:262
+#: single-namaste_lesson.php:183
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/blog_single-loop.php:51
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/blog_single-loop.php:87
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/blog_single-loop.php:125
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/blog_single-loop.php:171
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/blog_single-loop.php:210
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/blog_single-loop.php:250
+#@ qode
+msgid "Tags > "
+msgstr "Теги>"
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/comments.php:2
+#@ qode
+msgid "No Comment"
+msgstr "Нет комментариев"
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/comments.php:4
+#@ qode
+msgid "This post is password protected. Enter the password to view any comments."
+msgstr "Запись защищена паролем. Введите пароль для просмотра комментариев."
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/comments.php:28
+#@ qode
+msgid "Sorry, the comment form is closed at this time."
+msgstr "Извините, комментарии в это время закрыты."
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/comments.php:41
+#@ qode
+msgid "Post A Comment"
+msgstr "Оставить комментарий"
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/comments.php:42
+#, php-format
+#@ qode
+msgid "Post A Reply to %s"
+msgstr "Ответить на комментарий %s"
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/comments.php:43
+#@ qode
+msgid "Cancel Reply"
+msgstr "Закрыть ответ"
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/comments.php:44
+#@ qode
+msgid "Submit"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/comments.php:45
+#@ qode
+msgid "Write your message here..."
+msgstr "Напишите свое сообщение здесь..."
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/comments.php:49
+#@ qode
+msgid "Your Full Name"
+msgstr "Ваше полное имя"
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/comments.php:50
+#@ qode
+msgid "E-mail Address"
+msgstr "E-mail адрес"
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/comments.php:51
+#@ qode
+msgid "Website"
+msgstr "Веб-сайт"
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/contact-page.php:87
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/contact-page.php:146
+#@ qode
+msgid "Contact Us"
+msgstr "Отправить"
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/contact-page.php:92
+#@ qode
+msgid "First Name *"
+msgstr "Имя*"
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/contact-page.php:97
+#@ qode
+msgid "Last Name *"
+msgstr "Фамилия*"
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/contact-page.php:102
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/contact-page.php:108
+#@ qode
+msgid "Email *"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/contact-page.php:113
+#@ qode
+msgid "Web site"
+msgstr "Веб-сайт"
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/contact-page.php:119
+#@ qode
+msgid "Message"
+msgstr "Сообщение"
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/contact-page.php:180
+#@ qode
+msgid " Required"
+msgstr "Обязательно"
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/contact-page.php:188
+#@ qode
+msgid " Invalid"
+msgstr "Недействительный"
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/contact-page.php:218
+#@ qode
+msgid "THANK YOU!"
+msgstr "СПАСИБО!"
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/contact-page.php:218
+#@ qode
+msgid "Your email was successfully sent. We will contact you as soon as possible."
+msgstr "Ваше письмо было успешно отправлено. Мы свяжемся с вами как можно скорее."
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/contact-page.php:227
+#@ qode
+msgid "Invalid Captcha"
+msgstr "Неправильный код"
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/contact-page.php:232
+#@ qode
+msgid "Email server problem"
+msgstr "Email сервер проблема"
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/functions.php:198
+#@ qode
+msgid "Top Navigation"
+msgstr "Верхняя панель новигации"
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/functions.php:245
+#@ qode
+msgid "Your comment is awaiting moderation."
+msgstr "Ваш комментарий ожидает модерации."
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/functions.php:473
+#@ qode
+msgid "Portfolio"
+msgstr "Портфолио"
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/functions.php:474
+#@ qode
+msgid "Portfolio Item"
+msgstr "Элемент портфолио"
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/functions.php:475
+#@ qode
+msgid "New Portfolio Item"
+msgstr "Новый элемент портфолио"
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/functions.php:476
+#@ qode
+msgid "Add New Portfolio Item"
+msgstr "Добавить новый элемент портфолио"
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/functions.php:477
+#@ qode
+msgid "Edit Portfolio Item"
+msgstr "Редактировать элемент портфолио"
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/functions.php:499
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/functions.php:509
+#@ taxonomy general name
+#@ qode
+msgid "Portfolio Categories"
+msgstr "Категории портфолио"
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/functions.php:500
+#@ taxonomy singular name
+msgid "Portfolio Category"
+msgstr "Категория портфолио"
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/functions.php:501
+#@ qode
+msgid "Search Portfolio Categories"
+msgstr "Поиск категорий портфолио"
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/functions.php:502
+#@ qode
+msgid "All Portfolio Categories"
+msgstr "Все категории портфолио"
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/functions.php:503
+#@ qode
+msgid "Parent Portfolio Category"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/functions.php:504
+#@ qode
+msgid "Parent Portfolio Category:"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/functions.php:505
+#@ qode
+msgid "Edit Portfolio Category"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/functions.php:506
+#@ qode
+msgid "Update Portfolio Category"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/functions.php:507
+#@ qode
+msgid "Add New Portfolio Category"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/functions.php:508
+#@ qode
+msgid "New Portfolio Category Name"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/functions.php:1106
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/class-tgm-plugin-activation.php:229
+#@ qode
+#@ tgmpa
+msgid "Install Required Plugins"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/functions.php:1107
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/class-tgm-plugin-activation.php:230
+#@ qode
+#@ tgmpa
+msgid "Install Plugins"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/functions.php:1108
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/class-tgm-plugin-activation.php:231
+#, php-format
+#@ qode
+#@ tgmpa
+msgid "Installing Plugin: %s"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/functions.php:1109
+#@ qode
+msgid "Something went wrong with the plugin API."
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/functions.php:1110
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/class-tgm-plugin-activation.php:233
+#, php-format
+#@ qode
+msgid "This theme requires the following plugin: %1$s."
+msgid_plural "This theme requires the following plugins: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/functions.php:1111
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/class-tgm-plugin-activation.php:234
+#, php-format
+#@ qode
+msgid "This theme recommends the following plugin: %1$s."
+msgid_plural "This theme recommends the following plugins: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/functions.php:1112
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/class-tgm-plugin-activation.php:235
+#, php-format
+#@ qode
+msgid "Sorry, but you do not have the correct permissions to install the %s plugin. Contact the administrator of this site for help on getting the plugin installed."
+msgid_plural "Sorry, but you do not have the correct permissions to install the %s plugins. Contact the administrator of this site for help on getting the plugins installed."
+msgstr[0] ""
+msgstr[1] ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/functions.php:1113
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/class-tgm-plugin-activation.php:236
+#, php-format
+#@ qode
+msgid "The following required plugin is currently inactive: %1$s."
+msgid_plural "The following required plugins are currently inactive: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/functions.php:1114
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/class-tgm-plugin-activation.php:237
+#, php-format
+#@ qode
+msgid "The following recommended plugin is currently inactive: %1$s."
+msgid_plural "The following recommended plugins are currently inactive: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/functions.php:1115
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/class-tgm-plugin-activation.php:238
+#, php-format
+#@ qode
+msgid "Sorry, but you do not have the correct permissions to activate the %s plugin. Contact the administrator of this site for help on getting the plugin activated."
+msgid_plural "Sorry, but you do not have the correct permissions to activate the %s plugins. Contact the administrator of this site for help on getting the plugins activated."
+msgstr[0] ""
+msgstr[1] ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/functions.php:1116
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/class-tgm-plugin-activation.php:239
+#, php-format
+#@ qode
+msgid "The following plugin needs to be updated to its latest version to ensure maximum compatibility with this theme: %1$s."
+msgid_plural "The following plugins need to be updated to their latest version to ensure maximum compatibility with this theme: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/functions.php:1117
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/class-tgm-plugin-activation.php:240
+#, php-format
+#@ qode
+msgid "Sorry, but you do not have the correct permissions to update the %s plugin. Contact the administrator of this site for help on getting the plugin updated."
+msgid_plural "Sorry, but you do not have the correct permissions to update the %s plugins. Contact the administrator of this site for help on getting the plugins updated."
+msgstr[0] ""
+msgstr[1] ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/functions.php:1118
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/class-tgm-plugin-activation.php:241
+#@ qode
+msgid "Begin installing plugin"
+msgid_plural "Begin installing plugins"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/functions.php:1119
+#@ qode
+msgid "Activate installed plugin"
+msgid_plural "Activate installed plugins"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/functions.php:1120
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/class-tgm-plugin-activation.php:243
+#@ qode
+#@ tgmpa
+msgid "Return to Required Plugins Installer"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/functions.php:1121
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/class-tgm-plugin-activation.php:245
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/class-tgm-plugin-activation.php:2167
+#@ qode
+#@ tgmpa
+msgid "Plugin activated successfully."
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/functions.php:1122
+#, php-format
+#@ qode
+msgid "All plugins installed and activated successfully. %s"
+msgstr ""
+
+#: header.php:75
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/header.php:77
+#@ qode
+msgid "Side Menu"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/class-tgm-plugin-activation.php:232
+#@ tgmpa
+msgid "Something went wrong."
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/class-tgm-plugin-activation.php:244
+#@ tgmpa
+msgid "Return to the dashboard"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/class-tgm-plugin-activation.php:247
+#, php-format
+#@ tgmpa
+msgid "All plugins installed and activated successfully. %1$s"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/class-tgm-plugin-activation.php:248
+#@ tgmpa
+msgid "Dismiss this notice"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/class-tgm-plugin-activation.php:1332
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/class-tgm-plugin-activation.php:1506
+#@ tgmpa
+msgid "Private Repository"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/class-tgm-plugin-activation.php:1336
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/class-tgm-plugin-activation.php:1510
+#@ tgmpa
+msgid "Pre-Packaged"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/class-tgm-plugin-activation.php:1341
+#@ tgmpa
+msgid "WordPress Repository"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/class-tgm-plugin-activation.php:1344
+#@ tgmpa
+msgid "Required"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/class-tgm-plugin-activation.php:1344
+#@ tgmpa
+msgid "Recommended"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/class-tgm-plugin-activation.php:1347
+#@ tgmpa
+msgid "Not Installed"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/class-tgm-plugin-activation.php:1350
+#@ tgmpa
+msgid "Installed But Not Activated"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/class-tgm-plugin-activation.php:1547
+#@ tgmpa
+msgid "Plugin"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/class-tgm-plugin-activation.php:1548
+#@ tgmpa
+msgid "Source"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/class-tgm-plugin-activation.php:1549
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/edit_custom_walker.php:236
+#@ tgmpa
+#@ qode
+msgid "Type"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/class-tgm-plugin-activation.php:1550
+#@ tgmpa
+msgid "Status"
+msgstr "Статус"
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/class-tgm-plugin-activation.php:1568
+#@ tgmpa
+msgid "Install"
+msgstr ""
+
+#: buddypress/members/activate.php:29
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/class-tgm-plugin-activation.php:1569
+#@ buddypress
+#@ tgmpa
+msgid "Activate"
+msgstr ""
+
+#. gettext fix: identical singular and plural forms found, that may be ambiguous! Please check the code!
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/class-tgm-plugin-activation.php:1824
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/class-tgm-plugin-activation.php:246
+#@ tgmpa
+msgid "The following plugin was activated successfully:"
+msgid_plural "The following plugins were activated successfully:"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/class-tgm-plugin-activation.php:2150
+#@ tgmpa
+msgid "Install package not available."
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/class-tgm-plugin-activation.php:2151
+#, php-format
+#@ tgmpa
+msgid "Downloading install package from <span class=\"code\">%s</span>&#8230;"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/class-tgm-plugin-activation.php:2152
+#@ tgmpa
+msgid "Unpacking the package&#8230;"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/class-tgm-plugin-activation.php:2153
+#@ tgmpa
+msgid "Installing the plugin&#8230;"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/class-tgm-plugin-activation.php:2154
+#@ tgmpa
+msgid "Plugin install failed."
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/class-tgm-plugin-activation.php:2155
+#@ tgmpa
+msgid "Plugin installed successfully."
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/class-tgm-plugin-activation.php:2166
+#@ tgmpa
+msgid "Plugin activation failed."
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/class-tgm-plugin-activation.php:2294
+#@ tgmpa
+msgid "The installation and activation process is starting. This process may take a while on some hosts, so please be patient."
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/class-tgm-plugin-activation.php:2295
+#, php-format
+#@ tgmpa
+msgid "%1$s installed and activated successfully."
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/class-tgm-plugin-activation.php:2295
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/class-tgm-plugin-activation.php:2302
+#@ tgmpa
+msgid "Show Details"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/class-tgm-plugin-activation.php:2295
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/class-tgm-plugin-activation.php:2302
+#@ tgmpa
+msgid "Hide Details"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/class-tgm-plugin-activation.php:2296
+#@ tgmpa
+msgid "All installations and activations have been completed."
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/class-tgm-plugin-activation.php:2297
+#, php-format
+#@ tgmpa
+msgid "Installing and Activating Plugin %1$s (%2$d/%3$d)"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/class-tgm-plugin-activation.php:2301
+#@ tgmpa
+msgid "The installation process is starting. This process may take a while on some hosts, so please be patient."
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/class-tgm-plugin-activation.php:2289
+#, php-format
+#@ tgmpa
+msgid "An error occurred while installing %1$s: <strong>%2$s</strong>."
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/class-tgm-plugin-activation.php:2290
+#, php-format
+#@ tgmpa
+msgid "The installation of %1$s failed."
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/class-tgm-plugin-activation.php:2302
+#, php-format
+#@ tgmpa
+msgid "%1$s installed successfully."
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/class-tgm-plugin-activation.php:2303
+#@ tgmpa
+msgid "All installations have been completed."
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/class-tgm-plugin-activation.php:2304
+#, php-format
+#@ tgmpa
+msgid "Installing Plugin %1$s (%2$d/%3$d)"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/class-tgm-plugin-activation.php:593
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/class-tgm-plugin-activation.php:2390
+#@ tgmpa
+msgid "Return to the Dashboard"
+msgstr ""
+
+#. translators: %s: title of menu item which is invalid
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/edit_custom_walker.php:78
+#, php-format
+#@ qode
+msgid "%s (Invalid)"
+msgstr ""
+
+#. translators: %s: title of menu item in draft status
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/edit_custom_walker.php:82
+#, php-format
+#@ qode
+msgid "%s (Pending)"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/edit_custom_walker.php:106
+#@ qode
+msgid "Move up"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/edit_custom_walker.php:119
+#@ qode
+msgid "Move down"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/edit_custom_walker.php:121
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/edit_custom_walker.php:123
+#@ qode
+msgid "Edit Menu Item"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/edit_custom_walker.php:132
+#@ qode
+msgid "URL"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/edit_custom_walker.php:139
+#@ qode
+msgid "Navigation Label"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/edit_custom_walker.php:145
+#@ qode
+msgid "Title Attribute"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/edit_custom_walker.php:152
+#@ qode
+msgid "Open link in a new window/tab"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/edit_custom_walker.php:157
+#@ qode
+msgid "CSS Classes (optional)"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/edit_custom_walker.php:163
+#@ qode
+msgid "Link Relationship (XFN)"
+msgstr "Динамика популярности"
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/edit_custom_walker.php:169
+#@ qode
+msgid "Description"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/edit_custom_walker.php:171
+#@ qode
+msgid "The description will be displayed in the menu if the current theme supports it."
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/edit_custom_walker.php:185
+#@ qode
+msgid "Don't link"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/edit_custom_walker.php:195
+#@ qode
+msgid "Don't show"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/edit_custom_walker.php:205
+#@ qode
+msgid "Display featured posts"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/edit_custom_walker.php:215
+#@ qode
+msgid "Put number of featured posts"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/edit_custom_walker.php:224
+#@ qode
+msgid "Featured Posts Category"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/edit_custom_walker.php:247
+#@ qode
+msgid "Icon"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/edit_custom_walker.php:259
+#@ qode
+msgid "Only with \"wide with icons\" menu type"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/edit_custom_walker.php:268
+#, php-format
+#@ qode
+msgid "Original: %s"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/edit_custom_walker.php:281
+#@ qode
+msgid "Remove"
+msgstr ""
+
+#: functions.php:1125
+#: single-namaste_course.php:788
+#: single-namaste_course_old.php:559
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/edit_custom_walker.php:282
+#@ qode
+msgid "Cancel"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-custom-sidebar.php:1
+#@ qode
+msgid "Custom Widget Area"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-custom-sidebar.php:1
+#@ default
+msgid "Enter Name of the new Widget Area"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-custom-sidebar.php:1
+#@ default
+msgid "Add Widget Area"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-like.php:69
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-like.php:84
+#@ qode
+msgid "Like this"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-like.php:72
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-like.php:87
+#@ qode
+msgid "You already like this!"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-menu.php:204
+#@ qode
+msgid "No Comments"
+msgstr "Нет комментариев"
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-menu.php:206
+#@ qode
+msgid " Comments"
+msgstr "Комментарии"
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-menu.php:208
+#@ qode
+msgid "1 Comment"
+msgstr "1 комментарий"
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-menu.php:212
+#@ default
+msgid "Comments are off for this post."
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:258
+#@ qode
+msgid "Qode"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:265
+#@ qode
+msgid "Options"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:276
+#@ qode
+msgid "Settings saved."
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:283
+#, php-format
+#@ qode
+msgid "version %1$s"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:298
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:301
+#@ qode
+msgid "Reset to defaults"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:306
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:2260
+#@ qode
+msgid "Save Changes"
+msgstr "Сохранить изменения"
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:361
+#@ qode
+msgid "First main color"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:365
+#@ qode
+msgid "Choose first main color"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:369
+#@ qode
+msgid "Second main color"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:373
+#@ qode
+msgid "Choose second main color"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:377
+#@ qode
+msgid "Third main color"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:381
+#@ qode
+msgid "Choose third main color"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:385
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1147
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1202
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1441
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1522
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1537
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1641
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1699
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1726
+#@ qode
+msgid "Background color"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:389
+#@ qode
+msgid "Choose background color"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:393
+#@ qode
+msgid "Boxed background color"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:397
+#@ qode
+msgid "Choose boxed background color"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:401
+#@ qode
+msgid "Highlight color"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:405
+#@ qode
+msgid "Choose highlight color"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:409
+#@ qode
+msgid "Selection color"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:413
+#@ qode
+msgid "Choose selection color"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:417
+#@ qode
+msgid "Background image"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:426
+#@ qode
+msgid "Pattern background image"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:435
+#@ qode
+msgid "Favicon image"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:444
+#@ qode
+msgid "Google fonts"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:453
+#@ qode
+msgid "Choose Font"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:457
+#@ qode
+msgid "Page transition"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:466
+#@ qode
+msgid "In order for animation to work properly, you must choose \"Post name\" in permalinks settings"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:470
+#@ qode
+msgid "Boxed"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:479
+#@ qode
+msgid "Loading animation"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:488
+#@ qode
+msgid "Loading image"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:497
+#@ qode
+msgid "Smooth scroll"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:503
+#@ qode
+msgid "not on iOS devices"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:507
+#@ qode
+msgid "Responsiveness"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:516
+#@ qode
+msgid "Show back button"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:525
+#@ qode
+msgid "Google Analytics Account ID"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:531
+#@ qode
+msgid "List of internal URLs loaded without AJAX (separated with comma)"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:540
+#@ qode
+msgid "Custom css"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:549
+#@ qode
+msgid "Custom js"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:554
+#@ qode
+msgid "jQuery selector is \"$j\" because of the conflict mode"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:558
+#@ qode
+msgid "Meta Keywords"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:566
+#@ qode
+msgid "Meta Description"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:574
+#@ qode
+msgid "Disable Qode SEO"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:592
+#@ qode
+msgid "H1 style"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:595
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:645
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:696
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:747
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:798
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:849
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:901
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:956
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1005
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1057
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1217
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1273
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1328
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1382
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1566
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1589
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1652
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1715
+#@ qode
+msgid "Color"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:600
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:650
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:701
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:752
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:803
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:854
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:906
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1010
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1062
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1227
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1283
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1338
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1392
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1599
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1657
+#@ qode
+msgid "Font family"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:609
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:659
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:710
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:761
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:812
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:863
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:915
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1019
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1071
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1236
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1292
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1347
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1401
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1608
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1666
+#@ qode
+msgid "Font size (px)"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:613
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:663
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:714
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:765
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:816
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:867
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:919
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1023
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1075
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1240
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1296
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1351
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1405
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1612
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1670
+#@ qode
+msgid "Line height (px)"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:617
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:667
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:718
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:769
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:820
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:871
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:923
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:966
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1027
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1079
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1244
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1300
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1355
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1409
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1616
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1674
+#@ qode
+msgid "Font style"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:626
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:676
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:727
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:778
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:829
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:880
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:932
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:975
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1036
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1088
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1253
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1309
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1363
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1417
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1625
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1683
+#@ qode
+msgid "Font weight"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:642
+#@ qode
+msgid "H2 style"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:693
+#@ qode
+msgid "H3 style"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:744
+#@ qode
+msgid "H4 style"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:795
+#@ qode
+msgid "H5 style"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:846
+#@ qode
+msgid "H6 style"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:898
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1712
+#@ qode
+msgid "Text style"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:947
+#@ qode
+msgid "Top/Bottom margin (px)"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:953
+#@ qode
+msgid "Link style"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:961
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1594
+#@ qode
+msgid "Hover color"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:990
+#@ qode
+msgid "Font decoration"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1002
+#@ qode
+msgid "Page title style"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1054
+#@ qode
+msgid "Page subtitle style"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1114
+#@ qode
+msgid "Header in grid"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1125
+#@ qode
+msgid "Show header top area"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1136
+#@ qode
+msgid "Menu in center"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1150
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1165
+#@ qode
+msgid "Initial"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1155
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1169
+#@ qode
+msgid "Scroll"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1162
+#@ qode
+msgid "Transparency"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1172
+#@ qode
+msgid "(from 0 to 1)"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1176
+#@ qode
+msgid "Logo"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1179
+#@ qode
+msgid "Logo image"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1186
+#@ qode
+msgid "Header height"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1189
+#@ qode
+msgid "Initial (px)"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1193
+#@ qode
+msgid "Scroll (px)"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1199
+#@ qode
+msgid "Dropdown main menu"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1207
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1431
+#@ qode
+msgid "Separator color"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1214
+#@ qode
+msgid "1st level menu style"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1222
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1278
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1333
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1387
+#@ qode
+msgid "Hover/Active color"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1270
+#@ qode
+msgid "2nd level menu style"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1325
+#@ qode
+msgid "3rd level menu style"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1379
+#@ qode
+msgid "Mobile menu style"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1438
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:2130
+#@ qode
+msgid "Title"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1447
+#@ qode
+msgid "Responsive title image"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1454
+#@ qode
+msgid "Title image"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1460
+#@ qode
+msgid "Parallax title image"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1465
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1470
+#@ qode
+msgid "Only if title image is not responsive"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1468
+#@ qode
+msgid "Title height (px)"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1474
+#@ qode
+msgid "Title position"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1486
+#@ qode
+msgid "Show footer top"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1497
+#@ qode
+msgid "Show footer bottom"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1509
+#@ qode
+msgid "Footer top colors"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1512
+#@ qode
+msgid "Title color"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1517
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1532
+#@ qode
+msgid "Text color"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1529
+#@ qode
+msgid "Footer bottom colors"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1545
+#@ qode
+msgid "Header and Footer Separator Color"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1563
+#@ qode
+msgid "Big separator"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1571
+#@ qode
+msgid "Thickness (px)"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1575
+#@ qode
+msgid "Top margin (px)"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1579
+#@ qode
+msgid "Bottom margin (px)"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1586
+#@ qode
+msgid "Button style"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1649
+#@ qode
+msgid "Message box style"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1704
+#@ qode
+msgid "Border color"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1723
+#@ qode
+msgid "Smooth scroll style"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1731
+#@ qode
+msgid "Bar color"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1746
+#@ qode
+msgid "Enable Side Area"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1757
+#@ qode
+msgid "Side Area Title"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1765
+#@ qode
+msgid "Background Color"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1774
+#@ qode
+msgid "Text Color"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1791
+#@ qode
+msgid "Parallax speed"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1799
+#@ qode
+msgid "Parallax on touch devices"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1810
+#@ qode
+msgid "Parallax min height (px)"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1814
+#@ qode
+msgid "Set min-height for last two stages"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1827
+#@ qode
+msgid "Portfolio style"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1840
+#@ qode
+msgid "Lightbox for single project"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1851
+#@ qode
+msgid "Number of columns for Portfolio gallery style"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1872
+#@ qode
+msgid "Pagination"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1881
+#@ qode
+msgid "Choose blog layout"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1884
+#@ qode
+msgid "Blog Full Width Image"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1885
+#@ qode
+msgid "Blog Small Image"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1886
+#@ qode
+msgid "Blog Masonry"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1887
+#@ qode
+msgid "Blog Full Width Image Whole Post"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1892
+#@ qode
+msgid "Blog sidebar"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1902
+#@ qode
+msgid "For category list"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1906
+#@ qode
+msgid "Hide comments"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1915
+#@ qode
+msgid "Page Range For Pagination"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1921
+#@ qode
+msgid "Number of characters"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1924
+#@ qode
+msgid "Number of characters in blog listing"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1929
+#@ qode
+msgid "Sidebar layout"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1942
+#@ qode
+msgid "Sidebar to display"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1964
+#@ qode
+msgid "Contact page"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1969
+#@ qode
+msgid "Mail send to"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1975
+#@ qode
+msgid "Enable Contact Form"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1984
+#@ qode
+msgid "Hide Website Field"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1993
+#@ qode
+msgid "Email From"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:1999
+#@ qode
+msgid "Email Subject"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:2005
+#@ qode
+msgid "Use reCaptcha"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:2014
+#@ qode
+msgid "ReCaptcha public key"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:2021
+#@ qode
+msgid "ReCaptcha private key"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:2027
+#@ qode
+msgid "Heading above contact form"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:2033
+#@ qode
+msgid "Enable Google Map"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:2043
+#@ qode
+msgid "Pin image"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:2052
+#@ qode
+msgid "Google map address"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:2058
+#@ qode
+msgid "Google map address 2"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:2064
+#@ qode
+msgid "Google map address 3"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:2070
+#@ qode
+msgid "Google map address 4"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:2076
+#@ qode
+msgid "Google map address 5"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:2082
+#@ qode
+msgid "Google map zoom"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:2088
+#@ qode
+msgid "Google map height (px)"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:2094
+#@ qode
+msgid "Google map style"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:2103
+#@ qode
+msgid "Google map color"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:2112
+#@ qode
+msgid "Google map scroll on mouse wheel"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:2136
+#@ qode
+msgid "Subtitle"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:2142
+#@ qode
+msgid "Text"
+msgstr "Текст"
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:2148
+#@ qode
+msgid "Back to home label"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:2162
+#@ qode
+msgid "Enable Social Share"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:2171
+#@ qode
+msgid "Facebook"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:2174
+#@ qode
+msgid "Enable Facebook"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:2181
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:2198
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:2219
+#@ qode
+msgid "Share Icon"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:2188
+#@ qode
+msgid "Twitter"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:2191
+#@ qode
+msgid "Enable Twitter"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:2203
+#@ qode
+msgid "Via"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:2209
+#@ qode
+msgid "Google +"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:2212
+#@ qode
+msgid "Enable Google +"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/qode-options.php:2226
+#@ qode
+msgid "Show For"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/shortcodes.php:808
+#@ qode
+msgid "All"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/shortcodes.php:950
+#@ qode
+msgid "Sorry, no posts matched your criteria."
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/shortcodes.php:957
+#@ qode
+msgid "Load More"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/shortcodes.php:1116
+#@ qode
+msgid "Share"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/shortcodes.php:1117
+#@ qode
+msgid "Share on"
+msgstr ""
+
+#: functions.php:1035
+#: functions.php:1133
+#: functions.php:1191
+#: single-namaste_course.php:797
+#: single-namaste_course.php:890
+#: single-namaste_course_old.php:565
+#: single-namaste_course_old.php:615
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/shortcodes.php:1130
+#@ qode
+msgid "Like"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/shortcodes.php:1142
+#@ qode
+msgid "Plus"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/shortcodes.php:1154
+#@ qode
+msgid "Tweet"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/js/default_dynamic.php:18
+#@ qode
+msgid "Comment has been sent!"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/search.php:67
+#@ qode
+msgid "SEARCH"
+msgstr "ПОИСК"
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/single-portfolio_page.php:249
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/single-portfolio_page.php:362
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/single-portfolio_page.php:469
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/single-portfolio_page.php:645
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/single-portfolio_page.php:790
+#@ qode
+msgid "Date"
+msgstr "Дата"
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/single-portfolio_page.php:254
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/single-portfolio_page.php:367
+#@ qode
+msgid "Category "
+msgstr "Категория"
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/single-portfolio_page.php:269
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/single-portfolio_page.php:382
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/single-portfolio_page.php:495
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/single-portfolio_page.php:671
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/single-portfolio_page.php:816
+#@ qode
+msgid "About"
+msgstr "О нас"
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/single-portfolio_page.php:278
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/single-portfolio_page.php:391
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/single-portfolio_page.php:504
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/single-portfolio_page.php:534
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/single-portfolio_page.php:680
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/single-portfolio_page.php:825
+#@ qode
+msgid "Previous"
+msgstr "предыдущий"
+
+#: watu_show_exam.php:208
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/single-portfolio_page.php:282
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/single-portfolio_page.php:395
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/single-portfolio_page.php:508
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/single-portfolio_page.php:538
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/single-portfolio_page.php:684
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/single-portfolio_page.php:829
+#@ watu
+#@ qode
+msgid "Next"
+msgstr "Следующий"
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/single-portfolio_page.php:474
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/single-portfolio_page.php:515
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/single-portfolio_page.php:650
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/single-portfolio_page.php:795
+#@ qode
+msgid "Category: "
+msgstr "Категория:"
+
+#: single-namaste_lesson.php:88
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/single.php:70
+#@ qode
+msgid "Blog"
+msgstr "Блог"
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/widgets/format_blog-standard.php:29
+#@ qode
+msgid "Posted by"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/widgets/format_blog-standard.php:29
+#@ qode
+msgid "in"
+msgstr "в"
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/widgets/format_blog-standard.php:34
+#@ qode
+msgid "no comment"
+msgstr "нет комментария"
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/widgets/format_blog-standard.php:34
+#@ qode
+msgid "comment"
+msgstr "комментарий"
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/widgets/format_blog-standard.php:34
+#@ qode
+msgid "comments"
+msgstr "комментарии"
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/widgets/relate_posts_widget.php:8
+#@ text_domain
+msgid "Related Posts Widget"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/widgets/relate_posts_widget.php:15
+#@ qode
+msgid "Related Posts"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/widgets/relate_posts_widget.php:75
+#@ qode
+msgid "Title:"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/widgets/relate_posts_widget.php:79
+#@ qode
+msgid "Number of posts:"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/woocommerce/cart/cart-empty.php:18
+#@ woocommerce
+msgid "Your cart is currently empty."
+msgstr "Ваша корзина пуста."
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/woocommerce/cart/cart-empty.php:22
+#@ woocommerce
+msgid "Return To Shop"
+msgstr "Вернуться в магазин"
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/woocommerce/cart/cart.php:27
+#@ woocommerce
+msgid "Product"
+msgstr "Продукт"
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/woocommerce/cart/cart.php:28
+#@ woocommerce
+msgid "Price"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/woocommerce/cart/cart.php:29
+#@ woocommerce
+msgid "Quantity"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/woocommerce/cart/cart.php:30
+#@ woocommerce
+msgid "Total"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/woocommerce/cart/cart.php:47
+#@ woocommerce
+msgid "Remove this item"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/woocommerce/cart/cart.php:74
+#@ woocommerce
+msgid "Available on backorder"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/woocommerce/cart/cart.php:119
+#@ woocommerce
+msgid "Coupon"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/woocommerce/cart/cart.php:119
+#@ woocommerce
+msgid "Apply Coupon"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/woocommerce/cart/cart.php:126
+#@ woocommerce
+msgid "Update Cart"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/woocommerce/cart/shipping-calculator.php:24
+#@ woocommerce
+msgid "Calculate Shipping"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/woocommerce/cart/shipping-calculator.php:30
+#@ woocommerce
+msgid "Select a country&hellip;"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/woocommerce/cart/shipping-calculator.php:47
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/woocommerce/cart/shipping-calculator.php:53
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/woocommerce/cart/shipping-calculator.php:65
+#@ woocommerce
+msgid "State / county"
+msgstr "Регион"
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/woocommerce/cart/shipping-calculator.php:54
+#@ woocommerce
+msgid "Select a state&hellip;"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/woocommerce/cart/shipping-calculator.php:74
+#@ woocommerce
+msgid "City"
+msgstr "Город"
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/woocommerce/cart/shipping-calculator.php:82
+#@ woocommerce
+msgid "Postcode / Zip"
+msgstr "Индекс"
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/woocommerce/cart/shipping-calculator.php:87
+#@ woocommerce
+msgid "Update Totals"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/woocommerce/checkout/form-billing.php:19
+#@ woocommerce
+msgid "Billing &amp; Shipping"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/woocommerce/checkout/form-billing.php:23
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/woocommerce/myaccount/form-edit-address.php:16
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/woocommerce/myaccount/my-address.php:19
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/woocommerce/myaccount/my-address.php:25
+#@ woocommerce
+msgid "Billing Address"
+msgstr "Платежный адрес"
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/woocommerce/checkout/form-billing.php:42
+#@ woocommerce
+msgid "Create an account?"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/woocommerce/checkout/form-billing.php:53
+#@ woocommerce
+msgid "Create an account by entering the information below. If you are a returning customer please login at the top of the page."
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/woocommerce/checkout/form-login.php:18
+#@ woocommerce
+msgid "Returning customer?"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/woocommerce/checkout/form-login.php:22
+#@ woocommerce
+msgid "Click here to login"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/woocommerce/checkout/form-login.php:27
+#@ woocommerce
+msgid "If you have shopped with us before, please enter your details in the boxes below. If you are a new customer please proceed to the Billing &amp; Shipping section."
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/woocommerce/checkout/form-shipping.php:32
+#@ woocommerce
+msgid "Ship to a different address?"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/woocommerce/checkout/form-shipping.php:58
+#@ woocommerce
+msgid "Additional Information"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/woocommerce/checkout/thankyou.php:18
+#@ woocommerce
+msgid "Unfortunately your order cannot be processed as the originating bank/merchant has declined your transaction."
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/woocommerce/checkout/thankyou.php:22
+#@ woocommerce
+msgid "Please attempt your purchase again or go to your account page."
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/woocommerce/checkout/thankyou.php:24
+#@ woocommerce
+msgid "Please attempt your purchase again."
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/woocommerce/checkout/thankyou.php:28
+#@ woocommerce
+msgid "Pay"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/woocommerce/checkout/thankyou.php:30
+#@ woocommerce
+msgid "My Account"
+msgstr "Мой аккаунт"
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/woocommerce/checkout/thankyou.php:36
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/woocommerce/checkout/thankyou.php:70
+#@ woocommerce
+msgid "Thank you. Your order has been received."
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/woocommerce/checkout/thankyou.php:40
+#@ woocommerce
+msgid "Order:"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/woocommerce/checkout/thankyou.php:44
+#@ woocommerce
+msgid "Date:"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/woocommerce/checkout/thankyou.php:48
+#@ woocommerce
+msgid "Total:"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/woocommerce/checkout/thankyou.php:53
+#@ woocommerce
+msgid "Payment method:"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/woocommerce/global/form-login.php:26
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/woocommerce/myaccount/form-login.php:35
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/woocommerce/myaccount/form-lost-password.php:24
+#@ woocommerce
+msgid "Username or email"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/woocommerce/global/form-login.php:29
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/woocommerce/myaccount/form-login.php:38
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/woocommerce/myaccount/form-login.php:83
+#@ woocommerce
+msgid "Password"
+msgstr "Пароль"
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/woocommerce/global/form-login.php:37
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/woocommerce/myaccount/form-login.php:28
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/woocommerce/myaccount/form-login.php:45
+#@ woocommerce
+msgid "Login"
+msgstr "Войти"
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/woocommerce/global/form-login.php:41
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/woocommerce/myaccount/form-login.php:47
+#@ woocommerce
+msgid "Remember me"
+msgstr "Запомнить меня"
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/woocommerce/global/form-login.php:43
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/woocommerce/myaccount/form-login.php:49
+#@ woocommerce
+msgid "Lost Password?"
+msgstr "Забыли пароль?"
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/woocommerce/global/quantity-input.php:17
+#@ woocommerce
+msgctxt "Product quantity input tooltip"
+msgid "Qty"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/woocommerce/myaccount/form-edit-address.php:16
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/woocommerce/myaccount/my-address.php:20
+#@ woocommerce
+msgid "Shipping Address"
+msgstr "Адрес доставки"
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/woocommerce/myaccount/form-edit-address.php:45
+#@ woocommerce
+msgid "Save Address"
+msgstr "Сохранить адрес"
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/woocommerce/global/form-login.php:38
+#@ woocommerce
+msgid "Lost your password?"
+msgstr "Забыли пароль?"
+
+#: watu_show_exam.php:19
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/woocommerce/myaccount/form-login.php:62
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/woocommerce/myaccount/form-login.php:96
+#@ watu
+#@ woocommerce
+msgid "Register"
+msgstr "Регистрация"
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/woocommerce/myaccount/form-login.php:71
+#@ woocommerce
+msgid "Username"
+msgstr "Имя пользователя"
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/woocommerce/myaccount/form-login.php:77
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/woocommerce/woocommerce_configuration.php:52
+#@ woocommerce
+#@ qode
+msgid "Email"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/woocommerce/myaccount/form-login.php:89
+#@ woocommerce
+msgid "Anti-spam"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/woocommerce/myaccount/form-lost-password.php:22
+#@ woocommerce
+msgid "Lost your password? Please enter your username or email address. You will receive a link to create a new password via email."
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/woocommerce/myaccount/form-lost-password.php:28
+#@ woocommerce
+msgid "Enter a new password below."
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/woocommerce/myaccount/form-lost-password.php:31
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/woocommerce/myaccount/form-lost-password.php:32
+#@ woocommerce
+msgid "New password"
+msgstr "Новый пароль"
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/woocommerce/myaccount/form-lost-password.php:35
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/woocommerce/myaccount/form-lost-password.php:36
+#@ woocommerce
+msgid "Re-enter new password"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/woocommerce/myaccount/form-lost-password.php:48
+#@ woocommerce
+msgid "Reset Password"
+msgstr ""
+
+#: functions.php:1126
+#: single-namaste_course.php:790
+#: single-namaste_course_old.php:560
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/woocommerce/myaccount/form-lost-password.php:48
+#@ qode
+#@ woocommerce
+msgid "Save"
+msgstr "Сохранить"
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/woocommerce/myaccount/my-address.php:17
+#@ woocommerce
+msgid "My Addresses"
+msgstr "Мои адреса"
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/woocommerce/myaccount/my-address.php:23
+#@ woocommerce
+msgid "My Address"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/woocommerce/myaccount/my-address.php:35
+#@ woocommerce
+msgid "The following addresses will be used on the checkout page by default."
+msgstr "Следующие адреса будут использоваться на странице оформления заказа по умолчанию."
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/woocommerce/myaccount/my-address.php:45
+#@ woocommerce
+msgid "Edit"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/woocommerce/myaccount/my-address.php:64
+#@ woocommerce
+msgid "You have not set up this type of address yet."
+msgstr "Вы пока еще не настроили этот тип адреса."
+
+#: buddypress/members/activate.php:14
+#@ buddypress
+msgid "Your account was activated successfully! Your account details have been sent to you in a separate email."
+msgstr ""
+
+#: buddypress/members/activate.php:16
+#, php-format
+#@ buddypress
+msgid "Your account was activated successfully! You can now <a href=\"%s\">log in</a> with the username and password you provided when you signed up."
+msgstr ""
+
+#: buddypress/members/activate.php:21
+#@ buddypress
+msgid "Please provide a valid activation key."
+msgstr ""
+
+#: buddypress/members/activate.php:25
+#@ buddypress
+msgid "Activation Key:"
+msgstr ""
+
+#: course-header.php:45
+#@ qode
+msgid "Course name:"
+msgstr "Название курса:"
+
+#: course-header.php:50
+#@ qode
+msgid "About the course"
+msgstr "Об этом курсе"
+
+#: course-header.php:52
+#@ qode
+msgid "Lesson"
+msgstr "Урок"
+
+#: course-header.php:56
+#@ qode
+msgid "Lection (LIVE)"
+msgstr "Вебинар"
+
+#: course-header.php:62
+#@ qode
+msgid "Forum"
+msgstr "Форум"
+
+#: course-header.php:59
+#@ qode
+msgid "Shedule"
+msgstr "Расписание"
+
+#: footer.php:25
+#@ qode
+msgid "All rights reserved"
+msgstr "Все права защищены"
+
+#: functions.php:191
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/full_width.php:154
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/full_width.php:237
+#@ qode
+msgid "Length "
+msgstr "Продолжительность: "
+
+#: functions.php:197
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/full_width.php:160
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/full_width.php:243
+#@ qode
+msgid "Begins at: "
+msgstr "Начинается через: "
+
+#: functions.php:199
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/full_width.php:162
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/full_width.php:245
+#@ qode
+msgid "Begins today"
+msgstr "Начинается сегодня"
+
+#: functions.php:201
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/full_width.php:164
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/full_width.php:247
+#@ qode
+msgid "Started"
+msgstr "Начало:"
+
+#: functions.php:130
+#@ qode
+msgid "MORE COURSES"
+msgstr "БОЛЬШЕ КУРСОВ"
+
+#: functions.php:303
+#: functions.php:308
+#@ namaste
+msgid "Lesson completed!"
+msgstr "Урок завершен!"
+
+#: functions.php:311
+#: functions.php:316
+#@ namaste
+msgid "Mark as completed"
+msgstr ""
+
+#: functions.php:421
+#@ namaste
+msgid "You are enrolled in this course."
+msgstr ""
+
+#: functions.php:424
+#@ namaste
+msgid "Your enroll request is received. Waiting for manager approval."
+msgstr ""
+
+#: functions.php:427
+#@ namaste
+msgid "You have completed this course."
+msgstr ""
+
+#: functions.php:430
+#@ namaste
+msgid "Your enrollment request is rejected."
+msgstr ""
+
+#: functions.php:524
+#@ qode
+msgid "(Starts soon!)"
+msgstr "(Начнется скоро!)"
+
+#: functions.php:539
+#: functions.php:580
+#@ qode
+msgid "next lesson"
+msgstr "следующий урок"
+
+#: functions.php:559
+#: functions.php:600
+#@ qode
+msgid "previous lesson"
+msgstr "предыдущий урок"
+
+#: functions.php:625
+#: functions.php:627
+#@ qode
+msgid "Archive Items"
+msgstr ""
+
+#: functions.php:626
+#: functions.php:628
+#@ qode
+msgid "Archive Item"
+msgstr ""
+
+#: functions.php:629
+#@ qode
+msgid "Add New"
+msgstr ""
+
+#: functions.php:630
+#@ qode
+msgid "Add New Archive Item"
+msgstr ""
+
+#: functions.php:631
+#@ qode
+msgid "New Archive Item"
+msgstr ""
+
+#: functions.php:632
+#@ qode
+msgid "Edit Archive Item"
+msgstr ""
+
+#: functions.php:633
+#@ qode
+msgid "View Archive Item"
+msgstr ""
+
+#: functions.php:634
+#@ qode
+msgid "All Archive Items"
+msgstr ""
+
+#: functions.php:635
+#@ qode
+msgid "Search Archive Items"
+msgstr ""
+
+#: functions.php:636
+#@ qode
+msgid "Parent Archive Items:"
+msgstr ""
+
+#: functions.php:637
+#@ qode
+msgid "No Archive Items found."
+msgstr ""
+
+#: functions.php:638
+#@ qode
+msgid "No Archive Items found in Trash."
+msgstr ""
+
+#: functions.php:721
+#@ qode
+msgid "Next lection starts "
+msgstr "Следующая лекция начнется"
+
+#: functions.php:721
+#@ qode
+msgid " MSK"
+msgstr "МСК"
+
+#: user_index-page.php:24
+#@ namaste
+msgid "My Courses"
+msgstr "Мои курсы"
+
+#: registration-page.php:102
+#@ qode
+msgid "Please fill in the information below:"
+msgstr "Пожалуйста, заполните информацию ниже:"
+
+#: login-page.php:94
+#: watu_show_exam.php:19
+#@ qode
+#@ watu
+msgid "or"
+msgstr "или"
+
+#: login-page.php:98
+#@ qode
+msgid "New to U-World?"
+msgstr "Новый пользователь?"
+
+#: login-page.php:103
+#: registration-page.php:108
+#@ qode
+msgid "Sign In with your social account"
+msgstr "Войдите через свой социальный аккаунт"
+
+#: login-page.php:104
+#: registration-page.php:109
+#@ qode
+msgid "Sign in with Google"
+msgstr "Войдите в Google"
+
+#: login-page.php:105
+#: registration-page.php:110
+#@ qode
+msgid "Sign in with Facebook"
+msgstr "Войдите в Facebook"
+
+#: login-page.php:106
+#: registration-page.php:111
+#@ qode
+msgid "Sign in with Vkontakte"
+msgstr "Войдите в Vkontakte"
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/full_width.php:107
+#@ qode
+msgid "Welcome to the student's page!"
+msgstr "Добро пожаловать на страницу студента!"
+
+#: index-page-logedIn-notused.php:50
+#: main_full_width.php:137
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/full_width.php:138
+#@ qode
+msgid "My courses:"
+msgstr "Мои курсы:"
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/full_width.php:213
+#@ qode
+msgid "ENTER"
+msgstr "ДАЛЕЕ"
+
+#: index-page-logedIn-notused.php:89
+#: main_full_width.php:176
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/full_width.php:221
+#@ qode
+msgid "Available courses:"
+msgstr "Доступные курсы:"
+
+#: functions.php:409
+#: single-namaste_course.php:1132
+#: single-namaste_course_old.php:826
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/full_width.php:298
+#@ qode
+msgid "ENROLL"
+msgstr "ЗАПИСАТЬСЯ"
+
+#: mainpage-lk-notused.php:16
+#@ qode
+msgid "Добро пожаловать!"
+msgstr ""
+
+#: mainpage-lk-notused.php:18
+#@ qode
+msgid "Мы создаем курсы, полезные для каждого человека: о семье, о воспитании детей, о правильных отношенях между сотрудниками, о том как справиться с денежным кризисом. Все курсы созданы профессиональными психологами, социологами, лекторами и даже сценаристами. Все для того чтобы вы легко справились с материалом и смогли тут же реализовать в своей жизни. И это пока что абсолютно бесплатно!"
+msgstr ""
+
+#: mainpage-lk-notused.php:23
+#: mainpage-lk-notused.php:24
+#: mainpage-lk-notused.php:25
+#: mainpage-lk-notused.php:26
+#@ qode
+msgid "Почему бесплатно?"
+msgstr ""
+
+#: registration-page.php:66
+#@ qode
+msgid "Проверьте вашу почту, чтобы активировать учетную запись."
+msgstr ""
+
+#: registration-page.php:92
+#@ qode
+msgid "Already U-World member?"
+msgstr "Уже участник?"
+
+#: registration-page.php:93
+#@ qode
+msgid "Log In"
+msgstr "Войти"
+
+#: registration-page.php:115
+#@ qode
+msgid "Вы успешно создали ваш аккаунт. Для того чтобы начать им пользоваться, вам необходимо активировать его через e-mail письмо, которое мы только что вам отправили."
+msgstr ""
+
+#: single-namaste_course.php:193
+#: single-namaste_course_old.php:111
+#@ qode
+msgid "This course does not have selfstudy lessons for the moment."
+msgstr "Этот курс не имеет самостоятельной подготовки уроков на данный момент."
+
+#: single-namaste_course_old.php:161
+#@ qode
+msgid "Здесь будет плеер с трансляцией"
+msgstr ""
+
+#: single-namaste_course_old.php:162
+#@ qode
+msgid "Если плеер не появился в назначенное время, обновите страницу!"
+msgstr ""
+
+#: single-namaste_course_old.php:162
+#@ qode
+msgid "Если через 5 мин после назначенного времени трансляция не началась, обновите страницу!"
+msgstr ""
+
+#: single-namaste_course_old.php:176
+#: single-namaste_course_old.php:177
+#@ qode
+msgid "no live events"
+msgstr ""
+
+#: single-namaste_course.php:320
+#: single-namaste_course_old.php:203
+#@ qode
+msgid "Discussion"
+msgstr "Чат"
+
+#: single-namaste_course.php:322
+#: single-namaste_course_old.php:204
+#@ qode
+msgid "Materials"
+msgstr "Материалы"
+
+#: single-namaste_course.php:323
+#: single-namaste_course_old.php:205
+#@ qode
+msgid "Notes"
+msgstr "Заметки"
+
+#: single-namaste_course.php:1024
+#: single-namaste_course_old.php:715
+#@ qode
+msgid "Additional Resources"
+msgstr "Дополнительные материалы"
+
+#: single-namaste_course.php:1043
+#: single-namaste_course_old.php:733
+#@ qode
+msgid "Lectures"
+msgstr "Лекции"
+
+#: single-namaste_course.php:1082
+#: single-namaste_course_old.php:772
+#@ qode
+msgid "Архив данного курса пуст"
+msgstr ""
+
+#: single-namaste_course_old.php:806
+#@ qode
+msgid "Course details:"
+msgstr "Детали курса:"
+
+#: single-namaste_course.php:137
+#: single-namaste_course.php:1111
+#: single-namaste_course_old.php:808
+#@ qode
+msgid "Course Starts:"
+msgstr "Начало курса:"
+
+#: single-namaste_course.php:140
+#: single-namaste_course.php:1114
+#: single-namaste_course_old.php:811
+#@ qode
+msgid "Length:"
+msgstr "Продолжительность:"
+
+#: single-namaste_course_old.php:820
+#@ qode
+msgid "Invite friends"
+msgstr "Пригласи друзей"
+
+#: single-namaste_course.php:1093
+#: single-namaste_course.php:1165
+#: single-namaste_course_old.php:823
+#@ qode
+msgid "About a course"
+msgstr "О курсе:"
+
+#: user_index-page.php:27
+#@ namaste
+msgid "No courses are available at this time."
+msgstr ""
+
+#: watu_show_exam.php:5
+#, php-format
+#@ watu
+msgid "Please go to <a href='%s'>%s</a> to view the test"
+msgstr ""
+
+#: watu_show_exam.php:16
+#, php-format
+#@ watu
+msgid "You need to be registered and logged in to take this %s."
+msgstr ""
+
+#: watu_show_exam.php:16
+#@ watu
+msgid "quiz"
+msgstr ""
+
+#: watu_show_exam.php:17
+#@ watu
+msgid "Log in"
+msgstr ""
+
+#: watu_show_exam.php:44
+#@ watu
+msgid "All the questions in the exam along with their answers are shown below. Your answers are bolded. The correct answers have a green background while the incorrect ones have a red background."
+msgstr ""
+
+#: watu_show_exam.php:78
+#@ watu
+msgid "Question was not answered"
+msgstr ""
+
+#: watu_show_exam.php:90
+#@ watu
+msgid "Failed"
+msgstr ""
+
+#: watu_show_exam.php:90
+#@ watu
+msgid "Just Passed"
+msgstr ""
+
+#: watu_show_exam.php:92
+#@ watu
+msgid "Satisfactory"
+msgstr ""
+
+#: watu_show_exam.php:92
+#@ watu
+msgid "Competent"
+msgstr ""
+
+#: watu_show_exam.php:92
+#@ watu
+msgid "Good"
+msgstr ""
+
+#: watu_show_exam.php:92
+#@ watu
+msgid "Very Good"
+msgstr ""
+
+#: watu_show_exam.php:92
+#@ watu
+msgid "Excellent"
+msgstr ""
+
+#: watu_show_exam.php:92
+#@ watu
+msgid "Unbeatable"
+msgstr ""
+
+#: watu_show_exam.php:92
+#@ watu
+msgid "Cheater"
+msgstr ""
+
+#: watu_show_exam.php:99
+#@ watu
+msgid "None"
+msgstr ""
+
+#: watu_show_exam.php:197
+#@ watu
+msgid "Loading"
+msgstr ""
+
+#: watu_show_exam.php:204
+#@ watu
+msgid "Show Answer"
+msgstr ""
+
+#: watu_show_exam.php:207
+#@ watu
+msgid "Question"
+msgstr ""
+
+#: watu_show_exam.php:207
+#@ watu
+msgid "of"
+msgstr ""
+
+#: watu_show_exam.php:211
+#@ watu
+msgid "Show Results"
+msgstr ""
+
+#: single-namaste_course.php:239
+#: single-namaste_course_old.php:139
+#@ qode
+msgid "Go to training"
+msgstr "Семинар"
+
+#: single-namaste_course.php:244
+#: single-namaste_course_old.php:141
+#@ qode
+msgid "Manage training"
+msgstr "Модератор КС"
+
+#: single-namaste_course.php:248
+#: single-namaste_course_old.php:142
+#@ qode
+msgid "Manage chat"
+msgstr "Модератор чата"
+
+#: functions.php:191
+#: functions.php:197
+#: single-namaste_course.php:142
+#: single-namaste_course.php:1114
+#: single-namaste_course_old.php:811
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/full_width.php:154
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/full_width.php:160
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/full_width.php:237
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/full_width.php:243
+#@ qode
+msgid "days"
+msgstr "дней"
+
+#: functions.php:743
+#: functions.php:770
+#: single-namaste_course.php:391
+#: single-namaste_course.php:548
+#: single-namaste_course_old.php:263
+#: single-namaste_course_old.php:416
+#@ qode
+msgid "New Note"
+msgstr ""
+
+#: functions.php:743
+#: functions.php:770
+#: single-namaste_course.php:391
+#: single-namaste_course_old.php:263
+#@ qode
+msgid "Type text here..."
+msgstr ""
+
+#: functions.php:1033
+#: functions.php:1095
+#: functions.php:1189
+#: single-namaste_course.php:735
+#: single-namaste_course.php:888
+#: single-namaste_course_old.php:518
+#: single-namaste_course_old.php:615
+#@ qode
+msgid "at"
+msgstr ""
+
+#: functions.php:1037
+#: functions.php:1135
+#: functions.php:1193
+#: single-namaste_course.php:799
+#: single-namaste_course.php:892
+#: single-namaste_course_old.php:565
+#: single-namaste_course_old.php:615
+#@ qode
+msgid "Dislike"
+msgstr ""
+
+#: functions.php:1110
+#: single-namaste_course.php:752
+#: single-namaste_course_old.php:533
+#@ qode
+msgid "More"
+msgstr ""
+
+#: functions.php:1223
+#: single-namaste_course.php:688
+#: single-namaste_course.php:928
+#: single-namaste_course_old.php:485
+#: single-namaste_course_old.php:635
+#@ qode
+msgid "Введите текст сообщения..."
+msgstr ""
+
+#: functions.php:1253
+#@ qode
+msgid "Choose the course:"
+msgstr ""
+
+#: single-namaste_course.php:384
+#: single-namaste_course.php:494
+#: single-namaste_course.php:509
+#: single-namaste_course_old.php:257
+#: single-namaste_course_old.php:362
+#: single-namaste_course_old.php:377
+#@ qode
+msgid "SAVED"
+msgstr ""
+
+#: single-namaste_course.php:388
+#: single-namaste_course_old.php:261
+#@ qode
+msgid "Add New Note"
+msgstr ""
+
+#: single-namaste_course.php:391
+#: single-namaste_course.php:486
+#: single-namaste_course.php:501
+#: single-namaste_course_old.php:263
+#: single-namaste_course_old.php:354
+#: single-namaste_course_old.php:369
+#@ qode
+msgid "SAVING..."
+msgstr ""
+
+#: single-namaste_course.php:609
+#: single-namaste_course_old.php:472
+#@ qode
+msgid "This group has no members"
+msgstr ""
+
+#: single-namaste_course.php:684
+#: single-namaste_course_old.php:482
+#@ qode
+msgid "Publication"
+msgstr ""
+
+#: single-namaste_course.php:695
+#: single-namaste_course_old.php:489
+#@ qode
+msgid "Publish"
+msgstr ""
+
+#: single-namaste_course.php:707
+#: single-namaste_course_old.php:498
+#@ qode
+msgid "Недавние обсуждения"
+msgstr ""
+
+#: single-namaste_course.php:959
+#: single-namaste_course_old.php:654
+#@ qode
+msgid "This forum does not have topics"
+msgstr ""
+
+#: single-namaste_course.php:971
+#: single-namaste_course_old.php:665
+#@ qode
+msgid "У данного курса нет форума"
+msgstr ""
+
+#: single-namaste_course.php:973
+#: single-namaste_course_old.php:667
+#@ qode
+msgid "Только студенты курса имеют доступ к форуму курса"
+msgstr ""
+
+#: single-namaste_course.php:1122
+#: single-namaste_course.php:1125
+#: single-namaste_course.php:1160
+#@ qode
+msgid "Program"
+msgstr "Программа:"
+
+#: functions.php:1457
+#@ qode
+msgid "Logout"
+msgstr "Выйти"
+
+#: single-namaste_course.php:151
+#@ namaste
+msgid "You cannot enroll this course - other courses have to be completed first."
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/class-tgm-plugin-activation.php:242
+#@ qode
+msgid "Begin activating plugin"
+msgid_plural "Begin activating plugins"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/class-tgm-plugin-activation.php:686
+#@ tgmpa
+msgid "The remote plugin package is does not contain a folder with the desired slug and renaming did not work."
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/class-tgm-plugin-activation.php:686
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/class-tgm-plugin-activation.php:690
+#@ tgmpa
+msgid "Please contact the plugin provider and ask them to package their plugin according to the WordPress guidelines."
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/class-tgm-plugin-activation.php:690
+#@ tgmpa
+msgid "The remote plugin package consists of more than one file, but the files are not packaged in a folder."
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/class-tgm-plugin-activation.php:1457
+#, php-format
+#@ tgmpa
+msgctxt "%2$s = plugin name in screen reader markup"
+msgid "Install %2$s"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/class-tgm-plugin-activation.php:1479
+#, php-format
+#@ tgmpa
+msgctxt "%2$s = plugin name in screen reader markup"
+msgid "Activate %2$s"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/class-tgm-plugin-activation.php:1531
+#, php-format
+#@ tgmpa
+msgid "No plugins to install or activate. <a href=\"%1$s\">Return to the Dashboard</a>"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/class-tgm-plugin-activation.php:1680
+#@ tgmpa
+msgid "No plugins are available to be installed at this time."
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/class-tgm-plugin-activation.php:1801
+#@ tgmpa
+msgid "No plugins are available to be activated at this time."
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/woocommerce/cart/cart-shipping.php:20
+#, php-format
+#@ woocommerce
+msgid "Shipping #%d"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/woocommerce/cart/cart-shipping.php:22
+#@ woocommerce
+msgid "Shipping and Handling"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/woocommerce/cart/cart-shipping.php:59
+#@ woocommerce
+msgid "Please use the shipping calculator to see available shipping methods."
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/woocommerce/cart/cart-shipping.php:63
+#@ woocommerce
+msgid "Please continue to the checkout and enter your full address to see if there are any available shipping methods."
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/woocommerce/cart/cart-shipping.php:67
+#@ woocommerce
+msgid "Please fill in your details to see available shipping methods."
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/woocommerce/cart/cart-shipping.php:76
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/woocommerce/cart/cart-shipping.php:82
+#@ woocommerce
+msgid "There don&lsquo;t seem to be available shipping methods. Please double check your address, or contact us if you need any help."
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/woocommerce/cart/cart-shipping.php:97
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/woocommerce/cart/cart-totals.php:46
+#@ woocommerce
+msgid "Shipping"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/woocommerce/cart/cart-totals.php:19
+#@ woocommerce
+msgid "Cart Totals"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/woocommerce/cart/cart-totals.php:24
+#@ woocommerce
+msgid "Cart Subtotal"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/woocommerce/cart/cart-totals.php:78
+#@ woocommerce
+msgid "Order Total"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/woocommerce/cart/cart-totals.php:90
+#, php-format
+#@ woocommerce
+msgid " (taxes estimated for %s)"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/woocommerce/cart/cart-totals.php:93
+#, php-format
+#@ woocommerce
+msgid "Note: Shipping and taxes are estimated%s and will be updated during checkout based on your billing and shipping information."
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/woocommerce/cart/cart.php:119
+#@ woocommerce
+msgid "Enter coupon code"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/woocommerce/cart/cart.php:127
+#@ woocommerce
+msgid "Proceed to Checkout"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/woocommerce/woocommerce_configuration.php:48
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/woocommerce/woocommerce_configuration.php:58
+#@ qode
+msgid "First name"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/woocommerce/woocommerce_configuration.php:49
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/woocommerce/woocommerce_configuration.php:59
+#@ qode
+msgid "Last name"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/woocommerce/woocommerce_configuration.php:50
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/woocommerce/woocommerce_configuration.php:60
+#@ qode
+msgid "Company name"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/woocommerce/woocommerce_configuration.php:51
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/woocommerce/woocommerce_configuration.php:61
+#@ qode
+msgid "Address"
+msgstr ""
+
+#: /sites/edu.kbb1.com/public/wp-content/themes/satellite/woocommerce/woocommerce_configuration.php:53
+#@ qode
+msgid "Phone"
+msgstr ""
+
+#: single-namaste_course.php:657
+#@ qode
+msgid "View all members"
+msgstr "Посмотреть всех ..."
+
+#: single-namaste_course.php:155
+#@ qode
+msgid "Enroll"
+msgstr "Для того, чтобы записаться на этот курс Вы должны войти в систему."
+
