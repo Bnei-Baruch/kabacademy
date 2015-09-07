@@ -499,3 +499,49 @@
         }, 'json');
     }
 })(jQuery);
+function add_points(pointsType, userId, courseId, newLink) {
+		
+	if(pointsType =="" || userId == "" || courseId ==""){
+		return false;
+	}
+
+	//userId is number
+	if ( !jQuery.isNumeric(userId) || !jQuery.isNumeric(courseId) ){
+		return false;
+	}
+
+	//is correct point's type
+	if(pointsType != 'workshop' && pointsType != 'webinar' && pointsType != 'forum' && pointsType != 'archive') {
+		return false;
+	}
+
+
+	var the_data = {
+		action: 'update_points_system',
+		userId: userId,
+		courseId: courseId,
+		pointsType: pointsType
+	}
+
+	jQuery.ajax({
+	   url: custom_ajax_vars.ajax_url,
+	   data: the_data,
+	   type: "post",
+	   success: function (response){
+	   	console.log(response);
+			if (response == 1) {
+				if (pointsType == 'workshop') {
+					window.open(newLink, '_blank');
+				};
+			}
+			else{
+				console.log(response);
+			}
+	   },
+	   error: function() {
+		   console.log('Ajax not submited');
+	   }
+	});
+
+	return false;
+}

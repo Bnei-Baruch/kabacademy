@@ -38,6 +38,8 @@ if(is_user_logged_in()):
         $forum_id = bbp_get_group_forum_ids($buddypress_id);
     }
 
+    $forum_url = add_query_arg(array('tab' => 'forum'), get_permalink($course_id));
+    $archive_url = add_query_arg(array('tab' => 'archive'), get_permalink($course_id));
     //NamasteLMSStudentModel::is_enrolled(get_current_user_id(), $course_id)
     ?>
     <div class="course-header">
@@ -59,10 +61,10 @@ if(is_user_logged_in()):
                 <a class="course-navigation-item<?php echo $tab == 'shedule' ? ' active' : ''; ?>" href="<?php echo add_query_arg(array('tab' => 'shedule'), get_permalink($course_id)); ?>"><?php _e('Shedule', 'qode'); ?></a>
             <?php endif; ?>
             <?php if(!empty($forum_id) && !get_post_meta($course_id, 'disable_forum', true)): ?>
-                <a class="course-navigation-item<?php echo $tab == 'forum' ? ' active' : ''; ?>" href="<?php echo add_query_arg(array('tab' => 'forum'), get_permalink($course_id)); ?>"><?php _e('Forum', 'qode'); ?></a>
+                <a onClick="add_points('forum','<?php echo get_current_user_id(); ?>','<?php echo $course_id; ?>','<?php echo $forum_url ?>')" id="course-nav-forum" class="course-navigation-item<?php echo $tab == 'forum' ? ' active' : ''; ?>" href="<?php echo $forum_url ?>"><?php _e('Forum', 'qode'); ?></a>
             <?php endif; ?>
             <?php if(!get_post_meta($course_id, 'disable_archive', true)): ?>
-                <a class="course-navigation-item<?php echo $tab == 'archive' ? ' active' : ''; ?>" href="<?php echo add_query_arg(array('tab' => 'archive'), get_permalink($course_id)); ?>"><?php _e('Archive', 'qode'); ?></a>
+                <a onClick="add_points('archive','<?php echo get_current_user_id(); ?>','<?php echo $course_id; ?>','<?php echo $forum_url ?>')" id="course-nav-archive" class="course-navigation-item<?php echo $tab == 'archive' ? ' active' : ''; ?>" href="<?php echo $archive_url; ?>"><?php _e('Archive', 'qode'); ?></a>
             <?php endif; ?>
         </div>
     </div>
