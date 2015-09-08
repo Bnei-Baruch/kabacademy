@@ -822,6 +822,7 @@ function qode_styles_Re()
         'ajaxurl' => admin_url('admin-ajax.php')
     );
     wp_localize_script('custom-js', 'customjs', $translation_array);
+	wp_localize_script( 'custom-js', 'custom_ajax_vars', array( 'ajax_url' => admin_url( 'admin-ajax.php' ) ) );
 }
 
 add_action('wp_enqueue_scripts', 'qode_styles_Re', 11);
@@ -1488,3 +1489,236 @@ add_filter( 'lostpassword_redirect', function ($lostpassword_redirect ) {
 
 add_filter( 'login_redirect', create_function( '$url,$query,$user', 'return home_url();' ), 999, 3 );
 
+/*
+* AJAX Function for adding the points for the new extra events.
+* Author: al@shtrak.eu
+*/
+add_action("wp_ajax_update_points_system", "update_points_system");
+function update_points_system(){
+	global $wpdb;
+
+	$points_type = $_POST['pointsType'];
+	$user_id = $_POST['userId'];
+	$course_id = $_POST['courseId'];
+	$action_points = 0;
+	$text = '';
+
+	//check if correct points type
+	if ($points_type != 'webinar' &&  $points_type !='workshop' &&  $points_type !='archive' &&  $points_type !='forum') {
+		echo 'not correct point type';
+		die();
+	}
+
+	//check if ids are numbers, not a hack
+	if( !is_numeric($user_id) || !is_numeric($course_id)) {
+		echo 'Not numbers';
+		die();
+	}
+
+	//get course title
+	$title = get_the_title($course_id);
+
+	//current date
+	$today = date_i18n('j F Y', time());
+	$date = date('Y-m-d');
+	$datetime = date("Y-m-d h:i:s");
+
+	// get the points for the action
+	if ($points_type == 'webinar') {
+		
+		$action_points = get_post_meta($course_id, 'namaste_points_webinar', true);
+		if($action_points ==='') {
+			$action_points = get_option('namaste_points_webinar'); 
+		}
+
+		$text = sprintf(__('Received %d points for taking part in the webinar for course "%s" on %s','qode'),$action_points, $title, $today);
+
+	} elseif ($points_type == 'workshop' ){
+		
+		$action_points = get_post_meta($course_id, 'namaste_points_workshop', true);
+		if($action_points === ''){
+			$action_points =get_option('namaste_points_workshop');
+		}
+
+		$text =  sprintf(__('Received %d points for taking part in the workshop for course "%s"  on %s','qode'),$action_points, $title, $today);
+
+	} elseif ($points_type == 'forum') {
+
+		$action_points = get_post_meta($course_id, 'namaste_points_forum', true);
+		if($action_points ==='') {
+			$action_points = get_option('namaste_points_forum'); 
+		}
+
+		$text = sprintf(__('Received %d points for taking part in the forum for course "%s" on %s','qode'),$action_points, $title, $today);
+
+	} elseif ($points_type == 'archive') {
+
+		$action_points = get_post_meta($course_id, 'namaste_points_archive', true);
+		if($action_points ==='') {
+			$action_points = get_option('namaste_points_archive'); 
+		}
+
+		$text = sprintf(__('Received %d points for wandering around the archive for course "%s" on %s','qode'),$action_points, $title, $today);
+
+	}
+
+	//check if hasn't got already the points
+	if ($points_type == 'archive' || $points_type == 'forum') {
+		//compare only by user id, points type and course id
+		$duplicates = $wpdb->get_results("SELECT value FROM {$wpdb->prefix}namaste_history WHERE user_id = $user_id  AND for_item_type = '".$points_type."' AND for_item_id = $course_id");
+	} else {
+		//compare only by user id, points type, course id
+		$duplicates = $wpdb->get_results("SELECT value FROM {$wpdb->prefix}namaste_history WHERE user_id = $user_id  AND for_item_type = '".$points_type."' AND for_item_id = $course_id AND date ='".$date."'");
+	}
+
+	//if there is a field with the same description - die()
+	if (is_array($duplicates) && is_object($duplicates[0]) && $duplicates[0]->value == $text ) {
+		echo true;
+		die();
+	}
+
+	//update database
+	$sql = "INSERT INTO {$wpdb->prefix}namaste_history (user_id,num_value,action, for_item_type,value,date,datetime,for_item_id) VALUES (%d,%d,%s,%s,%s,%s,%s,%d)";
+	$sql = $wpdb->prepare($sql,$user_id,$action_points,'awarded_points',$points_type,$text,$date,$datetime,$course_id);
+	$result = $wpdb->query($sql);
+	
+	//if problems with the db
+	if ($result === false){
+		var_dump($result);
+		die();
+	}
+	
+	//update total the points
+	$current_total_points =  get_user_meta($user_id, 'namaste_points', true);
+	if ($current_total_points == "") {
+		add_user_meta($user_id, 'namaste_points',$action_points);
+	} else {
+		$total_points = $current_total_points + $action_points;
+		update_user_meta($user_id, 'namaste_points', $total_points );
+	}
+
+
+	//just die
+	echo true;
+	die();
+}
+
+/*Add some more fields in the namaste options page for additional points*/
+add_action('namster_after_default_points_fields','namaste_additional_points_fields_option_page');
+function namaste_additional_points_fields_option_page(){ ?>
+	<p><?php _e('Reward', 'namaste')?> <input type="text" name="points_register" size="4" value="<?php echo get_option('namaste_points_register')?>"> <?php _e('points for registring in the site.', 'namaste')?></p>
+
+	<p><?php _e('Reward', 'namaste')?> <input type="text" name="points_start_course" size="4" value="<?php echo get_option('namaste_points_start_course')?>"> <?php _e('points for course enrolment', 'namaste')?></p>
+
+	<p><?php _e('Reward', 'namaste')?> <input type="text" name="points_webinar" size="4" value="<?php echo get_option('namaste_points_webinar')?>"> <?php _e('points for watching the webinar', 'namaste')?></p>
+
+	<p><?php _e('Reward', 'namaste')?> <input type="text" name="points_workshop" size="4" value="<?php echo get_option('namaste_points_workshop')?>"> <?php _e('points for participation in the workshop', 'namaste')?></p>
+
+	<p><?php _e('Reward', 'namaste')?> <input type="text" name="points_course_forum" size="4" value="<?php echo get_option('namaste_points_forum')?>"> <?php _e('points for participation in the forum course', 'namaste')?></p>
+
+	<p><?php _e('Reward', 'namaste')?> <input type="text" name="points_archive" size="4" value="<?php echo get_option('namaste_points_archive')?>"> <?php _e('points for use the archive ', 'namaste')?></p>
+<?php }
+
+/*Updating the additional options fields*/
+add_action('namaste_default_points_update','namaste_update_default_points');
+function namaste_update_default_points(){
+	update_option('namaste_points_register', $_POST['points_register']);
+	update_option('namaste_points_start_course', $_POST['points_start_course']);
+	update_option('namaste_points_webinar', $_POST['points_webinar']);
+	update_option('namaste_points_workshop', $_POST['points_workshop']);
+	update_option('namaste_points_forum', $_POST['points_course_forum']);
+	update_option('namaste_points_archive', $_POST['points_archive']);
+}
+
+
+/*Adding additional point fields for the single page*/
+add_action('namaste_after_single_course_points_fields','namaste_additional_points_single_course');
+function namaste_additional_points_single_course($post){
+	//get award points for enrollment
+	$award_points_enroll = get_post_meta($post->ID, 'namaste_points_start_course', true);
+	if($award_points_enroll ==='') $award_points_enroll=get_option('namaste_points_start_course');
+
+	//get award points for particpation in the webinar
+	$award_points_webinar = get_post_meta($post->ID, 'namaste_points_webinar', true);
+	if($award_points_webinar ==='') $award_points_webinar=get_option('namaste_points_webinar');
+
+	//get award points for particpation in the workshop 
+	$award_points_workshop = get_post_meta($post->ID, 'namaste_points_workshop', true);
+	if($award_points_workshop === '') $award_points_workshop =get_option('namaste_points_workshop');
+
+	//get award points for particpation in the workshop 
+	$award_points_forum = get_post_meta($post->ID, 'namaste_points_forum', true);
+	if($award_points_forum === '') $award_points_forum =get_option('namaste_points_forum');
+
+	//get award points for particpation in the workshop 
+	$award_points_archive = get_post_meta($post->ID, 'namaste_points_archive', true);
+	if($award_points_archive === '') $award_points_archive =get_option('namaste_points_archive');
+	?>
+	
+	<p><?php _e('Reward', 'namaste')?> <input type="text" name="namaste_points_start_course" size="4" value="<?php echo $award_points_enroll?>"> <?php _e('points for enrolling in the course ', 'namaste')?></p>
+
+	<p><?php _e('Reward', 'namaste')?> <input type="text" name="namaste_points_webinar" size="4" value="<?php echo $award_points_webinar?>"> <?php _e('points for watching the webinar', 'namaste')?></p>
+
+	<p><?php _e('Reward', 'namaste')?> <input type="text" name="namaste_points_workshop" size="4" value="<?php echo $award_points_workshop?>"> <?php _e('points for participation in the workshop', 'namaste')?></p>
+
+	<p><?php _e('Reward', 'namaste')?> <input type="text" name="namaste_points_forum" size="4" value="<?php echo $award_points_forum ?>"> <?php _e('points for participation in the forum course', 'namaste')?></p>
+
+	<p><?php _e('Reward', 'namaste')?> <input type="text" name="namaste_points_archive" size="4" value="<?php echo $award_points_archive?>"> <?php _e('points for use the archive ', 'namaste')?></p>
+
+	<?php
+}
+
+
+/*Update the additional points on single course page*/
+add_action('namaste_single_course_points_update','namaste_update_single_course_points');
+function namaste_update_single_course_points($post_id){
+	if(isset($_POST['namaste_points_start_course'])) update_post_meta($post_id, "namaste_points_start_course", $_POST['namaste_points_start_course']);
+	if(isset($_POST['namaste_points_webinar'])) update_post_meta($post_id, "namaste_points_webinar", $_POST['namaste_points_webinar']);
+	if(isset($_POST['namaste_points_workshop'])) update_post_meta($post_id, "namaste_points_workshop", $_POST['namaste_points_workshop']);
+	if(isset($_POST['namaste_points_forum'])) update_post_meta($post_id, "namaste_points_forum", $_POST['namaste_points_forum']);
+	if(isset($_POST['namaste_points_archive'])) update_post_meta($post_id, "namaste_points_archive", $_POST['namaste_points_archive']);
+}
+
+/*Hook to the enrollement process to add more points on sign*/
+function namaste_enrolled_course_add_points($student_id, $course_id, $status){
+	global $wpdb;
+
+	$points_type = 'enrollment';
+	$user_id = $student_id;
+	$action_points = 0;
+	$text = '';
+	$title = get_the_title($course_id);
+
+	//current date
+	$today = date_i18n('j F Y', time());
+	$date = date('Y-m-d');
+	$datetime = date("Y-m-d h:i:s");
+
+	$action_points = get_post_meta($course_id, 'namaste_points_start_course', true);
+	if($action_points === '') {
+		$action_points = get_option('namaste_points_start_course');
+	} 
+
+	$text = sprintf(__('Received %d points for enrollin in course "%s" on %s','qode'),$action_points, $title, $today);
+
+	//update database
+	$sql = "INSERT INTO {$wpdb->prefix}namaste_history (user_id,num_value,action, for_item_type,value,date,datetime,for_item_id) VALUES (%d,%d,%s,%s,%s,%s,%s,%d)";
+	$sql = $wpdb->prepare($sql,$user_id,$action_points,'awarded_points',$points_type,$text,$date,$datetime,$course_id);
+	$result = $wpdb->query($sql);
+	
+	//if problems with the db
+	if ($result === false){
+		return false;
+	}
+	
+	//update total the points
+	$current_total_points =  get_user_meta($user_id, 'namaste_points', true);
+	if ($current_total_points == "") {
+		add_user_meta($user_id, 'namaste_points',$action_points);
+	} else {
+		$total_points = $current_total_points + $action_points;
+		update_user_meta($user_id, 'namaste_points', $total_points );
+	}
+}
+
+add_action('namaste_enrolled_course','namaste_enrolled_course_add_points',10,3);
