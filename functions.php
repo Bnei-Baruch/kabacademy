@@ -4,7 +4,7 @@
 Function wp_schools_enqueue_scripts()
 {
     //Add jQuery UI
-    
+
 	//wp_register_style("bootstrap-css", get_stylesheet_directory_uri() . './bootstrap/css/bootstrap.css');
 	//wp_enqueue_style('bootstrap-css');
     wp_register_style('childstyle', get_stylesheet_directory_uri() . '/style.css');
@@ -12,7 +12,7 @@ Function wp_schools_enqueue_scripts()
     wp_register_style('bxslider', get_stylesheet_directory_uri() . '/jquery.bxslider.css');
     wp_enqueue_style('bxslider');
 
-    
+
    // wp_enqueue_script("bootstrap", get_stylesheet_directory_uri() . './bootstrap/js/bootstrap.min.js');
     wp_enqueue_script('watuscript', get_stylesheet_directory_uri() . '/watu-script.js', array('watu-script'), false, true);
     wp_enqueue_script('bbScript', get_stylesheet_directory_uri() . '/bb-script.js');
@@ -20,7 +20,7 @@ Function wp_schools_enqueue_scripts()
     wp_enqueue_style('fonts-ptsansnarrow', 'http://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700&subset=latin,cyrillic');
 	//wp_enqueue_style( 'fonts-ptsans', 'http://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic&subset=cyrillic,latin' );
     //wp_enqueue_script( 'fonts-ptsans', 'http://webfonts.creativecloud.com/open-sans:n7:all;pt-sans-narrow:n4,n7:all;pt-sans:n4,n7,i4:all.js' );
-    
+
 
 }
 
@@ -144,22 +144,22 @@ function academy_courses($atts)
 function getCourseDataForHomePage($post)
 {
     $aResult = array();
-	
+
 	$registration_closed = get_post_meta($post->ID, 'registration_closed', true);
-	
-	
+
+
 	$aResult['registration_closed'] = $registration_closed;
-	
+
     $post_thumbnail_id = get_post_thumbnail_id($post->ID);
 	$upload_dir = wp_upload_dir();
-	
+
 	if ( $post_thumbnail_id ) {
 		$imageArray = wp_get_attachment_image_src($post_thumbnail_id,'thumbnail', false);
-		$image = $imageArray[0];		
+		$image = $imageArray[0];
 	} else {
 		$image = 'http://dummyimage.com/269x150/fff/000.png&text=No+image';
 	}
- 
+
     $aResult['image'] = $image;
 
 	if ( in_category( 'on-layn-obuchenie',  $post->ID)) {
@@ -341,12 +341,12 @@ function reregister_shortcode()
 
     remove_shortcode('namaste-prev-lesson');
     add_shortcode('namaste-prev-lesson', 'namaste_prev_lesson');
-	
+
     remove_shortcode('namastepro-next-lesson');
     add_shortcode('namastepro-next-lesson', 'namastepro_next_lesson');
 
     remove_shortcode('namastepro-prev-lesson');
-    add_shortcode('namastepro-prev-lesson', 'namastepro_prev_lesson');	
+    add_shortcode('namastepro-prev-lesson', 'namastepro_prev_lesson');
 }
 
 function namaste_enroll()
@@ -385,8 +385,8 @@ function namaste_enroll()
         $accept_stripe = get_option('namaste_accept_stripe');
         $accept_paypal = get_option('namaste_accept_paypal');
         $accept_other_payment_methods = get_option('namaste_accept_other_payment_methods');
-        
-        
+
+
 
 
         if ($accept_stripe) $stripe = NamasteStripe::load();
@@ -397,7 +397,7 @@ function namaste_enroll()
 
         if (!empty($_POST['enroll'])) {
             echo " <script type='text/javascript'> location.reload(true); </script>";
-            //TODO:Davgur - make error (ont go after this) 
+            //TODO:Davgur - make error (ont go after this)
             $mesage = NamasteLMSCoursesController::enroll($is_manager);
             namaste_redirect($_SERVER['REQUEST_URI']);
         }
@@ -849,7 +849,7 @@ function custom_bbp_topic_create()
 
 add_action('wp_ajax_custom_bbp_reply_create', 'custom_bbp_reply_create');
 function custom_bbp_reply_create()
-{   
+{
     $reply_id = bbp_insert_reply(array(
         'post_parent' => $_POST['bbp_topic_id'], // topic ID
         'post_content' => $_POST['content'],
@@ -1078,7 +1078,7 @@ function load_more_topics()
             if (++$counter == 12) break;
 
             ?>
-            <div class="topics_list_single_topic" id="topic-<?php echo bbp_get_topic_id(); ?>" 
+            <div class="topics_list_single_topic" id="topic-<?php echo bbp_get_topic_id(); ?>"
             	data-bbp_forum_id = "<?php echo $forum_id;?>"
                 data-id="<?php echo bbp_get_topic_id(); ?>">
                 <div class="single_topic_header">
@@ -1213,8 +1213,8 @@ function load_more_topics()
                         ?>
                     </div>
                     <div class="single_topic_reply_form">
-                        <form 
-                        	action="<?php echo $url; ?>#topic-<?php echo bbp_get_topic_id(); ?>"                                                          
+                        <form
+                        	action="<?php echo $url; ?>#topic-<?php echo bbp_get_topic_id(); ?>"
 							data-bbp_forum_id = "<?php echo $forum_id;?>"
 							data-bbp_topic_id="<?php echo bbp_get_topic_id(); ?>"
                         	method="post">
@@ -1429,9 +1429,9 @@ function rightToLogFileDavgur($logText)
 
     $filter_sql = '';
     $filter_sql = apply_filters('namaste-course-select-sql', $filter_sql, $user_ID);
-    
+
     // select all courses join to student courses so we can have status.
-    $my_courses = $wpdb -> get_results($wpdb->prepare("SELECT tSC.*, 
+    $my_courses = $wpdb -> get_results($wpdb->prepare("SELECT tSC.*,
         tC.post_title as post_title, tC.ID as post_id, tC.post_excerpt as post_excerpt
          FROM {$wpdb->posts} tC LEFT JOIN ".NAMASTE_STUDENT_COURSES." tSC ON tC.ID = tSC.course_id
          AND tSC.user_id = %d WHERE tC.post_status = 'publish'
@@ -1455,11 +1455,11 @@ function rightToLogFileDavgur($logText)
 // LOGOUT LINK IN MENU
 
 function academy_menu_logout_link( $nav, $args ) {
-	
+
 	$logoutlink = '<li class="loginBtn"><a href="'.wp_logout_url( home_url()).'"><span>'. __('Logout', 'qode') . '</span></a></li>';
 	if( $args -> menu == 'Header right menu (Signed)' ) {
 		return $nav.$logoutlink ;
-		
+
 	} else {
 	return $nav;
 	}
@@ -1525,16 +1525,16 @@ function update_points_system(){
 
 	// get the points for the action
 	if ($points_type == 'webinar') {
-		
+
 		$action_points = get_post_meta($course_id, 'namaste_points_webinar', true);
 		if($action_points ==='') {
-			$action_points = get_option('namaste_points_webinar'); 
+			$action_points = get_option('namaste_points_webinar');
 		}
 
 		$text = sprintf(__('Received %d points for taking part in the webinar for course "%s" on %s','qode'),$action_points, $title, $today);
 
 	} elseif ($points_type == 'workshop' ){
-		
+
 		$action_points = get_post_meta($course_id, 'namaste_points_workshop', true);
 		if($action_points === ''){
 			$action_points =get_option('namaste_points_workshop');
@@ -1546,7 +1546,7 @@ function update_points_system(){
 
 		$action_points = get_post_meta($course_id, 'namaste_points_forum', true);
 		if($action_points ==='') {
-			$action_points = get_option('namaste_points_forum'); 
+			$action_points = get_option('namaste_points_forum');
 		}
 
 		$text = sprintf(__('Received %d points for taking part in the forum for course "%s" on %s','qode'),$action_points, $title, $today);
@@ -1555,7 +1555,7 @@ function update_points_system(){
 
 		$action_points = get_post_meta($course_id, 'namaste_points_archive', true);
 		if($action_points ==='') {
-			$action_points = get_option('namaste_points_archive'); 
+			$action_points = get_option('namaste_points_archive');
 		}
 
 		$text = sprintf(__('Received %d points for wandering around the archive for course "%s" on %s','qode'),$action_points, $title, $today);
@@ -1581,13 +1581,13 @@ function update_points_system(){
 	$sql = "INSERT INTO {$wpdb->prefix}namaste_history (user_id,num_value,action, for_item_type,value,date,datetime,for_item_id) VALUES (%d,%d,%s,%s,%s,%s,%s,%d)";
 	$sql = $wpdb->prepare($sql,$user_id,$action_points,'awarded_points',$points_type,$text,$date,$datetime,$course_id);
 	$result = $wpdb->query($sql);
-	
+
 	//if problems with the db
 	if ($result === false){
 		var_dump($result);
 		die();
 	}
-	
+
 	//update total the points
 	$current_total_points =  get_user_meta($user_id, 'namaste_points', true);
 	if ($current_total_points == "") {
@@ -1642,19 +1642,19 @@ function namaste_additional_points_single_course($post){
 	$award_points_webinar = get_post_meta($post->ID, 'namaste_points_webinar', true);
 	if($award_points_webinar ==='') $award_points_webinar=get_option('namaste_points_webinar');
 
-	//get award points for particpation in the workshop 
+	//get award points for particpation in the workshop
 	$award_points_workshop = get_post_meta($post->ID, 'namaste_points_workshop', true);
 	if($award_points_workshop === '') $award_points_workshop =get_option('namaste_points_workshop');
 
-	//get award points for particpation in the workshop 
+	//get award points for particpation in the workshop
 	$award_points_forum = get_post_meta($post->ID, 'namaste_points_forum', true);
 	if($award_points_forum === '') $award_points_forum =get_option('namaste_points_forum');
 
-	//get award points for particpation in the workshop 
+	//get award points for particpation in the workshop
 	$award_points_archive = get_post_meta($post->ID, 'namaste_points_archive', true);
 	if($award_points_archive === '') $award_points_archive =get_option('namaste_points_archive');
 	?>
-	
+
 	<p><?php _e('Reward', 'namaste')?> <input type="text" name="namaste_points_start_course" size="4" value="<?php echo $award_points_enroll?>"> <?php _e('points for enrolling in the course ', 'namaste')?></p>
 
 	<p><?php _e('Reward', 'namaste')?> <input type="text" name="namaste_points_webinar" size="4" value="<?php echo $award_points_webinar?>"> <?php _e('points for watching the webinar', 'namaste')?></p>
@@ -1680,6 +1680,7 @@ function namaste_update_single_course_points($post_id){
 }
 
 /*Hook to the enrollement process to add more points on sign*/
+add_action('namaste_enrolled_course','namaste_enrolled_course_add_points',10,3);
 function namaste_enrolled_course_add_points($student_id, $course_id, $status){
 	global $wpdb;
 
@@ -1697,7 +1698,7 @@ function namaste_enrolled_course_add_points($student_id, $course_id, $status){
 	$action_points = get_post_meta($course_id, 'namaste_points_start_course', true);
 	if($action_points === '') {
 		$action_points = get_option('namaste_points_start_course');
-	} 
+	}
 
 	$text = sprintf(__('Received %d points for enrollin in course "%s" on %s','qode'),$action_points, $title, $today);
 
@@ -1705,12 +1706,12 @@ function namaste_enrolled_course_add_points($student_id, $course_id, $status){
 	$sql = "INSERT INTO {$wpdb->prefix}namaste_history (user_id,num_value,action, for_item_type,value,date,datetime,for_item_id) VALUES (%d,%d,%s,%s,%s,%s,%s,%d)";
 	$sql = $wpdb->prepare($sql,$user_id,$action_points,'awarded_points',$points_type,$text,$date,$datetime,$course_id);
 	$result = $wpdb->query($sql);
-	
+
 	//if problems with the db
 	if ($result === false){
 		return false;
 	}
-	
+
 	//update total the points
 	$current_total_points =  get_user_meta($user_id, 'namaste_points', true);
 	if ($current_total_points == "") {
@@ -1721,4 +1722,22 @@ function namaste_enrolled_course_add_points($student_id, $course_id, $status){
 	}
 }
 
-add_action('namaste_enrolled_course','namaste_enrolled_course_add_points',10,3);
+
+/*Hooking after user registration to add the initial points*/
+add_action( 'user_register', 'add_points_on_registration', 10, 1 );
+function add_points_on_registration( $user_id ) {
+	global $wpdb;
+	$action_points = get_option('namaste_points_register');
+	$today = date_i18n('j F Y', time());
+	$date = date('Y-m-d');
+	$datetime = date("Y-m-d h:i:s");
+	$points_type = "registration";
+	$text = sprintf(__('Received %d points for registering in the system on %s','qode'),$action_points, $today);
+
+	$sql = "INSERT INTO {$wpdb->prefix}namaste_history (user_id,num_value,action, for_item_type,value,date,datetime,for_item_id) VALUES (%d,%d,%s,%s,%s,%s,%s,%d)";
+	$sql = $wpdb->prepare($sql,$user_id,$action_points,'awarded_points',$points_type,$text,$date,$datetime,$course_id);
+	$result = $wpdb->query($sql);
+    if ($result) {
+    	update_user_meta($user_id, 'namaste_points', $action_points );
+    }
+}
