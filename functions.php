@@ -1503,6 +1503,13 @@ function update_points_system(){
 	$action_points = 0;
 	$text = '';
 
+  //Check if user is enrolled
+  $enrolled = $wpdb -> get_var($wpdb->prepare("SELECT id FROM {$wpdb->prefix}namaste_student_courses WHERE user_id = %d AND course_id = %d AND (status = 'enrolled' OR status = 'completed')", $user_id, $course_id));
+  if(!$enrolled) {
+    _e("You must enroll in the course first before you can see the lessons", 'namaste');
+    die();
+  }  
+
 	//check if correct points type
 	if ($points_type != 'webinar' &&  $points_type !='workshop' &&  $points_type !='archive' &&  $points_type !='forum') {
 		echo 'not correct point type';
