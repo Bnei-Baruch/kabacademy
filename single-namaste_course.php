@@ -298,8 +298,7 @@ if (isset($qode_options_satellite['twitter_via']) && !empty($qode_options_satell
                                         <div class="lection-video-container">
                                           
                                             <div id="lveventplayer">
-                                                <div style="text-align: center; width: 100%; height: 370px; background-color: #181818;font-size: 2em; line-height: 380px; color: #fff;">
-                                                    
+                                                <div style="text-align: center; width: 100%; height: 370px; background-color: #181818;font-size: 2em; line-height: 380px; color: #fff;">                                                    
                                                         Здесь будет плеер с трансляцией
                                                 </div>
                                             </div>
@@ -756,12 +755,11 @@ if (isset($qode_options_satellite['twitter_via']) && !empty($qode_options_satell
 
                                         <div class="topics_list" data-list="2" data-forum="<?php echo $forum_id; ?>">
                                             <?php
-                                            if ($topics = bbp_has_topics(array(
-                                                'post_parent' => $forum_id,
-                                                'posts_per_page' => 11
-                                                //'paged'          => bbp_get_paged(),
-                                            ))
-                                            ) {
+                                            //$topics_param = array( 'post_parent' => $forum_id, 'posts_per_page' => 11);
+                                            if (bp_group_is_visible($group))
+                                            {
+                                            	global $post;
+                                            	$post = bbp_get_forum($forum_id);
                                                 $counter = 0;
                                                 while (bbp_topics()) : bbp_the_topic();
 
@@ -998,11 +996,11 @@ if (isset($qode_options_satellite['twitter_via']) && !empty($qode_options_satell
                                                             </div>
                                                         </div>
                                                     </div>
-                                                <?php
+                                                <?php                                                
                                                 endwhile;
+                                                wp_reset_postdata();
                                                 if ($counter == 11) {
-                                                    ?><a class="load_more_topics" href="#">Просмотреть больше
-                                                        обсуждений</a>
+                                                    ?><a class="load_more_topics" href="#">Просмотреть больше обсуждений</a>
                                                 <?php
                                                 }
                                             } else {
