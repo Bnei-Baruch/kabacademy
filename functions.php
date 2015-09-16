@@ -91,6 +91,33 @@ function qode_scripts_replace()
 
 //add_action('wp_enqueue_scripts', 'qode_scripts_replace');
 
+
+function get_course_progress($course_id, $student_id = null) {
+	global $wpdb, $user_ID;
+	if(empty($student_id)) $student_id = $user_ID;
+	if(empty($student_id)) return __('N/A', 'namaste');
+
+	// select num lessons in the course
+	$lesson_ids = $wpdb->get_results($wpdb->prepare("SELECT tP.ID as ID FROM {$wpdb->posts} tP
+	JOIN {$wpdb->postmeta} tM ON tM.post_id = tP.ID AND tM.meta_key = 'namaste_course' AND tM.meta_value = %d
+	WHERE post_type = 'namaste_lesson'  AND (post_status='publish' OR post_status='draft')",  $course_id));
+	$num_lessons = sizeof($lesson_ids);
+	$lids = array(0);
+	foreach($lesson_ids as $lesson_id) $lids[] = $lesson_id->ID;
+	$lid_sql = implode(",", $lids);
+
+		
+	// now select num completed lessons by this student
+	$num_completed = $wpdb->get_var($wpdb->prepare("SELECT COUNT(id) FROM ".NAMASTE_STUDENT_LESSONS."
+			WHERE student_id=%d AND lesson_id IN ($lid_sql) AND status=1", $student_id));
+		
+	if(!$num_lessons) $perc = 0;
+	else $perc = round(100 * $num_completed / $num_lessons);
+	
+	return $perc;
+}
+
+
 function academy_courses($atts)
 {
     $atts = shortcode_atts(array(

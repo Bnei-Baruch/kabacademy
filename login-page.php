@@ -87,7 +87,7 @@ if(get_post_meta($id, "qode_show-page-title-image", true)) {
                     <span class="T1"><?php // _e('Log In to U-World', 'qode'); ?></span>
                     <!--<span class="T2"> <?php // _e('Please fill in the information below:', 'qode'); ?></span>-->
                     <p class="help-info">&nbsp;<?php // _e('* asterisk indicates required fields', 'qode'); ?></p>
-                    <?php echo do_shortcode('[vkruge_login_form]'); ?>
+                    <?php echo do_shortcode('[loginForm]'); ?>
                 </div>
                 <!-- <div class="clearfix or-divider">
                     <div class="hor-line-divider"></div>
