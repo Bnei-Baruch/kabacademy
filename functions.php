@@ -76,6 +76,32 @@ function qode_scripts_replace() {
 }
 
 // add_action('wp_enqueue_scripts', 'qode_scripts_replace');
+function get_course_progress($course_id, $student_id = null) {
+	global $wpdb, $user_ID;
+	if (empty ( $student_id ))
+		$student_id = $user_ID;
+	if (empty ( $student_id ))
+		return __ ( 'N/A', 'namaste' );
+		// select num lessons in the course
+	$lesson_ids = $wpdb->get_results ( $wpdb->prepare ( "SELECT tP.ID as ID FROM {$wpdb->posts} tP
+	JOIN {$wpdb->postmeta} tM ON tM.post_id = tP.ID AND tM.meta_key = 'namaste_course' AND tM.meta_value = %d
+	WHERE post_type = 'namaste_lesson'  AND (post_status='publish' OR post_status='draft')", $course_id ) );
+	$num_lessons = sizeof ( $lesson_ids );
+	$lids = array (
+			0 
+	);
+	foreach ( $lesson_ids as $lesson_id )
+		$lids [] = $lesson_id->ID;
+	$lid_sql = implode ( ",", $lids );
+	// now select num completed lessons by this student
+	$num_completed = $wpdb->get_var ( $wpdb->prepare ( "SELECT COUNT(id) FROM " . NAMASTE_STUDENT_LESSONS . "
+			WHERE student_id=%d AND lesson_id IN ($lid_sql) AND status=1", $student_id ) );
+	if (! $num_lessons)
+		$perc = 0;
+	else
+		$perc = round ( 100 * $num_completed / $num_lessons );
+	return $perc;
+}
 function academy_courses($atts) {
 	$atts = shortcode_atts ( array (
 			'page' => '0' 
@@ -99,20 +125,33 @@ function academy_courses($atts) {
 		// $return = json_encode($aCourseData);
 		// $return = 'asdasdasd';
 		if (! $aCourseData ["registration_closed"]) {
+			if (NamasteLMSStudentModel::is_enrolled(get_current_user_id(), $post->ID) == null){
+				$perc = get_course_progress($my_course->ID, $enrolled_one->ID);
+				$enrollBtnHTML = '<span class="btnCourse">Войти</span>
+									<div class="btnCourse" style="position: relative; height: 32px; padding: 0px;">
+										<span style="position: absolute;left:80px;color: ##555555">
+											Прогресс '.$perc.'%
+										</span>
+										<div style="height: 32px; width: '. $perc.'%; background-color: #FFF4D9;"></div>
+									</div>';
+			} else {
+				$enrollBtnHTML = '<span class="btnCourse">Записаться</span>';
+			}
+			
+			
 			$return .= '
 			<div class="academy_course ' . $aCourseData ["live_sticker"] . '" style="background: url(' . $aCourseData ["image"] . '); background-size: 265px 230px;  background-repeat: no-repeat;">
 				<a href="' . get_permalink ( $post->ID ) . '">
 					<span class="academy_course_text">
 							<span class="academy_course_title">' . $aCourseData ["title"] . '</span>
 							<span class="academy_course_subtitle">
-								' . $aCourseData ["subtitle"] . '
-								<span class="btnCourse">Запи�?ать�?�?</span>
+								' . $aCourseData ["subtitle"] . print_r( $enrollBtnHTML, false) .'								
 							</span>
-
 					</span>
 				</a>
 				<div class="courseColorBG" style= "background-color: #' . $aCourseData ["category_color"] . '"></div>
 			</div>';
+			
 		}
 	}
 	
@@ -418,6 +457,8 @@ function output_postid() {
 <script>
             var lesson_id = <?php echo $post->ID ?>;
         </script>
+
+
 
 
 
@@ -974,7 +1015,6 @@ function load_all_replies() {
 			'order' => 'ASC', // Oldest to newest
 			'ignore_sticky_posts' => true 
 	) ); // Stickies not supported
-
 	
 	array_pop ( $replies );
 	array_pop ( $replies );
@@ -1132,7 +1172,7 @@ function load_more_topics() {
 					'order' => 'DESC', // Oldest to newest
 					'ignore_sticky_posts' => true 
 			) ); // Stickies not supported
-
+			
 			$i = count ( $replies );
 			if ($i == 5) {
 				$count = new WP_Query ( $default = array (
@@ -1144,7 +1184,7 @@ function load_more_topics() {
 						'order' => 'DESC', // Oldest to newest
 						'ignore_sticky_posts' => true 
 				) ); // Stickies not supported
-
+				
 				$count = $count->found_posts - 4;
 				?><a href="#" class="load_all_replies"><i class="comments_img"></i>Про�?мотреть
                             еще <?php echo $count . ' ' . custom_plural_form($count, 'комментарий', 'комментари�?', 'комментариев'); ?>
@@ -1236,7 +1276,8 @@ function load_more_topics() {
 		endwhile
 		;
 		if ($counter == 11) {
-			?><a class="load_more_topics" href="#">Про�?мотреть больше об�?уждений</a>
+			?><a class="load_more_topics" href="#">Про�?мотреть больше
+	об�?уждений</a>
 <?php
 		}
 	}
@@ -1588,7 +1629,8 @@ function update_points_system() {
 		var_dump ( $result );
 		die ();
 	}
-	
+
+	do_action('namaste_earned_points', $user_id, $action_points);
 	// update total the points
 	$current_total_points = get_user_meta ( $user_id, 'namaste_points', true );
 	if ($current_total_points == "") {
@@ -1742,7 +1784,8 @@ function namaste_enrolled_course_add_points($student_id, $course_id, $status) {
 	if ($result === false) {
 		return false;
 	}
-	
+
+	do_action('namaste_earned_points', $user_id, $action_points);
 	// update total the points
 	$current_total_points = get_user_meta ( $user_id, 'namaste_points', true );
 	if ($current_total_points == "") {
@@ -1769,6 +1812,7 @@ function add_points_on_registration($user_id) {
 	$sql = "INSERT INTO {$wpdb->prefix}namaste_history (user_id,num_value,action, for_item_type,value,date,datetime,for_item_id) VALUES (%d,%d,%s,%s,%s,%s,%s,%d)";
 	$sql = $wpdb->prepare ( $sql, $user_id, $action_points, 'awarded_points', $points_type, $text, $date, $datetime, $course_id );
 	$result = $wpdb->query ( $sql );
+	do_action('namaste_earned_points', $user_id, $action_points);
 	if ($result) {
 		update_user_meta ( $user_id, 'namaste_points', $action_points );
 	}
