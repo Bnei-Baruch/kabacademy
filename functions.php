@@ -43,30 +43,30 @@ function except_logout_url() {
 	echo '<script>no_ajax_pages.push("' . htmlspecialchars_decode ( wp_logout_url ( home_url () ) ) . '");</script>';
 }
 function request_url() {
-	$result = ''; // Пока результат пуст
-	$default_port = 80; // Порт по-умолчанию
+	$result = ''; // ÐŸÐ¾ÐºÐ° Ñ€ÐµÐ·ÑƒÐ»ÑŒÑ‚Ð°Ñ‚ Ð¿ÑƒÑ�Ñ‚
+	$default_port = 80; // ÐŸÐ¾Ñ€Ñ‚ Ð¿Ð¾-ÑƒÐ¼Ð¾Ð»Ñ‡Ð°Ð½Ð¸ÑŽ
 	                    
-	// А не в защищенном-ли мы соединении?
+	// Ð� Ð½Ðµ Ð² Ð·Ð°Ñ‰Ð¸Ñ‰ÐµÐ½Ð½Ð¾Ð¼-Ð»Ð¸ Ð¼Ñ‹ Ñ�Ð¾ÐµÐ´Ð¸Ð½ÐµÐ½Ð¸Ð¸?
 	if (isset ( $_SERVER ['HTTPS'] ) && ($_SERVER ['HTTPS'] == 'on')) {
-		// В защищенном! Добавим протокол...
+		// Ð’ Ð·Ð°Ñ‰Ð¸Ñ‰ÐµÐ½Ð½Ð¾Ð¼! Ð”Ð¾Ð±Ð°Ð²Ð¸Ð¼ Ð¿Ñ€Ð¾Ñ‚Ð¾ÐºÐ¾Ð»...
 		$result .= 'https://';
-		// ...и переназначим значение порта по-умолчанию
+		// ...Ð¸ Ð¿ÐµÑ€ÐµÐ½Ð°Ð·Ð½Ð°Ñ‡Ð¸Ð¼ Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ðµ Ð¿Ð¾Ñ€Ñ‚Ð° Ð¿Ð¾-ÑƒÐ¼Ð¾Ð»Ñ‡Ð°Ð½Ð¸ÑŽ
 		$default_port = 443;
 	} else {
-		// Обычное соединение, обычный протокол
+		// ÐžÐ±Ñ‹Ñ‡Ð½Ð¾Ðµ Ñ�Ð¾ÐµÐ´Ð¸Ð½ÐµÐ½Ð¸Ðµ, Ð¾Ð±Ñ‹Ñ‡Ð½Ñ‹Ð¹ Ð¿Ñ€Ð¾Ñ‚Ð¾ÐºÐ¾Ð»
 		$result .= 'http://';
 	}
-	// Имя сервера, напр. site.com или www.site.com
+	// Ð˜Ð¼Ñ� Ñ�ÐµÑ€Ð²ÐµÑ€Ð°, Ð½Ð°Ð¿Ñ€. site.com Ð¸Ð»Ð¸ www.site.com
 	$result .= $_SERVER ['SERVER_NAME'];
 	
-	// А порт у нас по-умолчанию?
+	// Ð� Ð¿Ð¾Ñ€Ñ‚ Ñƒ Ð½Ð°Ñ� Ð¿Ð¾-ÑƒÐ¼Ð¾Ð»Ñ‡Ð°Ð½Ð¸ÑŽ?
 	if ($_SERVER ['SERVER_PORT'] != $default_port) {
-		// Если нет, то добавим порт в URL
+		// Ð•Ñ�Ð»Ð¸ Ð½ÐµÑ‚, Ñ‚Ð¾ Ð´Ð¾Ð±Ð°Ð²Ð¸Ð¼ Ð¿Ð¾Ñ€Ñ‚ Ð² URL
 		$result .= ':' . $_SERVER ['SERVER_PORT'];
 	}
-	// Последняя часть запроса (путь и GET-параметры).
+	// ÐŸÐ¾Ñ�Ð»ÐµÐ´Ð½Ñ�Ñ� Ñ‡Ð°Ñ�Ñ‚ÑŒ Ð·Ð°Ð¿Ñ€Ð¾Ñ�Ð° (Ð¿ÑƒÑ‚ÑŒ Ð¸ GET-Ð¿Ð°Ñ€Ð°Ð¼ÐµÑ‚Ñ€Ñ‹).
 	$result .= $_SERVER ['REQUEST_URI'];
-	// Уфф, вроде получилось!
+	// Ð£Ñ„Ñ„, Ð²Ñ€Ð¾Ð´Ðµ Ð¿Ð¾Ð»ÑƒÑ‡Ð¸Ð»Ð¾Ñ�ÑŒ!
 	return $result;
 }
 function qode_scripts_replace() {
@@ -105,7 +105,7 @@ function academy_courses($atts) {
 							<span class="academy_course_title">' . $aCourseData ["title"] . '</span>
 							<span class="academy_course_subtitle">
 								' . $aCourseData ["subtitle"] . '
-								<span class="btnCourse">Записаться</span>
+								<span class="btnCourse">Ð—Ð°Ð¿Ð¸Ñ�Ð°Ñ‚ÑŒÑ�Ñ�</span>
 							</span>
 
 					</span>
@@ -384,7 +384,7 @@ function namaste_enroll() {
 		$content = $_course->enroll_buttons ( $post, $is_manager );
 		
 		$content = str_replace ( '<form method="post">', '<form method="post" id="namaste-enroll-form">', $content );
-		$content = str_replace ( '</form>', '</form><a id="enroll-not-auth" href="#">' . __ ( 'ENROLL', 'qode' ) . '<span>»</span></a><script>(function($){
+		$content = str_replace ( '</form>', '</form><a id="enroll-not-auth" href="#">' . __ ( 'ENROLL', 'qode' ) . '<span>Â»</span></a><script>(function($){
     $("#share-social-buttons").addClass("not-logged");
 
     $("#enroll-not-auth").on("click", function(e){
@@ -417,6 +417,7 @@ function output_postid() {
 <script>
             var lesson_id = <?php echo $post->ID ?>;
         </script>
+
 
 	<?php endif;
 }
@@ -808,12 +809,12 @@ function custom_bbp_topic_create() {
 			'post_parent' => ( int ) $_POST ['bbp_forum_id'],
 			'post_content' => $_POST ['content'],
 			'post_title' => (mb_strlen ( $_POST ['content'] ) > 100) ? mb_substr ( $_POST ['content'], 0, 100 ) . '...' : $_POST ['content'] 
-	)
-	// 'comment_status' => 'closed',
-	// 'menu_order' => 0,
-	, array (
-			'forum_id' => ( int ) $_POST ['bbp_forum_id'] 
-	) );
+	), 
+			// 'comment_status' => 'closed',
+			// 'menu_order' => 0,
+			array (
+					'forum_id' => ( int ) $_POST ['bbp_forum_id'] 
+			) );
 	
 	echo print_r ( $topic_id, true );
 	$isAttahced = update_post_meta ( $topic_id, 'attaches', $_POST ['attaches'] );
@@ -969,8 +970,8 @@ function load_all_replies() {
 			'orderby' => 'date', // Sorted by date
 			'order' => 'ASC', // Oldest to newest
 			'ignore_sticky_posts' => true 
-	) // Stickies not supported
- );
+	) ) // Stickies not supported
+;
 	
 	array_pop ( $replies );
 	array_pop ( $replies );
@@ -995,7 +996,7 @@ function load_all_replies() {
 			<a href="#" class="smiles_open"></a>
 
 			<div class="edit_actions">
-				<a class="cancel" href="#">Отменить</a>
+				<a class="cancel" href="#">ÐžÑ‚Ð¼ÐµÐ½Ð¸Ñ‚ÑŒ</a>
 			</div>
 		</div>
                 <?php $likes = get_post_meta($reply->ID, 'likes', true); ?>
@@ -1017,8 +1018,8 @@ function load_all_replies() {
                 <a class="addi_actions_open" href="#"></a>
 	<div class="addi_actions" style="display: none">
 		<ul>
-			<li><a class="edit_action" href="#">Редактировать</a></li>
-			<li><a class="remove_action" href="#">Удалить</a></li>
+			<li><a class="edit_action" href="#">Ð ÐµÐ´Ð°ÐºÑ‚Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ</a></li>
+			<li><a class="remove_action" href="#">Ð£Ð´Ð°Ð»Ð¸Ñ‚ÑŒ</a></li>
 		</ul>
 	</div>
             <?php endif; ?>
@@ -1075,8 +1076,8 @@ function load_more_topics() {
                         <a href="#" class="addi_actions_open"></a>
 		<div class="addi_actions" style="display: none">
 			<ul>
-				<li><a class="edit_action" href="#">Редактировать</a></li>
-				<li><a class="remove_action" href="#">Удалить</a></li>
+				<li><a class="edit_action" href="#">Ð ÐµÐ´Ð°ÐºÑ‚Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ</a></li>
+				<li><a class="remove_action" href="#">Ð£Ð´Ð°Ð»Ð¸Ñ‚ÑŒ</a></li>
 			</ul>
 		</div>
                     <?php endif; ?>
@@ -1084,7 +1085,7 @@ function load_more_topics() {
 	<div class="single_topic_content">
                     <?php
 			
-$content = bbp_get_topic_content ();
+			$content = bbp_get_topic_content ();
 			if (mb_strlen ( $content ) > 500) {
 				echo '<div class="show">' . mb_substr ( $content, 0, 500 ) . '... <a href="#" class="show_all">' . __ ( 'More', 'qode' ) . '</a></div>';
 				?>
@@ -1127,8 +1128,8 @@ $content = bbp_get_topic_content ();
 					'orderby' => 'date', // Sorted by date
 					'order' => 'DESC', // Oldest to newest
 					'ignore_sticky_posts' => true 
-			) // Stickies not supported
- );
+			) ) // Stickies not supported
+;
 			$i = count ( $replies );
 			if ($i == 5) {
 				$count = new WP_Query ( $default = array (
@@ -1139,12 +1140,11 @@ $content = bbp_get_topic_content ();
 						'orderby' => 'date', // Sorted by date
 						'order' => 'DESC', // Oldest to newest
 						'ignore_sticky_posts' => true 
-				) // Stickies not supported
- );
+				) ) // Stickies not supported
+;
 				$count = $count->found_posts - 4;
-				?><a href="#" class="load_all_replies"><i
-				class="comments_img"></i>Просмотреть
-                            еще <?php echo $count . ' ' . custom_plural_form($count, 'комментарий', 'комментария', 'комментариев'); ?>
+				?><a href="#" class="load_all_replies"><i class="comments_img"></i>ÐŸÑ€Ð¾Ñ�Ð¼Ð¾Ñ‚Ñ€ÐµÑ‚ÑŒ
+                            ÐµÑ‰Ðµ <?php echo $count . ' ' . custom_plural_form($count, 'ÐºÐ¾Ð¼Ð¼ÐµÐ½Ñ‚Ð°Ñ€Ð¸Ð¹', 'ÐºÐ¾Ð¼Ð¼ÐµÐ½Ñ‚Ð°Ñ€Ð¸Ñ�', 'ÐºÐ¾Ð¼Ð¼ÐµÐ½Ñ‚Ð°Ñ€Ð¸ÐµÐ²'); ?>
                             </a>
                         <?php
 			}
@@ -1169,7 +1169,7 @@ $content = bbp_get_topic_content ();
 						<a href="#" class="smiles_open"></a>
 
 						<div class="edit_actions">
-							<a class="cancel" href="#">Отменить</a>
+							<a class="cancel" href="#">ÐžÑ‚Ð¼ÐµÐ½Ð¸Ñ‚ÑŒ</a>
 						</div>
 					</div>
                                     <?php $likes = get_post_meta($reply->ID, 'likes', true); ?>
@@ -1192,8 +1192,8 @@ $content = bbp_get_topic_content ();
 					href="#"></a>
 				<div class="addi_actions" style="display: none">
 					<ul>
-						<li><a class="edit_action" href="#">Редактировать</a></li>
-						<li><a class="remove_action" href="#">Удалить</a></li>
+						<li><a class="edit_action" href="#">Ð ÐµÐ´Ð°ÐºÑ‚Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ</a></li>
+						<li><a class="remove_action" href="#">Ð£Ð´Ð°Ð»Ð¸Ñ‚ÑŒ</a></li>
 					</ul>
 				</div>
                                 <?php endif; ?>
@@ -1214,7 +1214,7 @@ $content = bbp_get_topic_content ();
 				</div>
 				<div class="reply-form">
 					<textarea
-						placeholder="<?php _e('Введите текст сообщения...', 'qode'); ?>"
+						placeholder="<?php _e('Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ñ‚ÐµÐºÑ�Ñ‚ Ñ�Ð¾Ð¾Ð±Ñ‰ÐµÐ½Ð¸Ñ�...', 'qode'); ?>"
 						name="content"></textarea>
 					<a href="#" class="smiles_open"></a>
 				</div>
@@ -1233,8 +1233,8 @@ $content = bbp_get_topic_content ();
 		endwhile
 		;
 		if ($counter == 11) {
-			?><a class="load_more_topics" href="#">Просмотреть больше
-	обсуждений</a>
+			?><a class="load_more_topics" href="#">ÐŸÑ€Ð¾Ñ�Ð¼Ð¾Ñ‚Ñ€ÐµÑ‚ÑŒ
+	Ð±Ð¾Ð»ÑŒÑˆÐµ Ð¾Ð±Ñ�ÑƒÐ¶Ð´ÐµÐ½Ð¸Ð¹</a>
 <?php
 		}
 	}
@@ -1364,7 +1364,7 @@ function upload_forum_file() {
                 <div class="attachment-image"><a target="_blank" href="' . $r [0] . '">' . wp_get_attachment_image ( $attachment_id, array (
 				'32',
 				'32' 
-		) ) . '</a></div><div class="attachment-controls"><a class="delete-attachment" data-id="' . $attachment_id . '" href="#">Удалить</a></div>
+		) ) . '</a></div><div class="attachment-controls"><a class="delete-attachment" data-id="' . $attachment_id . '" href="#">Ð£Ð´Ð°Ð»Ð¸Ñ‚ÑŒ</a></div>
             </div>';
 	} else {
 		if ($id != 0) {
@@ -1379,7 +1379,7 @@ function upload_forum_file() {
                 <div class="attachment-image"><a target="_blank" href="' . $r [0] . '">' . wp_get_attachment_image ( $attachment_id, array (
 				'32',
 				'32' 
-		) ) . '</a></div><div class="attachment-controls"><a class="delete-attachment" data-id="' . $attachment_id . '" href="#">Удалить</a></div>
+		) ) . '</a></div><div class="attachment-controls"><a class="delete-attachment" data-id="' . $attachment_id . '" href="#">Ð£Ð´Ð°Ð»Ð¸Ñ‚ÑŒ</a></div>
             </div>';
 	}
 	
@@ -1573,14 +1573,14 @@ function update_points_system() {
 	$sql = "INSERT INTO {$wpdb->prefix}namaste_history (user_id,num_value,action, for_item_type,value,date,datetime,for_item_id) VALUES (%d,%d,%s,%s,%s,%s,%s,%d)";
 	$sql = $wpdb->prepare ( $sql, $user_id, $action_points, 'awarded_points', $points_type, $text, $date, $datetime, $course_id );
 	$result = $wpdb->query ( $sql );
-
+	
 	// if problems with the db
 	if ($result === false) {
 		var_dump ( $result );
 		die ();
 	}
 	
-	do_action('namaste_earned_points', $user_id, $action_points);
+	do_action ( 'namaste_earned_points', $user_id, $action_points );
 	// update total the points
 	$current_total_points = get_user_meta ( $user_id, 'namaste_points', true );
 	if ($current_total_points == "") {
@@ -1623,7 +1623,6 @@ function namaste_additional_points_fields_option_page() {
 		name="points_archive" size="4"
 		value="<?php echo get_option('namaste_points_archive')?>"> <?php _e('points for use the archive ', 'namaste')?></p>
 <?php
-
 }
 
 /* Updating the additional options fields */
@@ -1735,7 +1734,7 @@ function namaste_enrolled_course_add_points($student_id, $course_id, $status) {
 		return false;
 	}
 	
-	do_action('namaste_earned_points', $user_id, $action_points);
+	do_action ( 'namaste_earned_points', $user_id, $action_points );
 	// update total the points
 	$current_total_points = get_user_meta ( $user_id, 'namaste_points', true );
 	if ($current_total_points == "") {
@@ -1747,7 +1746,6 @@ function namaste_enrolled_course_add_points($student_id, $course_id, $status) {
 }
 
 add_action ( 'namaste_enrolled_course', 'namaste_enrolled_course_add_points', 10, 3 );
-
 function registrationForm_iframe() {
 	global $post, $wpdb;
 	if ($_POST ['action'] == "loginRregistrationFormShortcode") {

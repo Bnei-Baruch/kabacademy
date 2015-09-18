@@ -151,7 +151,12 @@ $my_courses = get_posts(array(
 							
 							<?php if (NamasteLMSStudentModel::is_enrolled(get_current_user_id(), $post->ID) == null){ ?>
 								<span class="btnCourse">Войти</span>
-							
+								<?php $perc = get_course_progress($my_course->ID, $enrolled_one->ID); ?>
+									<div class="btnCourse" style="position: relative; height: 32px; padding: 0px;">
+                                        <span style="position: absolute;left:80px;color: ##555555"><?php echo "Прогресс ".$perc."%"; ?></span>
+										<div style="height: 32px; width: <?php echo $perc;?>%; background-color: #FFF4D9;">
+										</div>
+									</div>	
 							<?php } else {?>
 							
 								<span class="btnCourse">Записаться</span>
