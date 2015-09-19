@@ -145,7 +145,7 @@ function academy_courses($atts) {
 					<span class="academy_course_text">
 							<span class="academy_course_title">' . $aCourseData ["title"] . '</span>
 							<span class="academy_course_subtitle">
-								' . $aCourseData ["subtitle"] . print_r( $enrollBtnHTML, false) .'								
+								' . $aCourseData ["subtitle"] . $enrollBtnHTML .'								
 							</span>
 					</span>
 				</a>
