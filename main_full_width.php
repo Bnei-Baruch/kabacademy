@@ -157,10 +157,15 @@ $my_courses = get_posts(array(
 										<div style="height: 32px; width: <?php echo $perc;?>%; background-color: #FFF4D9;">
 										</div>
 									</div>
-							
+								<?php $perc = get_course_progress($my_course->ID, $enrolled_one->ID); ?>
+									<div class="btnCourse" style="position: relative; height: 32px; padding: 0px;">
+                                        <span style="position: absolute;left:80px;color: ##555555"><?php echo "Прогре�?�? ".$perc."%"; ?></span>
+										<div style="height: 32px; width: <?php echo $perc;?>%; background-color: #FFF4D9;">
+										</div>
+									</div>	
 							<?php } else {?>
 							
-								<span class="btnCourse">Записаться</span>
+								<span class="btnCourse">Запи�?ать�?�?</span>
 							
 							<?php }?>
                         </span>
@@ -197,7 +202,7 @@ $my_courses = get_posts(array(
                         <span class="academy_course_title"><?php echo  $aCourseData["title"] ?></span>
                         <span class="academy_course_subtitle">
                             <?php echo $aCourseData["subtitle"] ?>
-                            <span class="btnCourse">Записаться</span>
+                            <span class="btnCourse">Запи�?ать�?�?</span>
                         </span>
                     </span>
                 </a>

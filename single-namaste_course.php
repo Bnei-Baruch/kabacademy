@@ -236,6 +236,18 @@ if (isset($qode_options_satellite['twitter_via']) && !empty($qode_options_satell
                                                         }
                                                         return true;
                                                     }
+													jQuery(document).ready(function(){
+														jQuery('#joinLive').click(function(event){
+    														event.preventDefault();
+															var pointsType = 'workshop';
+															var user_id = '<?php echo get_current_user_id(); ?>';
+															var cousrse_id ='<?php echo $post->ID; ?>';
+															var href = jQuery(this).attr('href');
+
+															console.log(pointsType);
+															add_points(pointsType,user_id,cousrse_id, href);
+														})
+													})
                                                 </script>
                                                 <!-- <a target="_blank" href="https://rt.kbb1.com/#/find-table/<?php echo $course_space; ?>/ru"  class="btnM <?php if(get_post_meta($post->ID, 'disable_seminar', true)) echo " disable";?>"
                                                    onclick="<?php if(!get_post_meta($post->ID, 'disable_seminar', true)) echo "javascript:mutePlayer();"; ?>">
@@ -250,6 +262,10 @@ if (isset($qode_options_satellite['twitter_via']) && !empty($qode_options_satell
 														console.log(enabled);
 														if (!enabled) { document.getElementById("joinLive").className += " disable"; }
 														else {
+															var pointsType = 'webinar';
+															var user_id = '<?php echo get_current_user_id(); ?>';
+															var cousrse_id ='<?php echo $post->ID; ?>';
+															add_points(pointsType,user_id, cousrse_id, '');
 															document.getElementById("joinLive").className =
 															document.getElementById("joinLive").className.replace( /(?:^|\s)disable(?!\S)/g , '' );
 														}
@@ -282,8 +298,7 @@ if (isset($qode_options_satellite['twitter_via']) && !empty($qode_options_satell
                                         <div class="lection-video-container">
                                           
                                             <div id="lveventplayer">
-                                                <div style="text-align: center; width: 100%; height: 370px; background-color: #181818;font-size: 2em; line-height: 380px; color: #fff;">
-                                                    
+                                                <div style="text-align: center; width: 100%; height: 370px; background-color: #181818;font-size: 2em; line-height: 380px; color: #fff;">                                                    
                                                         Здесь будет плеер с трансляцией
                                                 </div>
                                             </div>
@@ -740,12 +755,11 @@ if (isset($qode_options_satellite['twitter_via']) && !empty($qode_options_satell
 
                                         <div class="topics_list" data-list="2" data-forum="<?php echo $forum_id; ?>">
                                             <?php
-                                            if ($topics = bbp_has_topics(array(
-                                                'post_parent' => $forum_id,
-                                                'posts_per_page' => 11
-                                                //'paged'          => bbp_get_paged(),
-                                            ))
-                                            ) {
+                                            //$topics_param = array( 'post_parent' => $forum_id, 'posts_per_page' => 11);
+                                            if (bp_group_is_visible($group))
+                                            {
+                                            	global $post;
+                                            	$post = bbp_get_forum($forum_id);
                                                 $counter = 0;
                                                 while (bbp_topics()) : bbp_the_topic();
 
@@ -982,11 +996,11 @@ if (isset($qode_options_satellite['twitter_via']) && !empty($qode_options_satell
                                                             </div>
                                                         </div>
                                                     </div>
-                                                <?php
+                                                <?php                                                
                                                 endwhile;
+                                                wp_reset_postdata();
                                                 if ($counter == 11) {
-                                                    ?><a class="load_more_topics" href="#">Просмотреть больше
-                                                        обсуждений</a>
+                                                    ?><a class="load_more_topics" href="#">Просмотреть больше обсуждений</a>
                                                 <?php
                                                 }
                                             } else {
