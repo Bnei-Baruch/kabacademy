@@ -2737,8 +2737,8 @@ msgstr "Доступные курсы:"
 #: single-namaste_course_old.php:826
 #: /sites/edu.kbb1.com/public/wp-content/themes/satellite/full_width.php:298
 #@ qode
-msgid "ENROLL"
-msgstr "ЗАПИСАТЬСЯ"
+msgid "Enroll"
+msgstr "Записаться"
 
 #: mainpage-lk-notused.php:16
 #@ qode
@@ -3144,6 +3144,12 @@ msgstr ""
 msgid "Только студенты курса имеют доступ к форуму курса"
 msgstr ""
 
+#: functions.php
+#@ qode
+msgid "Load more discussions"
+msgstr "Посмотреть больше обсуждений"
+
+
 #: single-namaste_course.php:1091
 #: single-namaste_course.php:1094
 #: single-namaste_course.php:1129
@@ -3370,3 +3376,5 @@ msgstr "Проверьте вашу почту, чтобы активирова�
 #@ qode
 msgid "Registration, check you mail. Content"
 msgstr "Вы успешно создали ваш аккаунт. Для того чтобы начать им пользоваться, вам необходимо активировать его через e-mail письмо, которое мы только что вам отправили."
+
+

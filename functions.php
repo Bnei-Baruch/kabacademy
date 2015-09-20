@@ -138,7 +138,7 @@ function academy_courses($atts) {
 										<div style="height: 32px; width: ' . $perc . '%; background-color: #FFF4D9;"></div>
 									</div>';
 			} else {
-				$enrollBtnHTML = '<span class="btnCourse">Запи�?ать�?�?</span>';
+				$enrollBtnHTML = '<span class="btnCourse">' . __ ( 'Enroll', 'qode' ) . '</span>';
 			}
 			$return .= '
 			<div class="academy_course ' . $aCourseData ["live_sticker"] . '" style="background: url(' . $aCourseData ["image"] . '); background-size: 265px 230px;  background-repeat: no-repeat;">
@@ -424,7 +424,7 @@ function namaste_enroll() {
 		$content = $_course->enroll_buttons ( $post, $is_manager );
 		
 		$content = str_replace ( '<form method="post">', '<form method="post" id="namaste-enroll-form">', $content );
-		$content = str_replace ( '</form>', '</form><a id="enroll-not-auth" href="#">' . __ ( 'ENROLL', 'qode' ) . '<span>»</span></a><script>(function($){
+		$content = str_replace ( '</form>', '</form><a id="enroll-not-auth" class="upperCase" href="#">' . __ ( 'Enroll', 'qode' ) . '<span>»</span></a><script>(function($){
     $("#share-social-buttons").addClass("not-logged");
 
     $("#enroll-not-auth").on("click", function(e){
@@ -1275,11 +1275,9 @@ function load_more_topics() {
 	</div>
 </div>
 <?php
-		endwhile
-		;
+		endwhile;
 		if ($counter == 11) {
-			?><a class="load_more_topics" href="#">Про�?мотреть больше
-	об�?уждений</a>
+			?><a class="load_more_topics" href="#"><?php _e('Load more discussions', 'qode'); ?></a>
 <?php
 		}
 	}
@@ -1832,3 +1830,72 @@ function registrationForm_iframe() {
 		RregistrationFormShortcodeClass::register ();
 	}
 }
+/* 
+class BB_Su_Shortcodes extends Su_Shortcodes{
+	function  __construct(){
+		add_action( 'init', array( __CLASS__, 'register' ) );
+	}
+	
+	public static function register(){
+		// Prepare compatibility mode prefix
+		$prefix = su_cmpt();
+		$func = array( 'BB_Su_Shortcodes', 'bb_youtube_advanced' );
+		add_shortcode( $prefix . 'bb_youtube_advanced',  $func);
+	}
+	
+	public static function bb_youtube_advanced( $atts = null, $content = null ) {
+		// Prepare data
+		$return = array();
+		$params = array();
+		$atts = shortcode_atts( array(
+				'url'            => false,
+				'width'          => 600,
+				'height'         => 400,
+				'responsive'     => 'yes',
+				'autohide'       => 'alt',
+				'autoplay'       => 'no',
+				'controls'       => 'yes',
+				'fs'             => 'yes',
+				'loop'           => 'no',
+				'modestbranding' => 'no',
+				'playlist'       => '',
+				'rel'            => 'yes',
+				'showinfo'       => 'yes',
+				'theme'          => 'dark',
+				'https'          => 'no',
+				'wmode'          => '',
+				'class'          => '',
+		), $atts, 'youtube_advanced' );
+		if ( !$atts['url'] ) return Su_Tools::error( __FUNCTION__, __( 'please specify correct url', 'su' ) );
+		$atts['url'] = su_scattr( $atts['url'] );
+		$id = ( preg_match( '%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $atts['url'], $match ) ) ? $match[1] : false;
+		// Check that url is specified
+		if ( !$id ) return Su_Tools::error( __FUNCTION__, __( 'please specify correct url', 'su' ) );
+		// Prepare params
+		foreach ( array( 'autohide', 'autoplay', 'controls', 'fs', 'loop', 'modestbranding', 'playlist', 'rel', 'showinfo', 'theme', 'wmode' ) as $param ) $params[$param] = str_replace( array( 'no', 'yes', 'alt' ), array( '0', '1', '2' ), $atts[$param] );
+		// Correct loop
+		if ( $params['loop'] === '1' && $params['playlist'] === '' ) $params['playlist'] = $id;
+		// Prepare protocol
+		$protocol = ( $atts['https'] === 'yes' ) ? 'https' : 'http';
+		// Prepare player parameters
+		$params = http_build_query( $params );
+		// Create player
+		$return[] = '<div class="su-youtube su-responsive-media-' . $atts['responsive'] . su_ecssc( $atts ) . '">';
+		$return[] = '<iframe width="' . $atts['width'] . '" height="' . $atts['height'] . '" src="' . $protocol . '://www.youtube.com/embed/' . $id . '?' . $params . '&version=3&enablejsapi=1" frameborder="0" allowfullscreen="true"></iframe>';
+		$return[] = '</div>';
+		su_query_asset( 'css', 'su-media-shortcodes' );
+		// Return result
+		return implode( '', $return );
+	}
+} 
+new BB_Su_Shortcodes; 
+
+
+class TestDavgur{
+	function  __construct(){
+		add_action ( 'wp_ajax_nopriv_registerRregistrationFormShortcode', array(__CLASS__, 'test') );
+	}
+	public static  function test($a){
+		$b = $a;
+	}
+}*/

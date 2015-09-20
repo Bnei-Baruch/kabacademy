@@ -1166,7 +1166,7 @@ if (isset($qode_options_satellite['twitter_via']) && !empty($qode_options_satell
 
 									
 									<?php if(!is_user_logged_in()) : ?>
-									<a id="enroll-not-auth" href="<?php echo home_url('/registration/'); ?>"><?php _e('ENROLL', 'qode'); ?> <span>»</span></a>
+									<a id="enroll-not-auth" class="upperCase" href="<?php echo home_url('/registration/'); ?>"><?php _e('Enroll', 'qode'); ?> <span>»</span></a>
 									
 									<?php endif; ?>
 								<?php endif; ?> 
