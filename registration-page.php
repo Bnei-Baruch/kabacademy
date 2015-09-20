@@ -63,7 +63,7 @@ if(get_post_meta($id, "qode_show-page-title-image", true)) {
                 <div class="container">
                     <div class="container_inner clearfix">
 
-                        <h1<?php if(get_post_meta($id, "qode_page-title-color", true)) { ?> style="color:<?php echo get_post_meta($id, "qode_page-title-color", true) ?>" <?php } ?>><?php echo isset($_GET['successful']) ? __('ÐŸÑ€Ð¾Ð²ÐµÑ€ÑŒÑ‚Ðµ Ð²Ð°ÑˆÑƒ Ð¿Ð¾Ñ‡Ñ‚Ñƒ, Ñ‡Ñ‚Ð¾Ð±Ñ‹ Ð°ÐºÑ‚Ð¸Ð²Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ ÑƒÑ‡ÐµÑ‚Ð½ÑƒÑŽ Ð·Ð°Ð¿Ð¸Ñ�ÑŒ.', 'qode') : get_the_title(); ?></h1>
+                        <h1<?php if(get_post_meta($id, "qode_page-title-color", true)) { ?> style="color:<?php echo get_post_meta($id, "qode_page-title-color", true) ?>" <?php } ?>><?php echo isset($_GET['successful']) ? __('Registration, check you mail', 'qode') : get_the_title(); ?></h1>
                         <?php if(get_post_meta($id, "qode_page-subtitle", true)) { ?><span class="subtitle"<?php if(get_post_meta($id, "qode_page-subtitle-color", true)) { ?> style="color:<?php echo get_post_meta($id, "qode_page-subtitle-color", true) ?>" <?php } ?>> <?php echo get_post_meta($id, "qode_page-subtitle", true) ?></span><?php } ?>
                     </div>
                 </div>
@@ -112,7 +112,7 @@ if(get_post_meta($id, "qode_show-page-title-image", true)) {
             </div>
         <!--</div>-->
         <?php else : ?>
-    <?php _e('Вы успешно создали ваш аккаунт. Для того чтобы начать им пользоваться, вам необходимо активировать его через e-mail письмо, которое мы только что вам отправили.', 'qode'); ?>
+    <?php _e('Registration, check you mail. Content', 'qode'); ?>
         <?php endif; ?>
     </div>
 </div>
