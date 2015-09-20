@@ -63,7 +63,7 @@ if(get_post_meta($id, "qode_show-page-title-image", true)) {
                 <div class="container">
                     <div class="container_inner clearfix">
 
-                        <h1<?php if(get_post_meta($id, "qode_page-title-color", true)) { ?> style="color:<?php echo get_post_meta($id, "qode_page-title-color", true) ?>" <?php } ?>><?php echo isset($_GET['successful']) ? __('Registration, check you mail', 'qode') : get_the_title(); ?></h1>
+                        <h1<?php if(get_post_meta($id, "qode_page-title-color", true)) { ?> style="color:<?php echo get_post_meta($id, "qode_page-title-color", true) ?>" <?php } ?>><?php echo isset($_GET['successful']) ? __('Registration, check you mail. Title', 'qode') : get_the_title(); ?></h1>
                         <?php if(get_post_meta($id, "qode_page-subtitle", true)) { ?><span class="subtitle"<?php if(get_post_meta($id, "qode_page-subtitle-color", true)) { ?> style="color:<?php echo get_post_meta($id, "qode_page-subtitle-color", true) ?>" <?php } ?>> <?php echo get_post_meta($id, "qode_page-subtitle", true) ?></span><?php } ?>
                     </div>
                 </div>
