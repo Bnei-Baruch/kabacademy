@@ -149,25 +149,13 @@ $my_courses = get_posts(array(
                         <span class="academy_course_subtitle">
                             <?php echo $aCourseData["subtitle"] ?>
 							
-							<?php if (NamasteLMSStudentModel::is_enrolled(get_current_user_id(), $post->ID) == null){ ?>
-								<span class="btnCourse">Войти</span>
-								<?php $perc = get_course_progress($my_course->ID, $enrolled_one->ID); ?>
-									<div class="btnCourse" style="position: relative; height: 32px; padding: 0px;">
-                                        <span style="position: absolute;left:80px;color: ##555555"><?php echo "Progress ".$perc."%"; ?></span>
-										<div style="height: 32px; width: <?php echo $perc;?>%; background-color: #FFF4D9;">
-										</div>
-									</div>
-								<?php $perc = get_course_progress($my_course->ID, $enrolled_one->ID); ?>
-									<div class="btnCourse" style="position: relative; height: 32px; padding: 0px;">
-                                        <span style="position: absolute;left:80px;color: ##555555"><?php echo "Прогре�?�? ".$perc."%"; ?></span>
-										<div style="height: 32px; width: <?php echo $perc;?>%; background-color: #FFF4D9;">
-										</div>
-									</div>	
-							<?php } else {?>
-							
-								<span class="btnCourse">Запи�?ать�?�?</span>
-							
-							<?php }?>
+							<span class="btnCourse">Войти</span>
+							<?php $perc = get_course_progress($enrolled_one->ID, get_current_user_id()); ?>
+							<div class="btnCourse" style="position: relative; height: 32px; padding: 0px;">
+                                        <span style="position: absolute;left:80px;color: #555555"><?php echo "Progress ".$perc."%"; ?></span>
+								<div style="height: 32px; width: <?php echo $perc;?>%; background-color: #FFF4D9;">
+								</div>
+							</div>
                         </span>
                     </span>
                 </a>
@@ -202,7 +190,7 @@ $my_courses = get_posts(array(
                         <span class="academy_course_title"><?php echo  $aCourseData["title"] ?></span>
                         <span class="academy_course_subtitle">
                             <?php echo $aCourseData["subtitle"] ?>
-                            <span class="btnCourse">Запи�?ать�?�?</span>
+                            <span class="btnCourse"><?php  _e( 'Enroll', 'qode' ) ?></span>
                         </span>
                     </span>
                 </a>

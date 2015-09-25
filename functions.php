@@ -129,7 +129,6 @@ function academy_courses($atts) {
 		// $return = 'asdasdasd';
 		if (! $aCourseData ["registration_closed"]) {
 			if (NamasteLMSStudentModel::is_enrolled ( get_current_user_id (), $post->ID ) == null) {
-				$perc = get_course_progress ( $my_course->ID, $enrolled_one->ID );
 				$enrollBtnHTML = '<span class="btnCourse">Войти</span>
 									<div class="btnCourse" style="position: relative; height: 32px; padding: 0px;">
 										<span style="position: absolute;left:80px;color: ##555555">
@@ -139,6 +138,7 @@ function academy_courses($atts) {
 									</div>';
 			} else {
 				$enrollBtnHTML = '<span class="btnCourse">' . __ ( 'Enroll', 'qode' ) . '</span>';
+				$perc = get_course_progress ( $my_course->ID, $enrolled_one->ID );
 			}
 			$return .= '
 			<div class="academy_course ' . $aCourseData ["live_sticker"] . '" style="background: url(' . $aCourseData ["image"] . '); background-size: 265px 230px;  background-repeat: no-repeat;">
@@ -457,6 +457,7 @@ function output_postid() {
 <script>
             var lesson_id = <?php echo $post->ID ?>;
         </script>
+
 
 
 
@@ -1275,7 +1276,8 @@ function load_more_topics() {
 	</div>
 </div>
 <?php
-		endwhile;
+		endwhile
+		;
 		if ($counter == 11) {
 			?><a class="load_more_topics" href="#"><?php _e('Load more discussions', 'qode'); ?></a>
 <?php
