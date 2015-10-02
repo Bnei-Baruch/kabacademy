@@ -150,12 +150,14 @@ $my_courses = get_posts(array(
                             <?php echo $aCourseData["subtitle"] ?>
 							
 							<span class="btnCourse">Войти</span>
-							<?php $perc = get_course_progress($enrolled_one->ID, get_current_user_id()); ?>
+							<?php //$perc = get_course_progress($enrolled_one->ID, get_current_user_id()); ?>
+							<!--  
 							<div class="btnCourse" style="position: relative; height: 32px; padding: 0px;">
-                                        <span style="position: absolute;left:80px;color: #555555"><?php echo "Progress ".$perc."%"; ?></span>
-								<div style="height: 32px; width: <?php echo $perc;?>%; background-color: #FFF4D9;">
+                                        <span style="position: absolute;left:80px;color: #555555"><?php // echo "Progress ".$perc."%"; ?></span>
+								<div style="height: 32px; width: <?php //echo $perc;?>%; background-color: #FFF4D9;">
 								</div>
 							</div>
+							/-->
                         </span>
                     </span>
                 </a>

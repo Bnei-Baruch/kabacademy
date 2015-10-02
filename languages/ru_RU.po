@@ -2452,12 +2452,6 @@ msgstr "Вы пока еще не настроили этот тип адрес�
 msgid "Your account was activated successfully! Your account details have been sent to you in a separate email."
 msgstr ""
 
-#: buddypress/members/activate.php:16
-#, php-format
-#@ buddypress
-msgid "Your account was activated successfully! You can now <a href=\"%s\">log in</a> with the username and password you provided when you signed up."
-msgstr ""
-
 #: buddypress/members/activate.php:21
 #@ buddypress
 msgid "Please provide a valid activation key."

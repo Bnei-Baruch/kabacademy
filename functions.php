@@ -129,13 +129,13 @@ function academy_courses($atts) {
 		// $return = 'asdasdasd';
 		if (! $aCourseData ["registration_closed"]) {
 			if (NamasteLMSStudentModel::is_enrolled ( get_current_user_id (), $post->ID ) == null) {
-				$enrollBtnHTML = '<span class="btnCourse">Войти</span>
-									<div class="btnCourse" style="position: relative; height: 32px; padding: 0px;">
+				$enrollBtnHTML = '<span class="btnCourse">Войти</span>';
+									/* <div class="btnCourse" style="position: relative; height: 32px; padding: 0px;">
 										<span style="position: absolute;left:80px;color: ##555555">
 											Прогре�?�? ' . $perc . '%
 										</span>
 										<div style="height: 32px; width: ' . $perc . '%; background-color: #FFF4D9;"></div>
-									</div>';
+									</div>'; */
 			} else {
 				$enrollBtnHTML = '<span class="btnCourse">' . __ ( 'Enroll', 'qode' ) . '</span>';
 				$perc = get_course_progress ( $my_course->ID, $enrolled_one->ID );
@@ -159,7 +159,7 @@ function academy_courses($atts) {
 	$load_more = '';
 	
 	if (count ( $posts ) == $numberposts) {
-		$load_more .= '<div id="load_more_posts_wrap"><a id="load_more_posts" data-page="' . ($atts ['page'] + 8) . '" href="#">' . __ ( 'MORE COURSES', 'qode' ) . '</a></div>';
+		//$load_more .= '<div id="load_more_posts_wrap"><a id="load_more_posts" data-page="' . ($atts ['page'] + 8) . '" href="#">' . __ ( 'MORE COURSES', 'qode' ) . '</a></div>';
 	}
 	
 	return $return . $load_more;
@@ -1466,7 +1466,7 @@ function addMailChimpSegment($student_id, $course_id, $status) {
 add_action ( 'namaste_enrolled_course', 'addMailChimpSegment' );
 function rightToLogFileDavgur($logText) {
 	$msg = $logText;
-	$path = ABSPATH . '/wp-content/themes/satellite-child-academy/DavgurLog.txt';
+	$path = dirname(__FILE__) . '/log/DavgurLog.txt';
 	$f = fopen ( $path, "a+" );
 	fwrite ( $f, $msg );
 	fclose ( $f );
