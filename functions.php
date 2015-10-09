@@ -1,5 +1,9 @@
 <?php
 
+//include actions for forum
+include_once (get_stylesheet_directory () . '/forum/forum-init.php'); 
+
+
 // enqueue the child theme stylesheet
 function wp_schools_enqueue_scripts() {
 	// Add jQuery UI
@@ -12,6 +16,7 @@ function wp_schools_enqueue_scripts() {
 	wp_enqueue_style ( 'bxslider' );
 	
 	// wp_enqueue_script("bootstrap", get_stylesheet_directory_uri() . './bootstrap/js/bootstrap.min.js');
+	
 	wp_enqueue_script ( 'watuscript', get_stylesheet_directory_uri () . '/watu-script.js', array (
 			'watu-script' 
 	), false, true );
