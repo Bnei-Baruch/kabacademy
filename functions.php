@@ -1514,6 +1514,17 @@ function academy_menu_logout_link($nav, $args) {
 
 add_filter ( 'wp_nav_menu_items', 'academy_menu_logout_link', 10, 2 );
 
+// Filter wp_nav_menu() to add profile link
+add_filter( 'wp_nav_menu_items', 'my_nav_menu_profile_link' );
+function my_nav_menu_profile_link($menu) {
+	if (!is_user_logged_in())
+		return $menu;
+	else
+		$profilelink = '<li class="loginBtn"><a href="' . bp_loggedin_user_domain( '/' ) . '"><span>' . wp_get_current_user()->user_login . '</span></a></li>';
+	$menu = $menu . $profilelink;
+	return $menu;
+}
+
 add_filter ( 'wpmu_welcome_user_notification', '__return_false' ); // Disable welcome email
 
 add_filter ( 'network_site_url', function ($url, $path, $scheme) {
