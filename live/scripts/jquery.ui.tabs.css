@@ -1,0 +1,25 @@
+/*
+ * jQuery UI Tabs @VERSION
+ *
+ * Copyright 2010, AUTHORS.txt (http://jqueryui.com/about)
+ * Dual licensed under the MIT or GPL Version 2 licenses.
+ * http://jquery.org/license
+ *
+ * http://docs.jquery.com/UI/Tabs#theming
+ */
+.ui-tabs { position: relative;  } /* position: relative prevents IE scroll bug (element with position: relative inside container with overflow: auto appear as "fixed") */
+.ui-tabs .ui-tabs-nav { }
+.ui-tabs .ui-tabs-nav li { border-bottom: 0 !important;  white-space: nowrap; }
+.ui-tabs .ui-tabs-nav li a { text-decoration: none; }
+
+.ui-tabs .ui-tabs-nav li.ui-tabs-selected a, .ui-tabs .ui-tabs-nav li.ui-state-disabled a, .ui-tabs .ui-tabs-nav li.ui-state-processing a { cursor: text; }
+.ui-tabs .ui-tabs-nav li a, .ui-tabs.ui-tabs-collapsible .ui-tabs-nav li.ui-tabs-selected a { cursor: pointer; } /* first selector in group seems obsolete, but required to overcome bug in Opera applying cursor: text overall if defined elsewhere... */
+.ui-tabs .ui-tabs-panel { }
+.ui-tabs .ui-tabs-hide { display: none !important; }
+.ui-tabs .ui-tabs-nav li.ui-state-default	img { filter: Alpha(opacity=75);
+	opacity: 0.75;}
+.ui-tabs .ui-tabs-nav li.ui-tabs-selected img{	filter: Alpha(opacity=100);
+	opacity: 1;}
+	
+.ui-tabs .ui-tabs-nav li.ui-tabs-disabled  img{	filter: Alpha(opacity=75);
+	opacity: 0.75;}

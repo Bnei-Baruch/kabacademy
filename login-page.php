@@ -108,5 +108,3 @@ if(get_post_meta($id, "qode_show-page-title-image", true)) {
         <!--</div>-->
     </div>
 </div>
-
-<?php get_footer(); ?>
