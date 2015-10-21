@@ -1,11 +1,12 @@
-
-
 <div id="container" onload="ODKL.init();">
-
+	<a href="<?php echo site_url ();?>/login" target="_blank"
+		style="position: absolute; top: -30px; right: 30px; z-index: 10; color: #0080ca; font-size: 100%; font-weight: 600;">
+		Уже есть login? </a>
 	<div id="header">
 		<h1>ОСНОВЫ КАББАЛЫ</h1>
 		<span id="subtitle">Бесплатный онлайн-курс - новый опыт в Вашей жизни
 			от САМОЙ ПРИРОДЫ</span>
+
 	</div>
 	<div class="divider"></div>
 	<div class="divider"></div>
@@ -33,10 +34,10 @@
 					<a
 						onClick="_gaq.push(['_trackEvent', 'registration','buttons', 'home-sticker'])"
 						class="reg-button" href="#signup"><img
-						src="<?php echo get_stylesheet_directory_uri () . '/live/images'; ?>/winter_2011_sticker.png"
+						src="<?php echo get_stylesheet_directory_uri () . '/landingPage/images'; ?>/autumn2015_sticker.png"
 						alt="Зима 2010" /></a>
 				</div>
-				<h2>Регистрация открыта до 19 февраля.</h2>
+				<h2>Регистрация открыта до 28 октября.</h2>
 				<div class="divider"></div>
 				<h1>СЕЙЧАС ЗНАЧИТЕЛЬНЫЙ МОМЕНТ В ТВОЕЙ ЖИЗНИ. ВЫБОР ЗА ТОБОЙ!</h1>
 				<div id="signup">
@@ -44,42 +45,40 @@
 						onClick="_gaq.push(['_trackEvent', 'registration','buttons', 'home-signup'])"
 						class="reg-button" href="#register"><img
 						alt="Зарегистрироваться на курс"
-						src="<?php echo get_stylesheet_directory_uri () . '/live/images'; ?>/signup.png" /></a>
+						src="<?php echo get_stylesheet_directory_uri () . '/landingPage/images'; ?>/signup.png" /></a>
 				</div>
-				<br /> <span style="font-size: 16px;"><a
-					href="<?php echo site_url ();?>>/login" target="_blank"
-					style="font-size: 14px; color: #5b595f; font-family: Arial, Helvetica, sans-serif;"><u>вход
-							для зарегистрированных пользователей</u></a></span>
 				<div class="divider"></div>
-				<br />
-				<div id="main-text">
-					<h3>
-						ЭТОТ КУРС ПОЗВОЛИТ <span class="bigger">ВАМ РАСКРЫТЬ</span>
-						ФУНДАМЕНТАЛЬНЫЕ ЗАКОНЫ <span class="bigger">ПРИРОДЫ</span>, ЗАКОНЫ
-						РАЗВИТИЯ <span class="bigger">ЧЕЛОВЕКА</span> СМЫСЛ ВСЕЙ ЕГО ЖИЗНИ
-						И СПОСОБЫ ВОСПРИЯТИЯ ИСТИННОЙ РЕАЛЬНОСТИ, НАХОДЯЩЕЙСЯ ЗА ПРЕДЕЛАМИ
-						5 ОРГАНОВ ВОСПРИЯТИЯ МАТЕРИАЛЬНОГО МИРА. КАББАЛА - ЭТО
-						ПРАКТИЧЕСКАЯ МЕТОДИКА, ПОЗВОЛЯЮЩАЯ ВЫЙТИ ЗА ГРАНИЦЫ НАШИХ ОЩУЩЕНИЙ
-						И ПОСТИЧЬ <span class="bigger">ОБЩИЙ ЗАКОН</span> МИРОЗДАНИЯ,
-						НАХОДЯСЬ В ЭТОМ МИРЕ, ЗДЕСЬ И СЕЙЧАС.
-					</h3>
-				</div>
-				<!--<br />
-				  <a href="index_ua.html"><img alt="Курсы на украинском языке" src="<?php echo get_stylesheet_directory_uri () . '/live/images'; ?>/Baner-LC-osen-ukr-550x80.jpg" /></a>	-->
+			</div>
+			<div class="subpage">
+				<iframe width="580" height="435"
+					src="http://www.youtube.com/embed/Jt7kJfn9Z2c?rel=0"
+					frameborder="0" allowfullscreen></iframe>
 
+				<h2>Этот курс вам позволит:</h2>
+				<ul>
+					<li>раскрыть фундаментальные законы природы, законы развития
+						человека смысл всей его жизни</li>
+					<li>способы восприятия истинной реальности, находящейся за
+						пределами 5 органов восприятия материального мира.
+					
+					<li>выйти за границы наших ощущений и постичь общий закон
+						мироздания, находясь в этом мире, здесь и сейчас.
+				
+				</ul>
 
-
+				<div class="divider"></div>
 
 			</div>
+
 			<div id="topics" class="subpage">
 				<h1>ЧТО ДАСТ ВАМ ЭТОТ КУРС</h1>
 				<div class="slideshow">
 					<img alt="ЧТО ДАСТ ВАМ ЭТОТ КУРС"
-						src="<?php echo get_stylesheet_directory_uri () . '/live/images'; ?>/lc-1.jpg"
+						src="<?php echo get_stylesheet_directory_uri () . '/landingPage/images'; ?>/lc-1.jpg"
 						width="225" height="166" /> <img alt="ЧТО ДАСТ ВАМ ЭТОТ КУРС"
-						src="<?php echo get_stylesheet_directory_uri () . '/live/images'; ?>/lc-2.jpg"
+						src="<?php echo get_stylesheet_directory_uri () . '/landingPage/images'; ?>/lc-2.jpg"
 						width="225" height="166" /> <img alt="ЧТО ДАСТ ВАМ ЭТОТ КУРС"
-						src="<?php echo get_stylesheet_directory_uri () . '/live/images'; ?>/lc-3.jpg"
+						src="<?php echo get_stylesheet_directory_uri () . '/landingPage/images'; ?>/lc-3.jpg"
 						width="225" height="166" />
 				</div>
 				<ul>
@@ -100,7 +99,7 @@
 				<div style="width: 600px; margin: 0 auto 0 30px;">
 
 					<img alt="3 Kabbalistic Principles"
-						src="<?php echo get_stylesheet_directory_uri () . '/live/images'; ?>/3-kabbalistic-principles.jpg" />
+						src="<?php echo get_stylesheet_directory_uri () . '/landingPage/images'; ?>/3-kabbalistic-principles.jpg" />
 				</div>
 
 				<div class="divider"></div>
@@ -111,11 +110,11 @@
 					<h1>СОДЕРЖАНИЕ КУРСА</h1>
 					<div class="slideshow">
 						<img alt="ЧТО ДАСТ ВАМ ЭТОТ КУРС"
-							src="<?php echo get_stylesheet_directory_uri () . '/live/images'; ?>/lc-4.jpg"
+							src="<?php echo get_stylesheet_directory_uri () . '/landingPage/images'; ?>/lc-4.jpg"
 							width="225" height="166" /> <img alt="ЧТО ДАСТ ВАМ ЭТОТ КУРС"
-							src="<?php echo get_stylesheet_directory_uri () . '/live/images'; ?>/lc-5.jpg"
+							src="<?php echo get_stylesheet_directory_uri () . '/landingPage/images'; ?>/lc-5.jpg"
 							width="225" height="166" /> <img alt="ЧТО ДАСТ ВАМ ЭТОТ КУРС"
-							src="<?php echo get_stylesheet_directory_uri () . '/live/images'; ?>/lc-6.jpg"
+							src="<?php echo get_stylesheet_directory_uri () . '/landingPage/images'; ?>/lc-6.jpg"
 							width="225" height="166" />
 					</div>
 					<ul>
@@ -133,17 +132,17 @@
 
 					<div class="divider"></div>
 				</div>
-				<div id="register">
-					<div class="divider"></div>
-					<h1>Регистрация</h1>
-					<?php echo do_shortcode ( '[registerForm enrollto=246]' );?>
-				</div>
+			</div>
+			<div id="register" class="subpage">
+				<h1>Регистрация</h1>
+				<?php echo do_shortcode ( '[registerForm enrollto=1957]' );?>
+				<div class="divider"></div>
 			</div>
 			<div id="testimonials" class="subpage">
 				<h1>ОТЗЫВЫ ОБ ЭТОМ КУРСЕ</h1>
 
 				<iframe width="580" height="435"
-					src="http://www.youtube.com/embed/A75IqKW6RJM?rel=0"
+					src="http://www.youtube.com/embed/1QEq6TCtaYc?rel=0"
 					frameborder="0" allowfullscreen></iframe>
 
 				<div class="divider"></div>
@@ -152,7 +151,7 @@
 
 					<div class="tesimonial">
 						<img
-							src="<?php echo get_stylesheet_directory_uri () . '/live/images'; ?>/smirnov1.jpg"
+							src="<?php echo get_stylesheet_directory_uri () . '/landingPage/images'; ?>/smirnov1.jpg"
 							alt="Дмитрий Смирнов" />
 						<h2>
 							Дмитрий Смирнов<br />(Москва, менеджер, 39 лет)
@@ -172,7 +171,7 @@
 
 					<div class="tesimonial">
 						<img
-							src="<?php echo get_stylesheet_directory_uri () . '/live/images'; ?>/tokarenko1.jpg"
+							src="<?php echo get_stylesheet_directory_uri () . '/landingPage/images'; ?>/tokarenko1.jpg"
 							alt="Ольга Токаренко" />
 						<h2>
 							Ольга Токаренко<br />(Одесса, художник, 30 лет)
@@ -190,7 +189,7 @@
 
 					<div class="tesimonial">
 						<img
-							src="<?php echo get_stylesheet_directory_uri () . '/live/images'; ?>/volkova1.jpg"
+							src="<?php echo get_stylesheet_directory_uri () . '/landingPage/images'; ?>/volkova1.jpg"
 							alt="Волкова Юлия" />
 						<h2>
 							Волкова Юлия<br />(Москва, педагог-психолог (раннего возраста) в
@@ -205,7 +204,7 @@
 
 					<div class="tesimonial">
 						<img
-							src="<?php echo get_stylesheet_directory_uri () . '/live/images'; ?>/tkachenko1.jpg"
+							src="<?php echo get_stylesheet_directory_uri () . '/landingPage/images'; ?>/tkachenko1.jpg"
 							alt="Артём Ткаченко" />
 						<h2>
 							Артём Ткаченко <br />(Киев, менеджер малого бизнеса, 25 лет)
@@ -220,7 +219,7 @@
 
 					<div class="tesimonial">
 						<img
-							src="<?php echo get_stylesheet_directory_uri () . '/live/images'; ?>/nedelyaeva1.jpg"
+							src="<?php echo get_stylesheet_directory_uri () . '/landingPage/images'; ?>/nedelyaeva1.jpg"
 							alt="Неделяева Ирина" />
 						<h2>
 							Неделяева Ирина <br />(Москва, 23 года)
@@ -238,7 +237,7 @@
 					</div>
 					<div class="tesimonial">
 						<p>
-							<a id="scrollTop">Вверх &raquo;</a>
+							<a id="scrollTop" href="#container">Вверх &raquo;</a>
 						</p>
 					</div>
 
@@ -246,18 +245,28 @@
 				<div class="divider"></div>
 				<div id="signup">
 					<a
-						onClick="_gaq.push(['_trackEvent', 'registration','buttons', 'what-others-say-signup'])"
+						id="registration-online"
 						class="reg-button" href="#register"><img
 						alt="Зарегистрироваться на курс"
-						src="<?php echo get_stylesheet_directory_uri () . '/live/images'; ?>/signup.png" /></a>
+						src="<?php echo get_stylesheet_directory_uri () . '/landingPage/images'; ?>/signup.png" /></a>
 				</div>
-				<br /> <span style="font-size: 16px;"><a
-					href="<?php echo site_url ();?>>/login" target="_blank"
-					style="font-size: 14px; color: #5b595f; font-family: Arial, Helvetica, sans-serif;"><u>вход
-							для зарегистрированных пользователей</u></a></span>
+				<br /> <br /> <span
+					style="font-size: 16px; text-align: center; display: block;"> <a
+					href="<?php echo site_url ();?>/login" target="_blank"
+					style="font-size: 14px; color: #5b595f; font-family: Arial, Helvetica, sans-serif;">
+						<u>вход для зарегистрированных пользователей</u>
+				</a>
+				</span>
 				<div class="divider"></div>
 			</div>
 		</div>
 
 	</div>
+	<script>
+		(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+		new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+		j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+		'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+		})(window,document,'script','dataLayer','GTM-5WGLDJ');
+	</script>
 </div>

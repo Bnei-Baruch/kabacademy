@@ -21,7 +21,7 @@ if ($_POST ['action'] == "registerRregistrationFormShortcode") {
 }
 
 //add_action ( 'wp_ajax_nopriv_registerRregistrationFormShortcode', 'UserProfile_GetDefaultFieldes', 30 );
-$testD = new TestDavgur();
+//$testD = new TestDavgur();
 
 wp_enqueue_script ( 'ajax-script', get_template_directory_uri () . '/js/my-ajax-script.js', array (
 		'jquery' 
