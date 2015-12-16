@@ -2,6 +2,11 @@
 /*
 Template Name: Login Page
 */
+
+if (is_user_logged_in ()) {
+        wp_redirect( home_url() );
+        return;    
+}
 global $wp_query;
 $id = $wp_query->get_queried_object_id();
 $sidebar = get_post_meta($id, "qode_show-sidebar", true);

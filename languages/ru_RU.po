@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Academy S7 Child v1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2015-06-10 10:05:58+0000\n"
+"PO-Revision-Date: 2015-05-31 13:55:25+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -971,7 +971,7 @@ msgid "Remove"
 msgstr ""
 
 #: functions.php:1125
-#: single-namaste_course.php:788
+#: single-namaste_course.php:757
 #: single-namaste_course_old.php:559
 #: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/edit_custom_walker.php:282
 #@ qode
@@ -1981,8 +1981,8 @@ msgstr ""
 #: functions.php:1035
 #: functions.php:1133
 #: functions.php:1191
-#: single-namaste_course.php:797
-#: single-namaste_course.php:890
+#: single-namaste_course.php:766
+#: single-namaste_course.php:859
 #: single-namaste_course_old.php:565
 #: single-namaste_course_old.php:615
 #: /sites/edu.kbb1.com/public/wp-content/themes/satellite/includes/shortcodes.php:1130
@@ -2414,7 +2414,7 @@ msgid "Reset Password"
 msgstr ""
 
 #: functions.php:1126
-#: single-namaste_course.php:790
+#: single-namaste_course.php:759
 #: single-namaste_course_old.php:560
 #: /sites/edu.kbb1.com/public/wp-content/themes/satellite/woocommerce/myaccount/form-lost-password.php:48
 #@ qode
@@ -2450,12 +2450,6 @@ msgstr "Вы пока еще не настроили этот тип адрес�
 #: buddypress/members/activate.php:14
 #@ buddypress
 msgid "Your account was activated successfully! Your account details have been sent to you in a separate email."
-msgstr ""
-
-#: buddypress/members/activate.php:16
-#, php-format
-#@ buddypress
-msgid "Your account was activated successfully! You can now <a href=\"%s\">log in</a> with the username and password you provided when you signed up."
 msgstr ""
 
 #: buddypress/members/activate.php:21
@@ -2662,7 +2656,12 @@ msgstr "МСК"
 msgid "My Courses"
 msgstr "Мои курсы"
 
-#: registration-page.php:102
+#: single-namaste_course.php:145
+#@ qode
+msgid "REGISTRATION"
+msgstr "РЕГИСТРАЦИЯ"
+
+#: registration-page.php:90
 #@ qode
 msgid "Please fill in the information below:"
 msgstr "Пожалуйста, заполните информацию ниже:"
@@ -2680,25 +2679,25 @@ msgid "New to U-World?"
 msgstr "Новый пользователь?"
 
 #: login-page.php:103
-#: registration-page.php:108
+#: registration-page.php:103
 #@ qode
 msgid "Sign In with your social account"
 msgstr "Войдите через свой социальный аккаунт"
 
 #: login-page.php:104
-#: registration-page.php:109
+#: registration-page.php:104
 #@ qode
 msgid "Sign in with Google"
 msgstr "Войдите в Google"
 
 #: login-page.php:105
-#: registration-page.php:110
+#: registration-page.php:105
 #@ qode
 msgid "Sign in with Facebook"
 msgstr "Войдите в Facebook"
 
 #: login-page.php:106
-#: registration-page.php:111
+#: registration-page.php:106
 #@ qode
 msgid "Sign in with Vkontakte"
 msgstr "Войдите в Vkontakte"
@@ -2728,12 +2727,12 @@ msgid "Available courses:"
 msgstr "Доступные курсы:"
 
 #: functions.php:409
-#: single-namaste_course.php:1132
+#: single-namaste_course.php:1101
 #: single-namaste_course_old.php:826
 #: /sites/edu.kbb1.com/public/wp-content/themes/satellite/full_width.php:298
 #@ qode
-msgid "ENROLL"
-msgstr "ЗАПИСАТЬСЯ"
+msgid "Enroll"
+msgstr "Записаться"
 
 #: mainpage-lk-notused.php:16
 #@ qode
@@ -2758,22 +2757,22 @@ msgstr ""
 msgid "Проверьте вашу почту, чтобы активировать учетную запись."
 msgstr ""
 
-#: registration-page.php:92
+#: registration-page.php:98
 #@ qode
 msgid "Already U-World member?"
 msgstr "Уже участник?"
 
-#: registration-page.php:93
+#: registration-page.php:99
 #@ qode
 msgid "Log In"
 msgstr "Войти"
 
-#: registration-page.php:115
+#: registration-page.php:110
 #@ qode
 msgid "Вы успешно создали ваш аккаунт. Для того чтобы начать им пользоваться, вам необходимо активировать его через e-mail письмо, которое мы только что вам отправили."
 msgstr ""
 
-#: single-namaste_course.php:193
+#: single-namaste_course.php:183
 #: single-namaste_course_old.php:111
 #@ qode
 msgid "This course does not have selfstudy lessons for the moment."
@@ -2800,37 +2799,37 @@ msgstr ""
 msgid "no live events"
 msgstr ""
 
-#: single-namaste_course.php:320
+#: single-namaste_course.php:289
 #: single-namaste_course_old.php:203
 #@ qode
 msgid "Discussion"
 msgstr "Чат"
 
-#: single-namaste_course.php:322
+#: single-namaste_course.php:291
 #: single-namaste_course_old.php:204
 #@ qode
 msgid "Materials"
 msgstr "Материалы"
 
-#: single-namaste_course.php:323
+#: single-namaste_course.php:292
 #: single-namaste_course_old.php:205
 #@ qode
 msgid "Notes"
 msgstr "Заметки"
 
-#: single-namaste_course.php:1024
+#: single-namaste_course.php:993
 #: single-namaste_course_old.php:715
 #@ qode
 msgid "Additional Resources"
 msgstr "Дополнительные материалы"
 
-#: single-namaste_course.php:1043
+#: single-namaste_course.php:1012
 #: single-namaste_course_old.php:733
 #@ qode
 msgid "Lectures"
 msgstr "Лекции"
 
-#: single-namaste_course.php:1082
+#: single-namaste_course.php:1051
 #: single-namaste_course_old.php:772
 #@ qode
 msgid "Архив данного курса пуст"
@@ -2841,15 +2840,15 @@ msgstr ""
 msgid "Course details:"
 msgstr "Детали курса:"
 
-#: single-namaste_course.php:137
-#: single-namaste_course.php:1111
+#: single-namaste_course.php:127
+#: single-namaste_course.php:1080
 #: single-namaste_course_old.php:808
 #@ qode
 msgid "Course Starts:"
 msgstr "Начало курса:"
 
-#: single-namaste_course.php:140
-#: single-namaste_course.php:1114
+#: single-namaste_course.php:130
+#: single-namaste_course.php:1083
 #: single-namaste_course_old.php:811
 #@ qode
 msgid "Length:"
@@ -2860,8 +2859,8 @@ msgstr "Продолжительность:"
 msgid "Invite friends"
 msgstr "Пригласи друзей"
 
-#: single-namaste_course.php:1093
-#: single-namaste_course.php:1165
+#: single-namaste_course.php:1062
+#: single-namaste_course.php:1134
 #: single-namaste_course_old.php:823
 #@ qode
 msgid "About a course"
@@ -2979,19 +2978,19 @@ msgstr ""
 msgid "Show Results"
 msgstr ""
 
-#: single-namaste_course.php:239
+#: single-namaste_course.php:229
 #: single-namaste_course_old.php:139
 #@ qode
 msgid "Go to training"
 msgstr "Семинар"
 
-#: single-namaste_course.php:244
+#: single-namaste_course.php:234
 #: single-namaste_course_old.php:141
 #@ qode
 msgid "Manage training"
 msgstr "Модератор КС"
 
-#: single-namaste_course.php:248
+#: single-namaste_course.php:238
 #: single-namaste_course_old.php:142
 #@ qode
 msgid "Manage chat"
@@ -2999,8 +2998,8 @@ msgstr "Модератор чата"
 
 #: functions.php:191
 #: functions.php:197
-#: single-namaste_course.php:142
-#: single-namaste_course.php:1114
+#: single-namaste_course.php:132
+#: single-namaste_course.php:1083
 #: single-namaste_course_old.php:811
 #: /sites/edu.kbb1.com/public/wp-content/themes/satellite/full_width.php:154
 #: /sites/edu.kbb1.com/public/wp-content/themes/satellite/full_width.php:160
@@ -3012,8 +3011,8 @@ msgstr "дней"
 
 #: functions.php:743
 #: functions.php:770
-#: single-namaste_course.php:391
-#: single-namaste_course.php:548
+#: single-namaste_course.php:360
+#: single-namaste_course.php:517
 #: single-namaste_course_old.php:263
 #: single-namaste_course_old.php:416
 #@ qode
@@ -3022,7 +3021,7 @@ msgstr ""
 
 #: functions.php:743
 #: functions.php:770
-#: single-namaste_course.php:391
+#: single-namaste_course.php:360
 #: single-namaste_course_old.php:263
 #@ qode
 msgid "Type text here..."
@@ -3031,8 +3030,8 @@ msgstr ""
 #: functions.php:1033
 #: functions.php:1095
 #: functions.php:1189
-#: single-namaste_course.php:735
-#: single-namaste_course.php:888
+#: single-namaste_course.php:704
+#: single-namaste_course.php:857
 #: single-namaste_course_old.php:518
 #: single-namaste_course_old.php:615
 #@ qode
@@ -3042,8 +3041,8 @@ msgstr ""
 #: functions.php:1037
 #: functions.php:1135
 #: functions.php:1193
-#: single-namaste_course.php:799
-#: single-namaste_course.php:892
+#: single-namaste_course.php:768
+#: single-namaste_course.php:861
 #: single-namaste_course_old.php:565
 #: single-namaste_course_old.php:615
 #@ qode
@@ -3051,15 +3050,15 @@ msgid "Dislike"
 msgstr ""
 
 #: functions.php:1110
-#: single-namaste_course.php:752
+#: single-namaste_course.php:721
 #: single-namaste_course_old.php:533
 #@ qode
 msgid "More"
 msgstr ""
 
 #: functions.php:1223
-#: single-namaste_course.php:688
-#: single-namaste_course.php:928
+#: single-namaste_course.php:657
+#: single-namaste_course.php:897
 #: single-namaste_course_old.php:485
 #: single-namaste_course_old.php:635
 #@ qode
@@ -3071,9 +3070,9 @@ msgstr ""
 msgid "Choose the course:"
 msgstr ""
 
-#: single-namaste_course.php:384
-#: single-namaste_course.php:494
-#: single-namaste_course.php:509
+#: single-namaste_course.php:353
+#: single-namaste_course.php:463
+#: single-namaste_course.php:478
 #: single-namaste_course_old.php:257
 #: single-namaste_course_old.php:362
 #: single-namaste_course_old.php:377
@@ -3081,15 +3080,15 @@ msgstr ""
 msgid "SAVED"
 msgstr ""
 
-#: single-namaste_course.php:388
+#: single-namaste_course.php:357
 #: single-namaste_course_old.php:261
 #@ qode
 msgid "Add New Note"
 msgstr ""
 
-#: single-namaste_course.php:391
-#: single-namaste_course.php:486
-#: single-namaste_course.php:501
+#: single-namaste_course.php:360
+#: single-namaste_course.php:455
+#: single-namaste_course.php:470
 #: single-namaste_course_old.php:263
 #: single-namaste_course_old.php:354
 #: single-namaste_course_old.php:369
@@ -3097,51 +3096,57 @@ msgstr ""
 msgid "SAVING..."
 msgstr ""
 
-#: single-namaste_course.php:609
+#: single-namaste_course.php:578
 #: single-namaste_course_old.php:472
 #@ qode
 msgid "This group has no members"
 msgstr ""
 
-#: single-namaste_course.php:684
+#: single-namaste_course.php:653
 #: single-namaste_course_old.php:482
 #@ qode
 msgid "Publication"
 msgstr ""
 
-#: single-namaste_course.php:695
+#: single-namaste_course.php:664
 #: single-namaste_course_old.php:489
 #@ qode
 msgid "Publish"
 msgstr ""
 
-#: single-namaste_course.php:707
+#: single-namaste_course.php:676
 #: single-namaste_course_old.php:498
 #@ qode
 msgid "Недавние обсуждения"
 msgstr ""
 
-#: single-namaste_course.php:959
+#: single-namaste_course.php:928
 #: single-namaste_course_old.php:654
 #@ qode
 msgid "This forum does not have topics"
 msgstr ""
 
-#: single-namaste_course.php:971
+#: single-namaste_course.php:940
 #: single-namaste_course_old.php:665
 #@ qode
 msgid "У данного курса нет форума"
 msgstr ""
 
-#: single-namaste_course.php:973
+#: single-namaste_course.php:942
 #: single-namaste_course_old.php:667
 #@ qode
 msgid "Только студенты курса имеют доступ к форуму курса"
 msgstr ""
 
-#: single-namaste_course.php:1122
-#: single-namaste_course.php:1125
-#: single-namaste_course.php:1160
+#: functions.php
+#@ qode
+msgid "Load more discussions"
+msgstr "Посмотреть больше обсуждений"
+
+
+#: single-namaste_course.php:1091
+#: single-namaste_course.php:1094
+#: single-namaste_course.php:1129
 #@ qode
 msgid "Program"
 msgstr "Программа:"
@@ -3151,7 +3156,7 @@ msgstr "Программа:"
 msgid "Logout"
 msgstr "Выйти"
 
-#: single-namaste_course.php:151
+#: single-namaste_course.php:141
 #@ namaste
 msgid "You cannot enroll this course - other courses have to be completed first."
 msgstr ""
@@ -3314,13 +3319,54 @@ msgstr ""
 msgid "Phone"
 msgstr ""
 
-#: single-namaste_course.php:657
+#: functions.php:1491
+#, php-format
+#@ default
+msgid "New user registration on your site %s:"
+msgstr ""
+
+#: functions.php:1492
+#: functions.php:1500
+#, php-format
+#@ default
+msgid "Username: %s"
+msgstr ""
+
+#: functions.php:1493
+#, php-format
+#@ default
+msgid "E-mail: %s"
+msgstr ""
+
+#: functions.php:1495
+#, php-format
+#@ default
+msgid "[%s] New User Registration"
+msgstr ""
+
+#: functions.php:1501
+#, php-format
+#@ default
+msgid "Password: %s"
+msgstr ""
+
+#: functions.php:1504
+#, php-format
+#@ default
+msgid "[%s] Your username and password"
+msgstr ""
+
+#: single-namaste_course.php:626
 #@ qode
 msgid "View all members"
 msgstr "Посмотреть всех ..."
 
-#: single-namaste_course.php:155
+#: single-namaste_course.php
 #@ qode
-msgid "Enroll"
-msgstr "Для того, чтобы записаться на этот курс Вы должны войти в систему."
+msgid "Registration, check you mail. Title"
+msgstr "Проверьте вашу почту, чтобы активировать учетную запись."
 
+#: single-namaste_course.php
+#@ qode
+msgid "Registration, check you mail. Content"
+msgstr "Вы успешно создали ваш аккаунт. Для того чтобы начать им пользоваться, вам необходимо активировать его через e-mail письмо, которое мы только что вам отправили."

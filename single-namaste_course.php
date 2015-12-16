@@ -150,11 +150,11 @@ if (isset($qode_options_satellite['twitter_via']) && !empty($qode_options_satell
                        
                         if (is_user_logged_in() &&  isUserCanEnrollToCourse()){
                             echo '<div class="button medium ">'.do_shortcode('[namaste-enroll]').'</div>';
-                        } else if (is_user_logged_in()){
+                        } elseif (is_user_logged_in()){
                             echo '<h3>'.__('You cannot enroll this course - other courses have to be completed first.', 'namaste').'</h3>';
                         } else { ?>
                         <div class="button medium">
-                           <a href="/registration">
+                           <a href="/registration?redirectUrl=<?php the_permalink();?>">
                                 <?php _e('Enroll', 'qode'); ?>
                             </a>
                         </div>
@@ -239,6 +239,8 @@ if (isset($qode_options_satellite['twitter_via']) && !empty($qode_options_satell
 													jQuery(document).ready(function(){
 														jQuery('#joinLive').click(function(event){
     														event.preventDefault();
+                                                            if(jQuery(this).hasClass("disable"))
+                                                                return;
 															var pointsType = 'workshop';
 															var user_id = '<?php echo get_current_user_id(); ?>';
 															var cousrse_id ='<?php echo $post->ID; ?>';
@@ -268,14 +270,21 @@ if (isset($qode_options_satellite['twitter_via']) && !empty($qode_options_satell
 															add_points(pointsType,user_id, cousrse_id, '');
 															document.getElementById("joinLive").className =
 															document.getElementById("joinLive").className.replace( /(?:^|\s)disable(?!\S)/g , '' );
+                                                             $("#joinLive").tooltip({content: "<strong>Hi!</strong>", track:true});
 														}
 													}   
 												</script>
 
 												<join-button-toggler space="<?php echo $course_space; ?>" onToggle="toggleButton"></join-button-toggler>
 
-                                                <a id="joinLive" target="_blank" href="https://rt.kbb1.com/#/find-table/<?php echo $course_space; ?>/ru"  class="btnM"
-                                                   onclick="<?php if(!get_post_meta($post->ID, 'disable_seminar', true)) echo "javascript:mutePlayer();"; ?>">
+                                                <a id="joinLive" 
+                                                    target="_blank" 
+                                                    style="pointer-events: auto"
+                                                    title="Кнопка Семинар будет доступна только после начала семинара."
+                                                    alt="Кнопка Семинар будет доступна только после начала семинара."
+                                                    href="https://rt.kbb1.com/#/find-table/<?php echo $course_space; ?>/ru"  
+                                                    class="btnM"
+                                                    onclick="<?php if(!get_post_meta($post->ID, 'disable_seminar', true)) echo "javascript:mutePlayer();"; ?>">
                                                     <?php _e('Go to training', 'qode'); ?>
                                                 </a>
                                             <?php if (current_user_can('editor') || current_user_can('administrator')) : ?>
@@ -303,29 +312,15 @@ if (isset($qode_options_satellite['twitter_via']) && !empty($qode_options_satell
                                                 </div>
                                             </div>
    
-
-                                            <script
-                                                src="https://rt.kbb1.com/components/onair-player/onair-player.js?5"></script>
+                                            <?php if (get_post_meta($post->ID, 'disable_seminar', true)) : ?>
+                                            <script type="text/javascript" src = "https://www.youtube.com/iframe_api"></script>
                                             <script>
-                                              /**   initOnAirPlayer({
-                                                    containerId: 'lveventplayer',
-                                                    channelId:  '<?php echo $channelId; ?>',
-                                                    width: 677,
-                                                    height: 390,
-                                                    callback: function (title, player) {
-                                                        rt_player = player;
-                                                        var titleElem = document.getElementById('lveventTitl');
-                                                        if (title) {
-                                                            titleElem.title = title;
-                                                            titleElem.innerHTML = title;
-                                                        } else {
-                                                            titleElem.title = "Нет трансляции";
-                                                            titleElem.innerHTML = "Нет трансляции";
-                                                        }
-                                                    }
-                                                });
-												
-												**/
+                                              window.youtubeBroadcastChannelId = '<?php echo $channelId; ?>';
+                                            </script>
+                                            <script type='text/javascript' src='/wp-content/themes/satellite-child-academy/js/youtube-broadcast.js?ver=1.1'></script>
+                                            <?php else: ?>
+                                            <script src="https://rt.kbb1.com/components/onair-player/onair-player.js?5"></script>
+                                            <script>
 												initOnAirPlayer({
 												  containerId: 'lveventplayer',
 												  channelId: '<?php echo $channelId; ?>',
@@ -346,6 +341,7 @@ if (isset($qode_options_satellite['twitter_via']) && !empty($qode_options_satell
 												  }
 												});
                                             </script>
+                                            <?php endif; ?>
 
                                         </div>
                                     </div>
@@ -361,7 +357,7 @@ if (isset($qode_options_satellite['twitter_via']) && !empty($qode_options_satell
                                             <div class="tabs-container">
                                                 <div id="tabiid1" class="tab-content" style="display: block;">
                                                     <iframe
-                                                        src="https://chat1.kbb1.com/?label=rt.kbb1.com.mak-<?php echo get_post_meta($course_id, 'chat-lable', true);?>&lang=ru
+                                                        src="https://chat1.kbb1.com/?label=rt.kbb1.com.<?php echo $course_space;?>&lang=ru
 														<?php 
 														$user_id = get_current_user_id(); 
 														$cityName = bp_get_profile_field_data( array( 'field'   => 'Город', 'user_id' => $user_id)); 
@@ -653,7 +649,11 @@ if (isset($qode_options_satellite['twitter_via']) && !empty($qode_options_satell
 												
 												 	<ul id="member-list" class="item-list" role="main">
 
-														<?php while ( bp_group_members() ) : bp_group_the_member(); ?>
+														<?php 
+                                                            while ( bp_group_members() ) : bp_group_the_member(); 
+                                                                if(get_user_by('id', bp_get_group_member_id())->user_status == 2)
+                                                                    continue;
+                                                        ?>
 
 															<li>
 																<a href="<?php bp_group_member_domain(); ?>">
@@ -666,18 +666,6 @@ if (isset($qode_options_satellite['twitter_via']) && !empty($qode_options_satell
 																<span class="activity"><?php bp_group_member_joined_since(); ?></span>
 
 																<?php do_action( 'bp_group_members_list_item' ); ?>
-
-																<?php if ( bp_is_active( 'friends' ) ) : ?>
-
-																	<div class="action">
-
-																		<?php bp_add_friend_button( bp_get_group_member_id(), bp_get_group_member_is_friend() ); ?>
-
-																		<?php do_action( 'bp_group_members_list_item_action' ); ?>
-
-																	</div>
-
-																<?php endif; ?>
 															</li>
 
 														<?php endwhile; ?>
@@ -699,9 +687,6 @@ if (isset($qode_options_satellite['twitter_via']) && !empty($qode_options_satell
 															<?php //bp_members_pagination_links(); ?>
 
 														</div> -->
-														
-														
-
 													</div> 
 												<?php else: ?>
 												 
@@ -753,261 +738,293 @@ if (isset($qode_options_satellite['twitter_via']) && !empty($qode_options_satell
                                         <div
                                             class="topics_list_divider"><?php _e('Недавние обсуждения', 'qode'); ?></div>
 
-                                        <div class="topics_list" data-list="2" data-forum="<?php echo $forum_id; ?>">
-                                            <?php
-                                            //$topics_param = array( 'post_parent' => $forum_id, 'posts_per_page' => 11);
-                                            if (bp_group_is_visible($group))
-                                            {
-                                            	global $post;
-                                            	$post = bbp_get_forum($forum_id);
+                                            
+                                    <div class="topics_list" data-list="2" data-forum="<?php echo $forum_id; ?>">
+                                        <?php  
+                                        if ( bbp_has_forums($buddypress_id) ) : 
+                                            $topics = false;	
+                                            while ( bbp_forums() ) : bbp_the_forum();
+	                                        	if($forum_id != bbp_get_forum_id()){
+		                                        	continue;
+	                                        	}
+
+	                                        	$msg = '$forum_id';
+	                                        	$msg .= print_r( $forum_id, true);
+	                                        	rightToLogFileDavgur($msg);
+	                                        	
+	                                        	$topics = bbp_has_topics( array(
+                                        			'post_parent'    => $forum_id,
+	                                        			'posts_per_page' => 11
+	                                        	) );
+
+	                                        	$msg = '$topics';
+	                                        	$msg .= print_r( $topics, true);
+	                                        	rightToLogFileDavgur($msg);
+	                                        	
+	                                            if(!$topics){
+	                                            	_e('This forum does not have topics', 'qode');
+	                                            	break;
+	                                            }
                                                 $counter = 0;
-                                                while (bbp_topics()) : bbp_the_topic();
-
-                                                    if (++$counter == 12) break;
-
-                                                    ?>
-                                                    <div class="topics_list_single_topic"
-                                                        id="topic-<?php echo bbp_get_topic_id(); ?>"
-                                                        data-id="<?php echo bbp_get_topic_id(); ?>">
-                                                        <div class="single_topic_header">
-                                                            <div class="photo"><a
-                                                                    href="<?php echo bp_core_get_user_domain(bbp_get_topic_author_id()); ?>"><?php echo bp_core_fetch_avatar(array('item_id' => bbp_get_topic_author_id(), 'height' => 40, 'width' => 40)); ?></a>
-                                                            </div>
-                                                            <div class="info">
-                                                                <div class="name"><a
-                                                                        href="<?php echo bp_core_get_user_domain(bbp_get_topic_author_id()); ?>"><?php echo bbp_get_topic_author_display_name(bbp_get_topic_id()); ?></a>
-                                                                </div>
-                                                                <div
-                                                                    class="date"><?php echo get_post_time('j F ', false, bbp_get_topic_id(), true) . __('at', 'qode') . get_post_time(' H:i', false, bbp_get_topic_id(), true); ?></div>
-                                                            </div>
-                                                            <?php if (bbp_get_topic_author_id() == get_current_user_id()): ?>
-                                                                <a href="#" class="addi_actions_open"></a>
-                                                                <div class="addi_actions" style="display:none">
-                                                                    <ul>
-                                                                        <li><a class="edit_action" href="#">Редактировать</a>
-                                                                        </li>
-                                                                        <li><a class="remove_action"
-                                                                               href="#">Удалить</a></li>
-                                                                    </ul>
-                                                                </div>
-                                                            <?php endif; ?>
-                                                        </div>
-                                                        <div class="single_topic_content">
-                                                            <?php $content = bbp_get_topic_content();
-                                                            if (mb_strlen($content) > 500) {
-                                                                echo '<div class="show">' . mb_substr($content, 0, 500) . '... <a href="#" class="show_all">' . __('More', 'qode') . '</a></div>';
+                                                if (bp_group_is_visible($group))
+                                                {
+                                                	global $post;
+                                                	$post = bbp_get_forum($forum_id);
+                                                	$counter = 0;
+                                                	while (bbp_topics()) : bbp_the_topic();
+                                                	if (++$counter == 12) break;
+                                                	?>
+										            <div class="topics_list_single_topic <?php $postUser = new WP_User(bbp_get_topic_author_id());echo ($postUser->has_cap('bbp_keymaster') || $postUser->has_cap('bbp_moderator')) ? "isAdmin" : "";?>"
+										                id="topic-<?php echo bbp_get_topic_id(); ?>"
+										                data-id="<?php echo bbp_get_topic_id(); ?>">
+										                <div class="single_topic_header">
+										                    <div class="photo"><a
+										                            href="<?php echo bp_core_get_user_domain(bbp_get_topic_author_id()); ?>"><?php echo bp_core_fetch_avatar(array('item_id' => bbp_get_topic_author_id(), 'height' => 40, 'width' => 40)); ?></a>
+										                    </div>
+										                    <div class="info">
+										                        <div class="name"><a
+										                                href="<?php echo bp_core_get_user_domain(bbp_get_topic_author_id()); ?>"><?php echo bbp_get_topic_author_display_name(bbp_get_topic_id()); ?></a>       
+                                                                <?php 
+                                                                    if ($postUser->has_cap('bbp_keymaster'))  echo "<small>(Администратор форума)</small>"; 
+                                                                    elseif ($postUser->has_cap('bbp_moderator'))  echo "<small>(Преподаватель)</small>"; 
                                                                 ?>
-                                                                <div class="hide"><?php echo $content; ?></div>
-                                                            <?php
-                                                            } else {
-                                                                echo $content;
-                                                            }
-
-                                                            ?>
-                                                        </div>
-                                                        <div class="single_topic_attaches">
-                                                            <?php $attaches = get_post_meta(bbp_get_topic_id(), 'attaches', true);
-                                                            foreach (explode(',', $attaches) as $attach) :
-                                                                if (empty($attach)) continue;
-                                                                $r = wp_get_attachment_image_src($attach, 'full');
-                                                                ?>
-                                                                <div class="single_topic_single_attachment">
-                                                                    <div class="attachment-image"><a target="_blank"
-                                                                                                     href="<?php echo $r[0]; ?>"><?php echo wp_get_attachment_image($attach, 'full'); ?></a>
-                                                                    </div>
-                                                                    <div class="attachment-controls"><a
-                                                                            class="delete-attachment"
-                                                                            data-id="<?php echo $attach; ?>" href="#">Удалить</a>
-                                                                    </div>
-                                                                </div>
-                                                            <?php endforeach; ?>
-                                                        </div>
-                                                        <div style="display:none" class="single_topic_content_edit">
-                                                            <textarea
-                                                                class="edit_content"><?php echo get_post_field('post_content', bbp_get_topic_id()); ?></textarea>
-                                                            <input class="attaches-input" type="hidden" name="attaches"
-                                                                   value="<?php echo get_post_meta(bbp_get_topic_id(), 'attaches', true); ?>"/>
-
-                                                            <div class="edit_actions">
-                                                                <a class="image-load" href="#"></a>
-                                                                <button
-                                                                    class="cancel"><?php _e('Cancel', 'qode'); ?></button>
-                                                                <button
-                                                                    class="save"><?php _e('Save', 'qode'); ?></button>
-                                                            </div>
-                                                        </div>
-                                                        <div class="single_topic_actions">
-                                                            <?php $likes = get_post_meta(bbp_get_topic_id(), 'likes', true); ?>
-                                                            <?php $like = get_post_meta(bbp_get_topic_id(), 'like_' . get_current_user_id(), true); ?>
-                                                            <a class="like"<?php echo (!empty($like)) ? ' style="display:none"' : ''; ?>
-                                                               href="#"><?php _e('Like', 'qode'); ?></a><a
-                                                                class="like dislike"<?php echo (empty($like)) ? ' style="display:none"' : ''; ?>
-                                                                href="#"><?php _e('Dislike', 'qode'); ?></a>
-
-                                                            <div
-                                                                class="like-count"<?php if (empty($likes)) echo ' style="display:none"'; ?>>
-                                                                <i class="like-img"></i><span
-                                                                    class="count"><?php echo (int)$likes; ?></span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="single_topic_replies_container">
-                                                            <div class="single_topic_replies">
-                                                                <?php
-                                                                $replies = get_posts($default = array(
-                                                                    'post_type' => bbp_get_reply_post_type(),         // Only replies
-                                                                    'post_parent' => bbp_get_topic_id(),       // Of this topic
-                                                                    'posts_per_page' => 5, // This many
-                                                                    'orderby' => 'date',                     // Sorted by date
-                                                                    'order' => 'DESC',                      // Oldest to newest
-                                                                    'ignore_sticky_posts' => true                       // Stickies not supported
-                                                                ));
-                                                                $i = count($replies);
-                                                                if ($i == 5) {
-                                                                    $count = new WP_Query($default = array(
-                                                                        'numberposts' => -1,
-                                                                        'post_type' => bbp_get_reply_post_type(),         // Only replies
-                                                                        'post_parent' => bbp_get_topic_id(),       // Of this topic
-                                                                        'posts_per_page' => 5, // This many
-                                                                        'orderby' => 'date',                     // Sorted by date
-                                                                        'order' => 'DESC',                      // Oldest to newest
-                                                                        'ignore_sticky_posts' => true                       // Stickies not supported
-                                                                    ));
-                                                                    $count = $count->found_posts - 4;
-                                                                    ?><a href="#" class="load_all_replies"><i
-                                                                        class="comments_img"></i>Просмотреть
-                                                                    еще <?php echo $count . ' ' . custom_plural_form($count, 'комментарий', 'комментария', 'комментариев'); ?>
-                                                                    </a>
-                                                                <?php
-                                                                }
-                                                                $replies = array_reverse($replies);
-                                                                //array_shift($replies);
-                                                                foreach ($replies as $reply) {
-
+										                        </div>
+										                        <div
+										                            class="date"><?php echo get_post_time('j F ', false, bbp_get_topic_id(), true) . __('at', 'qode') . get_post_time(' H:i', false, bbp_get_topic_id(), true); ?></div>
+										                    </div>
+										                    <?php if (bbp_get_topic_author_id() == get_current_user_id()): ?>
+										                        <a href="#" class="addi_actions_open"></a>
+										                        <div class="addi_actions" style="display:none">
+										                            <ul>
+										                                <li><a class="edit_action" href="#">Редактировать</a>
+										                                </li>
+										                                <li><a class="remove_action"
+										                                       href="#">Удалить</a></li>
+										                            </ul>
+										                        </div>
+										                    <?php endif; ?>
+										                </div>
+										                <div class="single_topic_content">
+										                    <?php $content = bbp_get_topic_content();
+										                    if (mb_strlen($content) > 500) {
+										                        echo '<div class="show">' . mb_substr($content, 0, 500) . '... <a href="#" class="show_all">' . __('More', 'qode') . '</a></div>';
+										                        ?>
+										                        <div class="hide"><?php echo $content; ?></div>
+										                    <?php
+										                    } else {
+										                        echo $content;
+										                    }
+										                    ?>
+										                </div>
+										                <div class="single_topic_attaches">
+										                    <?php $attaches = get_post_meta(bbp_get_topic_id(), 'attaches', true);
+										                    foreach (explode(',', $attaches) as $attach) :
+										                        if (empty($attach)) continue;
+										                        $r = wp_get_attachment_image_src($attach, 'full');
+										                        ?>
+										                        <div class="single_topic_single_attachment">
+										                            <div class="attachment-image"><a target="_blank"
+										                                                             href="<?php echo $r[0]; ?>"><?php echo wp_get_attachment_image($attach, 'full'); ?></a>
+										                            </div>
+										                            <div class="attachment-controls"><a
+										                                    class="delete-attachment"
+										                                    data-id="<?php echo $attach; ?>" href="#">Удалить</a>
+										                            </div>
+										                        </div>
+										                    <?php endforeach; ?>
+										                </div>
+										                <div style="display:none" class="single_topic_content_edit">
+										                    <textarea
+										                        class="edit_content"><?php echo get_post_field('post_content', bbp_get_topic_id()); ?></textarea>
+										                    <input class="attaches-input" type="hidden" name="attaches"
+										                           value="<?php echo get_post_meta(bbp_get_topic_id(), 'attaches', true); ?>"/>
+										
+										                    <div class="edit_actions">
+										                        <a class="image-load" href="#"></a>
+										                        <button
+										                            class="cancel"><?php _e('Cancel', 'qode'); ?></button>
+										                        <button
+										                            class="save"><?php _e('Save', 'qode'); ?></button>
+										                    </div>
+										                </div>
+										                <div class="single_topic_actions">
+										                    <?php $likes = get_post_meta(bbp_get_topic_id(), 'likes', true); ?>
+										                    <?php $like = get_post_meta(bbp_get_topic_id(), 'like_' . get_current_user_id(), true); ?>
+										                    <a class="like"<?php echo (!empty($like)) ? ' style="display:none"' : ''; ?>
+										                       href="#"><?php _e('Like', 'qode'); ?></a><a
+										                        class="like dislike"<?php echo (empty($like)) ? ' style="display:none"' : ''; ?>
+										                        href="#"><?php _e('Dislike', 'qode'); ?></a>
+										
+										                    <div
+										                        class="like-count"<?php if (empty($likes)) echo ' style="display:none"'; ?>>
+										                        <i class="like-img"></i><span
+										                            class="count"><?php echo (int)$likes; ?></span>
+										                    </div>
+										                </div>
+										                <div class="single_topic_replies_container">
+										                    <div class="single_topic_replies">
+										                        <?php
+										                        $replies = get_posts($default = array(
+										                            'post_type' => bbp_get_reply_post_type(),         // Only replies
+										                            'post_parent' => bbp_get_topic_id(),       // Of this topic
+										                            'posts_per_page' => 5, // This many
+										                            'orderby' => 'date',                     // Sorted by date
+										                            'order' => 'DESC',                      // Oldest to newest
+										                            'ignore_sticky_posts' => true                       // Stickies not supported
+										                        ));
+										                        $i = count($replies);
+										                        if ($i == 5) {
+										                            $count = new WP_Query($default = array(
+										                                'numberposts' => -1,
+										                                'post_type' => bbp_get_reply_post_type(),         // Only replies
+										                                'post_parent' => bbp_get_topic_id(),       // Of this topic
+										                                'posts_per_page' => 5, // This many
+										                                'orderby' => 'date',                     // Sorted by date
+										                                'order' => 'DESC',                      // Oldest to newest
+										                                'ignore_sticky_posts' => true                       // Stickies not supported
+										                            ));
+										                            $count = $count->found_posts - 4;
+										                            ?><a href="#" class="load_all_replies"><i
+										                                class="comments_img"></i>Просмотреть
+										                            еще <?php echo $count . ' ' . custom_plural_form($count, 'комментарий', 'комментария', 'комментариев'); ?>
+										                            </a>
+										                        <?php
+										                        }
+										                        $replies = array_reverse($replies);
+										                        //array_shift($replies);
+										                        foreach ($replies as $reply) {
+                                                                    $postUser = new WP_User($reply->post_author);
                                                                     ?>
-                                                                    <div class="single_topic_reply"
-                                                                         id="reply-<?php echo $reply->ID; ?>"
-                                                                         data-id="<?php echo $reply->ID; ?>">
-                                                                        <div class="photo"><a
-                                                                                href="<?php echo bp_core_get_user_domain($reply->post_author); ?>"><?php echo bp_core_fetch_avatar(array('item_id' => $reply->post_author, 'height' => 32, 'width' => 32)); ?></a>
-                                                                        </div>
-                                                                        <div class="content_wrapper">
-                                                                            <div class="reply_content"><a
-                                                                                    class="author-link"
-                                                                                    href="<?php echo bp_core_get_user_domain($reply->post_author); ?>"><?php echo bbp_get_reply_author_display_name($reply->ID); ?></a><?php echo bbp_get_reply_content($reply->ID); ?>
-                                                                            </div>
-                                                                            <div class="single_reply_attaches">
-                                                                                <?php $attaches = get_comment_meta($reply->ID, 'attaches', true);
-                                                                                foreach (explode(',', $attaches) as $attach) :
-                                                                                    if (empty($attach)) continue;
-                                                                                    $r = wp_get_attachment_image_src($attach, 'full');
+										                            <div class="single_topic_reply <?php $postUser = new WP_User($reply->post_author);echo ($postUser->has_cap('bbp_keymaster') || $postUser->has_cap('bbp_moderator')) ? "isAdmin" : "";?>"
+										                                 id="reply-<?php echo $reply->ID; ?>"
+										                                 data-id="<?php echo $reply->ID; ?>">
+										                                <div class="photo"><a
+										                                        href="<?php echo bp_core_get_user_domain($reply->post_author); ?>"><?php echo bp_core_fetch_avatar(array('item_id' => $reply->post_author, 'height' => 32, 'width' => 32)); ?></a>
+										                                </div>
+										                                <div class="content_wrapper">
+										                                    <div class="reply_content"><a
+										                                            class="author-link"
+										                                            href="<?php echo bp_core_get_user_domain($reply->post_author); ?>"><?php echo bbp_get_reply_author_display_name($reply->ID); ?></a>
+                                                                                    <?php 
+                                                                                        if ($postUser->has_cap('bbp_keymaster'))  echo "<small>(Администратор форума)</small>" ;
+                                                                                        elseif ($postUser->has_cap('bbp_moderator'))  echo "<small>(Преподаватель)</small>" ;
                                                                                     ?>
-                                                                                    <div
-                                                                                        class="single_reply_single_attachment">
-                                                                                        <div class="attachment-image"><a
-                                                                                                target="_blank"
-                                                                                                href="<?php echo $r[0]; ?>"><?php echo wp_get_attachment_image($attach, 'full'); ?></a>
-                                                                                        </div>
-                                                                                        <div
-                                                                                            class="attachment-controls">
-                                                                                            <a class="delete-attachment"
-                                                                                               data-id="<?php echo $attach; ?>"
-                                                                                               href="#">Удалить</a>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                <?php endforeach; ?>
-                                                                            </div>
-                                                                            <div style="display:none"
-                                                                                 class="reply_content_edit"><textarea
-                                                                                    class="reply_content_edit_textarea"><?php echo get_post_field('post_content', $reply->ID); ?></textarea><input
-                                                                                    class="attaches-input" type="hidden"
-                                                                                    name="attaches"
-                                                                                    value="<?php echo get_comment_meta($reply->ID, 'attaches', true); ?>"/><a
-                                                                                    class="image-load" href="#"></a><a
-                                                                                    href="#" class="smiles_open"></a>
-
-                                                                                <div class="edit_actions"><a
-                                                                                        class="cancel"
-                                                                                        href="#">Отменить</a></div>
-                                                                            </div>
-                                                                            <?php $likes = get_post_meta($reply->ID, 'likes', true); ?>
-                                                                            <div class="actions"><span
-                                                                                    class="date"><?php echo get_post_time('j F ', false, $reply->ID, true) . __('at', 'qode') . get_post_time(' H:i', false, $reply->ID, true); ?></span><?php $like = get_post_meta($reply->ID, 'like_' . get_current_user_id(), true); ?>
-                                                                                <a class="like"<?php echo (!empty($like)) ? ' style="display:none"' : ''; ?>
-                                                                                   href="#"><?php _e('Like', 'qode'); ?></a><a
-                                                                                    class="like dislike"<?php echo (empty($like)) ? ' style="display:none"' : ''; ?>
-                                                                                    href="#"><?php _e('Dislike', 'qode'); ?></a>
-
-                                                                                <div
-                                                                                    class="like-count"<?php if (empty($likes)) echo ' style="display:none"'; ?>>
-                                                                                    <i class="like-img"></i><span
-                                                                                        class="count"><?php echo (int)$likes; ?></span>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <?php if ($reply->post_author == get_current_user_id()): ?>
-                                                                            <a class="addi_actions_open" href="#"></a>
-                                                                            <div class="addi_actions"
-                                                                                 style="display:none">
-                                                                                <ul>
-                                                                                    <li><a class="edit_action" href="#">Редактировать</a>
-                                                                                    </li>
-                                                                                    <li><a class="remove_action"
-                                                                                           href="#">Удалить</a></li>
-                                                                                </ul>
-                                                                            </div>
-                                                                        <?php endif; ?>
-                                                                    </div>
-                                                                <?php
-
-                                                                }
-                                                                $url = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}";
-                                                                ?>
-                                                            </div>
-                                                            <div class="single_topic_reply_form">
-                                                                <form
-                                                                    action="<?php echo $url; ?>#topic-<?php echo bbp_get_topic_id(); ?>"                                                                    
-			            											data-bbp_forum_id = "<?php echo $forum_id;?>"
-			                                                        data-bbp_topic_id="<?php echo bbp_get_topic_id(); ?>"
-                                                                    method="post">
-                                                                    <div class="photo"><a
-                                                                            href="<?php echo bp_core_get_user_domain(get_current_user_id()); ?>"><?php echo bp_core_fetch_avatar(array('item_id' => get_current_user_id(), 'height' => 32, 'width' => 32)); ?></a>
-                                                                    </div>
-                                                                    <div class="reply-form">
-                                                                        <textarea  placeholder="<?php _e('Введите текст сообщения...', 'qode'); ?>"
-                                                                            name="content" ></textarea>
-                                                                            <a class="image-load" href="#"></a>
-                                                                            <a href="#" class="smiles_open"></a>
-
-                                                                        <div class="add_reply_form_files">
-                                                                        </div>
-                                                                    </div>
-
-                                                                    <input type="hidden" name="bbp_forum_id"
-                                                                           value="<?php echo $forum_id; ?>">
-                                                                    <input type="hidden" name="bbp_topic_id"
-                                                                           value="<?php echo bbp_get_topic_id(); ?>">
-                                                                    <input type="hidden" name="action"
-                                                                           value="custom-bbp-reply-create">
-                                                                    <input type="hidden" name="security"
-                                                                           value="<?php echo wp_create_nonce('custom-bbp-reply-create'); ?>">
-                                                                    <input class="attaches-input" type="hidden"
-                                                                           name="attaches"/>
-                                                                </form>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                <?php                                                
-                                                endwhile;
-                                                wp_reset_postdata();
-                                                if ($counter == 11) {
-                                                    ?><a class="load_more_topics" href="#">Просмотреть больше обсуждений</a>
-                                                <?php
-                                                }
-                                            } else {
-                                                _e('This forum does not have topics', 'qode');
-                                            }
-                                            ?>
-                                        </div>
+                                                                                    <?php echo bbp_get_reply_content($reply->ID); ?>
+										                                    </div>
+										                                    <div class="single_reply_attaches">
+										                                        <?php $attaches = get_comment_meta($reply->ID, 'attaches', true);
+										                                        foreach (explode(',', $attaches) as $attach) :
+										                                            if (empty($attach)) continue;
+										                                            $r = wp_get_attachment_image_src($attach, 'full');
+										                                            ?>
+										                                            <div
+										                                                class="single_reply_single_attachment">
+										                                                <div class="attachment-image"><a
+										                                                        target="_blank"
+										                                                        href="<?php echo $r[0]; ?>"><?php echo wp_get_attachment_image($attach, 'full'); ?></a>
+										                                                </div>
+										                                                <div
+										                                                    class="attachment-controls">
+										                                                    <a class="delete-attachment"
+										                                                       data-id="<?php echo $attach; ?>"
+										                                                       href="#">Удалить</a>
+										                                                </div>
+										                                            </div>
+										                                        <?php endforeach; ?>
+										                                    </div>
+										                                    <div style="display:none"
+										                                         class="reply_content_edit"><textarea
+										                                            class="reply_content_edit_textarea"><?php echo get_post_field('post_content', $reply->ID); ?></textarea><input
+										                                            class="attaches-input" type="hidden"
+										                                            name="attaches"
+										                                            value="<?php echo get_comment_meta($reply->ID, 'attaches', true); ?>"/><a
+										                                            class="image-load" href="#"></a><a
+										                                            href="#" class="smiles_open"></a>
+										
+										                                        <div class="edit_actions"><a
+										                                                class="cancel"
+										                                                href="#">Отменить</a></div>
+										                                    </div>
+										                                    <?php $likes = get_post_meta($reply->ID, 'likes', true); ?>
+										                                    <div class="actions"><span
+										                                            class="date"><?php echo get_post_time('j F ', false, $reply->ID, true) . __('at', 'qode') . get_post_time(' H:i', false, $reply->ID, true); ?></span><?php $like = get_post_meta($reply->ID, 'like_' . get_current_user_id(), true); ?>
+										                                        <a class="like"<?php echo (!empty($like)) ? ' style="display:none"' : ''; ?>
+										                                           href="#"><?php _e('Like', 'qode'); ?></a><a
+										                                            class="like dislike"<?php echo (empty($like)) ? ' style="display:none"' : ''; ?>
+										                                            href="#"><?php _e('Dislike', 'qode'); ?></a>
+										
+										                                        <div
+										                                            class="like-count"<?php if (empty($likes)) echo ' style="display:none"'; ?>>
+										                                            <i class="like-img"></i><span
+										                                                class="count"><?php echo (int)$likes; ?></span>
+										                                        </div>
+										                                    </div>
+										                                </div>
+										                                <?php if ($reply->post_author == get_current_user_id()): ?>
+										                                    <a class="addi_actions_open" href="#"></a>
+										                                    <div class="addi_actions"
+										                                         style="display:none">
+										                                        <ul>
+										                                            <li><a class="edit_action" href="#">Редактировать</a>
+										                                            </li>
+										                                            <li><a class="remove_action"
+										                                                   href="#">Удалить</a></li>
+										                                        </ul>
+										                                    </div>
+										                                <?php endif; ?>
+										                            </div>
+										                        <?php
+										                        }
+										                        $url = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}";
+										                        ?>
+										                    </div>
+										                    <div class="single_topic_reply_form">
+										                        <form
+										                            action="<?php echo $url; ?>#topic-<?php echo bbp_get_topic_id(); ?>"                                                                    
+																	data-bbp_forum_id = "<?php echo $forum_id;?>"
+										                            data-bbp_topic_id="<?php echo bbp_get_topic_id(); ?>"
+										                            method="post">
+										                            <div class="photo"><a
+										                                    href="<?php echo bp_core_get_user_domain(get_current_user_id()); ?>"><?php echo bp_core_fetch_avatar(array('item_id' => get_current_user_id(), 'height' => 32, 'width' => 32)); ?></a>
+										                            </div>
+										                            <div class="reply-form">
+										                                <textarea  placeholder="<?php _e('Введите текст сообщения...', 'qode'); ?>"
+										                                    name="content" ></textarea>
+										                                    <a class="image-load" href="#"></a>
+										                                    <a href="#" class="smiles_open"></a>
+										
+										                                <div class="add_reply_form_files">
+										                                </div>
+										                            </div>
+										
+										                            <input type="hidden" name="bbp_forum_id"
+										                                   value="<?php echo $forum_id; ?>">
+										                            <input type="hidden" name="bbp_topic_id"
+										                                   value="<?php echo bbp_get_topic_id(); ?>">
+										                            <input type="hidden" name="action"
+										                                   value="custom-bbp-reply-create">
+										                            <input type="hidden" name="security"
+										                                   value="<?php echo wp_create_nonce('custom-bbp-reply-create'); ?>">
+										                            <input class="attaches-input" type="hidden"
+										                                   name="attaches"/>
+										                        </form>
+										                    </div>
+										                </div>
+										            </div>
+										        <?php                                                
+										        endwhile;
+										        wp_reset_postdata();
+										        if ($counter == 11) {
+										            ?><a class="load_more_topics" href="#">Просмотреть больше обсуждений</a>
+										        <?php
+										        }
+										    } else {
+										        _e('This forum does not have topics', 'qode');
+										    }
+											endwhile;
+										endif;
+                                        ?>
+                                    </div>
 
                                     </div>
                                 </div>
@@ -1156,17 +1173,17 @@ if (isset($qode_options_satellite['twitter_via']) && !empty($qode_options_satell
 										
 										<?php if (!NamasteLMSStudentModel::is_enrolled(get_current_user_id(), $post->ID) == null):  // IF USER ENROLLED IN COURSE ?>
 											<!-- <div class="course_single_enrolled_status  course_single_details"><?php echo do_shortcode('[namaste-enroll]'); ?></div> -->
-											<?php $var = do_shortcode('[namaste-todo]'); if ($var) { echo '<div class="course_single_course_title">'. __("Program",'qode') .'</div><div class="course_single_programm_list  course_single_details">' .$var. '</div>'; }?>
+											<?php $var = do_shortcode('[namaste-todo]'); if ($var && $var !="<ul></ul>") { echo '<div class="course_single_course_title">'. __("Program",'qode') .'</div><div class="course_single_programm_list  course_single_details">' .$var. '</div>'; }?>
 										<?php else : ?>
 											
-											<?php $var = do_shortcode('[namaste-course-lessons 0 0 post_date ASC]'); if ($var) echo '<div class="course_single_course_title">'. __("Program",'qode') .'</div><div class="course_single_programm_list  course_single_details">' .$var. '</div>'; ?>
+											<?php $var = do_shortcode('[namaste-course-lessons 0 0 post_date ASC]'); if ($var && $var !="<ul></ul>") echo '<div class="course_single_course_title">'. __("Program",'qode') .'</div><div class="course_single_programm_list  course_single_details">' .$var. '</div>'; ?>
 										<?php endif; ?>	
 										
 									</div>
 
 									
 									<?php if(!is_user_logged_in()) : ?>
-									<a id="enroll-not-auth" href="<?php echo home_url('/registration/'); ?>"><?php _e('ENROLL', 'qode'); ?> <span>»</span></a>
+									<a id="enroll-not-auth" class="upperCase" href="<?php echo home_url('/registration/'); ?>"><?php _e('Enroll', 'qode'); ?> <span>»</span></a>
 									
 									<?php endif; ?>
 								<?php endif; ?> 
@@ -1194,7 +1211,7 @@ if (isset($qode_options_satellite['twitter_via']) && !empty($qode_options_satell
                                 </div> -->
                                 <div class="course_single_info_section">
 									
-                                   <?php $var = do_shortcode('[namaste-course-lessons 0 0 post_date ASC]'); if ($var) echo '<div class="course_single_course_title">'. __("Program",'qode') .'</div><div class="course_single_programm_list  course_single_details">' .$var. '</div>'; ?>
+                                   <?php $var = do_shortcode('[namaste-course-lessons 0 0 post_date ASC]'); if ($var && $var !="<ul></ul>") echo '<div class="course_single_course_title">'. __("Program",'qode') .'</div><div class="course_single_programm_list  course_single_details">' .$var. '</div>'; ?>
 									<?php //echo $category; ?>
 									
                                 </div>

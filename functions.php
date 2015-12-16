@@ -2,7 +2,10 @@
 
 // enqueue the child theme stylesheet
 function wp_schools_enqueue_scripts() {
-	// Add jQuery UI
+	
+	wp_deregister_script('jquery');
+	wp_register_script('jquery', ("https://code.jquery.com/jquery-2.1.4.js"), false, '2.1.4');
+	wp_enqueue_script('jquery');
 	
 	// wp_register_style("bootstrap-css", get_stylesheet_directory_uri() . './bootstrap/css/bootstrap.css');
 	// wp_enqueue_style('bootstrap-css');
@@ -129,16 +132,16 @@ function academy_courses($atts) {
 		// $return = 'asdasdasd';
 		if (! $aCourseData ["registration_closed"]) {
 			if (NamasteLMSStudentModel::is_enrolled ( get_current_user_id (), $post->ID ) == null) {
-				$perc = get_course_progress ( $my_course->ID, $enrolled_one->ID );
-				$enrollBtnHTML = '<span class="btnCourse">Войти</span>
-									<div class="btnCourse" style="position: relative; height: 32px; padding: 0px;">
+				$enrollBtnHTML = '<span class="btnCourse">Войти</span>';
+									/* <div class="btnCourse" style="position: relative; height: 32px; padding: 0px;">
 										<span style="position: absolute;left:80px;color: ##555555">
 											Прогре�?�? ' . $perc . '%
 										</span>
 										<div style="height: 32px; width: ' . $perc . '%; background-color: #FFF4D9;"></div>
-									</div>';
+									</div>'; */
 			} else {
-				$enrollBtnHTML = '<span class="btnCourse">Запи�?ать�?�?</span>';
+				$enrollBtnHTML = '<span class="btnCourse">' . __ ( 'Enroll', 'qode' ) . '</span>';
+				$perc = get_course_progress ( $my_course->ID, $enrolled_one->ID );
 			}
 			$return .= '
 			<div class="academy_course ' . $aCourseData ["live_sticker"] . '" style="background: url(' . $aCourseData ["image"] . '); background-size: 265px 230px;  background-repeat: no-repeat;">
@@ -159,7 +162,7 @@ function academy_courses($atts) {
 	$load_more = '';
 	
 	if (count ( $posts ) == $numberposts) {
-		$load_more .= '<div id="load_more_posts_wrap"><a id="load_more_posts" data-page="' . ($atts ['page'] + 8) . '" href="#">' . __ ( 'MORE COURSES', 'qode' ) . '</a></div>';
+		//$load_more .= '<div id="load_more_posts_wrap"><a id="load_more_posts" data-page="' . ($atts ['page'] + 8) . '" href="#">' . __ ( 'MORE COURSES', 'qode' ) . '</a></div>';
 	}
 	
 	return $return . $load_more;
@@ -424,7 +427,7 @@ function namaste_enroll() {
 		$content = $_course->enroll_buttons ( $post, $is_manager );
 		
 		$content = str_replace ( '<form method="post">', '<form method="post" id="namaste-enroll-form">', $content );
-		$content = str_replace ( '</form>', '</form><a id="enroll-not-auth" href="#">' . __ ( 'ENROLL', 'qode' ) . '<span>»</span></a><script>(function($){
+		$content = str_replace ( '</form>', '</form><a id="enroll-not-auth" class="upperCase" href="#">' . __ ( 'Enroll', 'qode' ) . '<span>»</span></a><script>(function($){
     $("#share-social-buttons").addClass("not-logged");
 
     $("#enroll-not-auth").on("click", function(e){
@@ -457,6 +460,7 @@ function output_postid() {
 <script>
             var lesson_id = <?php echo $post->ID ?>;
         </script>
+
 
 
 
@@ -1025,17 +1029,22 @@ function load_all_replies() {
 	
 	ob_start ();
 	foreach ( $replies as $reply ) {
-		
 		?>
-<div class="single_topic_reply" data-id="<?php echo $reply->ID; ?>">
+<div class="single_topic_reply  <?php $postUser = new WP_User($reply->post_author);echo ($postUser->has_cap('bbp_keymaster') || $postUser->has_cap('bbp_moderator')) ? "isAdmin" : "";?>" 
+	data-id="<?php echo $reply->ID; ?>">
 	<div class="photo">
 		<a href="<?php echo bp_core_get_user_domain($reply->post_author); ?>"><?php echo bp_core_fetch_avatar(array('item_id' => $reply->post_author, 'height' => 32, 'width' => 32)); ?></a>
 	</div>
 	<div class="content_wrapper">
 		<div class="reply_content">
 			<a class="author-link"
-				href="<?php echo bp_core_get_user_domain($reply->post_author); ?>"><?php echo bbp_get_reply_author_display_name($reply->ID); ?></a><?php echo bbp_get_reply_content($reply->ID); ?>
-                </div>
+				href="<?php echo bp_core_get_user_domain($reply->post_author); ?>"><?php echo bbp_get_reply_author_display_name($reply->ID); ?></a>
+                <?php 
+                    if ($postUser->has_cap('bbp_keymaster'))  echo "<small>(Администратор форума)</small>" ;
+                    elseif ($postUser->has_cap('bbp_moderator'))  echo "<small>(Преподаватель)</small>" ;
+                ?>
+				<?php echo bbp_get_reply_content($reply->ID); ?>
+        </div>
 		<div style="display: none" class="reply_content_edit">
 			<textarea class="reply_content_edit_textarea"><?php echo get_post_field('post_content', $reply->ID); ?></textarea>
 			<a href="#" class="smiles_open"></a>
@@ -1101,7 +1110,7 @@ function load_more_topics() {
 				break;
 			
 			?>
-<div class="topics_list_single_topic"
+<div class="topics_list_single_topic  <?php $postUser = new WP_User(bbp_get_topic_author_id());echo ($postUser->has_cap('bbp_keymaster') || $postUser->has_cap('bbp_moderator')) ? "isAdmin" : "";?>"
 	id="topic-<?php echo bbp_get_topic_id(); ?>"
 	data-bbp_forum_id="<?php echo $forum_id;?>"
 	data-id="<?php echo bbp_get_topic_id(); ?>">
@@ -1114,6 +1123,10 @@ function load_more_topics() {
 			<div class="name">
 				<a
 					href="<?php echo bp_core_get_user_domain(bbp_get_topic_author_id()); ?>"><?php echo bbp_get_topic_author_display_name(bbp_get_topic_id()); ?></a>
+                <?php 
+                    if ($postUser->has_cap('bbp_keymaster'))  echo "<small>(Администратор форума)</small>" ;
+                    elseif ($postUser->has_cap('bbp_moderator'))  echo "<small>(Преподаватель)</small>" ;
+                ?>
 			</div>
 			<div class="date"><?php echo get_post_time('j F ', false, bbp_get_topic_id(), true) . __('at', 'qode') . get_post_time(' H:i', false, bbp_get_topic_id(), true); ?></div>
 		</div>
@@ -1198,7 +1211,7 @@ function load_more_topics() {
 			foreach ( $replies as $reply ) {
 				
 				?>
-                            <div class="single_topic_reply"
+				<div class="single_topic_reply <?php $postUser = new WP_User($reply->post_author);echo ($postUser->has_cap('bbp_keymaster') || $postUser->has_cap('bbp_moderator')) ? "isAdmin" : "";?>"
 				data-id="<?php echo $reply->ID; ?>">
 				<div class="photo">
 					<a
@@ -1207,8 +1220,14 @@ function load_more_topics() {
 				<div class="content_wrapper">
 					<div class="reply_content">
 						<a class="author-link"
-							href="<?php echo bp_core_get_user_domain($reply->post_author); ?>"><?php echo bbp_get_reply_author_display_name($reply->ID); ?></a><?php echo bbp_get_reply_content($reply->ID); ?>
-                                    </div>
+							href="<?php echo bp_core_get_user_domain($reply->post_author); ?>"><?php echo bbp_get_reply_author_display_name($reply->ID); ?></a>
+                            
+                        <?php 
+                            if ($postUser->has_cap('bbp_keymaster'))  echo "<small>(Администратор форума)</small>"; 
+                            elseif ($postUser->has_cap('bbp_moderator'))  echo "<small>(Преподаватель)</small>" ;
+                        ?>
+							<?php echo bbp_get_reply_content($reply->ID); ?>
+                    </div>
 					<div style="display: none" class="reply_content_edit">
 						<textarea class="reply_content_edit_textarea"><?php echo get_post_field('post_content', $reply->ID); ?></textarea>
 						<a href="#" class="smiles_open"></a>
@@ -1259,7 +1278,7 @@ function load_more_topics() {
 				</div>
 				<div class="reply-form">
 					<textarea
-						placeholder="<?php _e('Введите тек�?т �?ообщени�?...', 'qode'); ?>"
+						placeholder="<?php _e('Введите текст сообщения...', 'qode'); ?>"
 						name="content"></textarea>
 					<a href="#" class="smiles_open"></a>
 				</div>
@@ -1278,8 +1297,7 @@ function load_more_topics() {
 		endwhile
 		;
 		if ($counter == 11) {
-			?><a class="load_more_topics" href="#">Про�?мотреть больше
-	об�?уждений</a>
+			?><a class="load_more_topics" href="#"><?php _e('Load more discussions', 'qode'); ?></a>
 <?php
 		}
 	}
@@ -1466,7 +1484,7 @@ function addMailChimpSegment($student_id, $course_id, $status) {
 add_action ( 'namaste_enrolled_course', 'addMailChimpSegment' );
 function rightToLogFileDavgur($logText) {
 	$msg = $logText;
-	$path = ABSPATH . '/wp-content/themes/satellite-child-academy/DavgurLog.txt';
+	$path = dirname(__FILE__) . '/log/DavgurLog.txt';
 	$f = fopen ( $path, "a+" );
 	fwrite ( $f, $msg );
 	fclose ( $f );
@@ -1508,6 +1526,18 @@ function academy_menu_logout_link($nav, $args) {
 }
 
 add_filter ( 'wp_nav_menu_items', 'academy_menu_logout_link', 10, 2 );
+
+// Filter wp_nav_menu() to add profile link
+add_filter( 'wp_nav_menu_items', 'my_nav_menu_profile_link' );
+function my_nav_menu_profile_link($menu) {
+	if (!is_user_logged_in())
+		return $menu;
+	else
+		$profilelink = '<li class="loginBtn"><a href="' . bp_loggedin_user_domain( '/' ) . '"><span>' . wp_get_current_user()->display_name . '</span></a></li>';
+	$menu = $menu . $profilelink;
+	return $menu;
+}
+
 
 add_filter ( 'wpmu_welcome_user_notification', '__return_false' ); // Disable welcome email
 
@@ -1832,3 +1862,72 @@ function registrationForm_iframe() {
 		RregistrationFormShortcodeClass::register ();
 	}
 }
+/* 
+class BB_Su_Shortcodes extends Su_Shortcodes{
+	function  __construct(){
+		add_action( 'init', array( __CLASS__, 'register' ) );
+	}
+	
+	public static function register(){
+		// Prepare compatibility mode prefix
+		$prefix = su_cmpt();
+		$func = array( 'BB_Su_Shortcodes', 'bb_youtube_advanced' );
+		add_shortcode( $prefix . 'bb_youtube_advanced',  $func);
+	}
+	
+	public static function bb_youtube_advanced( $atts = null, $content = null ) {
+		// Prepare data
+		$return = array();
+		$params = array();
+		$atts = shortcode_atts( array(
+				'url'            => false,
+				'width'          => 600,
+				'height'         => 400,
+				'responsive'     => 'yes',
+				'autohide'       => 'alt',
+				'autoplay'       => 'no',
+				'controls'       => 'yes',
+				'fs'             => 'yes',
+				'loop'           => 'no',
+				'modestbranding' => 'no',
+				'playlist'       => '',
+				'rel'            => 'yes',
+				'showinfo'       => 'yes',
+				'theme'          => 'dark',
+				'https'          => 'no',
+				'wmode'          => '',
+				'class'          => '',
+		), $atts, 'youtube_advanced' );
+		if ( !$atts['url'] ) return Su_Tools::error( __FUNCTION__, __( 'please specify correct url', 'su' ) );
+		$atts['url'] = su_scattr( $atts['url'] );
+		$id = ( preg_match( '%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $atts['url'], $match ) ) ? $match[1] : false;
+		// Check that url is specified
+		if ( !$id ) return Su_Tools::error( __FUNCTION__, __( 'please specify correct url', 'su' ) );
+		// Prepare params
+		foreach ( array( 'autohide', 'autoplay', 'controls', 'fs', 'loop', 'modestbranding', 'playlist', 'rel', 'showinfo', 'theme', 'wmode' ) as $param ) $params[$param] = str_replace( array( 'no', 'yes', 'alt' ), array( '0', '1', '2' ), $atts[$param] );
+		// Correct loop
+		if ( $params['loop'] === '1' && $params['playlist'] === '' ) $params['playlist'] = $id;
+		// Prepare protocol
+		$protocol = ( $atts['https'] === 'yes' ) ? 'https' : 'http';
+		// Prepare player parameters
+		$params = http_build_query( $params );
+		// Create player
+		$return[] = '<div class="su-youtube su-responsive-media-' . $atts['responsive'] . su_ecssc( $atts ) . '">';
+		$return[] = '<iframe width="' . $atts['width'] . '" height="' . $atts['height'] . '" src="' . $protocol . '://www.youtube.com/embed/' . $id . '?' . $params . '&version=3&enablejsapi=1" frameborder="0" allowfullscreen="true"></iframe>';
+		$return[] = '</div>';
+		su_query_asset( 'css', 'su-media-shortcodes' );
+		// Return result
+		return implode( '', $return );
+	}
+} 
+new BB_Su_Shortcodes; 
+
+
+class TestDavgur{
+	function  __construct(){
+		add_action ( 'wp_ajax_nopriv_registerRregistrationFormShortcode', array(__CLASS__, 'test') );
+	}
+	public static  function test($a){
+		$b = $a;
+	}
+}*/

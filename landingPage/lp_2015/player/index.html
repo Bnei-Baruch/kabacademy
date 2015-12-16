@@ -1,0 +1,163 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<HTML xmlns="http://www.w3.org/1999/xhtml"> 
+<head>
+<title>Flowplayer</title>
+<META http-equiv=Content-Type content="text/html; charset=utf-8"> 
+
+<style type="text/css"> 
+#layer1 {
+    z-index: 1; /* Порядок слоев */
+    width: 100%; /* Ширина слоя с фоном */
+    height: 100%; /* Высота слоя с фоном */
+    position: fixed; /* Абсолютное позиционирование */
+    left: 0; /* Положение от левого края окна */
+    top: 0; /* Положение от верхнего края */
+	
+   }
+   
+#layer2 {
+    position: absolute; /* Абсолютное позиционирование */
+    z-index: 2; /* Порядок слоев */
+	width: 100%;
+   }
+
+.white_subtitle1 {
+PADDING-RIGHT: 0px; PADDING-LEFT: 0px; FONT-WEIGHT: normal; FONT-SIZE: 16px; PADDING-BOTTOM: 5px; COLOR: #ffffff; PADDING-TOP: 7px; FONT-FAMILY: Arial, Helvetica, sans-serif 
+</style> 
+
+
+</head>
+<body bgcolor="#98b039">
+<div id="layer1">
+    <img src="images/dddd2.jpg" width="100%" alt="" >
+  </div>
+  <div id="layer2" >
+ 
+ 
+ 
+<TABLE cellSpacing="0" cellPadding="0" align="center"  border="0" bgcolor="#ffffff" > 
+<TR> 
+<TD align="center"> 
+<div><img src="images/logo.jpg" width="425" height="82"  vspace="0" ></div>
+</td>
+</tr>
+
+<TR> 
+<TD align="center"> 
+<div id="video-player" >
+	<script type="text/javascript"	src='flowplayer/flowplayer-3.2.4.min.js'></script>
+	<!-- this is where your Flowplayer will be placed. it can be anywhere -->
+	<div style="width:425px;height:300px;" id="media-area">
+		<a id="media-player"></a>
+		<!-- info box for debug messages-->
+		<div id="info"></div>
+	</div><!-- /MEDIA AREA -->
+</div>
+<script language="JavaScript" type="text/javascript">
+var info = document.getElementById("info");
+flowplayer("media-player",	"flowplayer/flowplayer.commercial-3.2.5.swf",	{
+	key: '#@16e3fcec367b42016e9',
+	canvas:  {
+        backgroundGradient: 'none'
+    },
+	logo: {
+        url: 'http://www1.kabbalahlearningcenter.info/flash/images/kab_bug.png',
+        fullscreenOnly: false,
+        bottom: 40,
+        left: 15,
+        opacity: 0.4,
+        fadeSpeed: 5,
+        displayTime: 60
+    },
+    clip: {
+        // for the Wowza setup we will use the file extension here
+        url: 'rfundamentals.flv',
+        provider: 'rtmp',
+        live:'true',
+        scaling: 'fit'
+    },
+    plugins:  {
+        rtmp: {
+             url: 'flowplayer/flowplayer.rtmp-3.2.3.swf',
+             netConnectionUrl: 'rtmp://flash3.eu.kab.tv/rfundamentals'
+
+        }
+
+    },
+	onError: function() {
+   		document.getElementById("media-area").innerHTML=
+   	   	"<a href='" + document.location+"'>"
+   	   	+ "<img src='images/not_online.gif' border='0'/>"
+   	   	+ "</a>";
+  	}
+
+
+
+   });
+
+</script><!-- END OF PLAYER -->
+</td>
+</tr>
+
+<tr>
+<td align="center">
+<TABLE cellSpacing="0" cellPadding="0" width="425" border="0" style="margin-top: 0px;" >
+              <TR> 
+              <TD height="25" align="center" background="images/grey_bar.jpg" class="white_subtitle1" ><b>Расписание трансляций</b>
+			  </TD> 
+              </TR> 
+				<TR> 
+                <TD>
+				<div style="margin-left: 10px; margin-right: 10px;">
+<div style="text-align: left; font-family:  Arial; font-size: 12px; margin-top: 10px;"><b>Понедельник</b><br />20:00 - курс "Схема мироздания" (трансляция из Израиля)<br />
+22:00 - курс "Схема мироздания" (трансляция из Берлина)
+</div>
+<div style="text-align: left; font-family:  Arial; font-size: 12px; margin-top: 5px;"><b>Вторник</b><br />17:30 - курс "Подготовка к изучению книги ЗОАР" (трансляция из Берлина)<br />
+20:00 - курс "Подготовка к изучению книги ЗОАР" (трансляция из Израиля)</div>
+<div style="text-align: left; font-family:  Arial; font-size: 12px; margin-top: 5px;"><b>Среда</b><br />20:00 - курс "Основные положения науки каббала" (трансляция  из Санкт-Петербурга)<br />
+22:00 - курс "Основные положения науки каббала" (трансляция из Санкт-Петербурга)
+</div>
+</div>
+			</TD> 
+            </TR> 
+				
+</TABLE>
+
+<TABLE cellSpacing="0" cellPadding="0" width="425" border="0" style="margin-top: 10px;" >
+              <TR> 
+              <TD height="25" align="center" background="images/grey_bar.jpg" class="white_subtitle1" ><b>Виртуальное изучение каббалы</b>
+			  </TD> 
+              </TR> 
+				<TR> 
+                <TD>
+				<div style="text-align: left; font-family:  Arial; font-size: 12px; margin-left: 10px; margin-right: 10px;">
+<p style="text-align: left; font-family:  Arial; font-size: 12px; margin-top: 10px;">Каббала - это наука, позволяющая изучить природу человека, найти смысл жизни и возможность восприятия истинной реальности, находящейся за пределами пяти органов чувств, с помощью которых мы воспринимаем наш материальный мир.</p>
+<p>Международная Академия Каббалы (МАК) предоставляет всем желающим возможность основательного изучения классической науки каббала. Для организации дистанционного обучения через Интернет используются современно оборудованные центры, расположенные в Тель-Авиве, Нью-Йорке, Торонто, Сент-Луисе и Сан-Франциско, Санкт-Петербурге и Москве.</p>
+<p style="text-align: left; font-family:  Arial; font-size: 12px; margin-bottom: 15px;">В настоящее время услугами дистанционного обучения воспользовались уже более 50 000 студентов со всего мира.</p>
+</div>
+			</TD> 
+            </TR> 
+				
+</TABLE>
+
+</TD>
+</TR> 
+</TABLE>
+<br />
+</div>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-548326-19']);
+  _gaq.push(['_setDomainName', '.kabacademy.com']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+</body>
+</html>

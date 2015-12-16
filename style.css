@@ -24,6 +24,10 @@ li{
     list-style-position: inside; 
 }
 
+.upperCase{	
+	text-transform: uppercase
+}
+
 .title .title_holder h1 {
     text-align: center;
 }
@@ -2599,6 +2603,9 @@ background-size: 21px 21px; background-repeat: no-repeat;}
     position: relative;
     overflow: visible;
 }
+.single_topic_reply.isAdmin, .topics_list_single_topic.isAdmin .single_topic_header {
+    background-color: rgba(206, 205, 202, 0.35);
+}
 
 .single_topic_reply .actions {
     margin-top: 3px;
@@ -2655,7 +2662,7 @@ background-size: 21px 21px; background-repeat: no-repeat;}
     box-sizing: border-box;
     resize: none;
     min-height: 32px;
-    height: 32px;
+    /*height: 32px;*/
     padding: 7px 28px 7px 5px;
     font-size: 12px;
     line-height: 16px;
@@ -3071,7 +3078,7 @@ background-size: 21px 21px; background-repeat: no-repeat;}
     border-color: #dcdee3;
     display: block;
     min-height: 32px;
-    height: 32px;
+    /*height: 32px;*/
     padding: 7px 28px 7px 5px;
 }
 
@@ -3592,3 +3599,5 @@ margin-top: 85px;
 	color: #626262;
 }
 .ls-defaultskin{padding-left: 0 !important; padding-right:0 !important}
+
+#buddypress table.notification-settings th.title, #buddypress table.profile-settings th.title{height: auto;}

@@ -2,6 +2,10 @@
 /*
 Template Name: Registration Page
 */
+if (is_user_logged_in ()) {
+        wp_redirect( home_url() );
+       return;    
+}
 
 global $wp_query;
 $id = $wp_query->get_queried_object_id();
@@ -55,16 +59,20 @@ if(get_post_meta($id, "qode_show-page-title-image", true)) {
 
 ?>
 <?php get_header(); ?>
-<?php if(!get_post_meta($id, "qode_show-page-title", true) || isset($_GET['successful'])) { ?>
+<?php if(!get_post_meta($id, "qode_show-page-title", true)) { ?>
     <div class="title <?php if($responsive_title_image == 'no' && $title_image != "" && $fixed_title_image == "yes" && $show_title_image == true){ echo 'has_fixed_background '; } if($responsive_title_image == 'no' && $title_image != "" && $fixed_title_image == "no" && $show_title_image == true){ echo 'has_background'; } if($responsive_title_image == 'yes' && $show_title_image == true){ echo 'with_image'; } ?>" style="<?php if($responsive_title_image == 'no' && $title_image != "" && $show_title_image == true){ echo 'background-image:url('.$title_image.');';  } if($responsive_title_image == 'no' && $title_height != ''){ echo 'height:'.$title_height.'px;'; } if($title_background_color != ''){ echo 'background-color:'.$title_background_color.';'; } ?>">
         <?php if($responsive_title_image == 'yes' && $title_image != "" && $show_title_image == true){ echo '<img src="'.$title_image.'" alt="title" />'; } ?>
         <?php if(!get_post_meta($id, "qode_show-page-title-text", true)) { ?>
             <div class="title_holder">
                 <div class="container">
                     <div class="container_inner clearfix">
-
-                        <h1<?php if(get_post_meta($id, "qode_page-title-color", true)) { ?> style="color:<?php echo get_post_meta($id, "qode_page-title-color", true) ?>" <?php } ?>><?php echo isset($_GET['successful']) ? __('ÐŸÑ€Ð¾Ð²ÐµÑ€ÑŒÑ‚Ðµ Ð²Ð°ÑˆÑƒ Ð¿Ð¾Ñ‡Ñ‚Ñƒ, Ñ‡Ñ‚Ð¾Ð±Ñ‹ Ð°ÐºÑ‚Ð¸Ð²Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ ÑƒÑ‡ÐµÑ‚Ð½ÑƒÑŽ Ð·Ð°Ð¿Ð¸Ñ�ÑŒ.', 'qode') : get_the_title(); ?></h1>
-                        <?php if(get_post_meta($id, "qode_page-subtitle", true)) { ?><span class="subtitle"<?php if(get_post_meta($id, "qode_page-subtitle-color", true)) { ?> style="color:<?php echo get_post_meta($id, "qode_page-subtitle-color", true) ?>" <?php } ?>> <?php echo get_post_meta($id, "qode_page-subtitle", true) ?></span><?php } ?>
+                        <h1
+                        	<?php if(get_post_meta($id, "qode_page-title-color", true)) { ?> style="color:<?php echo get_post_meta($id, "qode_page-title-color", true) ?>" <?php } ?>>
+                        	<?php echo get_the_title(); ?>
+                        </h1>
+                        <?php if(get_post_meta($id, "qode_page-subtitle", true)) { ?>
+                        	<span class="subtitle"<?php if(get_post_meta($id, "qode_page-subtitle-color", true)) { ?> style="color:<?php echo get_post_meta($id, "qode_page-subtitle-color", true) ?>" <?php } ?>> 
+                        <?php echo get_post_meta($id, "qode_page-subtitle", true) ?></span><?php } ?>
                     </div>
                 </div>
             </div>
@@ -80,9 +88,8 @@ if(get_post_meta($id, "qode_show-page-title-image", true)) {
 <?php } ?>
 
 <div class="container">
-    <div <?php if( ! isset($_GET['successful'])) : ?>id="lr-container" <?php endif;?>class="container_inner clearfix">
+    <div id="lr-container" class="container_inner clearfix">
         <!--<div class="lr-container">-->
-        <?php if( ! isset($_GET['successful'])) : ?>
             <div class="lr-left-container">
                <!--  <div class="clearfix"> 
                     <div class="hor-line-divider"></div>
@@ -108,12 +115,10 @@ if(get_post_meta($id, "qode_show-page-title-image", true)) {
             <!--     <span class="T2"><?php _e('Sign In with your social account', 'qode'); ?></span>
                 <?php echo do_shortcode('[btn-hybridauth provider_id="Google" connect="true"]<span class="essb_icon"></span><span class="essb_network_name">'.__('Sign in with Google', 'qode').'</span>[/btn-hybridauth]'); ?>
                 <?php echo do_shortcode('[btn-hybridauth provider_id="Facebook" connect="true"]<span class="essb_icon"></span><span class="essb_network_name">'.__('Sign in with Facebook', 'qode').'</span>[/btn-hybridauth]'); ?>
-                <?php echo do_shortcode('[btn-hybridauth provider_id="Vkontakte" connect="true"]<span class="essb_icon"></span><span class="essb_network_name">'.__('Sign in with Vkontakte', 'qode').'</span>[/btn-hybridauth]'); ?> -->
+                <?php echo do_shortcode('[btn-hybridauth provider_id="Vkontakte" connect="true"]<span class="essb_icon"></span><span class="essb_network_name">'.__('Sign in with Vkontakte', 'qode').'</span>[/btn-hybridauth]'); ?> 
+                -->
             </div>
         <!--</div>-->
-        <?php else : ?>
-    <?php _e('Вы успешно создали ваш аккаунт. Для того чтобы начать им пользоваться, вам необходимо активировать его через e-mail письмо, которое мы только что вам отправили.', 'qode'); ?>
-        <?php endif; ?>
     </div>
 </div>
 
