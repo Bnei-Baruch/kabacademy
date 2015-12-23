@@ -512,7 +512,7 @@ function add_points(pointsType, userId, courseId, newLink) {
 	}
 
 	//is correct point's type
-	if(pointsType != 'workshop' && pointsType != 'webinar' && pointsType != 'forum' && pointsType != 'archive') {
+	if(pointsType != 'workshop' && pointsType != 'webinar' && pointsType != 'forum' && pointsType != 'archive' && pointsType != 'webinarTT' && pointsType != 'webinarFS' && pointsType != 'webinarPH' && pointsType != 'webinarMS' && pointsType != 'webinarVS') {
 		return false;
 	}
 

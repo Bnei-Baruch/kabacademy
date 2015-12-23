@@ -1602,7 +1602,7 @@ function update_points_system() {
 	$datetime = date ( "Y-m-d h:i:s" );
 	
 	// get the points for the action
-	if ($points_type == 'webinar') {
+	if ($points_type == 'webinar' || $points_type == 'webinarTT' || $points_type == 'webinarSF' || $points_type == 'webinarPH' || $points_type == 'webinarMS' || $points_type == 'webinarVS') {
 		
 		$action_points = get_post_meta ( $course_id, 'namaste_points_webinar', true );
 		if ($action_points === '') {
