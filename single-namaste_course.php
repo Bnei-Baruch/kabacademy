@@ -259,88 +259,73 @@ if (isset($qode_options_satellite['twitter_via']) && !empty($qode_options_satell
 												<script src="https://rt.kbb1.com/bower_components/webcomponentsjs/webcomponents.js"></script>
 												<link rel="import" href="https://rt.kbb1.com/join-button-toggler.html?1">
 
+                                                <?php 
+                                                    //time conversions
+                                                    $points_type = 'geniral-webinar';
+                                                    $dt = new DateTime();
+                                                    $tz = new DateTimeZone('Europe/Moscow'); // or whatever zone you're after
+
+                                                    $dt->setTimezone($tz);
+
+                                                    //geth the hour in Moskve time
+                                                    $current_hour = $dt->format('H');
+
+                                                    //check the time zone
+                                                    if($current_hour==5 || $current_hour==6){
+                                                         $points_type = 'webinarTT';   
+                                                    }
+                                                    if($current_hour==8 || $current_hour==9){
+                                                         $points_type = 'webinarSF';   
+                                                    }
+                                                    if($current_hour==16 || $current_hour==17){
+                                                         $points_type = 'webinarPH';   
+                                                    }
+                                                    if($current_hour==19 || $current_hour==20){
+                                                         $points_type = 'webinarMS';   
+                                                    }
+
+                                                    //check if day is Voskresenya
+                                                    $dw = date( "w", time()); // 0 = sunday
+
+                                                    if ($dw ==  0 || $dw != 3) {
+                                                        $points_type = 'webinarVS';
+                                                    }
+                                                 ?>
+
 												<script>
 													function toggleButton(enabled) {
-														console.log(enabled);
 														if (!enabled) { document.getElementById("joinLive").className += " disable"; }
 														else {
+                                                            //add webinarpoints when hang-out
+                                                            var pointsType = '<?php echo $points_type ?>';
+                                                            var user_id = '<?php echo get_current_user_id(); ?>';
+                                                            var cousrse_id ='<?php echo $post->ID; ?>';
+                                                            add_points(pointsType,user_id, cousrse_id, '');
+
 															document.getElementById("joinLive").className =
 															document.getElementById("joinLive").className.replace( /(?:^|\s)disable(?!\S)/g , '' );
                                                              $("#joinLive").tooltip({content: "<strong>Hi!</strong>", track:true});
 														}
-													}   
-												</script>
+													}
 
-                                                <!-- Hooking on streaming on air -->
-                                                <?php 
-                                                    //time conversions
-                                                    $points_type = 'webinar';
-                                                    $dt = new DateTime($utc);
-                                                    $tz = new DateTimeZone('Europe/Moscow'); // or whatever zone you're after
-
-                                                    $dt->setTimezone($tz);
-                                                    //geth the hour in Moskve time
-                                                    $current_hour = $dt->format('H');
-                                                    ;
-
-                                                    //check the time zone
-                                                    switch ($current_hour) {
-                                                        case '06':
-                                                            $points_type = 'webinarTT';
-                                                            break;
-                                                        
-                                                        case '09':
-                                                            $points_type = 'webinarSF';
-                                                            break;
-                                                        
-                                                        case '17':
-                                                            $points_type = 'webinarPH';
-                                                            break;
-                                                        
-                                                        case '20':
-                                                            $points_type = 'webinarMS';
-                                                            break;
-                                                        
+                                                    function exe_webinar_points(){
+                                                        var pointsType = '<?php echo $points_type ?>';
+                                                        var user_id = '<?php echo get_current_user_id(); ?>';
+                                                        var cousrse_id ='<?php echo $post->ID; ?>';
+                                                        add_points(pointsType,user_id, cousrse_id, '');
                                                     }
-                                                    //check if day is Voskresenya
-                                                    $dw = date( "w", $timestamp); // 0 = sunday
-                                                    if ($dw ==  0) {
-                                                        $points_type = 'webinarVS';
-                                                    }
-                                                  
-                                                 ?>
 
-                                                <script>
+                                                    //add webinar points when youtube
                                                     jQuery(document).ready(function(){
                                                         //get element with id lveventplayer
-                                                        var elt = document.getElementById('lveventplayer');
-                                                        
-                                                        //check if iframe = video streaming
-                                                        if (elt.nodeName == "IFRAME") {
-                                                            exe_webinar_points();
-                                                        };
-
-                                                        
-                                                        // on each change of the dom check if it is an iframe and correct id 
-                                                        jQuery(document).bind('DOMNodeInserted', function(e) {
-                                                            
-                                                            var element = e.target;
-                                                            console.log(element.nodeName);
-                                                            if(element.nodeName =='IFRAME' && element.getAttribute('id'== 'lveventplayer'){
+                                                        setTimeout(function(){
+                                                            var elt = document.getElementById('lveventplayer');
+                                                            //check if iframe = video streaming
+                                                            if (elt.nodeName == "IFRAME") {
                                                                 exe_webinar_points();
-                                                            }
+                                                            };
+                                                        },2000); 
 
-                                                        });
-
-                                                        
-                                                        //fire the webinar points
-                                                        function exe_webinar_points(){
-                                                            var pointsType = <?php echo $points_type ?>;
-                                                            var user_id = '<?php echo get_current_user_id(); ?>';
-                                                            var cousrse_id ='<?php echo $post->ID; ?>';
-                                                            add_points(pointsType,user_id, cousrse_id, '');
-                                                        }
-                                                       
                                                     });
                                                 </script>
 
@@ -409,7 +394,6 @@ if (isset($qode_options_satellite['twitter_via']) && !empty($qode_options_satell
                                                             titleElem.title = "Нет трансляции";
                                                             titleElem.innerHTML = "Нет трансляции";
                                                         }
-                                                        exe_webinar_points();										
 												  }
 												});
                                             </script>

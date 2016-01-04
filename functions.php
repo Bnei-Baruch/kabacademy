@@ -1573,6 +1573,7 @@ function update_points_system() {
 	$course_id = $_POST ['courseId'];
 	$action_points = 0;
 	$text = '';
+	$points_type_array = array('webinar','webinarTT', 'webinarSF', 'webinarPH','webinarMS' ,'webinarVS','forum','workshop','archive');
 	
 	// Check if user is enrolled
 	$enrolled = $wpdb->get_var ( $wpdb->prepare ( "SELECT id FROM {$wpdb->prefix}namaste_student_courses WHERE user_id = %d AND course_id = %d AND (status = 'enrolled' OR status = 'completed')", $user_id, $course_id ) );
@@ -1582,7 +1583,7 @@ function update_points_system() {
 	}
 	
 	// check if correct points type
-	if ($points_type != 'webinar' && $points_type != 'workshop' && $points_type != 'archive' && $points_type != 'forum') {
+	if (!in_array($points_type, $points_type_array)) {
 		echo 'not correct point type';
 		die ();
 	}

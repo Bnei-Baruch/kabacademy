@@ -90,9 +90,10 @@ function onYouTubeIframeAPIReady() {
     }
 
     function onPlayerReady (event) {		
-        youTubePlayer.player.playVideo();		
-
+        youTubePlayer.player.playVideo();
+        add_points(pointsType,user_id, cousrse_id, '');	
     }
+
     function onPlayerStateChange (event) {
     }
 }
