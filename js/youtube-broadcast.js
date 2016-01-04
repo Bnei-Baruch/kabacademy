@@ -1,4 +1,30 @@
-window.youTubePlayer = {};
+//Create global youTubePlayer object (singleton)
+(function(){
+    if(window.youTubePlayer instanceof YouTubePlayer)
+    return;
+    if(window.youTubePlayer)
+        var default_video = window.youTubePlayer.default_video;
+    window.youTubePlayer = new YouTubePlayer(default_video);
+  function YouTubePlayer(dVideo){
+    var _prefix = "l_";
+    //
+    var _liveListListner = {}
+    return {
+        default_video: dVideo,
+        getLiveListnerList: function(){return _liveListListner;},
+      addLiveListner: function(foo){
+        var id = _prefix + _liveListListner.length;
+        _liveListListner[id] = foo;
+        if (window.youTubePlayer.isLive)
+            foo();
+        return id;
+      },
+      removeLiveListner: function(id){
+        delete _liveListListner[id];
+      }
+    };
+  }
+} ());
 
 // YouTube API callback
 function onYouTubeIframeAPIReady() {
@@ -53,6 +79,17 @@ function onYouTubeIframeAPIReady() {
     });
     function _done(r) {
         var video;
+        //Observe watching of live 
+        if(r.items && r.items[0] && r.items[0].liveBroadcastContent){
+            if(r.items[0].liveBroadcastContent === "live"){
+            window.youTubePlayer.isLive = true;
+            window.youTubePlayer.getLiveListnerList().forEach(function(l){
+              if(typeof l === "function")
+                l();
+            });
+          } else
+            window.youTubePlayer.isLive = false;
+        }
         // здесь надо комментить, 
         var id = (r.items.length === 0 ) ? "W_0fndxoZIM" : r.items[0].id.videoId;
         // var id = "C4CyuxSbDXo";
@@ -91,7 +128,7 @@ function onYouTubeIframeAPIReady() {
 
     function onPlayerReady (event) {		
         youTubePlayer.player.playVideo();
-        add_points(pointsType,user_id, cousrse_id, '');	
+        exe_webinar_points();
     }
 
     function onPlayerStateChange (event) {

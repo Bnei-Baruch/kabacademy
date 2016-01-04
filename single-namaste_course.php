@@ -294,13 +294,11 @@ if (isset($qode_options_satellite['twitter_via']) && !empty($qode_options_satell
 
 												<script>
 													function toggleButton(enabled) {
+														console.log(enabled);
 														if (!enabled) { document.getElementById("joinLive").className += " disable"; }
 														else {
                                                             //add webinarpoints when hang-out
-                                                            var pointsType = '<?php echo $points_type ?>';
-                                                            var user_id = '<?php echo get_current_user_id(); ?>';
-                                                            var cousrse_id ='<?php echo $post->ID; ?>';
-                                                            add_points(pointsType,user_id, cousrse_id, '');
+                                                            exe_webinar_points();
 
 															document.getElementById("joinLive").className =
 															document.getElementById("joinLive").className.replace( /(?:^|\s)disable(?!\S)/g , '' );
@@ -315,18 +313,6 @@ if (isset($qode_options_satellite['twitter_via']) && !empty($qode_options_satell
                                                         add_points(pointsType,user_id, cousrse_id, '');
                                                     }
 
-                                                    //add webinar points when youtube
-                                                    jQuery(document).ready(function(){
-                                                        //get element with id lveventplayer
-                                                        setTimeout(function(){
-                                                            var elt = document.getElementById('lveventplayer');
-                                                            //check if iframe = video streaming
-                                                            if (elt.nodeName == "IFRAME") {
-                                                                exe_webinar_points();
-                                                            };
-                                                        },2000); 
-
-                                                    });
                                                 </script>
 
                                                 <!-- End hooking on streaming on air -->
