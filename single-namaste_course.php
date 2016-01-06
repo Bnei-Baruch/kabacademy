@@ -247,7 +247,7 @@ if (isset($qode_options_satellite['twitter_via']) && !empty($qode_options_satell
 															var href = jQuery(this).attr('href');
 
 															console.log(pointsType);
-															add_points(pointsType,user_id,cousrse_id, href);
+															add_points_webinar(pointsType,user_id,cousrse_id, href);
 														})
 													})
                                                 </script>
@@ -261,7 +261,7 @@ if (isset($qode_options_satellite['twitter_via']) && !empty($qode_options_satell
 
                                                 <?php 
                                                     //time conversions
-                                                    $points_type = 'geniral-webinar';
+                                                    $points_type = 'webinar-general';
                                                     $dt = new DateTime();
                                                     $tz = new DateTimeZone('Europe/Moscow'); // or whatever zone you're after
 
@@ -310,7 +310,49 @@ if (isset($qode_options_satellite['twitter_via']) && !empty($qode_options_satell
                                                         var pointsType = '<?php echo $points_type ?>';
                                                         var user_id = '<?php echo get_current_user_id(); ?>';
                                                         var cousrse_id ='<?php echo $post->ID; ?>';
-                                                        add_points(pointsType,user_id, cousrse_id, '');
+                                                        add_points_webinar(pointsType,user_id, cousrse_id);
+                                                    }
+
+                                                    function add_points_webinar(pointsType, userId, courseId) {
+
+                                                        if(pointsType =="" || userId == "" || courseId ==""){
+                                                            console.log('empty data');
+                                                            return false;
+                                                        }
+
+                                                        //userId is number
+                                                        if ( !jQuery.isNumeric(userId) || !jQuery.isNumeric(courseId) ){
+                                                            console.log('NaN');
+                                                            return false;
+                                                        }
+
+                                                        //is correct point's type
+                                                        if( pointsType != 'webinar-general' && pointsType != 'webinarTT' && pointsType != 'webinarSF' && pointsType != 'webinarPH' && pointsType != 'webinarMS' && pointsType != 'webinarVS') {
+                                                            console.log('unknown points type');
+                                                            return false;
+                                                        }
+
+
+                                                        var the_data = {
+                                                            action: 'update_points_system',
+                                                            userId: userId,
+                                                            courseId: courseId,
+                                                            pointsType: pointsType
+                                                        }
+
+                                                        jQuery.ajax({
+                                                           url: custom_ajax_vars.ajax_url,
+                                                           data: the_data,
+                                                           type: "post",
+                                                           success: function (response){
+                                                                console.log(response);
+                                                           },
+                                                           error: function() {
+                                                               console.log('Ajax not submited');
+                                                           }
+                                                        });
+
+                                                        return false;
                                                     }
 
                                                 </script>
