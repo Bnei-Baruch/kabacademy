@@ -355,6 +355,12 @@ if (isset($qode_options_satellite['twitter_via']) && !empty($qode_options_satell
                                                         return false;
                                                     }
 
+                                                    var eventId =  youTubePlayer.addLiveListner(exe_webinar_points);
+
+                                                    removeLiveListner(eventId);
+                                                    
+
+
                                                 </script>
 
                                                 <!-- End hooking on streaming on air -->

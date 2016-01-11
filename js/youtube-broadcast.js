@@ -128,7 +128,6 @@ function onYouTubeIframeAPIReady() {
 
     function onPlayerReady (event) {		
         youTubePlayer.player.playVideo();
-        exe_webinar_points();
     }
 
     function onPlayerStateChange (event) {
