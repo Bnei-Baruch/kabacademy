@@ -147,6 +147,7 @@ body .content{
 }
 #home h2{
 	color: #fff;
+<<<<<<< HEAD
 	font-size:20px;
 	padding:0;
 	margin:5px 0;
@@ -173,6 +174,34 @@ body .content{
 #home h3{
 	color: #FFFFFF;
 	font-size:16px;
+=======
+	font-size:18px;
+	padding:0;
+	margin:5px 0;
+	font-weight:300;
+	text-shadow: 0 0 1.3px #FFFFCC;
+	filter:DropShadow(Color=#FFFFCC, OffX=0, OffY=0, Positive=1);
+}
+#home h1{
+	color: #a5d1ef;
+	font-size:17px;
+	padding:0;
+	margin:5px 0;
+	font-weight:300;
+	text-shadow: 0px 0px 7px #1e3509;
+	filter:DropShadow(Color=#a5d1ef, OffX=0, OffY=0, Positive=1);
+}
+
+#home{
+	padding: 0;
+	margin:235px 0 0;
+	width: 948px;
+	height:auto;
+}
+#home h3{
+	color: #FFFFFF;
+	font-size:12.41px;
+>>>>>>> refs/remotes/origin/shtrak
 	padding:0;
 	margin:8px 0;
 	font-weight:500;

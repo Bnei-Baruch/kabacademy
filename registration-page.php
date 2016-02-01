@@ -2,6 +2,10 @@
 /*
 Template Name: Registration Page
 */
+if (is_user_logged_in ()) {
+        wp_redirect( home_url() );
+       return;    
+}
 
 global $wp_query;
 $id = $wp_query->get_queried_object_id();

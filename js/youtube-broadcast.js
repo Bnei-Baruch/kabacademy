@@ -127,7 +127,7 @@ function onYouTubeIframeAPIReady() {
     }
 
     function onPlayerReady (event) {		
-        youTubePlayer.player.playVideo();	
+        youTubePlayer.player.playVideo();
     }
 
     function onPlayerStateChange (event) {
