@@ -966,9 +966,7 @@ if (isset($qode_options_satellite['twitter_via']) && !empty($qode_options_satell
 										                                            class="attaches-input" type="hidden"
 										                                            name="attaches"
 										                                            value="<?php echo get_comment_meta($reply->ID, 'attaches', true); ?>"/><a
-										                                            class="image-load" href="#"></a><a
-										                                            href="#" class="smiles_open"></a>
-										
+										                                            class="image-load" href="#"></a>										
 										                                        <div class="edit_actions"><a
 										                                                class="cancel"
 										                                                href="#">Отменить</a></div>
@@ -1019,7 +1017,6 @@ if (isset($qode_options_satellite['twitter_via']) && !empty($qode_options_satell
 										                                <textarea  placeholder="<?php _e('Введите текст сообщения...', 'qode'); ?>"
 										                                    name="content" ></textarea>
 										                                    <a class="image-load" href="#"></a>
-										                                    <a href="#" class="smiles_open"></a>
 										
 										                                <div class="add_reply_form_files">
 										                                </div>
@@ -1058,7 +1055,6 @@ if (isset($qode_options_satellite['twitter_via']) && !empty($qode_options_satell
                                 </div>
                             <input id="image-uploader" class="image-uploader hidden" type="file" name="image-uploader"
                                    multiple/>
-                            <?php echo get_smiles_list(); ?>
                             <?php
                             } elseif (empty($forum_id)) {
                                 _e('У данного курса нет форума', 'qode');

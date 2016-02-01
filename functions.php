@@ -1047,8 +1047,7 @@ function load_all_replies() {
         </div>
 		<div style="display: none" class="reply_content_edit">
 			<textarea class="reply_content_edit_textarea"><?php echo get_post_field('post_content', $reply->ID); ?></textarea>
-			<a href="#" class="smiles_open"></a>
-
+			
 			<div class="edit_actions">
 				<a class="cancel" href="#">Отменить</a>
 			</div>
@@ -1230,8 +1229,7 @@ function load_more_topics() {
                     </div>
 					<div style="display: none" class="reply_content_edit">
 						<textarea class="reply_content_edit_textarea"><?php echo get_post_field('post_content', $reply->ID); ?></textarea>
-						<a href="#" class="smiles_open"></a>
-
+						
 						<div class="edit_actions">
 							<a class="cancel" href="#">Отменить</a>
 						</div>
@@ -1280,7 +1278,6 @@ function load_more_topics() {
 					<textarea
 						placeholder="<?php _e('Введите текст сообщения...', 'qode'); ?>"
 						name="content"></textarea>
-					<a href="#" class="smiles_open"></a>
 				</div>
 
 				<input type="hidden" name="bbp_forum_id"
