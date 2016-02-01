@@ -1,12 +1,11 @@
 <?php
 
-//include actions for forum
-include_once (get_stylesheet_directory () . '/forum/forum-init.php'); 
-
-
 // enqueue the child theme stylesheet
 function wp_schools_enqueue_scripts() {
-	// Add jQuery UI
+	
+	wp_deregister_script('jquery');
+	wp_register_script('jquery', ("https://code.jquery.com/jquery-2.1.4.js"), false, '2.1.4');
+	wp_enqueue_script('jquery');
 	
 	// wp_register_style("bootstrap-css", get_stylesheet_directory_uri() . './bootstrap/css/bootstrap.css');
 	// wp_enqueue_style('bootstrap-css');
@@ -16,7 +15,6 @@ function wp_schools_enqueue_scripts() {
 	wp_enqueue_style ( 'bxslider' );
 	
 	// wp_enqueue_script("bootstrap", get_stylesheet_directory_uri() . './bootstrap/js/bootstrap.min.js');
-	
 	wp_enqueue_script ( 'watuscript', get_stylesheet_directory_uri () . '/watu-script.js', array (
 			'watu-script' 
 	), false, true );
@@ -1031,17 +1029,22 @@ function load_all_replies() {
 	
 	ob_start ();
 	foreach ( $replies as $reply ) {
-		
 		?>
-<div class="single_topic_reply" data-id="<?php echo $reply->ID; ?>">
+<div class="single_topic_reply  <?php $postUser = new WP_User($reply->post_author);echo ($postUser->has_cap('bbp_keymaster') || $postUser->has_cap('bbp_moderator')) ? "isAdmin" : "";?>" 
+	data-id="<?php echo $reply->ID; ?>">
 	<div class="photo">
 		<a href="<?php echo bp_core_get_user_domain($reply->post_author); ?>"><?php echo bp_core_fetch_avatar(array('item_id' => $reply->post_author, 'height' => 32, 'width' => 32)); ?></a>
 	</div>
 	<div class="content_wrapper">
 		<div class="reply_content">
 			<a class="author-link"
-				href="<?php echo bp_core_get_user_domain($reply->post_author); ?>"><?php echo bbp_get_reply_author_display_name($reply->ID); ?></a><?php echo bbp_get_reply_content($reply->ID); ?>
-                </div>
+				href="<?php echo bp_core_get_user_domain($reply->post_author); ?>"><?php echo bbp_get_reply_author_display_name($reply->ID); ?></a>
+                <?php 
+                    if ($postUser->has_cap('bbp_keymaster'))  echo "<small>(Администратор форума)</small>" ;
+                    elseif ($postUser->has_cap('bbp_moderator'))  echo "<small>(Преподаватель)</small>" ;
+                ?>
+				<?php echo bbp_get_reply_content($reply->ID); ?>
+        </div>
 		<div style="display: none" class="reply_content_edit">
 			<textarea class="reply_content_edit_textarea"><?php echo get_post_field('post_content', $reply->ID); ?></textarea>
 			<a href="#" class="smiles_open"></a>
@@ -1107,7 +1110,7 @@ function load_more_topics() {
 				break;
 			
 			?>
-<div class="topics_list_single_topic"
+<div class="topics_list_single_topic  <?php $postUser = new WP_User(bbp_get_topic_author_id());echo ($postUser->has_cap('bbp_keymaster') || $postUser->has_cap('bbp_moderator')) ? "isAdmin" : "";?>"
 	id="topic-<?php echo bbp_get_topic_id(); ?>"
 	data-bbp_forum_id="<?php echo $forum_id;?>"
 	data-id="<?php echo bbp_get_topic_id(); ?>">
@@ -1120,6 +1123,10 @@ function load_more_topics() {
 			<div class="name">
 				<a
 					href="<?php echo bp_core_get_user_domain(bbp_get_topic_author_id()); ?>"><?php echo bbp_get_topic_author_display_name(bbp_get_topic_id()); ?></a>
+                <?php 
+                    if ($postUser->has_cap('bbp_keymaster'))  echo "<small>(Администратор форума)</small>" ;
+                    elseif ($postUser->has_cap('bbp_moderator'))  echo "<small>(Преподаватель)</small>" ;
+                ?>
 			</div>
 			<div class="date"><?php echo get_post_time('j F ', false, bbp_get_topic_id(), true) . __('at', 'qode') . get_post_time(' H:i', false, bbp_get_topic_id(), true); ?></div>
 		</div>
@@ -1204,7 +1211,7 @@ function load_more_topics() {
 			foreach ( $replies as $reply ) {
 				
 				?>
-                            <div class="single_topic_reply"
+				<div class="single_topic_reply <?php $postUser = new WP_User($reply->post_author);echo ($postUser->has_cap('bbp_keymaster') || $postUser->has_cap('bbp_moderator')) ? "isAdmin" : "";?>"
 				data-id="<?php echo $reply->ID; ?>">
 				<div class="photo">
 					<a
@@ -1213,8 +1220,14 @@ function load_more_topics() {
 				<div class="content_wrapper">
 					<div class="reply_content">
 						<a class="author-link"
-							href="<?php echo bp_core_get_user_domain($reply->post_author); ?>"><?php echo bbp_get_reply_author_display_name($reply->ID); ?></a><?php echo bbp_get_reply_content($reply->ID); ?>
-                                    </div>
+							href="<?php echo bp_core_get_user_domain($reply->post_author); ?>"><?php echo bbp_get_reply_author_display_name($reply->ID); ?></a>
+                            
+                        <?php 
+                            if ($postUser->has_cap('bbp_keymaster'))  echo "<small>(Администратор форума)</small>"; 
+                            elseif ($postUser->has_cap('bbp_moderator'))  echo "<small>(Преподаватель)</small>" ;
+                        ?>
+							<?php echo bbp_get_reply_content($reply->ID); ?>
+                    </div>
 					<div style="display: none" class="reply_content_edit">
 						<textarea class="reply_content_edit_textarea"><?php echo get_post_field('post_content', $reply->ID); ?></textarea>
 						<a href="#" class="smiles_open"></a>
@@ -1265,7 +1278,7 @@ function load_more_topics() {
 				</div>
 				<div class="reply-form">
 					<textarea
-						placeholder="<?php _e('Введите тек�?т �?ообщени�?...', 'qode'); ?>"
+						placeholder="<?php _e('Введите текст сообщения...', 'qode'); ?>"
 						name="content"></textarea>
 					<a href="#" class="smiles_open"></a>
 				</div>
@@ -1520,10 +1533,11 @@ function my_nav_menu_profile_link($menu) {
 	if (!is_user_logged_in())
 		return $menu;
 	else
-		$profilelink = '<li class="loginBtn"><a href="' . bp_loggedin_user_domain( '/' ) . '"><span>' . wp_get_current_user()->user_login . '</span></a></li>';
+		$profilelink = '<li class="loginBtn"><a href="' . bp_loggedin_user_domain( '/' ) . '"><span>' . wp_get_current_user()->display_name . '</span></a></li>';
 	$menu = $menu . $profilelink;
 	return $menu;
 }
+
 
 add_filter ( 'wpmu_welcome_user_notification', '__return_false' ); // Disable welcome email
 
@@ -1559,6 +1573,7 @@ function update_points_system() {
 	$course_id = $_POST ['courseId'];
 	$action_points = 0;
 	$text = '';
+	$points_type_array = array('webinar-general','webinarTT', 'webinarSF', 'webinarPH','webinarMS' ,'webinarVS','forum','workshop','archive');
 	
 	// Check if user is enrolled
 	$enrolled = $wpdb->get_var ( $wpdb->prepare ( "SELECT id FROM {$wpdb->prefix}namaste_student_courses WHERE user_id = %d AND course_id = %d AND (status = 'enrolled' OR status = 'completed')", $user_id, $course_id ) );
@@ -1568,7 +1583,7 @@ function update_points_system() {
 	}
 	
 	// check if correct points type
-	if ($points_type != 'webinar' && $points_type != 'workshop' && $points_type != 'archive' && $points_type != 'forum') {
+	if (!in_array($points_type, $points_type_array)) {
 		echo 'not correct point type';
 		die ();
 	}
@@ -1588,7 +1603,7 @@ function update_points_system() {
 	$datetime = date ( "Y-m-d h:i:s" );
 	
 	// get the points for the action
-	if ($points_type == 'webinar') {
+	if ($points_type == 'webinar-general' || $points_type == 'webinarTT' || $points_type == 'webinarSF' || $points_type == 'webinarPH' || $points_type == 'webinarMS' || $points_type == 'webinarVS') {
 		
 		$action_points = get_post_meta ( $course_id, 'namaste_points_webinar', true );
 		if ($action_points === '') {

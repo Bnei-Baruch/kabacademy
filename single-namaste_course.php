@@ -60,13 +60,13 @@ if (isset($qode_options_satellite['twitter_via']) && !empty($qode_options_satell
 <?php if (have_posts()) : ?>
     <?php while (have_posts()) : the_post();
         if ($qode_options_satellite['show_back_button'] == "yes") : ?>
-<a id='back_to_top' href='#'> <span
-	class="icon_holder small_icon nohover"><span class="icon_inner"><span
-			class="icon white arrow_up_in_circle">&nbsp;</span></span></span> <span
-	class="icon_holder small_icon hover"><span class="icon_inner"><span
-			class="icon white arrow_up_in_circle_fill">&nbsp;</span></span></span>
-</a>
-<?php
+            <a id='back_to_top' href='#'>
+                <span class="icon_holder small_icon nohover"><span class="icon_inner"><span
+                            class="icon white arrow_up_in_circle">&nbsp;</span></span></span>
+                <span class="icon_holder small_icon hover"><span class="icon_inner"><span
+                            class="icon white arrow_up_in_circle_fill">&nbsp;</span></span></span>
+            </a>
+        <?php
             endif;
         $title = get_post_meta($post->ID, 'list_title', true);
         $title = (!empty($title)) ? $title : $post->post_title;
@@ -91,13 +91,13 @@ if (isset($qode_options_satellite['twitter_via']) && !empty($qode_options_satell
 			 $header_bg = $title_image_array[0];		
 		
         ?>
-<!--
+		<!--
 
 			Page Header if user is logged in & Enrolled in the course
 
 		-->
-
-<?php if (is_user_logged_in() &&  (!NamasteLMSStudentModel::is_enrolled(get_current_user_id(), $post->ID) == null)){?>
+		
+		<?php if (is_user_logged_in() &&  (!NamasteLMSStudentModel::is_enrolled(get_current_user_id(), $post->ID) == null)){?>
 			<?php 
 
 			$post_thumbnail_id = get_post_thumbnail_id($post->ID);
@@ -105,38 +105,39 @@ if (isset($qode_options_satellite['twitter_via']) && !empty($qode_options_satell
 			$title_image = $title_image_array[0];
 
 			?>
-<div class="title with_image loggedin_title has_fixed_background" style="background-image: url(<?php echo $title_image; ?>); background-size: cover; max-height: 200px; display: block;  position: relative;  width: 100%; height: 200px">
+			<div class="title with_image loggedin_title has_fixed_background" style="background-image: url(<?php echo $title_image; ?>); background-size: cover; max-height: 200px; display: block;  position: relative;  width: 100%; height: 200px">
 				<?php 	//echo '<img src="' . $title_image . '" alt="title" />'; ?>
 
 				<?php if (!get_post_meta($id, "qode_show-page-title-text", true)) { ?>
 					<div class="title_holder">
-		<div class="container">
-			<div class="container_inner clearfix">
-				<h1<?php if (get_post_meta($id, "qode_page-title-color", true)) { ?> style="color:<?php echo get_post_meta($id, "qode_page-title-color", true) ?>" <?php } ?>><?php the_title(); ?></h1>
+						<div class="container">
+							<div class="container_inner clearfix">
+								<h1<?php if (get_post_meta($id, "qode_page-title-color", true)) { ?> style="color:<?php echo get_post_meta($id, "qode_page-title-color", true) ?>" <?php } ?>><?php the_title(); ?></h1>
 								<?php if (get_post_meta($id, "qode_page-subtitle", true)) { ?><span
 									class="subtitle"<?php if (get_post_meta($id, "qode_page-subtitle-color", true)) { ?> style="color:<?php echo get_post_meta($id, "qode_page-subtitle-color", true) ?>" <?php } ?>> <?php echo get_post_meta($id, "qode_page-subtitle", true) ?></span><?php } ?>
 									<h3 style="color: white"><?php echo do_shortcode('[namaste-enroll]'); ?></h3>
-			</div>
-		</div>
-	</div>
+							</div>
+						</div>
+					</div>
 				<?php } ?>
 			</div>
-<?php } ?>
+			<?php } ?>
 
-<!--
+		<!--
 
 			Page Header if user is NOT Enrolled
 
 		-->
-<div class="container">
-	<!-- course header -->
+        <div class="container">
+            <!-- course header -->
             <?php if (NamasteLMSStudentModel::is_enrolled(get_current_user_id(), $post->ID) == null): ?>
                 <div class="courseHeaderBg title has_fixed_background" style="background-image: url(<?php echo $header_bg; ?>); background-size: cover">
-		<h1 class="courseTitle"><?php echo($title); ?></h1>
-		<br />
-		<!-- course texts - if have -->
+                    <h1 class="courseTitle"><?php echo($title); ?></h1>
+                    <br/>
+                    <!-- course texts - if have -->
                     <?php if (!empty($begins_at) || !empty($length)): ?>
-                        <span class="courseSubTitle"> <strong> <?php _e('Course Starts:', 'qode'); ?> </strong>
+                        <span class="courseSubTitle">
+                <strong> <?php _e('Course Starts:', 'qode'); ?> </strong>
                             <?php echo ' ' . $begins_at; ?>
                             |
                 <strong> <?php _e('Length:', 'qode'); ?> </strong>
@@ -149,21 +150,21 @@ if (isset($qode_options_satellite['twitter_via']) && !empty($qode_options_satell
                        
                         if (is_user_logged_in() &&  isUserCanEnrollToCourse()){
                             echo '<div class="button medium ">'.do_shortcode('[namaste-enroll]').'</div>';
-                        } else if (is_user_logged_in()){
+                        } elseif (is_user_logged_in()){
                             echo '<h3>'.__('You cannot enroll this course - other courses have to be completed first.', 'namaste').'</h3>';
                         } else { ?>
                         <div class="button medium">
-				<a href="/registration?redirectUrl=<?php the_permalink();?>">
+                           <a href="/registration?redirectUrl=<?php the_permalink();?>">
                                 <?php _e('Enroll', 'qode'); ?>
                             </a>
-			</div>
+                        </div>
                         <?php }?>
                     </div>
-
-		<div class="easyShare">
+					
+                    <div class="easyShare">
                         <?php echo do_shortcode('[easy-share buttons="ok,facebook,google" counters=0 style="icon" template="round-retina"]'); ?>
                     </div>
-	</div>
+                </div>
 				
 			
             <?php endif; ?>
@@ -171,46 +172,45 @@ if (isset($qode_options_satellite['twitter_via']) && !empty($qode_options_satell
 
                 <?php get_template_part('course-header'); ?>
 
-                <div
-			class="blog_holder v2 blog_single single-namaste_course<?php echo $category_class; ?>">
+                <div class="blog_holder v2 blog_single single-namaste_course<?php echo $category_class; ?>">
 
-			<article class="standard">
-				<div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+                    <article class="standard">
+                        <div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
                             <?php
                             if (is_user_logged_in() && $tab == 'nolessons'):
                                 ?>
                                 <div class="">
                                     <?php $course_id = $post->ID; ?>
-                                    <h2 class="u3h2">
-							<a href="<?php echo get_permalink($course_id); ?>"
-								title="<?php echo get_the_title($course_id); ?>"><?php echo get_the_title($course_id); ?></a>
-						</h2>
-					</div>
+                                    <h2 class="u3h2"><a href="<?php echo get_permalink($course_id); ?>"
+                                                        title="<?php echo get_the_title($course_id); ?>"><?php echo get_the_title($course_id); ?></a>
+                                    </h2>
+                                </div>
 
-					<div class="nolessons-container">
+                                <div class="nolessons-container">
 
-						<div class="nolessons-row">
-							<div class="nolessons-cell nolessons-text-cell">
-								<div class="text-align-left">
-									<span class="nolessons-highlighted"><?php _e('This course does not have selfstudy lessons for the moment.', 'qode'); ?></span>
-								</div>
-							</div>
-							<div class="nolessons-cell nolessons-image-cell">
-								<img src="/wp-content/uploads/2014/12/clock-new-24-blog.png" />
-							</div>
-						</div>
+                                    <div class="nolessons-row">
+                                        <div class="nolessons-cell nolessons-text-cell">
+                                            <div class="text-align-left">
+                                                <span
+                                                    class="nolessons-highlighted"><?php _e('This course does not have selfstudy lessons for the moment.', 'qode'); ?></span>
+                                            </div>
+                                        </div>
+                                        <div class="nolessons-cell nolessons-image-cell">
+                                            <img src="/wp-content/uploads/2014/12/clock-new-24-blog.png"/>
+                                        </div>
+                                    </div>
 
-					</div>
+                                </div>
                             <?php elseif (is_user_logged_in() && $tab == 'lection'): ?>
                                 <table class="clearfix lection-heading">
-						<tr>
+                                    <tr>
                                         <?php $course_id = $post->ID; ?>
                                         <td>
-								<h3>
+                                            <h3>
                                                     <?php echo get_the_title($course_id); ?>
                                             <!-- <a href="<?php echo get_permalink($course_id); ?>" title="<?php echo get_the_title($course_id); ?>"></a> -->
-								</h3> 
+                                            </h3> 
                                             <?php  $next_lection_date = get_next_lection_date($course_id);
                                             if (!empty($next_lection_date)) {
                                                 echo '<br><div class="subTitle">' . $next_lection_date . ' </div>';
@@ -224,148 +224,167 @@ if (isset($qode_options_satellite['twitter_via']) && !empty($qode_options_satell
                                         }
                                         ?>
                                         <td style="width:<?php echo $width; ?>">
-								<div class="gototraining">
-									<img height="40"
-										src="<?php echo get_stylesheet_directory_uri(); ?>/images/icongooglehangoutGrey.png" />
-									<script>
-                                                    var rt_player;
-
-                                                    function mutePlayer() {
-                                                        if (rt_player) {
-                                                            rt_player.mute();
-                                                        }
-                                                        return true;
-                                                    }
+                                            <div class="gototraining">
+                                                <img height="40"
+                                                     src="<?php echo get_stylesheet_directory_uri(); ?>/images/icongooglehangoutGrey.png"/>
+                                                <script>
 													jQuery(document).ready(function(){
-														jQuery('#joinLive').click(function(event){
-    														event.preventDefault();
-															var pointsType = 'workshop';
-															var user_id = '<?php echo get_current_user_id(); ?>';
-															var cousrse_id ='<?php echo $post->ID; ?>';
-															var href = jQuery(this).attr('href');
+                                                        youTubePlayer.addLiveListner(exe_webinar_points);
+                                                        if (!youTubePlayer.player ||  jQuery('#joinLive').hasClass("disable")) {
+                                                            jQuery('#joinLive')
+                                                            .addClass('disable')
+                                                            .click(function(event){
+                                                                event.preventDefault();
+                                                                return;
+                                                            });                                                            
+                                                        } else{                                                            
+                                                            jQuery('#joinLive')
+                                                            .attr('title', "").attr('alt', "")
+                                                            .click(function(event){
+                                                                var pointsType = 'workshop';
+                                                                var user_id = '<?php echo get_current_user_id(); ?>';
+                                                                var cousrse_id ='<?php echo $post->ID; ?>';
+                                                                var href = jQuery(this).attr('href');
 
-															console.log(pointsType);
-															add_points(pointsType,user_id,cousrse_id, href);
-														})
-													})
+                                                                console.log(pointsType);
+                                                                youTubePlayer.player.mute();
+                                                                add_points_webinar(pointsType,user_id,cousrse_id, href);
+                                                            });
+                                                        }
+													});
                                                 </script>
-									<!-- <a target="_blank" href="https://rt.kbb1.com/#/find-table/<?php echo $course_space; ?>/ru"  class="btnM <?php if(get_post_meta($post->ID, 'disable_seminar', true)) echo " disable";?>"
-                                                   onclick="<?php if(!get_post_meta($post->ID, 'disable_seminar', true)) echo "javascript:mutePlayer();"; ?>">
-                                                    <?php _e('Go to training', 'qode'); ?>
-                                                </a> -->
+												
+							                     <?php 
+                                                    //time conversions
+                                                    $points_type = 'webinar-general';
+                                                    $dt = new DateTime();
+                                                    $tz = new DateTimeZone('Europe/Moscow'); // or whatever zone you're after
 
-									<script
-										src="https://rt.kbb1.com/bower_components/webcomponentsjs/webcomponents.js"></script>
-									<link rel="import"
-										href="https://rt.kbb1.com/join-button-toggler.html?1">
+                                                    $dt->setTimezone($tz);
+                                                    //geth the hour in Moskve time
+                                                    $current_hour = $dt->format('H');
+                                                   
 
-									<script>
-													function toggleButton(enabled) {
-														console.log(enabled);
-														if (!enabled) { document.getElementById("joinLive").className += " disable"; }
-														else {
-															var pointsType = 'webinar';
-															var user_id = '<?php echo get_current_user_id(); ?>';
-															var cousrse_id ='<?php echo $post->ID; ?>';
-															add_points(pointsType,user_id, cousrse_id, '');
-															document.getElementById("joinLive").className =
-															document.getElementById("joinLive").className.replace( /(?:^|\s)disable(?!\S)/g , '' );
-														}
-													}   
-												</script>
+                                                    //check the time zone
+                                                    if($current_hour==5 || $current_hour==6){
+                                                            $points_type = 'webinarTT';
+                                                    }
+                                                    if($current_hour==8 || $current_hour==9){
+                                                            $points_type = 'webinarSF';
+                                                    }
+                                                    if($current_hour==16 || $current_hour==17){
+                                                            $points_type = 'webinarPH';
+                                                    }
+                                                    if($current_hour==19 || $current_hour==20){
+                                                            $points_type = 'webinarMS';
+                                                    }
+                                                        
+                                                    //check if day is Voskresenya
+                                                    $dw = date( "w", time()); // 0 = sunday
 
-									<join-button-toggler space="<?php echo $course_space; ?>"
-										onToggle="toggleButton"></join-button-toggler>
+                                                    if ($dw ==  0) {
+                                                        $points_type = 'webinarVS';
+                                                    }
+                                                 ?>
 
-									<a id="joinLive" target="_blank"
-										href="https://rt.kbb1.com/#/find-table/<?php echo $course_space; ?>/ru"
-										class="btnM"
-										onclick="<?php if(!get_post_meta($post->ID, 'disable_seminar', true)) echo "javascript:mutePlayer();"; ?>">
+                                                <script>
+												    function exe_webinar_points(){
+                                                        var pointsType = '<?php echo $points_type ?>';
+                                                        var user_id = '<?php echo get_current_user_id(); ?>';
+                                                        var cousrse_id ='<?php echo $post->ID; ?>';
+                                                        add_points_webinar(pointsType,user_id, cousrse_id);
+                                                    }
+
+                                                    function add_points_webinar(pointsType, userId, courseId) {
+                                                        
+                                                        if(pointsType =="" || userId == "" || courseId ==""){
+                                                            console.log('empty data');
+                                                            return false;
+                                                        }
+
+                                                        //userId is number
+                                                        if ( !jQuery.isNumeric(userId) || !jQuery.isNumeric(courseId) ){
+                                                            console.log('NaN');
+                                                            return false;
+                                                        }
+
+                                                        //is correct point's type
+                                                        if( pointsType != 'webinar-general' && pointsType != 'webinarTT' && pointsType != 'webinarSF' && pointsType != 'webinarPH' && pointsType != 'webinarMS' && pointsType != 'webinarVS') {
+                                                            console.log('unknown points type');
+                                                            return false;
+                                                        }
+
+
+                                                        var the_data = {
+                                                            action: 'update_points_system',
+                                                            userId: userId,
+                                                            courseId: courseId,
+                                                            pointsType: pointsType
+                                                        }
+
+                                                        jQuery.ajax({
+                                                           url: custom_ajax_vars.ajax_url,
+                                                           data: the_data,
+                                                           type: "post",
+                                                           success: function (response){
+                                                                console.log(response);
+                                                           },
+                                                           error: function() {
+                                                               console.log('Ajax not submited');
+                                                           }
+                                                    });
+
+                                                        return false;
+                                                    }
+                                                </script>
+
+                                                <a id="joinLive" 
+                                                    target="_blank" 
+                                                    style="pointer-events: auto"
+                                                    title="Кнопка Семинар будет доступна только после начала семинара."
+                                                    alt="Кнопка Семинар будет доступна только после начала семинара."
+                                                    href="<?php echo get_post_meta($course_id,'link_seminar', true);?>"
+                                                    class="btnM <?php if(get_post_meta($post->ID, 'disable_seminar', true)) echo "disable";?>">
                                                     <?php _e('Go to training', 'qode'); ?>
                                                 </a>
                                             <?php if (current_user_can('editor') || current_user_can('administrator')) : ?>
-                                                <a target="_blank"
-										class="btnM"
-										href="https://rt.kbb1.com/backend/spaces/<?php echo $course_space; ?>/tables/ru/moderated">
-                                                   <?php _e('Manage training', 'qode'); ?>
-                                               </a> <a target="_blank"
-										class="btnM"
-										href="https://chat1.kbb1.com/admin.html?label=rt.kbb1.com.<?php echo $course_space; ?>">
+                                                <a target="_blank" class="btnM"
+                                                   href="https://chat1.kbb1.com/admin.html?label=rt.kbb1.com.<?php echo $course_space; ?>" >
                                                    <?php _e('Manage chat', 'qode'); ?>
                                                 </a>
                                             <?php endif; ?>
                                             </div>
-							</td>
-						</tr>
-					</table>
-					<div class="two_columns_60_40 lection-tab clearfix">
-						<div class="column1">
+                                        </td>
+                                    </tr>
+                                </table>
+                                <div class="two_columns_60_40 lection-tab clearfix">
+                                    <div class="column1">
 
-							<div class="lection-video-container">
-
-								<div id="lveventplayer">
-									<div
-										style="text-align: center; width: 100%; height: 370px; background-color: #181818; font-size: 2em; line-height: 380px; color: #fff;">
-										Здесь будет плеер с трансляцией</div>
-								</div>
-
-
-								<script
-									src="https://rt.kbb1.com/components/onair-player/onair-player.js?5"></script>
-								<script>
-                                              /**   initOnAirPlayer({
-                                                    containerId: 'lveventplayer',
-                                                    channelId:  '<?php echo $channelId; ?>',
-                                                    width: 677,
-                                                    height: 390,
-                                                    callback: function (title, player) {
-                                                        rt_player = player;
-                                                        var titleElem = document.getElementById('lveventTitl');
-                                                        if (title) {
-                                                            titleElem.title = title;
-                                                            titleElem.innerHTML = title;
-                                                        } else {
-                                                            titleElem.title = "Нет трансляции";
-                                                            titleElem.innerHTML = "Нет трансляции";
-                                                        }
-                                                    }
-                                                });
-												
-												**/
-												initOnAirPlayer({
-												  containerId: 'lveventplayer',
-												  channelId: '<?php echo $channelId; ?>',
-												  space: '<?php echo $course_space; ?>',
-												  liveIdUrl: 'https://rt.kbb1.com/backend/spaces/<?php echo $course_space; ?>/live-id',
-                                                  width: 677,
-                                                  height: 390,
-												  callback: function (title, player) {
-														rt_player = player;
-                                                        var titleElem = document.getElementById('lveventTitl');
-                                                        if (title) {
-                                                            titleElem.title = title;
-                                                            titleElem.innerHTML = title;
-                                                        } else {
-                                                            titleElem.title = "Нет трансляции";
-                                                            titleElem.innerHTML = "Нет трансляции";
-                                                        }													
-												  }
-												});
-                                            </script>
-
-							</div>
-						</div>
-						<div class="column2">
-							<div class="tabs sidebar-tabs-dmn">
-								<ul class="tabs-nav">
-									<li class="active"><a href="#tabiid1"><?php _e('Discussion', 'qode'); ?></a></li>
-									<li id="activate_bx" class=""><a href="#tabiid2"><?php _e('Materials', 'qode'); ?></a></li>
-									<li class=""><a href="#tabiid3"><?php _e('Notes', 'qode'); ?></a></li>
-								</ul>
-								<div class="tabs-container">
-									<div id="tabiid1" class="tab-content" style="display: block;">
-										<iframe
-											src="https://chat1.kbb1.com/?label=rt.kbb1.com.<?php echo $course_space;?>&lang=ru
+                                        <div class="lection-video-container">
+                                          
+                                            <div id="lveventplayer">
+                                                <div style="text-align: center; width: 100%; height: 370px; background-color: #181818;font-size: 2em; line-height: 380px; color: #fff;">                                                    
+                                                        Здесь будет плеер с трансляцией
+                                                        <script type='text/javascript' src='/wp-content/themes/satellite-child-academy/js/youtube-broadcast.js?ver=1.1'></script>
+                                                       <script type="text/javascript" src = "https://www.youtube.com/iframe_api"></script>
+                                                       <script> window.youtubeBroadcastChannelId = '<?php echo $channelId; ?>'; </script>
+                                                </div>
+                                            </div>   
+                                        </div>
+                                    </div>
+                                    <div class="column2">
+                                        <div class="tabs sidebar-tabs-dmn">
+                                            <ul class="tabs-nav">
+                                                <li class="active"><a
+                                                        href="#tabiid1"><?php _e('Discussion', 'qode'); ?></a></li>
+                                                <li id="activate_bx" class=""><a
+                                                        href="#tabiid2"><?php _e('Materials', 'qode'); ?></a></li>
+                                                <li class=""><a href="#tabiid3"><?php _e('Notes', 'qode'); ?></a></li>
+                                            </ul>
+                                            <div class="tabs-container">
+                                                <div id="tabiid1" class="tab-content" style="display: block;">
+                                                    <iframe
+                                                        src="https://chat1.kbb1.com/?label=rt.kbb1.com.<?php echo $course_space;?>&lang=ru
 														<?php 
 														$user_id = get_current_user_id(); 
 														$cityName = bp_get_profile_field_data( array( 'field'   => 'Город', 'user_id' => $user_id)); 
@@ -373,15 +392,14 @@ if (isset($qode_options_satellite['twitter_via']) && !empty($qode_options_satell
 														echo ('&name_text='.$userName.'&from_text='.$cityName);
 														?>
 														"></iframe>
-									</div>
-									<div id="tabiid2" class="tab-content" style="display: none;">
-										<div class="bx-controls-direction">
-											<a id="bx-prev" href=""></a><a id="bx-next" href=""></a>
-										</div>
-										<ul id="tabiid2slide">
+                                                </div>
+                                                <div id="tabiid2" class="tab-content" style="display: none;">
+                                                    <div class="bx-controls-direction"><a id="bx-prev" href=""></a><a
+                                                            id="bx-next" href=""></a></div>
+                                                    <ul id="tabiid2slide">
                                                         <?php echo do_shortcode(get_post_meta($course_id, 'materials', true)); ?>
                                                     </ul>
-										<script>
+                                                    <script>
                                                         (function ($) {
                                                             $(document).on('click', '#activate_bx', second_passed);
                                                             function second_passed() {
@@ -412,9 +430,8 @@ if (isset($qode_options_satellite['twitter_via']) && !empty($qode_options_satell
                                                             }
                                                         })(jQuery);
                                                     </script>
-									</div>
-									<div id="tabiid3" class="tab-content nopadding"
-										style="display: none;">
+                                                </div>
+                                                <div id="tabiid3" class="tab-content nopadding" style="display: none;">
                                                     <?php
                                                     $course_id = $post->ID;
                                                     $notes = get_user_meta(get_current_user_id(), 'notes_' . $course_id, true); //[accordion_item caption="Accordion 1" title_color=""]This is some content[/accordion_item][accordion_item caption="Accordion 1" title_color=""]This is some content[/accordion_item]
@@ -427,13 +444,12 @@ if (isset($qode_options_satellite['twitter_via']) && !empty($qode_options_satell
                                                     }
                                                     ?>
                                                     <?php echo do_shortcode('[accordion accordion_type="accordion"]' . $content_notes . '[/accordion]'); ?>
-                                                    <a id="addnewnote"
-											href="#"><?php _e('Add New Note', 'qode'); ?></a>
+                                                    <a id="addnewnote" href="#"><?php _e('Add New Note', 'qode'); ?></a>
 
-										<div id="templates" style="display: none">
+                                                    <div id="templates" style="display:none">
                                                         <?php echo do_shortcode('[accordion_item caption="' . __('New Note', 'qode') . '" title_color=""]<div class="note_title_wrap"><input class="note_title" value="' . __('New Note', 'qode') . '" /></div><div class="note_content" contenteditable="true" data-ph="' . __('Type text here...', 'qode') . '"></div><div class="note_actions"><a href="#" class="remove_note pull-left"></a><div class="note_status pull-right">' . __('SAVING...', 'qode') . '</div><div class="note_date pull-right"><span class="date"></span><span class="time"></span></div></div><input style="display: none" class="note_id" value="" />[/accordion_item]'); ?>
                                                     </div>
-										<script>
+                                                    <script>
                                                         jQuery(document).ready(function () {
                                                             jQuery.ui.accordion.prototype._originalKeyDown = jQuery.ui.accordion.prototype._keydown;
                                                             jQuery.ui.accordion.prototype._keydown = function (event) {
@@ -592,20 +608,19 @@ if (isset($qode_options_satellite['twitter_via']) && !empty($qode_options_satell
                                                             });
                                                         });
                                                     </script>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             <?php elseif (is_user_logged_in() && $tab == 'shedule' && !get_post_meta($post->ID, 'disable_shedule', true)): ?>
                             <?php
                             $course_id = $post->ID;
                             $calend_link = get_post_meta($course_id, 'calend_link', true);
                             if (!empty($calend_link)):
                             ?>
-                                <iframe class="course-shedule"
-						src="<?php echo $calend_link; ?>" style="border: 0"
-						frameborder="0" scrolling="no"></iframe>
+                                <iframe class="course-shedule" src="<?php echo $calend_link; ?>" style="border: 0"
+                                        frameborder="0" scrolling="no"></iframe>
                             <?php else: ?>
                                 <? php_e('Календарь для данного курса отсутсвует', 'qode'); ?>
                             <?php endif; ?>
@@ -626,11 +641,10 @@ if (isset($qode_options_satellite['twitter_via']) && !empty($qode_options_satell
                             if (NamasteLMSStudentModel::is_enrolled(get_current_user_id(), $course_id) && !empty($forum_id)){
                             //echo do_shortcode('[bbp-single-forum id="'.$forum_id.'"]');
                             ?>
-                                <div
-						class="two_columns_33_66 forum-tab clearfix">
-						<div class="column1">
-							<div id="buddypress" class="group_users">
-								<!--  <?php if (bp_group_has_members("group_id=$buddypress_id&exclude_admins_mods=0&per_page=6")) : ?>
+                                <div class="two_columns_33_66 forum-tab clearfix">
+                                    <div class="column1">
+                                        <div id="buddypress" class="group_users">
+                                           <!--  <?php if (bp_group_has_members("group_id=$buddypress_id&exclude_admins_mods=0&per_page=6")) : ?>
 
                                                 <ul id="member-list" class="item-list">
                                                     <?php while (bp_group_members()) : bp_group_the_member(); ?>
@@ -662,68 +676,387 @@ if (isset($qode_options_satellite['twitter_via']) && !empty($qode_options_satell
 												
 												 	<ul id="member-list" class="item-list" role="main">
 
-														<?php while ( bp_group_members() ) : bp_group_the_member(); ?>
+														<?php 
+                                                            while ( bp_group_members() ) : bp_group_the_member(); 
+                                                                if(get_user_by('id', bp_get_group_member_id())->user_status == 2)
+                                                                    continue;
+                                                        ?>
 
-															<li><a href="<?php bp_group_member_domain(); ?>">
+															<li>
+																<a href="<?php bp_group_member_domain(); ?>">
 
 																	<?php bp_group_member_avatar_thumb(); ?>
 
 																</a>
 
-										<h5><?php bp_group_member_link(); ?></h5> <span
-										class="activity"><?php bp_group_member_joined_since(); ?></span>
+																<h5><?php bp_group_member_link(); ?></h5>
+																<span class="activity"><?php bp_group_member_joined_since(); ?></span>
 
 																<?php do_action( 'bp_group_members_list_item' ); ?>
-
-																<?php if ( bp_is_active( 'friends' ) ) : ?>
-
-																	<div class="action">
-
-																		<?php bp_add_friend_button( bp_get_group_member_id(), bp_get_group_member_is_friend() ); ?>
-
-																		<?php do_action( 'bp_group_members_list_item_action' ); ?>
-
-																	</div>
-
-																<?php endif; ?>
 															</li>
 
 														<?php endwhile; ?>
 
 													</ul>
-								<div id="pag-bottom" class="pagination">
+													<div id="pag-bottom" class="pagination">
 
-									<div class="pag-count" id="member-count-bottom">
+													   <div class="pag-count" id="member-count-bottom">
 
 															<?php //bp_members_pagination_count(); ?>
 															<?php $group = groups_get_group( array( 'group_id' => $buddypress_id) ); $groupLink = '/gruppyi/' . $group->slug . '/members/'; ?>
 
-															<a class="pagination-links button small"
-											href="<?php echo $groupLink; ?>" target="_blank"><?php echo __('View all members','qode')?></a>
+															<a class="pagination-links button small" href="<?php echo $groupLink; ?>" target="_blank"><?php echo __('View all members','qode')?></a>
 
-									</div>
+														</div>
 
-									<!-- <div class="pagination-links" id="member-pag-bottom">
+														<!-- <div class="pagination-links" id="member-pag-bottom">
 
 															<?php //bp_members_pagination_links(); ?>
 
 														</div> -->
-								</div> 
+													</div> 
 												<?php else: ?>
 												 
 												  <div id="message" class="info">
-									<p>This group has no members.</p>
-								</div>
+													<p>This group has no members.</p>
+												  </div>
 												 
 												<?php endif;?>											
                                         </div>
-						</div>
-						<div class="column2">
-						<?php get_template_part( 'forum/forum', 'wrapperView' ); ?>
-						</div>
-					</div>
-					<input id="image-uploader" class="image-uploader hidden"
-						type="file" name="image-uploader" multiple />
+                                    </div>
+                                    <div class="column2">
+                                    	<style>
+                                    		.column2{position: relative;}
+                                    		#popUpForum{
+                                    			position: absolute; 
+                                    			top: 0; bottom: 0; left: 0; right: 0; 
+                                    			background: #FFF url("./ajax-loader.gif") center center no-repeat;
+                                    			opacity: 0.8;
+                                    			display: none;
+                                    			z-index: 10;
+                                    		}
+										</style>
+                                    	<div id="popUpForum"></div>
+                                        <div class="add_topic_form_container">
+                                            <form action="" method="post" data-bbp_forum_id = "<?php echo $forum_id ?>" >
+                                                <div class="add_topic_form_header">
+                                                    <div class="publication"><i
+                                                            class="icon"></i><?php _e('Publication', 'qode'); ?></div>
+                                                </div>
+                                                <div class="add_topic_form">
+                                                    <textarea
+                                                        placeholder="<?php _e('Введите текст сообщения...', 'qode'); ?>"
+                                                        name="content"></textarea>
+                                                </div>
+                                                <div class="add_topic_form_files">
+                                                </div>
+                                                <div class="add_topic_form_actions">
+                                                    <a class="image-load" href="#"></a>
+                                                    <button type="submit"><?php _e('Publish', 'qode'); ?></button>
+                                                </div>
+                                                <input type="hidden" name="bbp_forum_id" value="<?php echo $forum_id; ?>">
+                                                <input type="hidden" name="action" value="custom-bbp-topic-create">
+                                                <input type="hidden" name="security"
+                                                       value="<?php echo wp_create_nonce('custom-bbp-topic-create'); ?>">
+                                                <input class="attaches-input" type="hidden" name="attaches"/>
+                                            </form>
+                                        </div>
+
+                                        <div
+                                            class="topics_list_divider"><?php _e('Недавние обсуждения', 'qode'); ?></div>
+
+                                            
+                                    <div class="topics_list" data-list="2" data-forum="<?php echo $forum_id; ?>">
+                                        <?php  
+                                        if ( bbp_has_forums($buddypress_id) ) : 
+                                            $topics = false;	
+                                            while ( bbp_forums() ) : bbp_the_forum();
+	                                        	if($forum_id != bbp_get_forum_id()){
+		                                        	continue;
+	                                        	}
+
+	                                        	$msg = '$forum_id';
+	                                        	$msg .= print_r( $forum_id, true);
+	                                        	rightToLogFileDavgur($msg);
+	                                        	
+	                                        	$topics = bbp_has_topics( array(
+                                        			'post_parent'    => $forum_id,
+	                                        			'posts_per_page' => 11
+	                                        	) );
+
+	                                        	$msg = '$topics';
+	                                        	$msg .= print_r( $topics, true);
+	                                        	rightToLogFileDavgur($msg);
+	                                        	
+	                                            if(!$topics){
+	                                            	_e('This forum does not have topics', 'qode');
+	                                            	break;
+	                                            }
+                                                $counter = 0;
+                                                if (bp_group_is_visible($group))
+                                                {
+                                                	global $post;
+                                                	$post = bbp_get_forum($forum_id);
+                                                	$counter = 0;
+                                                	while (bbp_topics()) : bbp_the_topic();
+                                                	if (++$counter == 12) break;
+                                                	?>
+										            <div class="topics_list_single_topic <?php $postUser = new WP_User(bbp_get_topic_author_id());echo ($postUser->has_cap('bbp_keymaster') || $postUser->has_cap('bbp_moderator')) ? "isAdmin" : "";?>"
+										                id="topic-<?php echo bbp_get_topic_id(); ?>"
+										                data-id="<?php echo bbp_get_topic_id(); ?>">
+										                <div class="single_topic_header">
+										                    <div class="photo"><a
+										                            href="<?php echo bp_core_get_user_domain(bbp_get_topic_author_id()); ?>"><?php echo bp_core_fetch_avatar(array('item_id' => bbp_get_topic_author_id(), 'height' => 40, 'width' => 40)); ?></a>
+										                    </div>
+										                    <div class="info">
+										                        <div class="name"><a
+										                                href="<?php echo bp_core_get_user_domain(bbp_get_topic_author_id()); ?>"><?php echo bbp_get_topic_author_display_name(bbp_get_topic_id()); ?></a>       
+                                                                <?php 
+                                                                    if ($postUser->has_cap('bbp_keymaster'))  echo "<small>(Администратор форума)</small>"; 
+                                                                    elseif ($postUser->has_cap('bbp_moderator'))  echo "<small>(Преподаватель)</small>"; 
+                                                                ?>
+										                        </div>
+										                        <div
+										                            class="date"><?php echo get_post_time('j F ', false, bbp_get_topic_id(), true) . __('at', 'qode') . get_post_time(' H:i', false, bbp_get_topic_id(), true); ?></div>
+										                    </div>
+										                    <?php if (bbp_get_topic_author_id() == get_current_user_id()): ?>
+										                        <a href="#" class="addi_actions_open"></a>
+										                        <div class="addi_actions" style="display:none">
+										                            <ul>
+										                                <li><a class="edit_action" href="#">Редактировать</a>
+										                                </li>
+										                                <li><a class="remove_action"
+										                                       href="#">Удалить</a></li>
+										                            </ul>
+										                        </div>
+										                    <?php endif; ?>
+										                </div>
+										                <div class="single_topic_content">
+										                    <?php $content = bbp_get_topic_content();
+										                    if (mb_strlen($content) > 500) {
+										                        echo '<div class="show">' . mb_substr($content, 0, 500) . '... <a href="#" class="show_all">' . __('More', 'qode') . '</a></div>';
+										                        ?>
+										                        <div class="hide"><?php echo $content; ?></div>
+										                    <?php
+										                    } else {
+										                        echo $content;
+										                    }
+										                    ?>
+										                </div>
+										                <div class="single_topic_attaches">
+										                    <?php $attaches = get_post_meta(bbp_get_topic_id(), 'attaches', true);
+										                    foreach (explode(',', $attaches) as $attach) :
+										                        if (empty($attach)) continue;
+										                        $r = wp_get_attachment_image_src($attach, 'full');
+										                        ?>
+										                        <div class="single_topic_single_attachment">
+										                            <div class="attachment-image"><a target="_blank"
+										                                                             href="<?php echo $r[0]; ?>"><?php echo wp_get_attachment_image($attach, 'full'); ?></a>
+										                            </div>
+										                            <div class="attachment-controls"><a
+										                                    class="delete-attachment"
+										                                    data-id="<?php echo $attach; ?>" href="#">Удалить</a>
+										                            </div>
+										                        </div>
+										                    <?php endforeach; ?>
+										                </div>
+										                <div style="display:none" class="single_topic_content_edit">
+										                    <textarea
+										                        class="edit_content"><?php echo get_post_field('post_content', bbp_get_topic_id()); ?></textarea>
+										                    <input class="attaches-input" type="hidden" name="attaches"
+										                           value="<?php echo get_post_meta(bbp_get_topic_id(), 'attaches', true); ?>"/>
+										
+										                    <div class="edit_actions">
+										                        <a class="image-load" href="#"></a>
+										                        <button
+										                            class="cancel"><?php _e('Cancel', 'qode'); ?></button>
+										                        <button
+										                            class="save"><?php _e('Save', 'qode'); ?></button>
+										                    </div>
+										                </div>
+										                <div class="single_topic_actions">
+										                    <?php $likes = get_post_meta(bbp_get_topic_id(), 'likes', true); ?>
+										                    <?php $like = get_post_meta(bbp_get_topic_id(), 'like_' . get_current_user_id(), true); ?>
+										                    <a class="like"<?php echo (!empty($like)) ? ' style="display:none"' : ''; ?>
+										                       href="#"><?php _e('Like', 'qode'); ?></a><a
+										                        class="like dislike"<?php echo (empty($like)) ? ' style="display:none"' : ''; ?>
+										                        href="#"><?php _e('Dislike', 'qode'); ?></a>
+										
+										                    <div
+										                        class="like-count"<?php if (empty($likes)) echo ' style="display:none"'; ?>>
+										                        <i class="like-img"></i><span
+										                            class="count"><?php echo (int)$likes; ?></span>
+										                    </div>
+										                </div>
+										                <div class="single_topic_replies_container">
+										                    <div class="single_topic_replies">
+										                        <?php
+										                        $replies = get_posts($default = array(
+										                            'post_type' => bbp_get_reply_post_type(),         // Only replies
+										                            'post_parent' => bbp_get_topic_id(),       // Of this topic
+										                            'posts_per_page' => 5, // This many
+										                            'orderby' => 'date',                     // Sorted by date
+										                            'order' => 'DESC',                      // Oldest to newest
+										                            'ignore_sticky_posts' => true                       // Stickies not supported
+										                        ));
+										                        $i = count($replies);
+										                        if ($i == 5) {
+										                            $count = new WP_Query($default = array(
+										                                'numberposts' => -1,
+										                                'post_type' => bbp_get_reply_post_type(),         // Only replies
+										                                'post_parent' => bbp_get_topic_id(),       // Of this topic
+										                                'posts_per_page' => 5, // This many
+										                                'orderby' => 'date',                     // Sorted by date
+										                                'order' => 'DESC',                      // Oldest to newest
+										                                'ignore_sticky_posts' => true                       // Stickies not supported
+										                            ));
+										                            $count = $count->found_posts - 4;
+										                            ?><a href="#" class="load_all_replies"><i
+										                                class="comments_img"></i>Просмотреть
+										                            еще <?php echo $count . ' ' . custom_plural_form($count, 'комментарий', 'комментария', 'комментариев'); ?>
+										                            </a>
+										                        <?php
+										                        }
+										                        $replies = array_reverse($replies);
+										                        //array_shift($replies);
+										                        foreach ($replies as $reply) {
+                                                                    $postUser = new WP_User($reply->post_author);
+                                                                    ?>
+										                            <div class="single_topic_reply <?php $postUser = new WP_User($reply->post_author);echo ($postUser->has_cap('bbp_keymaster') || $postUser->has_cap('bbp_moderator')) ? "isAdmin" : "";?>"
+										                                 id="reply-<?php echo $reply->ID; ?>"
+										                                 data-id="<?php echo $reply->ID; ?>">
+										                                <div class="photo"><a
+										                                        href="<?php echo bp_core_get_user_domain($reply->post_author); ?>"><?php echo bp_core_fetch_avatar(array('item_id' => $reply->post_author, 'height' => 32, 'width' => 32)); ?></a>
+										                                </div>
+										                                <div class="content_wrapper">
+										                                    <div class="reply_content"><a
+										                                            class="author-link"
+										                                            href="<?php echo bp_core_get_user_domain($reply->post_author); ?>"><?php echo bbp_get_reply_author_display_name($reply->ID); ?></a>
+                                                                                    <?php 
+                                                                                        if ($postUser->has_cap('bbp_keymaster'))  echo "<small>(Администратор форума)</small>" ;
+                                                                                        elseif ($postUser->has_cap('bbp_moderator'))  echo "<small>(Преподаватель)</small>" ;
+                                                                                    ?>
+                                                                                    <?php echo bbp_get_reply_content($reply->ID); ?>
+										                                    </div>
+										                                    <div class="single_reply_attaches">
+										                                        <?php $attaches = get_comment_meta($reply->ID, 'attaches', true);
+										                                        foreach (explode(',', $attaches) as $attach) :
+										                                            if (empty($attach)) continue;
+										                                            $r = wp_get_attachment_image_src($attach, 'full');
+										                                            ?>
+										                                            <div
+										                                                class="single_reply_single_attachment">
+										                                                <div class="attachment-image"><a
+										                                                        target="_blank"
+										                                                        href="<?php echo $r[0]; ?>"><?php echo wp_get_attachment_image($attach, 'full'); ?></a>
+										                                                </div>
+										                                                <div
+										                                                    class="attachment-controls">
+										                                                    <a class="delete-attachment"
+										                                                       data-id="<?php echo $attach; ?>"
+										                                                       href="#">Удалить</a>
+										                                                </div>
+										                                            </div>
+										                                        <?php endforeach; ?>
+										                                    </div>
+										                                    <div style="display:none"
+										                                         class="reply_content_edit"><textarea
+										                                            class="reply_content_edit_textarea"><?php echo get_post_field('post_content', $reply->ID); ?></textarea><input
+										                                            class="attaches-input" type="hidden"
+										                                            name="attaches"
+										                                            value="<?php echo get_comment_meta($reply->ID, 'attaches', true); ?>"/><a
+										                                            class="image-load" href="#"></a><a
+										                                            href="#" class="smiles_open"></a>
+										
+										                                        <div class="edit_actions"><a
+										                                                class="cancel"
+										                                                href="#">Отменить</a></div>
+										                                    </div>
+										                                    <?php $likes = get_post_meta($reply->ID, 'likes', true); ?>
+										                                    <div class="actions"><span
+										                                            class="date"><?php echo get_post_time('j F ', false, $reply->ID, true) . __('at', 'qode') . get_post_time(' H:i', false, $reply->ID, true); ?></span><?php $like = get_post_meta($reply->ID, 'like_' . get_current_user_id(), true); ?>
+										                                        <a class="like"<?php echo (!empty($like)) ? ' style="display:none"' : ''; ?>
+										                                           href="#"><?php _e('Like', 'qode'); ?></a><a
+										                                            class="like dislike"<?php echo (empty($like)) ? ' style="display:none"' : ''; ?>
+										                                            href="#"><?php _e('Dislike', 'qode'); ?></a>
+										
+										                                        <div
+										                                            class="like-count"<?php if (empty($likes)) echo ' style="display:none"'; ?>>
+										                                            <i class="like-img"></i><span
+										                                                class="count"><?php echo (int)$likes; ?></span>
+										                                        </div>
+										                                    </div>
+										                                </div>
+										                                <?php if ($reply->post_author == get_current_user_id()): ?>
+										                                    <a class="addi_actions_open" href="#"></a>
+										                                    <div class="addi_actions"
+										                                         style="display:none">
+										                                        <ul>
+										                                            <li><a class="edit_action" href="#">Редактировать</a>
+										                                            </li>
+										                                            <li><a class="remove_action"
+										                                                   href="#">Удалить</a></li>
+										                                        </ul>
+										                                    </div>
+										                                <?php endif; ?>
+										                            </div>
+										                        <?php
+										                        }
+										                        $url = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}";
+										                        ?>
+										                    </div>
+										                    <div class="single_topic_reply_form">
+										                        <form
+										                            action="<?php echo $url; ?>#topic-<?php echo bbp_get_topic_id(); ?>"                                                                    
+																	data-bbp_forum_id = "<?php echo $forum_id;?>"
+										                            data-bbp_topic_id="<?php echo bbp_get_topic_id(); ?>"
+										                            method="post">
+										                            <div class="photo"><a
+										                                    href="<?php echo bp_core_get_user_domain(get_current_user_id()); ?>"><?php echo bp_core_fetch_avatar(array('item_id' => get_current_user_id(), 'height' => 32, 'width' => 32)); ?></a>
+										                            </div>
+										                            <div class="reply-form">
+										                                <textarea  placeholder="<?php _e('Введите текст сообщения...', 'qode'); ?>"
+										                                    name="content" ></textarea>
+										                                    <a class="image-load" href="#"></a>
+										                                    <a href="#" class="smiles_open"></a>
+										
+										                                <div class="add_reply_form_files">
+										                                </div>
+										                            </div>
+										
+										                            <input type="hidden" name="bbp_forum_id"
+										                                   value="<?php echo $forum_id; ?>">
+										                            <input type="hidden" name="bbp_topic_id"
+										                                   value="<?php echo bbp_get_topic_id(); ?>">
+										                            <input type="hidden" name="action"
+										                                   value="custom-bbp-reply-create">
+										                            <input type="hidden" name="security"
+										                                   value="<?php echo wp_create_nonce('custom-bbp-reply-create'); ?>">
+										                            <input class="attaches-input" type="hidden"
+										                                   name="attaches"/>
+										                        </form>
+										                    </div>
+										                </div>
+										            </div>
+										        <?php                                                
+										        endwhile;
+										        wp_reset_postdata();
+										        if ($counter == 11) {
+										            ?><a class="load_more_topics" href="#">Просмотреть больше обсуждений</a>
+										        <?php
+										        }
+										    } else {
+										        _e('This forum does not have topics', 'qode');
+										    }
+											endwhile;
+										endif;
+                                        ?>
+                                    </div>
+
+                                    </div>
+                                </div>
+                            <input id="image-uploader" class="image-uploader hidden" type="file" name="image-uploader"
+                                   multiple/>
                             <?php echo get_smiles_list(); ?>
                             <?php
                             } elseif (empty($forum_id)) {
@@ -752,28 +1085,25 @@ if (isset($qode_options_satellite['twitter_via']) && !empty($qode_options_satell
                             ));
                             if (count($archive_items) > 0) :
                             ?>
-                                <div
-						class="two_columns_33_66 clearfix archive">
-						<div class="column1">
-							<div class="column_inner">
-								<ul class="namaste-archive-list">
+                                <div class="two_columns_33_66 clearfix archive">
+                                    <div class="column1">
+                                        <div class="column_inner">
+                                            <ul class="namaste-archive-list">
                                                 <?php foreach ($archive_items as $key => $archive_item) : ?>
-                                                    <li
-										data-tab-id="<?php echo $archive_item->ID; ?>"
-										class="<?php if ($key == 0) echo 'active '; ?>namaste-archive-list-item"><?php echo $archive_item->post_title; ?></li>
+                                                    <li data-tab-id="<?php echo $archive_item->ID; ?>"
+                                                        class="<?php if ($key == 0) echo 'active '; ?>namaste-archive-list-item"><?php echo $archive_item->post_title; ?></li>
                                                 <?php endforeach; ?>
                                             </ul>
-							</div>
-						</div>
-						<div class="column2">
-							<div class="column_inner namaste-archive-wrap">
+                                        </div>
+                                    </div>
+                                    <div class="column2">
+                                        <div class="column_inner namaste-archive-wrap">
                                             <?php foreach ($archive_items as $key => $archive_item) : ?>
-                                                <div
-									<?php if ($key != 0) echo ' style="display:none"'; ?>
-									class="namaste-archive-tab-content namaste-archive-tab-<?php echo $archive_item->ID; ?>">
-									<h3 class="namaste-archive-title"><?php echo $archive_item->post_title; ?></h3>
+                                                <div<?php if ($key != 0) echo ' style="display:none"'; ?>
+                                                    class="namaste-archive-tab-content namaste-archive-tab-<?php echo $archive_item->ID; ?>">
+                                                    <h3 class="namaste-archive-title"><?php echo $archive_item->post_title; ?></h3>
 
-									<p class="namaste-archive-post-content">
+                                                    <p class="namaste-archive-post-content">
                                                         <?php echo do_shortcode($archive_item->post_content); ?>
                                                     </p>
                                                     <?php
@@ -781,7 +1111,7 @@ if (isset($qode_options_satellite['twitter_via']) && !empty($qode_options_satell
                                                     if (!empty($additional)) : ?>
                                                         <?php echo do_shortcode("[separator type='normal' color='#DFDFDF' thickness='' up='15' down='15']"); ?>
                                                         <h4><?php _e('Additional Resources', 'qode'); ?></h4>
-									<div>
+                                                        <div>
                                                             <?php echo $additional; ?>
                                                         </div>
                                                     <?php
@@ -792,16 +1122,16 @@ if (isset($qode_options_satellite['twitter_via']) && !empty($qode_options_satell
                                                         echo do_shortcode("[separator type='normal' color='#DFDFDF' thickness='' up='15' down='15']");
                                                         ?>
                                                         <h4><?php _e('Lectures', 'qode'); ?></h4>
-									<div class="lectures-content">
+                                                        <div class="lectures-content">
                                                             <?php echo do_shortcode($lectures); ?>
                                                         </div>
                                                     <?php endif; ?>
                                                 </div>
                                             <?php endforeach; ?>
                                         </div>
-						</div>
-					</div>
-					<script>
+                                    </div>
+                                </div>
+                                <script>
                                     (function ($) {
                                         $(document).on('click', '.namaste-archive-list-item', function (e) {
                                             e.preventDefault();
@@ -836,8 +1166,8 @@ if (isset($qode_options_satellite['twitter_via']) && !empty($qode_options_satell
 				
 					
                     <div class="two_columns_50_50 clearfix about">
-						<div class="column1">
-							<div class="column_inner">
+                        <div class="column1">
+                            <div class="column_inner">
 							
 								<?php if(!is_user_logged_in()) : ?>
 							
@@ -850,9 +1180,9 @@ if (isset($qode_options_satellite['twitter_via']) && !empty($qode_options_satell
 									
 									<div class="course_single_info_section">
 
-									<div class="course_single_course_title"><?php echo $title; ?></div>
-
-									<div class="course_single_details"><?php echo $category; ?></div>
+										<div class="course_single_course_title"><?php echo $title; ?></div>
+										
+										<div class="course_single_details"><?php echo $category; ?></div>
 										<?php
 										$begins_at = get_post_meta($post->ID, 'begins_at', true);
 										$length = get_post_meta($post->ID, 'length', true);
@@ -870,25 +1200,24 @@ if (isset($qode_options_satellite['twitter_via']) && !empty($qode_options_satell
 										
 										<?php if (!NamasteLMSStudentModel::is_enrolled(get_current_user_id(), $post->ID) == null):  // IF USER ENROLLED IN COURSE ?>
 											<!-- <div class="course_single_enrolled_status  course_single_details"><?php echo do_shortcode('[namaste-enroll]'); ?></div> -->
-											<?php $var = do_shortcode('[namaste-todo]'); if ($var) { echo '<div class="course_single_course_title">'. __("Program",'qode') .'</div><div class="course_single_programm_list  course_single_details">' .$var. '</div>'; }?>
+											<?php $var = do_shortcode('[namaste-todo]'); if ($var && $var !="<ul></ul>") { echo '<div class="course_single_course_title">'. __("Program",'qode') .'</div><div class="course_single_programm_list  course_single_details">' .$var. '</div>'; }?>
 										<?php else : ?>
 											
-											<?php $var = do_shortcode('[namaste-course-lessons 0 0 post_date ASC]'); if ($var) echo '<div class="course_single_course_title">'. __("Program",'qode') .'</div><div class="course_single_programm_list  course_single_details">' .$var. '</div>'; ?>
+											<?php $var = do_shortcode('[namaste-course-lessons 0 0 post_date ASC]'); if ($var && $var !="<ul></ul>") echo '<div class="course_single_course_title">'. __("Program",'qode') .'</div><div class="course_single_programm_list  course_single_details">' .$var. '</div>'; ?>
 										<?php endif; ?>	
 										
 									</div>
 
 									
 									<?php if(!is_user_logged_in()) : ?>
-									<a id="enroll-not-auth" class="upperCase"
-									href="<?php echo home_url('/registration/'); ?>"><?php _e('Enroll', 'qode'); ?> <span>»</span></a>
+									<a id="enroll-not-auth" class="upperCase" href="<?php echo home_url('/registration/'); ?>"><?php _e('Enroll', 'qode'); ?> <span>»</span></a>
 									
 									<?php endif; ?>
 								<?php endif; ?> 
                             </div>
-						</div>
-						<div class="column2">
-							<div class="column_inner">
+                        </div>
+                        <div class="column2">
+                            <div class="column_inner">
                                 							
 								<?php if(!is_user_logged_in()) : ?>
                                 <!-- <div class="course_single_thumb_section">
@@ -907,9 +1236,9 @@ if (isset($qode_options_satellite['twitter_via']) && !empty($qode_options_satell
                                     ?>
                                     <img src="<?php echo $image; ?>" />
                                 </div> -->
-								<div class="course_single_info_section">
+                                <div class="course_single_info_section">
 									
-                                   <?php $var = do_shortcode('[namaste-course-lessons 0 0 post_date ASC]'); if ($var) echo '<div class="course_single_course_title">'. __("Program",'qode') .'</div><div class="course_single_programm_list  course_single_details">' .$var. '</div>'; ?>
+                                   <?php $var = do_shortcode('[namaste-course-lessons 0 0 post_date ASC]'); if ($var && $var !="<ul></ul>") echo '<div class="course_single_course_title">'. __("Program",'qode') .'</div><div class="course_single_programm_list  course_single_details">' .$var. '</div>'; ?>
 									<?php //echo $category; ?>
 									
                                 </div>
@@ -918,18 +1247,18 @@ if (isset($qode_options_satellite['twitter_via']) && !empty($qode_options_satell
 									<?php the_content(); ?>
 								<?php endif; ?>	
                             </div>
-						</div>
-					</div>
+                        </div>
+                    </div>
                     <?php endif; ?>
 
                         </div>
-			</article>
+                    </article>
 
 
-		</div>
-	</div>
-</div>
-<?php endwhile; ?>
+                </div>
+            </div>
+        </div>
+    <?php endwhile; ?>
 <?php endif; ?>
 
 

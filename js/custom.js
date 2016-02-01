@@ -1,32 +1,33 @@
 (function($){
     $(document).ready(function(){
         // $('#tabii2slider').liquidSlider();
-    	//autosize($('.add_topic_form textarea'));
+        $('.add_topic_form textarea').autosize();
+        $('.topics_list .single_topic_reply_form textarea').autosize();
 
 /** Bind events */
         $(".reply_content_edit_textarea").on('keypress', keypress_replies_handler);
-        $('.single_topic_reply_form .reply-form ').on("keypress", "textarea", custom_bbp_reply_create_keypress);
+        $('.topics_list').on("keypress", ".single_topic_reply_form .reply-form textarea", custom_bbp_reply_create_keypress);
 
         
-        $('.single_topic_reply').on('click',".addi_actions_open", single_topic_reply_open);
-        $('.single_topic_header').on('click', ".addi_actions_open", addi_actions_open);
+        $('.topics_list').on('click',".single_topic_reply .addi_actions_open", single_topic_reply_open);
+        $('.topics_list').on('click', ".single_topic_header .addi_actions_open", addi_actions_open);
         
-        $(".single_topic_content_edit .edit_actions").on('click', '.save', single_topic_content_edit);
-        $(".single_topic_reply").on('click', '.remove_action', single_topic_reply_remove);
-        $('.single_topic_header').on('click', ".remove_action",single_topic_header_remove);
+        $(".topics_list").on('click', '.single_topic_content_edit .edit_actions .save', single_topic_content_edit);
+        $(".topics_list").on('click', '.single_topic_reply .remove_action', single_topic_reply_remove);
+        $('.topics_list').on('click', ".single_topic_header .remove_action",single_topic_header_remove);
         
-        $(".reply_content_edit").on('click', '.cancel', reply_content_edit_cancel);
-        $(".single_topic_content_edit").on('click', ' .cancel', single_topic_content_edit_cancel);
+        $(".topics_list").on('click', '.reply_content_edit .cancel', reply_content_edit_cancel);
+        $(".topics_list").on('click', '.single_topic_content_edit .cancel', single_topic_content_edit_cancel);
 
-        $(".single_topic_header").on('click', '.edit_action', single_topic_header_edit);
-        $(".single_topic_reply").on('click', '.edit_action', single_topic_reply_edit);
+        $(".topics_list").on('click', '.single_topic_header .edit_action', single_topic_header_edit);
+        $(".topics_list").on('click', '.single_topic_reply .edit_action', single_topic_reply_edit);
         
-        $(".single_topic_reply_form").on('click', '.smiles_open', single_topic_reply_form_smiles_open);
-        $(".reply_content_edit").on('click', '.smiles_open', reply_content_edit_smiles_open);
+        $(".topics_list").on('click', '.single_topic_reply_form .smiles_open', single_topic_reply_form_smiles_open);
+        $(".topics_list").on('click', '.reply_content_edit .smiles_open', reply_content_edit_smiles_open);
        
-        $(".single_topic_actions, .single_topic_reply").on('click', '.like', single_topic_actions_like);
+        $(".topics_list").on('click', '.single_topic_actions .like, .single_topic_reply .like', single_topic_actions_like);
         
-        $(".single_topic_reply_form").on('click', '.smile', smiles_list);
+        $(".topics_list").on('click', '.single_topic_reply_form .smile', smiles_list);
         
         $(".single_topic_content .show_all").on('click', show_all);
         $(".load_all_replies").on('click', load_all_replies);
@@ -511,7 +512,7 @@ function add_points(pointsType, userId, courseId, newLink) {
 	}
 
 	//is correct point's type
-	if(pointsType != 'workshop' && pointsType != 'webinar' && pointsType != 'forum' && pointsType != 'archive') {
+	if(pointsType != 'workshop' && pointsType != 'webinar' && pointsType != 'forum' && pointsType != 'archive' && pointsType != 'webinarTT' && pointsType != 'webinarSF' && pointsType != 'webinarPH' && pointsType != 'webinarMS' && pointsType != 'webinarVS') {
 		return false;
 	}
 
