@@ -229,7 +229,6 @@ if (isset($qode_options_satellite['twitter_via']) && !empty($qode_options_satell
                                                      src="<?php echo get_stylesheet_directory_uri(); ?>/images/icongooglehangoutGrey.png"/>
                                                 <script>
 													jQuery(document).ready(function(){
-<<<<<<< HEAD
                                                         youTubePlayer.addLiveListner(exe_webinar_points);
                                                         if (!youTubePlayer.player ||  jQuery('#joinLive').hasClass("disable")) {
                                                             jQuery('#joinLive')
@@ -246,30 +245,13 @@ if (isset($qode_options_satellite['twitter_via']) && !empty($qode_options_satell
                                                                 var user_id = '<?php echo get_current_user_id(); ?>';
                                                                 var cousrse_id ='<?php echo $post->ID; ?>';
                                                                 var href = jQuery(this).attr('href');
-=======
-														jQuery('#joinLive').click(function(event){
-    														event.preventDefault();
-                                                            if(jQuery(this).hasClass("disable"))
-                                                                return;
-															var pointsType = 'workshop';
-															var user_id = '<?php echo get_current_user_id(); ?>';
-															var cousrse_id ='<?php echo $post->ID; ?>';
-															var href = jQuery(this).attr('href');
->>>>>>> refs/remotes/origin/shtrak
 
-<<<<<<< HEAD
                                                                 console.log(pointsType);
                                                                 youTubePlayer.player.mute();
                                                                 add_points_webinar(pointsType,user_id,cousrse_id, href);
                                                             });
                                                         }
 													});
-=======
-															console.log(pointsType);
-															add_points_webinar(pointsType,user_id,cousrse_id, href);
-														})
-													})
->>>>>>> refs/remotes/origin/shtrak
                                                 </script>
 												
 							                     <?php 
@@ -278,118 +260,9 @@ if (isset($qode_options_satellite['twitter_via']) && !empty($qode_options_satell
                                                     $dt = new DateTime();
                                                     $tz = new DateTimeZone('Europe/Moscow'); // or whatever zone you're after
 
-<<<<<<< HEAD
                                                     $dt->setTimezone($tz);
                                                     //geth the hour in Moskve time
                                                     $current_hour = $dt->format('H');
-                                                   
-=======
-                                                <?php 
-                                                    //time conversions
-                                                    $points_type = 'webinar-general';
-                                                    $dt = new DateTime();
-                                                    $tz = new DateTimeZone('Europe/Moscow'); // or whatever zone you're after
-
-                                                    $dt->setTimezone($tz);
-
-                                                    //geth the hour in Moskve time
-                                                    $current_hour = $dt->format('H');
-
-                                                    //check the time zone
-                                                    if($current_hour==5 || $current_hour==6){
-                                                         $points_type = 'webinarTT';   
-                                                    }
-                                                    if($current_hour==8 || $current_hour==9){
-                                                         $points_type = 'webinarSF';   
-                                                    }
-                                                    if($current_hour==16 || $current_hour==17){
-                                                         $points_type = 'webinarPH';   
-                                                    }
-                                                    if($current_hour==19 || $current_hour==20){
-                                                         $points_type = 'webinarMS';   
-                                                    }
-
-                                                    //check if day is Voskresenya
-                                                    $dw = date( "w", time()); // 0 = sunday
-
-                                                    if ($dw ==  0 || $dw != 3) {
-                                                        $points_type = 'webinarVS';
-                                                    }
-                                                 ?>
-
-												<script>
-													function toggleButton(enabled) {
-														console.log(enabled);
-														if (!enabled) { document.getElementById("joinLive").className += " disable"; }
-														else {
-                                                            //add webinarpoints when hang-out
-                                                            exe_webinar_points();
-
-															document.getElementById("joinLive").className =
-															document.getElementById("joinLive").className.replace( /(?:^|\s)disable(?!\S)/g , '' );
-                                                             $("#joinLive").tooltip({content: "<strong>Hi!</strong>", track:true});
-														}
-													}
-
-                                                    function exe_webinar_points(){
-                                                        var pointsType = '<?php echo $points_type ?>';
-                                                        var user_id = '<?php echo get_current_user_id(); ?>';
-                                                        var cousrse_id ='<?php echo $post->ID; ?>';
-                                                        add_points_webinar(pointsType,user_id, cousrse_id);
-                                                    }
-
-                                                    function add_points_webinar(pointsType, userId, courseId) {
-
-                                                        if(pointsType =="" || userId == "" || courseId ==""){
-                                                            console.log('empty data');
-                                                            return false;
-                                                        }
-
-                                                        //userId is number
-                                                        if ( !jQuery.isNumeric(userId) || !jQuery.isNumeric(courseId) ){
-                                                            console.log('NaN');
-                                                            return false;
-                                                        }
-
-                                                        //is correct point's type
-                                                        if( pointsType != 'webinar-general' && pointsType != 'webinarTT' && pointsType != 'webinarSF' && pointsType != 'webinarPH' && pointsType != 'webinarMS' && pointsType != 'webinarVS') {
-                                                            console.log('unknown points type');
-                                                            return false;
-                                                        }
-
-
-                                                        var the_data = {
-                                                            action: 'update_points_system',
-                                                            userId: userId,
-                                                            courseId: courseId,
-                                                            pointsType: pointsType
-                                                        }
-
-                                                        jQuery.ajax({
-                                                           url: custom_ajax_vars.ajax_url,
-                                                           data: the_data,
-                                                           type: "post",
-                                                           success: function (response){
-                                                                console.log(response);
-                                                           },
-                                                           error: function() {
-                                                               console.log('Ajax not submited');
-                                                           }
-                                                        });
-
-                                                        return false;
-                                                    }
-
-                                                    var eventId =  youTubePlayer.addLiveListner(exe_webinar_points);
-
-                                                    removeLiveListner(eventId);
-                                                    
-
-
-                                                </script>
-
-                                                <!-- End hooking on streaming on air -->
->>>>>>> refs/remotes/origin/shtrak
 
                                                     //check the time zone
                                                     if($current_hour==5 || $current_hour==6){
@@ -408,7 +281,6 @@ if (isset($qode_options_satellite['twitter_via']) && !empty($qode_options_satell
                                                     //check if day is Voskresenya
                                                     $dw = date( "w", time()); // 0 = sunday
 
-<<<<<<< HEAD
                                                     if ($dw ==  0) {
                                                         $points_type = 'webinarVS';
                                                     }
@@ -472,16 +344,7 @@ if (isset($qode_options_satellite['twitter_via']) && !empty($qode_options_satell
                                                     alt="Кнопка Семинар будет доступна только после начала семинара."
                                                     href="<?php echo get_post_meta($course_id,'link_seminar', true);?>"
                                                     class="btnM <?php if(get_post_meta($post->ID, 'disable_seminar', true)) echo "disable";?>">
-=======
-                                                <a id="joinLive" 
-                                                    target="_blank" 
-                                                    style="pointer-events: auto"
-                                                    title="Кнопка Семинар будет доступна только после начала семинара."
-                                                    alt="Кнопка Семинар будет доступна только после начала семинара."
-                                                    href="https://rt.kbb1.com/#/find-table/<?php echo $course_space; ?>/ru"  
-                                                    class="btnM"
-                                                    onclick="<?php if(!get_post_meta($post->ID, 'disable_seminar', true)) echo "javascript:mutePlayer();"; ?>">
->>>>>>> refs/remotes/origin/shtrak
+
                                                     <?php _e('Go to training', 'qode'); ?>
                                                 </a>
                                             <?php if (current_user_can('editor') || current_user_can('administrator')) : ?>
@@ -506,43 +369,8 @@ if (isset($qode_options_satellite['twitter_via']) && !empty($qode_options_satell
                                                        <script type="text/javascript" src = "https://www.youtube.com/iframe_api"></script>
                                                        <script> window.youtubeBroadcastChannelId = '<?php echo $channelId; ?>'; </script>
                                                 </div>
-<<<<<<< HEAD
                                             </div>   
-=======
-                                            </div>
-   
-                                            <?php if (get_post_meta($post->ID, 'disable_seminar', true)) : ?>
-                                            <script type="text/javascript" src = "https://www.youtube.com/iframe_api"></script>
-                                            <script>
-                                              window.youtubeBroadcastChannelId = '<?php echo $channelId; ?>';
-                                            </script>
-                                            <script type='text/javascript' src='/wp-content/themes/satellite-child-academy/js/youtube-broadcast.js?ver=1.1'></script>
-                                            <?php else: ?>
-                                            <script src="https://rt.kbb1.com/components/onair-player/onair-player.js?5"></script>
-                                            <script>
-												initOnAirPlayer({
-												  containerId: 'lveventplayer',
-												  channelId: '<?php echo $channelId; ?>',
-												  space: '<?php echo $course_space; ?>',
-												  liveIdUrl: 'https://rt.kbb1.com/backend/spaces/<?php echo $course_space; ?>/live-id',
-                                                  width: 677,
-                                                  height: 390,
-												  callback: function (title, player) {
-														rt_player = player;
-                                                        var titleElem = document.getElementById('lveventTitl');
-                                                        if (title) {
-                                                            titleElem.title = title;
-                                                            titleElem.innerHTML = title;
-                                                        } else {
-                                                            titleElem.title = "Нет трансляции";
-                                                            titleElem.innerHTML = "Нет трансляции";
-                                                        }
-												  }
-												});
-                                            </script>
-                                            <?php endif; ?>
 
->>>>>>> refs/remotes/origin/shtrak
                                         </div>
                                     </div>
                                     <div class="column2">
