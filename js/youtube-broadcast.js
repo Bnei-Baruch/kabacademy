@@ -8,19 +8,28 @@
   function YouTubePlayer(dVideo){
     var _prefix = "l_";
     //
-    var _liveListListner = {}
+    var _liveListListner = [];
     return {
         default_video: dVideo,
         getLiveListnerList: function(){return _liveListListner;},
       addLiveListner: function(foo){
         var id = _prefix + _liveListListner.length;
-        _liveListListner[id] = foo;
+        _liveListListner.push({id: id, action: foo});
         if (window.youTubePlayer.isLive)
             foo();
         return id;
       },
       removeLiveListner: function(id){
-        delete _liveListListner[id];
+    	  var index = this.getListnerIndexById(id);
+        splice(_liveListListner[index], 1);
+      },
+      getListnerIndexById: function(id){
+    	  var index = _liveListListner.some(function (index, val){
+    		  if(val.id === id)
+    			  return true;
+    		  return false;
+    	  });
+    	  return index;
       }
     };
   }
@@ -80,12 +89,12 @@ function onYouTubeIframeAPIReady() {
     function _done(r) {
         var video;
         //Observe watching of live 
-        if(r.items && r.items[0] && r.items[0].liveBroadcastContent){
-            if(r.items[0].liveBroadcastContent === "live"){
+        if(r.items && r.items[0] && r.items[0].snippet.liveBroadcastContent){
+            if(r.items[0].snippet.liveBroadcastContent === "live"){
             window.youTubePlayer.isLive = true;
             window.youTubePlayer.getLiveListnerList().forEach(function(l){
-              if(typeof l === "function")
-                l();
+              if(typeof l.action === "function")
+                l.action();
             });
           } else
             window.youTubePlayer.isLive = false;
