@@ -875,20 +875,6 @@ if (isset($qode_options_satellite['twitter_via']) && !empty($qode_options_satell
 										                            class="save"><?php _e('Save', 'qode'); ?></button>
 										                    </div>
 										                </div>
-										                <div class="single_topic_actions">
-										                    <?php $likes = get_post_meta(bbp_get_topic_id(), 'likes', true); ?>
-										                    <?php $like = get_post_meta(bbp_get_topic_id(), 'like_' . get_current_user_id(), true); ?>
-										                    <a class="like"<?php echo (!empty($like)) ? ' style="display:none"' : ''; ?>
-										                       href="#"><?php _e('Like', 'qode'); ?></a><a
-										                        class="like dislike"<?php echo (empty($like)) ? ' style="display:none"' : ''; ?>
-										                        href="#"><?php _e('Dislike', 'qode'); ?></a>
-										
-										                    <div
-										                        class="like-count"<?php if (empty($likes)) echo ' style="display:none"'; ?>>
-										                        <i class="like-img"></i><span
-										                            class="count"><?php echo (int)$likes; ?></span>
-										                    </div>
-										                </div>
 										                <div class="single_topic_replies_container">
 										                    <div class="single_topic_replies">
 										                        <?php
@@ -970,20 +956,6 @@ if (isset($qode_options_satellite['twitter_via']) && !empty($qode_options_satell
 										                                        <div class="edit_actions"><a
 										                                                class="cancel"
 										                                                href="#">Отменить</a></div>
-										                                    </div>
-										                                    <?php $likes = get_post_meta($reply->ID, 'likes', true); ?>
-										                                    <div class="actions"><span
-										                                            class="date"><?php echo get_post_time('j F ', false, $reply->ID, true) . __('at', 'qode') . get_post_time(' H:i', false, $reply->ID, true); ?></span><?php $like = get_post_meta($reply->ID, 'like_' . get_current_user_id(), true); ?>
-										                                        <a class="like"<?php echo (!empty($like)) ? ' style="display:none"' : ''; ?>
-										                                           href="#"><?php _e('Like', 'qode'); ?></a><a
-										                                            class="like dislike"<?php echo (empty($like)) ? ' style="display:none"' : ''; ?>
-										                                            href="#"><?php _e('Dislike', 'qode'); ?></a>
-										
-										                                        <div
-										                                            class="like-count"<?php if (empty($likes)) echo ' style="display:none"'; ?>>
-										                                            <i class="like-img"></i><span
-										                                                class="count"><?php echo (int)$likes; ?></span>
-										                                        </div>
 										                                    </div>
 										                                </div>
 										                                <?php if ($reply->post_author == get_current_user_id()): ?>
