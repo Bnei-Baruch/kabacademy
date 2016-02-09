@@ -1200,13 +1200,13 @@ function load_more_topics() {
 				) ); // Stickies not supported
 				
 				$count = $count->found_posts - 4;
-				?><a href="#" class="load_all_replies"><i class="comments_img"></i>Про�?мотреть
-                            еще <?php echo $count . ' ' . custom_plural_form($count, 'комментарий', 'комментари�?', 'комментариев'); ?>
+				?><a href="#" class="load_all_replies"><i class="comments_img"></i>Просмотреть
+                            еще <?php echo $count . ' ' . custom_plural_form($count, 'комментарий', 'комментария', 'комментариев'); ?>
                             </a>
                         <?php
 			}
 			$replies = array_reverse ( $replies );
-			array_shift ( $replies );
+			//array_shift ( $replies );
 			foreach ( $replies as $reply ) {
 				
 				?>
