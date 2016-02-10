@@ -957,6 +957,9 @@ if (isset($qode_options_satellite['twitter_via']) && !empty($qode_options_satell
 										                                                class="cancel"
 										                                                href="#">Отменить</a></div>
 										                                    </div>
+										                                    <div class="date">
+										                                    	<?php echo get_post_time('j F ', false, $reply->ID, true) . __('at', 'qode') . get_post_time(' H:i', false, $reply->ID, true); ?></span><?php $like = get_post_meta($reply->ID, 'like_' . get_current_user_id(), true); ?>
+										                                    </div>
 										                                </div>
 										                                <?php if ($reply->post_author == get_current_user_id()): ?>
 										                                    <a class="addi_actions_open" href="#"></a>
