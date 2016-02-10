@@ -2616,6 +2616,7 @@ background-size: 21px 21px; background-repeat: no-repeat;}
 .single_topic_reply .date {
     color: #9197a3;
     margin-right: 4px;
+    font-size: 12px;
 }
 
 .single_topic_reply .photo {
