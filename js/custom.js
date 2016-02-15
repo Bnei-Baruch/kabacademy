@@ -29,7 +29,7 @@
         
         $(".topics_list").on('click', '.single_topic_reply_form .smile', smiles_list);
         
-        $(".single_topic_content .show_all").on('click', show_all);
+        $(".topics_list").on('click', '.show_all', show_all);
         $(".topics_list").on('click', '.load_all_replies', load_all_replies);
         $(".topics_list").on('click', '.load_more_topics', load_more_topics);
 
