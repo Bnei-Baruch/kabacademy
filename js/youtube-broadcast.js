@@ -88,17 +88,6 @@ function onYouTubeIframeAPIReady() {
     });
     function _done(r) {
         var video;
-        //Observe watching of live 
-        if(r.items && r.items[0] && r.items[0].snippet.liveBroadcastContent){
-            if(r.items[0].snippet.liveBroadcastContent === "live"){
-            window.youTubePlayer.isLive = true;
-            window.youTubePlayer.getLiveListnerList().forEach(function(l){
-              if(typeof l.action === "function")
-                l.action();
-            });
-          } else
-            window.youTubePlayer.isLive = false;
-        }
         // здесь надо комментить, 
         var id = (r.items.length === 0 ) ? "W_0fndxoZIM" : r.items[0].id.videoId;
         // var id = "C4CyuxSbDXo";
@@ -133,6 +122,17 @@ function onYouTubeIframeAPIReady() {
                 'onStateChange': onPlayerStateChange
             }
         });
+        //Observe watching of live 
+        if(r.items && r.items[0] && r.items[0].snippet.liveBroadcastContent){
+            if(r.items[0].snippet.liveBroadcastContent === "live"){
+            window.youTubePlayer.isLive = true;
+            window.youTubePlayer.getLiveListnerList().forEach(function(l){
+              if(typeof l.action === "function")
+                l.action();
+            });
+          } else
+            window.youTubePlayer.isLive = false;
+        }
     }
 
     function onPlayerReady (event) {		
