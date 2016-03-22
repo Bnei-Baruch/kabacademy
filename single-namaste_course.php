@@ -349,6 +349,12 @@ if (isset($qode_options_satellite['twitter_via']) && !empty($qode_options_satell
 
                                                     <?php _e('Go to training', 'qode'); ?>
                                                 </a>
+                                                <?php if (current_user_can('editor') || current_user_can('administrator')) : ?>
+                                                <a target="_blank" class="btnM"
+                                                   href="https://chat1.kbb1.com/admin.html?label=rt.kbb1.com.<?php echo $course_space; ?>" >
+                                                   <?php _e('Manage chat', 'qode'); ?>
+                                                </a>
+                                            	<?php endif; ?>
                                             </div>
                                         </td>
                                     </tr>
@@ -380,9 +386,16 @@ if (isset($qode_options_satellite['twitter_via']) && !empty($qode_options_satell
                                             </ul>
                                             <div class="tabs-container">
                                                 <div id="tabiid1" class="tab-content" style="display: block;">
-                                                	<?php if (function_exists('wise_chat')) { 
-                                                			wise_chat($channelId); 
-                                                	} ?>
+                                                	
+                                                    <iframe
+                                                        src="https://chat1.kbb1.com/?label=rt.kbb1.com.<?php echo $course_space;?>&lang=ru
+														<?php 
+														$user_id = get_current_user_id(); 
+														$cityName = bp_get_profile_field_data( array( 'field'   => 'Город', 'user_id' => $user_id)); 
+														$userName = bp_get_profile_field_data( array( 'field'   => 'Имя', 'user_id' => $user_id));
+														echo ('&name_text='.$userName.'&from_text='.$cityName);
+														?>
+													"></iframe>
                                                 </div>
                                                 <div id="tabiid2" class="tab-content" style="display: none;">
                                                     <div class="bx-controls-direction"><a id="bx-prev" href=""></a><a
