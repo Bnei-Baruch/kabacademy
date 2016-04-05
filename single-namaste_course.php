@@ -229,29 +229,30 @@ if (isset($qode_options_satellite['twitter_via']) && !empty($qode_options_satell
                                                      src="<?php echo get_stylesheet_directory_uri(); ?>/images/icongooglehangoutGrey.png"/>
                                                 <script>
 													jQuery(document).ready(function(){
+                                                        var checkedDisableSeminar = new Boolean(<?php echo get_post_meta($post->ID, 'disable_seminar', true);?>);
                                                         youTubePlayer.addLiveListner(exe_webinar_points);
-                                                        youTubePlayer.addLiveListner(  function (){
-                                                        	jQuery('#joinLive')
-                                                            .attr('title', "").attr('alt', "")
-                                                            .click(function(event){
-                                                                var pointsType = 'workshop';
-                                                                var user_id = '<?php echo get_current_user_id(); ?>';
-                                                                var cousrse_id ='<?php echo $post->ID; ?>';
-                                                                var href = jQuery(this).attr('href');
-
-                                                                console.log(pointsType);
-                                                                youTubePlayer.player.mute();
-                                                                add_points_webinar(pointsType,user_id,cousrse_id, href);
-                                                            });
-                                                        });
                                                       
-                                                        if (jQuery('#joinLive').hasClass("disable")) {
+                                                        if (checkedDisableSeminar) {
                                                             jQuery('#joinLive')
-                                                            .addClass('disable')
                                                             .click(function(event){
                                                                 event.preventDefault();
                                                                 return;
                                                             });                                                            
+                                                        } else {                                                            
+                                                            youTubePlayer.addLiveListner(  function (){
+                                                                jQuery('#joinLive')
+                                                                .attr('title', "").attr('alt', "")
+                                                                .click(function(event){
+                                                                    var pointsType = 'workshop';
+                                                                    var user_id = '<?php echo get_current_user_id(); ?>';
+                                                                    var cousrse_id ='<?php echo $post->ID; ?>';
+                                                                    var href = jQuery(this).attr('href');
+
+                                                                    console.log(pointsType);
+                                                                    youTubePlayer.player.mute();
+                                                                    add_points_webinar(pointsType,user_id,cousrse_id, href);
+                                                                });
+                                                            });
                                                         }
 													});
                                                 </script>
@@ -340,12 +341,11 @@ if (isset($qode_options_satellite['twitter_via']) && !empty($qode_options_satell
                                                 </script>
 
                                                 <a id="joinLive" 
-                                                    target="_blank" 
-                                                    style="pointer-events: auto"
+                                                    target="_blank"
                                                     title="Кнопка Семинар будет доступна только после начала семинара."
                                                     alt="Кнопка Семинар будет доступна только после начала семинара."
                                                     href="<?php echo get_post_meta($course_id,'link_seminar', true);?>"
-                                                    class="btnM <?php if(get_post_meta($post->ID, 'disable_seminar', true)) echo "disable";?>">
+                                                    class="btnM disable">
 
                                                     <?php _e('Go to training', 'qode'); ?>
                                                 </a>
@@ -773,24 +773,19 @@ if (isset($qode_options_satellite['twitter_via']) && !empty($qode_options_satell
                                     <div class="topics_list" data-list="2" data-forum="<?php echo $forum_id; ?>">
                                         <?php  
                                         if ( bbp_has_forums($buddypress_id) ) : 
-                                            $topics = false;	
+                                            $topics = false;
+
                                             while ( bbp_forums() ) : bbp_the_forum();
-	                                        	if($forum_id != bbp_get_forum_id()){
+                                                
+                                                if($forum_id != bbp_get_forum_id()){
+
 		                                        	continue;
 	                                        	}
-
-	                                        	$msg = '$forum_id';
-	                                        	$msg .= print_r( $forum_id, true);
-	                                        	rightToLogFileDavgur($msg);
-	                                        	
+	
 	                                        	$topics = bbp_has_topics( array(
-                                        			'post_parent'    => $forum_id,
-	                                        			'posts_per_page' => 11
+                                        			'post_parent' => $forum_id,
+                                        			'posts_per_page' => 11
 	                                        	) );
-
-	                                        	$msg = '$topics';
-	                                        	$msg .= print_r( $topics, true);
-	                                        	rightToLogFileDavgur($msg);
 	                                        	
 	                                            if(!$topics){
 	                                            	_e('This forum does not have topics', 'qode');
