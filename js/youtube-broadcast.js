@@ -41,7 +41,7 @@ function onYouTubeIframeAPIReady() {
 
     var param = {
         part : 'snippet',
-        eventType: 'upcoming',
+        eventType: 'live',
         type: 'video',
 		order: 'date',
         // channelId : 'UCAhq4ttjWzWAT4zmPXm0DZw',
@@ -53,7 +53,7 @@ function onYouTubeIframeAPIReady() {
     jQuery.get(url, param)
     .done(function (r) {
         if(r.items.length === 0){
-            param.eventType = 'live';
+            param.eventType = 'upcoming';
             jQuery.get(url, param)
             .done(function (r) {
                 if(r.items.length === 0){
@@ -124,7 +124,10 @@ function onYouTubeIframeAPIReady() {
         });
         //Observe watching of live 
         if(r.items && r.items[0] && r.items[0].snippet.liveBroadcastContent){
-            if(r.items[0].snippet.liveBroadcastContent === "live"){
+            if(
+                r.items[0].snippet.liveBroadcastContent === "live"||
+                r.items[0].snippet.liveBroadcastContent === "upcoming"
+            ){
             window.youTubePlayer.isLive = true;
             window.youTubePlayer.getLiveListnerList().forEach(function(l){
               if(typeof l.action === "function")

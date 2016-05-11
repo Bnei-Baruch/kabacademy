@@ -232,7 +232,7 @@ if (isset($qode_options_satellite['twitter_via']) && !empty($qode_options_satell
                                                         var checkedDisableSeminar = new Boolean(<?php echo get_post_meta($post->ID, 'disable_seminar', true);?>);
                                                         youTubePlayer.addLiveListner(exe_webinar_points);
                                                       
-                                                        if (checkedDisableSeminar) {
+                                                        if (!checkedDisableSeminar) {
                                                             jQuery('#joinLive')
                                                             .click(function(event){
                                                                 event.preventDefault();
@@ -241,7 +241,7 @@ if (isset($qode_options_satellite['twitter_via']) && !empty($qode_options_satell
                                                         } else {                                                            
                                                             youTubePlayer.addLiveListner(  function (){
                                                                 jQuery('#joinLive')
-                                                                .attr('title', "").attr('alt', "")
+                                                                .attr('title', "").attr('alt', "").removeClass("disable")
                                                                 .click(function(event){
                                                                     var pointsType = 'workshop';
                                                                     var user_id = '<?php echo get_current_user_id(); ?>';
@@ -390,10 +390,9 @@ if (isset($qode_options_satellite['twitter_via']) && !empty($qode_options_satell
                                                     <iframe
                                                         src="https://chat1.kbb1.com/?label=rt.kbb1.com.<?php echo $course_space;?>&lang=ru
 														<?php 
-														$user_id = get_current_user_id(); 
-														$cityName = bp_get_profile_field_data( array( 'field'   => 'Город', 'user_id' => $user_id)); 
-														$userName = bp_get_profile_field_data( array( 'field'   => 'Имя', 'user_id' => $user_id));
-														echo ('&name_text='.$userName.'&from_text='.$cityName);
+														$user = wp_get_current_user(); 
+														$cityName = bp_get_profile_field_data( array( 'field'   => 'Город', 'user_id' => $user->ID));
+														echo ('&name_text='.$user->display_name.'&from_text='.$cityName);
 														?>
 													"></iframe>
                                                 </div>

@@ -4,7 +4,7 @@
 function wp_schools_enqueue_scripts() {
 	
 	wp_deregister_script('jquery');
-	wp_register_script('jquery', ("https://code.jquery.com/jquery-2.1.4.js"), false, '2.1.4');
+	wp_register_script('jquery', ("//code.jquery.com/jquery-2.1.4.js"), false, '2.1.4');
 	wp_enqueue_script('jquery');
 	
 	// wp_register_style("bootstrap-css", get_stylesheet_directory_uri() . './bootstrap/css/bootstrap.css');
@@ -1047,13 +1047,25 @@ function load_all_replies() {
         </div>
 		<div style="display: none" class="reply_content_edit">
 			<textarea class="reply_content_edit_textarea"><?php echo get_post_field('post_content', $reply->ID); ?></textarea>
-			
+			<a href="#" class="smiles_open"></a>
+
 			<div class="edit_actions">
 				<a class="cancel" href="#">Отменить</a>
 			</div>
 		</div>
-		<div class="date">
-			<?php echo get_post_time('j F ', false, $reply->ID, true) . __('at', 'qode') . get_post_time(' H:i', false, $reply->ID, true); ?></span><?php $like = get_post_meta($reply->ID, 'like_' . get_current_user_id(), true); ?>
+                <?php $likes = get_post_meta($reply->ID, 'likes', true); ?>
+                <div class="actions">
+			<span class="date"><?php echo get_post_time('j F ', false, $reply->ID, true) . __('at', 'qode') . get_post_time(' H:i', false, $reply->ID, true); ?></span><?php $like = get_post_meta($reply->ID, 'like_' . get_current_user_id(), true); ?>
+                    <a class="like"
+				<?php echo (!empty($like)) ? ' style="display:none"' : ''; ?>
+				href="#"><?php _e('Like', 'qode'); ?></a><a class="like dislike"
+				<?php echo (empty($like)) ? ' style="display:none"' : ''; ?>
+				href="#"><?php _e('Dislike', 'qode'); ?></a>
+
+			<div class="like-count"
+				<?php if (empty($likes)) echo ' style="display:none"'; ?>>
+				<i class="like-img"></i><span class="count"><?php echo (int)$likes; ?></span>
+			</div>
 		</div>
 	</div>
             <?php if ($reply->post_author == get_current_user_id()): ?>
@@ -1151,6 +1163,19 @@ function load_more_topics() {
 			<button class="save"><?php _e('Save', 'qode'); ?></button>
 		</div>
 	</div>
+	<div class="single_topic_actions">
+                    <?php $likes = get_post_meta(bbp_get_topic_id(), 'likes', true); ?>
+                    <?php $like = get_post_meta(bbp_get_topic_id(), 'like_' . get_current_user_id(), true); ?><a
+			class="like"
+			<?php echo (!empty($like)) ? ' style="display:none"' : ''; ?>
+			href="#"><?php _e('Like', 'qode'); ?></a><a class="like dislike"
+			<?php echo (empty($like)) ? ' style="display:none"' : ''; ?> href="#"><?php _e('Dislike', 'qode'); ?></a>
+
+		<div class="like-count"
+			<?php if (empty($likes)) echo ' style="display:none"'; ?>>
+			<i class="like-img"></i><span class="count"><?php echo (int)$likes; ?></span>
+		</div>
+	</div>
 	<div class="single_topic_replies_container">
 		<div class="single_topic_replies">
                         <?php
@@ -1176,13 +1201,13 @@ function load_more_topics() {
 				) ); // Stickies not supported
 				
 				$count = $count->found_posts - 4;
-				?><a href="#" class="load_all_replies"><i class="comments_img"></i>Просмотреть
-                            еще <?php echo $count . ' ' . custom_plural_form($count, 'комментарий', 'комментария', 'комментариев'); ?>
+				?><a href="#" class="load_all_replies"><i class="comments_img"></i>Про�?мотреть
+                            еще <?php echo $count . ' ' . custom_plural_form($count, 'комментарий', 'комментари�?', 'комментариев'); ?>
                             </a>
                         <?php
 			}
 			$replies = array_reverse ( $replies );
-			//array_shift ( $replies );
+			array_shift ( $replies );
 			foreach ( $replies as $reply ) {
 				
 				?>
@@ -1205,17 +1230,30 @@ function load_more_topics() {
                     </div>
 					<div style="display: none" class="reply_content_edit">
 						<textarea class="reply_content_edit_textarea"><?php echo get_post_field('post_content', $reply->ID); ?></textarea>
-						
+						<a href="#" class="smiles_open"></a>
+
 						<div class="edit_actions">
 							<a class="cancel" href="#">Отменить</a>
 						</div>
 					</div>
-					<div class="date">
-						<?php echo get_post_time('j F ', false, $reply->ID, true) . __('at', 'qode') . get_post_time(' H:i', false, $reply->ID, true); ?></span><?php $like = get_post_meta($reply->ID, 'like_' . get_current_user_id(), true); ?>
+                                    <?php $likes = get_post_meta($reply->ID, 'likes', true); ?>
+                                    <div class="actions">
+						<span class="date"><?php echo get_post_time('j F ', false, $reply->ID, true) . __('at', 'qode') . get_post_time(' H:i', false, $reply->ID, true); ?></span><?php $like = get_post_meta($reply->ID, 'like_' . get_current_user_id(), true); ?>
+                                        <a class="like"
+							<?php echo (!empty($like)) ? ' style="display:none"' : ''; ?>
+							href="#"><?php _e('Like', 'qode'); ?></a><a class="like dislike"
+							<?php echo (empty($like)) ? ' style="display:none"' : ''; ?>
+							href="#"><?php _e('Dislike', 'qode'); ?></a>
+
+						<div class="like-count"
+							<?php if (empty($likes)) echo ' style="display:none"'; ?>>
+							<i class="like-img"></i><span class="count"><?php echo (int)$likes; ?></span>
+						</div>
 					</div>
 				</div>
-				<?php if ($reply->post_author == get_current_user_id()): ?>
-				<a class="addi_actions_open" href="#"></a>
+                                <?php if ($reply->post_author == get_current_user_id()): ?>
+                                    <a class="addi_actions_open"
+					href="#"></a>
 				<div class="addi_actions" style="display: none">
 					<ul>
 						<li><a class="edit_action" href="#">Редактировать</a></li>
@@ -1242,6 +1280,7 @@ function load_more_topics() {
 					<textarea
 						placeholder="<?php _e('Введите текст сообщения...', 'qode'); ?>"
 						name="content"></textarea>
+					<a href="#" class="smiles_open"></a>
 				</div>
 
 				<input type="hidden" name="bbp_forum_id"
