@@ -44,8 +44,6 @@ function onYouTubeIframeAPIReady() {
         eventType: 'live',
         type: 'video',
 		order: 'date',
-        // channelId : 'UCAhq4ttjWzWAT4zmPXm0DZw',
-        // channelId : 'UCYi0-Xrr-B7Ap4sAwR6iEpg',
         channelId : window.youtubeBroadcastChannelId,
         key : 'AIzaSyBoMXQDrlRUCQCxv4fjfiyTHXog8OB2Nz0',
     };
@@ -64,41 +62,32 @@ function onYouTubeIframeAPIReady() {
                     youTubePlayer.timeoutId = setTimeout(function (argument) {
                         onYouTubeIframeAPIReady();
                     }, 1*60*1000); 
-
-                    /*
-                    param.eventType = 'completed';
-                    jQuery.get(url, param)
-                    .done(_done)
-                    .fail(function() {
-                       // alert("error");
-                    });*/
                 } else {
-                    _done(r);
+                    _buildPlayer(r);
                 }						
-            })
-            .fail(function() {
-                //alert("error");
             });
         } else {
-            _done(r);
+            _buildPlayer(r);
         }
-    })
-    .fail(function() {
-       // alert("error");
     });
-    function _done(r) {
+
+
+    function _buildPlayer(r) {
         var video;
-        // здесь надо комментить, 
+        if (window.youtubeCourseVideoLiveId) {
+            initYTPlayer(window.youtubeCourseVideoLiveId);
+            return;
+        }
+
         var id = (r.items.length === 0 ) ? "W_0fndxoZIM" : r.items[0].id.videoId;
-        // var id = "C4CyuxSbDXo";
+        
 
         if (youTubePlayer.timeoutId) 
             clearTimeout(youTubePlayer.timeoutId);
-
         youTubePlayer.timeoutId = setTimeout(function (argument) {
             onYouTubeIframeAPIReady();
-        }, 1*60*1000); 
-
+        }, 1*60*1000);    
+        
         if (youTubePlayer.id === id) {
             return;
         } else if(!!youTubePlayer.id) {
@@ -108,40 +97,50 @@ function onYouTubeIframeAPIReady() {
             return;
         }
 
-        youTubePlayer.id = id;
+        initYTPlayer(id);
 
-        youTubePlayer.player =  new YT.Player('lveventplayer', {
-            width: '677',
-            height: '390',
-            videoId: id, 
-            playerVars:{
-                rel: 0,	      		
-            },
-            events: {
-                'onReady': onPlayerReady,
-                'onStateChange': onPlayerStateChange
-            }
-        });
         //Observe watching of live 
         if(r.items && r.items[0] && r.items[0].snippet.liveBroadcastContent){
             if(
                 r.items[0].snippet.liveBroadcastContent === "live"||
                 r.items[0].snippet.liveBroadcastContent === "upcoming"
             ){
-            window.youTubePlayer.isLive = true;
-            window.youTubePlayer.getLiveListnerList().forEach(function(l){
-              if(typeof l.action === "function")
-                l.action();
-            });
+            runLiveListners();
           } else
             window.youTubePlayer.isLive = false;
         }
+    }
+
+
+    function runLiveListners(){
+        window.youTubePlayer.isLive = true;
+        window.youTubePlayer.getLiveListnerList().forEach(function(l){
+          if(typeof l.action === "function")
+            l.action();
+        });
+    }
+
+    function initYTPlayer(id){
+        youTubePlayer.id = id;
+        youTubePlayer.player = new YT.Player('lveventplayer', {
+            width: '677',
+            height: '390',
+            videoId: id, 
+            playerVars: {
+                rel: 0,             
+            },
+            events: {
+                'onReady': onPlayerReady,
+                'onStateChange': onPlayerStateChange
+            }
+        });
     }
 
     function onPlayerReady (event) {		
         youTubePlayer.player.playVideo();
     }
 
-    function onPlayerStateChange (event) {
+    function onPlayerStateChange (e) {
+        window.youtubeCourseVideoLiveId && e.data === 1 && runLiveListners();
     }
 }

@@ -55,6 +55,9 @@ if (isset($qode_options_satellite['twitter_via']) && !empty($qode_options_satell
  $course_id = $post->ID;
  $channelId = get_post_meta($course_id, 'channelId', true);
  $course_space = get_post_meta($course_id,'course_space', true);
+ $live_course_video_id = get_post_meta($course_id,'live_course_video_id', true);
+ $hmtl_of_chat = get_post_meta($course_id,'hmtl_of_chat', true);
+ $current_user = wp_get_current_user();
 ?>
 <?php get_header(); ?>
 <?php if (have_posts()) : ?>
@@ -207,10 +210,7 @@ if (isset($qode_options_satellite['twitter_via']) && !empty($qode_options_satell
                                     <tr>
                                         <?php $course_id = $post->ID; ?>
                                         <td>
-                                            <h3>
-                                                    <?php echo get_the_title($course_id); ?>
-                                            <!-- <a href="<?php echo get_permalink($course_id); ?>" title="<?php echo get_the_title($course_id); ?>"></a> -->
-                                            </h3> 
+                                            <h3><?php echo get_the_title($course_id); ?></h3> 
                                             <?php  $next_lection_date = get_next_lection_date($course_id);
                                             if (!empty($next_lection_date)) {
                                                 echo '<br><div class="subTitle">' . $next_lection_date . ' </div>';
@@ -229,10 +229,10 @@ if (isset($qode_options_satellite['twitter_via']) && !empty($qode_options_satell
                                                      src="<?php echo get_stylesheet_directory_uri(); ?>/images/icongooglehangoutGrey.png"/>
                                                 <script>
 													jQuery(document).ready(function(){
-                                                        var checkedDisableSeminar = new Boolean(<?php echo get_post_meta($post->ID, 'disable_seminar', true);?>);
+                                                        var checkedDisableSeminar = <?php echo get_post_meta($post->ID, 'disable_seminar', true);?>;
                                                         youTubePlayer.addLiveListner(exe_webinar_points);
                                                       
-                                                        if (!checkedDisableSeminar) {
+                                                        if (!!checkedDisableSeminar) {
                                                             jQuery('#joinLive')
                                                             .click(function(event){
                                                                 event.preventDefault();
@@ -247,8 +247,6 @@ if (isset($qode_options_satellite['twitter_via']) && !empty($qode_options_satell
                                                                     var user_id = '<?php echo get_current_user_id(); ?>';
                                                                     var cousrse_id ='<?php echo $post->ID; ?>';
                                                                     var href = jQuery(this).attr('href');
-
-                                                                    console.log(pointsType);
                                                                     youTubePlayer.player.mute();
                                                                     add_points_webinar(pointsType,user_id,cousrse_id, href);
                                                                 });
@@ -325,7 +323,7 @@ if (isset($qode_options_satellite['twitter_via']) && !empty($qode_options_satell
                                                         }
 
                                                         jQuery.ajax({
-                                                           url: custom_ajax_vars.ajax_url,
+                                                           url: ajaxurl,
                                                            data: the_data,
                                                            type: "post",
                                                            success: function (response){
@@ -363,16 +361,18 @@ if (isset($qode_options_satellite['twitter_via']) && !empty($qode_options_satell
                                     <div class="column1">
 
                                         <div class="lection-video-container">
-                                          
                                             <div id="lveventplayer">
-                                                <div style="text-align: center; width: 100%; height: 370px; background-color: #181818;font-size: 2em; line-height: 380px; color: #fff;">                                                    
-                                                        Здесь будет плеер с трансляцией
-                                                        <script type='text/javascript' src='/wp-content/themes/satellite-child-academy/js/youtube-broadcast.js?ver=1.1'></script>
-                                                       <script type="text/javascript" src = "https://www.youtube.com/iframe_api"></script>
-                                                       <script> window.youtubeBroadcastChannelId = '<?php echo $channelId; ?>'; </script>
+                                                <div style="text-align: center; width: 100%; height: 370px; background-color: #181818;font-size: 2em; line-height: 380px; color: #fff;">
+                                                    Здесь будет плеер с трансляцией
+                                                    <script type='text/javascript' src='/wp-content/themes/satellite-child-academy/js/youtube-broadcast.js?ver=1.1'></script>
+                                                    <script type="text/javascript" src = "https://www.youtube.com/iframe_api"></script>
+                                                    <?php if(!empty ( $live_course_video_id)): ?>                                                        
+                                                        <script> window.youtubeCourseVideoLiveId = '<?php echo $live_course_video_id; ?>'; </script>
+                                                    <?php else :?>
+                                                       	<script> window.youtubeBroadcastChannelId = '<?php echo $channelId; ?>'; </script>
+                                                    <?php endif; ?>
                                                 </div>
-                                            </div>   
-
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="column2">
@@ -386,15 +386,16 @@ if (isset($qode_options_satellite['twitter_via']) && !empty($qode_options_satell
                                             </ul>
                                             <div class="tabs-container">
                                                 <div id="tabiid1" class="tab-content" style="display: block;">
-                                                	
-                                                    <iframe
-                                                        src="https://chat1.kbb1.com/?label=rt.kbb1.com.<?php echo $course_space;?>&lang=ru
-														<?php 
-														$user = wp_get_current_user(); 
-														$cityName = bp_get_profile_field_data( array( 'field'   => 'Город', 'user_id' => $user->ID));
-														echo ('&name_text='.$user->display_name.'&from_text='.$cityName);
-														?>
-													"></iframe>
+                                                <?php 
+                                                    if(!empty ( $hmtl_of_chat)) {
+                                                        echo $hmtl_of_chat;
+                                                    } else {
+                                                        $cityName = bp_get_profile_field_data( array( 'field'   => 'Город', 'user_id' => $current_user->ID));
+                                                        $defaultChatParam = '&label=rt.kbb1.com.'.$course_space.'&name_text='.$current_user->display_name.'&from_text='.$cityName;
+                                                  
+                                                        echo('<iframe src="https://chat1.kbb1.com/?lang=ru'.$defaultChatParam.'"></iframe>');
+                                                    } 
+                                                ?>
                                                 </div>
                                                 <div id="tabiid2" class="tab-content" style="display: none;">
                                                     <div class="bx-controls-direction"><a id="bx-prev" href=""></a><a
@@ -655,10 +656,10 @@ if (isset($qode_options_satellite['twitter_via']) && !empty($qode_options_satell
 
                                                           
                                                             <div class="photo"><a
-                                                                    href="<?php echo bp_get_group_member_url(); ?>"><?php bp_group_member_avatar(array('height' => 40, 'width' => 40)); ?></a>
+                                                                    href="<?php echo $isForumModerator ? bp_get_group_member_url(): '#'; ?>"><?php bp_group_member_avatar(array('height' => 40, 'width' => 40)); ?></a>
                                                             </div>
                                                             <div class="name"><a
-                                                                    href="<?php echo bp_get_group_member_url(); ?>"><?php bp_group_member_name(); ?></a>
+                                                                    href="<?php echo $isForumModerator ? '#': bp_get_group_member_url();  ?>"><?php bp_group_member_name(); ?></a>
                                                             </div>
 
                                                         </li>
@@ -771,6 +772,7 @@ if (isset($qode_options_satellite['twitter_via']) && !empty($qode_options_satell
                                             
                                     <div class="topics_list" data-list="2" data-forum="<?php echo $forum_id; ?>">
                                         <?php  
+                                        $isForumModerator = (bbp_get_user_role( get_current_user_id() ) != 'bbp_moderator') && (bbp_get_user_role( get_current_user_id() ) != 'bbp_keymaster');
                                         if ( bbp_has_forums($buddypress_id) ) : 
                                             $topics = false;
 
