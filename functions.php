@@ -1047,25 +1047,13 @@ function load_all_replies() {
         </div>
 		<div style="display: none" class="reply_content_edit">
 			<textarea class="reply_content_edit_textarea"><?php echo get_post_field('post_content', $reply->ID); ?></textarea>
-			<a href="#" class="smiles_open"></a>
-
+			
 			<div class="edit_actions">
 				<a class="cancel" href="#">Отменить</a>
 			</div>
 		</div>
-                <?php $likes = get_post_meta($reply->ID, 'likes', true); ?>
-                <div class="actions">
-			<span class="date"><?php echo get_post_time('j F ', false, $reply->ID, true) . __('at', 'qode') . get_post_time(' H:i', false, $reply->ID, true); ?></span><?php $like = get_post_meta($reply->ID, 'like_' . get_current_user_id(), true); ?>
-                    <a class="like"
-				<?php echo (!empty($like)) ? ' style="display:none"' : ''; ?>
-				href="#"><?php _e('Like', 'qode'); ?></a><a class="like dislike"
-				<?php echo (empty($like)) ? ' style="display:none"' : ''; ?>
-				href="#"><?php _e('Dislike', 'qode'); ?></a>
-
-			<div class="like-count"
-				<?php if (empty($likes)) echo ' style="display:none"'; ?>>
-				<i class="like-img"></i><span class="count"><?php echo (int)$likes; ?></span>
-			</div>
+		<div class="date">
+			<?php echo get_post_time('j F ', false, $reply->ID, true) . __('at', 'qode') . get_post_time(' H:i', false, $reply->ID, true); ?></span><?php $like = get_post_meta($reply->ID, 'like_' . get_current_user_id(), true); ?>
 		</div>
 	</div>
             <?php if ($reply->post_author == get_current_user_id()): ?>
@@ -1163,19 +1151,6 @@ function load_more_topics() {
 			<button class="save"><?php _e('Save', 'qode'); ?></button>
 		</div>
 	</div>
-	<div class="single_topic_actions">
-                    <?php $likes = get_post_meta(bbp_get_topic_id(), 'likes', true); ?>
-                    <?php $like = get_post_meta(bbp_get_topic_id(), 'like_' . get_current_user_id(), true); ?><a
-			class="like"
-			<?php echo (!empty($like)) ? ' style="display:none"' : ''; ?>
-			href="#"><?php _e('Like', 'qode'); ?></a><a class="like dislike"
-			<?php echo (empty($like)) ? ' style="display:none"' : ''; ?> href="#"><?php _e('Dislike', 'qode'); ?></a>
-
-		<div class="like-count"
-			<?php if (empty($likes)) echo ' style="display:none"'; ?>>
-			<i class="like-img"></i><span class="count"><?php echo (int)$likes; ?></span>
-		</div>
-	</div>
 	<div class="single_topic_replies_container">
 		<div class="single_topic_replies">
                         <?php
@@ -1201,13 +1176,13 @@ function load_more_topics() {
 				) ); // Stickies not supported
 				
 				$count = $count->found_posts - 4;
-				?><a href="#" class="load_all_replies"><i class="comments_img"></i>Про�?мотреть
-                            еще <?php echo $count . ' ' . custom_plural_form($count, 'комментарий', 'комментари�?', 'комментариев'); ?>
+				?><a href="#" class="load_all_replies"><i class="comments_img"></i>Просмотреть
+                            еще <?php echo $count . ' ' . custom_plural_form($count, 'комментарий', 'комментария', 'комментариев'); ?>
                             </a>
                         <?php
 			}
 			$replies = array_reverse ( $replies );
-			array_shift ( $replies );
+			//array_shift ( $replies );
 			foreach ( $replies as $reply ) {
 				
 				?>
@@ -1230,30 +1205,17 @@ function load_more_topics() {
                     </div>
 					<div style="display: none" class="reply_content_edit">
 						<textarea class="reply_content_edit_textarea"><?php echo get_post_field('post_content', $reply->ID); ?></textarea>
-						<a href="#" class="smiles_open"></a>
-
+						
 						<div class="edit_actions">
 							<a class="cancel" href="#">Отменить</a>
 						</div>
 					</div>
-                                    <?php $likes = get_post_meta($reply->ID, 'likes', true); ?>
-                                    <div class="actions">
-						<span class="date"><?php echo get_post_time('j F ', false, $reply->ID, true) . __('at', 'qode') . get_post_time(' H:i', false, $reply->ID, true); ?></span><?php $like = get_post_meta($reply->ID, 'like_' . get_current_user_id(), true); ?>
-                                        <a class="like"
-							<?php echo (!empty($like)) ? ' style="display:none"' : ''; ?>
-							href="#"><?php _e('Like', 'qode'); ?></a><a class="like dislike"
-							<?php echo (empty($like)) ? ' style="display:none"' : ''; ?>
-							href="#"><?php _e('Dislike', 'qode'); ?></a>
-
-						<div class="like-count"
-							<?php if (empty($likes)) echo ' style="display:none"'; ?>>
-							<i class="like-img"></i><span class="count"><?php echo (int)$likes; ?></span>
-						</div>
+					<div class="date">
+						<?php echo get_post_time('j F ', false, $reply->ID, true) . __('at', 'qode') . get_post_time(' H:i', false, $reply->ID, true); ?></span><?php $like = get_post_meta($reply->ID, 'like_' . get_current_user_id(), true); ?>
 					</div>
 				</div>
-                                <?php if ($reply->post_author == get_current_user_id()): ?>
-                                    <a class="addi_actions_open"
-					href="#"></a>
+				<?php if ($reply->post_author == get_current_user_id()): ?>
+				<a class="addi_actions_open" href="#"></a>
 				<div class="addi_actions" style="display: none">
 					<ul>
 						<li><a class="edit_action" href="#">Редактировать</a></li>
@@ -1280,7 +1242,6 @@ function load_more_topics() {
 					<textarea
 						placeholder="<?php _e('Введите текст сообщения...', 'qode'); ?>"
 						name="content"></textarea>
-					<a href="#" class="smiles_open"></a>
 				</div>
 
 				<input type="hidden" name="bbp_forum_id"
@@ -1863,72 +1824,7 @@ function registrationForm_iframe() {
 		RregistrationFormShortcodeClass::register ();
 	}
 }
-/* 
-class BB_Su_Shortcodes extends Su_Shortcodes{
-	function  __construct(){
-		add_action( 'init', array( __CLASS__, 'register' ) );
-	}
-	
-	public static function register(){
-		// Prepare compatibility mode prefix
-		$prefix = su_cmpt();
-		$func = array( 'BB_Su_Shortcodes', 'bb_youtube_advanced' );
-		add_shortcode( $prefix . 'bb_youtube_advanced',  $func);
-	}
-	
-	public static function bb_youtube_advanced( $atts = null, $content = null ) {
-		// Prepare data
-		$return = array();
-		$params = array();
-		$atts = shortcode_atts( array(
-				'url'            => false,
-				'width'          => 600,
-				'height'         => 400,
-				'responsive'     => 'yes',
-				'autohide'       => 'alt',
-				'autoplay'       => 'no',
-				'controls'       => 'yes',
-				'fs'             => 'yes',
-				'loop'           => 'no',
-				'modestbranding' => 'no',
-				'playlist'       => '',
-				'rel'            => 'yes',
-				'showinfo'       => 'yes',
-				'theme'          => 'dark',
-				'https'          => 'no',
-				'wmode'          => '',
-				'class'          => '',
-		), $atts, 'youtube_advanced' );
-		if ( !$atts['url'] ) return Su_Tools::error( __FUNCTION__, __( 'please specify correct url', 'su' ) );
-		$atts['url'] = su_scattr( $atts['url'] );
-		$id = ( preg_match( '%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $atts['url'], $match ) ) ? $match[1] : false;
-		// Check that url is specified
-		if ( !$id ) return Su_Tools::error( __FUNCTION__, __( 'please specify correct url', 'su' ) );
-		// Prepare params
-		foreach ( array( 'autohide', 'autoplay', 'controls', 'fs', 'loop', 'modestbranding', 'playlist', 'rel', 'showinfo', 'theme', 'wmode' ) as $param ) $params[$param] = str_replace( array( 'no', 'yes', 'alt' ), array( '0', '1', '2' ), $atts[$param] );
-		// Correct loop
-		if ( $params['loop'] === '1' && $params['playlist'] === '' ) $params['playlist'] = $id;
-		// Prepare protocol
-		$protocol = ( $atts['https'] === 'yes' ) ? 'https' : 'http';
-		// Prepare player parameters
-		$params = http_build_query( $params );
-		// Create player
-		$return[] = '<div class="su-youtube su-responsive-media-' . $atts['responsive'] . su_ecssc( $atts ) . '">';
-		$return[] = '<iframe width="' . $atts['width'] . '" height="' . $atts['height'] . '" src="' . $protocol . '://www.youtube.com/embed/' . $id . '?' . $params . '&version=3&enablejsapi=1" frameborder="0" allowfullscreen="true"></iframe>';
-		$return[] = '</div>';
-		su_query_asset( 'css', 'su-media-shortcodes' );
-		// Return result
-		return implode( '', $return );
-	}
-} 
-new BB_Su_Shortcodes; 
-
-
-class TestDavgur{
-	function  __construct(){
-		add_action ( 'wp_ajax_nopriv_registerRregistrationFormShortcode', array(__CLASS__, 'test') );
-	}
-	public static  function test($a){
-		$b = $a;
-	}
-}*/
+function is_tashaev_or_davgur(){
+	$current_id = get_current_user_id();
+	return $current_id == 3 || $current_id == 30;
+}

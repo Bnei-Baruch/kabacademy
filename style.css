@@ -3576,7 +3576,7 @@ color: #ff4e00;
 	/** background-size: cover; **/
 }
 .container_inner .single-namaste_course, .container_inner .single-namaste_lesson{
-margin-top: 85px;
+    margin-top: 0px;
 }
 
 .bp-user  .title_holder{
