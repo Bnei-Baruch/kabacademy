@@ -58,7 +58,9 @@ if (isset($qode_options_satellite['twitter_via']) && !empty($qode_options_satell
  $live_course_video_id = get_post_meta($course_id,'live_course_video_id', true);
  $hmtl_of_chat = get_post_meta($course_id,'hmtl_of_chat', true);
  $hypercomments_id = get_post_meta($course_id,'hypercomments_id', true);
+ $forum_instruction_post_id = get_post_meta($course_id,'forum_instruction_post_id', true);
  $current_user = wp_get_current_user();
+ 
 ?>
 <?php get_header(); ?>
 <?php if (have_posts()) : ?>
@@ -677,9 +679,11 @@ if (isset($qode_options_satellite['twitter_via']) && !empty($qode_options_satell
                                 <div class="two_columns_33_66 forum-tab clearfix">
                                     <div class="column1">
                                      	<?php  
-                                        	$forum_rules_post = get_post(23833);
+                                     	if(!empty($forum_instruction_post_id)){
+                                        	$forum_rules_post = get_post($forum_instruction_post_id);
                                         	echo ("<h3>" .$forum_rules_post->post_title. "</h3><br />");
                                         	echo ( $forum_rules_post->post_content );
+                                     	}
                                         ?>
                                     </div>
                                     <div class="column2">
