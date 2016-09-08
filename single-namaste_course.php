@@ -57,6 +57,7 @@ if (isset($qode_options_satellite['twitter_via']) && !empty($qode_options_satell
  $course_space = get_post_meta($course_id,'course_space', true);
  $live_course_video_id = get_post_meta($course_id,'live_course_video_id', true);
  $hmtl_of_chat = get_post_meta($course_id,'hmtl_of_chat', true);
+ $hypercomments_id = get_post_meta($course_id,'hypercomments_id', true);
  $current_user = wp_get_current_user();
 ?>
 <?php get_header(); ?>
@@ -389,6 +390,34 @@ if (isset($qode_options_satellite['twitter_via']) && !empty($qode_options_satell
                                                 <?php 
                                                     if(!empty ( $hmtl_of_chat)) {
                                                         echo $hmtl_of_chat;
+                                                    } else if(!empty($hypercomments_id)){
+                                                        $user = array(
+                                                          'nick'        => $current_user->display_name,
+                                                          'avatar'      =>  bp_core_fetch_avatar (  array(  'item_id' => $current_user->ID, 'type'    => 'mini', 'html'   => FALSE) ),
+                                                          'id'          => $current_user->ID
+                                                        );
+                                                        $time        = time();
+                                                        $secret      = "2CI6jAMW4QctDv9g31q94ljx0";
+                                                        $user_base64 = base64_encode( json_encode($user) );
+                                                        $sign        = md5($secret . $user_base64 . $time);
+                                                        $auth        = $user_base64 . "_" . $time . "_" . $sign;
+                                                ?>
+                                                        <div id="hypercomments_widget"></div>
+                                                        <script type="text/javascript">
+                                                        _hcwp = window._hcwp || [];
+                                                        _hcwp.push({widget:"Stream", widget_id: <?php echo $hypercomments_id;?>, auth: "<?php echo $auth;?>"});
+
+                                                        (function() {
+                                                            if("HC_LOAD_INIT" in window)return;
+                                                            HC_LOAD_INIT = true;
+                                                            var lang = (navigator.language || navigator.systemLanguage || navigator.userLanguage || "en").substr(0, 2).toLowerCase();
+                                                            var hcc = document.createElement("script"); hcc.type = "text/javascript"; hcc.async = true;
+                                                            hcc.src = ("https:" == document.location.protocol ? "https" : "http")+"://w.hypercomments.com/widget/hc/<?php echo $hypercomments_id;?>/"+lang+"/widget.js";
+                                                            var s = document.getElementsByTagName("script")[0];
+                                                            s.parentNode.insertBefore(hcc, s.nextSibling);
+                                                        })();
+                                                        </script>
+                                                <?php
                                                     } else {
                                                         $cityName = bp_get_profile_field_data( array( 'field'   => 'Город', 'user_id' => $current_user->ID));
                                                         $defaultChatParam = '&label=rt.kbb1.com.'.$course_space.'&name_text='.$current_user->display_name.'&from_text='.$cityName;

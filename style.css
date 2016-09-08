@@ -3575,9 +3575,6 @@ color: #ff4e00;
 .has_fixed_background {
 	/** background-size: cover; **/
 }
-.container_inner .single-namaste_course, .container_inner .single-namaste_lesson{
-    margin-top: 0px;
-}
 
 .bp-user  .title_holder{
 	background-color: #749BB6 !important;
