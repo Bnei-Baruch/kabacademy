@@ -51,7 +51,7 @@ if(is_user_logged_in()):
 
             <a class="course-navigation-item<?php echo empty($tab) ? ' active' : ''; ?>" href="<?php echo get_permalink($course_id); ?>"><?php _e('About the course', 'qode'); ?></a>
             <?php if(!get_post_meta($course_id, 'disable_lection', true)): ?>
-            <?php echo do_shortcode('[nnlc text="'.__('Lesson', 'qode').'" class="course-navigation-item'.(in_array($tab, array('lesson', 'nolessons')) ? ' active' : '').'"]'); ?>
+            <?php echo do_shortcode('[nnlc text="'.__('SelfStudy', 'qode').'" class="course-navigation-item'.(in_array($tab, array('lesson', 'nolessons')) ? ' active' : '').'"]'); ?>
             <?php endif; ?>
             <?php $lect_active = get_post_meta($course_id, 'lections_active', true);
             if(!empty($lect_active)): ?>
