@@ -419,7 +419,25 @@ if (isset($qode_options_satellite['twitter_via']) && !empty($qode_options_satell
                                                             s.parentNode.insertBefore(hcc, s.nextSibling);
                                                         })();
                                                         </script>
-                                                <?php
+                                                        <?php 
+                                                        //if($current_user->has_cap('bbp_keymaster') || $current_user->has_cap('bbp_moderator')){
+                                                        if(is_admin()){
+                                                        	?>
+                                                        	(function(){
+                                                        		var url = 'http://c1api.hypercomments.com/1.0/users/add_moderator';
+																var param = {
+																	user_info: <?php echo $auth;?>,
+																	widget_id: <?php echo $hypercomments_id;?>
+																}
+                                                        		jQuery.post(url, data, function(res){
+                                                        			alert(res.result);
+                                                        			if(res.result = "success"){
+                                                        			
+                                                        			}
+                                                        		});                                                        	
+                                                        	}());                                                        	
+                                                        	<?php 
+                                                        }
                                                     } else {
                                                         $cityName = bp_get_profile_field_data( array( 'field'   => 'Город', 'user_id' => $current_user->ID));
                                                         $defaultChatParam = '&label=rt.kbb1.com.'.$course_space.'&name_text='.$current_user->display_name.'&from_text='.$cityName;
