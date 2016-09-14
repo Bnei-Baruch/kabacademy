@@ -2470,7 +2470,7 @@ msgstr "Название курса:"
 #: course-header.php:50
 #@ qode
 msgid "About the course"
-msgstr "Об этом курсе"
+msgstr "О курсе"
 
 #: course-header.php:52
 #@ qode
