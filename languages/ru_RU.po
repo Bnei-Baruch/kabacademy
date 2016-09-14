@@ -2500,7 +2500,7 @@ msgstr "Расписание вебинаров"
 #: footer.php:25
 #@ qode
 msgid "All rights reserved"
-msgstr "Все права защищены"
+msgstr "Все права защищены. При использовании материалов ссылка на ресурс обязательна."
 
 #: functions.php:191
 #: /sites/edu.kbb1.com/public/wp-content/themes/satellite/full_width.php:154
