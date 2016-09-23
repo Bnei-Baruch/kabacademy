@@ -1806,11 +1806,8 @@ background-size: 21px 21px; background-repeat: no-repeat;}
 }
 
 .course-navigation {
-    /** display: table;
+    display: table;
     width: 100%;
-    table-layout: fixed;
-	
-	**/
 	margin-top: 40px;
 	width: 100%;
 	border-radius: 5px;
@@ -1821,13 +1818,13 @@ background-size: 21px 21px; background-repeat: no-repeat;}
 }
 
 .course-navigation-item {
-    display: inline-block;
+    display: table-cell;
     background: #fff;
     color: #A6A6A6;
     height: 46px;
     line-height: 46px;
     text-align: center;
-	width: 19.5%;
+	padding: 0 20px 0;
 	font-weight: 300;
 	font-size: 18px;
 	font-family: 'Roboto Condensed', sans-serif;
