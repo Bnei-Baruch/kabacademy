@@ -29,9 +29,9 @@
         
         $(".topics_list").on('click', '.single_topic_reply_form .smile', smiles_list);
         
-        $(".single_topic_content .show_all").on('click', show_all);
-        $(".load_all_replies").on('click', load_all_replies);
-        $(".load_more_topics").on('click', load_more_topics);
+        $(".topics_list").on('click', '.show_all', show_all);
+        $(".topics_list").on('click', '.load_all_replies', load_all_replies);
+        $(".topics_list").on('click', '.load_more_topics', load_more_topics);
 
         $(document).on('click', function(e) {
             if(!$(e.target).hasClass('opened')){
@@ -512,7 +512,7 @@ function add_points(pointsType, userId, courseId, newLink) {
 	}
 
 	//is correct point's type
-	if(pointsType != 'workshop' && pointsType != 'webinar' && pointsType != 'forum' && pointsType != 'archive') {
+	if(pointsType != 'workshop' && pointsType != 'webinar' && pointsType != 'forum' && pointsType != 'archive' && pointsType != 'webinarTT' && pointsType != 'webinarSF' && pointsType != 'webinarPH' && pointsType != 'webinarMS' && pointsType != 'webinarVS') {
 		return false;
 	}
 

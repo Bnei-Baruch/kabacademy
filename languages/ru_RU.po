@@ -2470,12 +2470,17 @@ msgstr "Название курса:"
 #: course-header.php:50
 #@ qode
 msgid "About the course"
-msgstr "Об этом курсе"
+msgstr "О курсе"
 
 #: course-header.php:52
 #@ qode
 msgid "Lesson"
 msgstr "Урок"
+
+#: course-header.php:52
+#@ qode
+msgid "SelfStudy"
+msgstr "Самообучение"
 
 #: course-header.php:56
 #@ qode
@@ -2490,12 +2495,12 @@ msgstr "Форум"
 #: course-header.php:59
 #@ qode
 msgid "Shedule"
-msgstr "Расписание"
+msgstr "Расписание вебинаров"
 
 #: footer.php:25
 #@ qode
 msgid "All rights reserved"
-msgstr "Все права защищены"
+msgstr "Все права защищены. При использовании материалов ссылка на ресурс обязательна."
 
 #: functions.php:191
 #: /sites/edu.kbb1.com/public/wp-content/themes/satellite/full_width.php:154
@@ -3149,7 +3154,7 @@ msgstr "Посмотреть больше обсуждений"
 #: single-namaste_course.php:1129
 #@ qode
 msgid "Program"
-msgstr "Программа:"
+msgstr "Программа самообучения:"
 
 #: functions.php:1457
 #@ qode

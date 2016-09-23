@@ -55,8 +55,14 @@ if (isset($qode_options_satellite['twitter_via']) && !empty($qode_options_satell
  $course_id = $post->ID;
  $channelId = get_post_meta($course_id, 'channelId', true);
  $course_space = get_post_meta($course_id,'course_space', true);
+ $live_course_video_id = get_post_meta($course_id,'live_course_video_id', true);
+ $hypercomments_id = get_post_meta($course_id,'hypercomments_id', true);
+ $hypercomments_forum_id = get_post_meta($course_id,'hypercomments_forum_id', true);
+ $forum_instruction_post_id = get_post_meta($course_id,'forum_instruction_post_id', true);
+ $current_user = wp_get_current_user();
 ?>
 <?php get_header(); ?>
+<script type='text/javascript' src='/wp-content/themes/satellite-child-academy/js/hypercomments.js'></script>
 <?php if (have_posts()) : ?>
     <?php while (have_posts()) : the_post();
         if ($qode_options_satellite['show_back_button'] == "yes") : ?>
@@ -207,10 +213,7 @@ if (isset($qode_options_satellite['twitter_via']) && !empty($qode_options_satell
                                     <tr>
                                         <?php $course_id = $post->ID; ?>
                                         <td>
-                                            <h3>
-                                                    <?php echo get_the_title($course_id); ?>
-                                            <!-- <a href="<?php echo get_permalink($course_id); ?>" title="<?php echo get_the_title($course_id); ?>"></a> -->
-                                            </h3> 
+                                            <h3><?php echo get_the_title($course_id); ?></h3> 
                                             <?php  $next_lection_date = get_next_lection_date($course_id);
                                             if (!empty($next_lection_date)) {
                                                 echo '<br><div class="subTitle">' . $next_lection_date . ' </div>';
@@ -228,75 +231,131 @@ if (isset($qode_options_satellite['twitter_via']) && !empty($qode_options_satell
                                                 <img height="40"
                                                      src="<?php echo get_stylesheet_directory_uri(); ?>/images/icongooglehangoutGrey.png"/>
                                                 <script>
-                                                    var rt_player;
-
-                                                    function mutePlayer() {
-                                                        if (rt_player) {
-                                                            rt_player.mute();
-                                                        }
-                                                        return true;
-                                                    }
 													jQuery(document).ready(function(){
-														jQuery('#joinLive').click(function(event){
-    														event.preventDefault();
-                                                            if(jQuery(this).hasClass("disable"))
+                                                        var checkedDisableSeminar = <?php echo get_post_meta($post->ID, 'disable_seminar', true);?>;
+                                                        youTubePlayer.addLiveListner(exe_webinar_points);
+                                                      
+                                                        if (!!checkedDisableSeminar) {
+                                                            jQuery('#joinLive')
+                                                            .click(function(event){
+                                                                event.preventDefault();
                                                                 return;
-															var pointsType = 'workshop';
-															var user_id = '<?php echo get_current_user_id(); ?>';
-															var cousrse_id ='<?php echo $post->ID; ?>';
-															var href = jQuery(this).attr('href');
-
-															console.log(pointsType);
-															add_points(pointsType,user_id,cousrse_id, href);
-														})
-													})
+                                                            });                                                            
+                                                        } else {                                                            
+                                                            youTubePlayer.addLiveListner(  function (){
+                                                                jQuery('#joinLive')
+                                                                .attr('title', "").attr('alt', "").removeClass("disable")
+                                                                .click(function(event){
+                                                                    var pointsType = 'workshop';
+                                                                    var user_id = '<?php echo get_current_user_id(); ?>';
+                                                                    var cousrse_id ='<?php echo $post->ID; ?>';
+                                                                    var href = jQuery(this).attr('href');
+                                                                    youTubePlayer.player.mute();
+                                                                    add_points_webinar(pointsType,user_id,cousrse_id, href);
+                                                                });
+                                                            });
+                                                        }
+													});
                                                 </script>
-                                                <!-- <a target="_blank" href="https://rt.kbb1.com/#/find-table/<?php echo $course_space; ?>/ru"  class="btnM <?php if(get_post_meta($post->ID, 'disable_seminar', true)) echo " disable";?>"
-                                                   onclick="<?php if(!get_post_meta($post->ID, 'disable_seminar', true)) echo "javascript:mutePlayer();"; ?>">
-                                                    <?php _e('Go to training', 'qode'); ?>
-                                                </a> -->
 												
-												<script src="https://rt.kbb1.com/bower_components/webcomponentsjs/webcomponents.js"></script>
-												<link rel="import" href="https://rt.kbb1.com/join-button-toggler.html?1">
+							                     <?php 
+                                                    //time conversions
+                                                    $points_type = 'webinar-general';
+                                                    $dt = new DateTime();
+                                                    $tz = new DateTimeZone('Europe/Moscow'); // or whatever zone you're after
 
-												<script>
-													function toggleButton(enabled) {
-														console.log(enabled);
-														if (!enabled) { document.getElementById("joinLive").className += " disable"; }
-														else {
-															var pointsType = 'webinar';
-															var user_id = '<?php echo get_current_user_id(); ?>';
-															var cousrse_id ='<?php echo $post->ID; ?>';
-															add_points(pointsType,user_id, cousrse_id, '');
-															document.getElementById("joinLive").className =
-															document.getElementById("joinLive").className.replace( /(?:^|\s)disable(?!\S)/g , '' );
-                                                             $("#joinLive").tooltip({content: "<strong>Hi!</strong>", track:true});
-														}
-													}   
-												</script>
+                                                    $dt->setTimezone($tz);
+                                                    //geth the hour in Moskve time
+                                                    $current_hour = $dt->format('H');
 
-												<join-button-toggler space="<?php echo $course_space; ?>" onToggle="toggleButton"></join-button-toggler>
+                                                    //check the time zone
+                                                    if($current_hour==5 || $current_hour==6){
+                                                            $points_type = 'webinarTT';
+                                                    }
+                                                    if($current_hour==8 || $current_hour==9){
+                                                            $points_type = 'webinarSF';
+                                                    }
+                                                    if($current_hour==16 || $current_hour==17){
+                                                            $points_type = 'webinarPH';
+                                                    }
+                                                    if($current_hour==19 || $current_hour==20){
+                                                            $points_type = 'webinarMS';
+                                                    }
+                                                        
+                                                    //check if day is Voskresenya
+                                                    $dw = date( "w", time()); // 0 = sunday
+
+                                                    if ($dw ==  0) {
+                                                        $points_type = 'webinarVS';
+                                                    }
+                                                 ?>
+
+                                                <script>
+												    function exe_webinar_points(){
+                                                        var pointsType = '<?php echo $points_type ?>';
+                                                        var user_id = '<?php echo get_current_user_id(); ?>';
+                                                        var cousrse_id ='<?php echo $post->ID; ?>';
+                                                        add_points_webinar(pointsType,user_id, cousrse_id);
+                                                    }
+
+                                                    function add_points_webinar(pointsType, userId, courseId) {
+                                                        
+                                                        if(pointsType =="" || userId == "" || courseId ==""){
+                                                            console.log('empty data');
+                                                            return false;
+                                                        }
+
+                                                        //userId is number
+                                                        if ( !jQuery.isNumeric(userId) || !jQuery.isNumeric(courseId) ){
+                                                            console.log('NaN');
+                                                            return false;
+                                                        }
+
+                                                        //is correct point's type
+                                                        if( pointsType != 'webinar-general' && pointsType != 'webinarTT' && pointsType != 'webinarSF' && pointsType != 'webinarPH' && pointsType != 'webinarMS' && pointsType != 'webinarVS') {
+                                                            console.log('unknown points type');
+                                                            return false;
+                                                        }
+
+
+                                                        var the_data = {
+                                                            action: 'update_points_system',
+                                                            userId: userId,
+                                                            courseId: courseId,
+                                                            pointsType: pointsType
+                                                        }
+
+                                                        jQuery.ajax({
+                                                           url: ajaxurl,
+                                                           data: the_data,
+                                                           type: "post",
+                                                           success: function (response){
+                                                                console.log(response);
+                                                           },
+                                                           error: function() {
+                                                               console.log('Ajax not submited');
+                                                           }
+                                                    });
+
+                                                        return false;
+                                                    }
+                                                </script>
 
                                                 <a id="joinLive" 
-                                                    target="_blank" 
-                                                    style="pointer-events: auto"
+                                                    target="_blank"
                                                     title="Кнопка Семинар будет доступна только после начала семинара."
                                                     alt="Кнопка Семинар будет доступна только после начала семинара."
-                                                    href="https://rt.kbb1.com/#/find-table/<?php echo $course_space; ?>/ru"  
-                                                    class="btnM"
-                                                    onclick="<?php if(!get_post_meta($post->ID, 'disable_seminar', true)) echo "javascript:mutePlayer();"; ?>">
+                                                    href="<?php echo get_post_meta($course_id,'link_seminar', true);?>"
+                                                    class="btnM disable">
+
                                                     <?php _e('Go to training', 'qode'); ?>
                                                 </a>
-                                            <?php if (current_user_can('editor') || current_user_can('administrator')) : ?>
-                                                <a target="_blank" class="btnM"
-                                                   href="https://rt.kbb1.com/backend/spaces/<?php echo $course_space; ?>/tables/ru/moderated">
-                                                   <?php _e('Manage training', 'qode'); ?>
-                                               </a>
+                                                <?php if (current_user_can('editor') || current_user_can('administrator')) : ?>
                                                 <a target="_blank" class="btnM"
                                                    href="https://chat1.kbb1.com/admin.html?label=rt.kbb1.com.<?php echo $course_space; ?>" >
                                                    <?php _e('Manage chat', 'qode'); ?>
                                                 </a>
-                                            <?php endif; ?>
+                                            	<?php endif; ?>
                                             </div>
                                         </td>
                                     </tr>
@@ -305,44 +364,18 @@ if (isset($qode_options_satellite['twitter_via']) && !empty($qode_options_satell
                                     <div class="column1">
 
                                         <div class="lection-video-container">
-                                          
                                             <div id="lveventplayer">
-                                                <div style="text-align: center; width: 100%; height: 370px; background-color: #181818;font-size: 2em; line-height: 380px; color: #fff;">                                                    
-                                                        Здесь будет плеер с трансляцией
+                                                <div style="text-align: center; width: 100%; height: 370px; background-color: #181818;font-size: 2em; line-height: 380px; color: #fff;">
+                                                    Здесь будет плеер с трансляцией
+                                                    <script type='text/javascript' src='/wp-content/themes/satellite-child-academy/js/youtube-broadcast.js?ver=1.1'></script>
+                                                    <script type="text/javascript" src = "https://www.youtube.com/iframe_api"></script>
+                                                    <?php if(!empty ( $live_course_video_id)): ?>                                                        
+                                                        <script> window.youtubeCourseVideoLiveId = '<?php echo $live_course_video_id; ?>'; </script>
+                                                    <?php else :?>
+                                                       	<script> window.youtubeBroadcastChannelId = '<?php echo $channelId; ?>'; </script>
+                                                    <?php endif; ?>
                                                 </div>
                                             </div>
-   
-                                            <?php if (get_post_meta($post->ID, 'disable_seminar', true)) : ?>
-                                            <script type="text/javascript" src = "https://www.youtube.com/iframe_api"></script>
-                                            <script>
-                                              window.youtubeBroadcastChannelId = '<?php echo $channelId; ?>';
-                                            </script>
-                                            <script type='text/javascript' src='/wp-content/themes/satellite-child-academy/js/youtube-broadcast.js?ver=1.1'></script>
-                                            <?php else: ?>
-                                            <script src="https://rt.kbb1.com/components/onair-player/onair-player.js?5"></script>
-                                            <script>
-												initOnAirPlayer({
-												  containerId: 'lveventplayer',
-												  channelId: '<?php echo $channelId; ?>',
-												  space: '<?php echo $course_space; ?>',
-												  liveIdUrl: 'https://rt.kbb1.com/backend/spaces/<?php echo $course_space; ?>/live-id',
-                                                  width: 677,
-                                                  height: 390,
-												  callback: function (title, player) {
-														rt_player = player;
-                                                        var titleElem = document.getElementById('lveventTitl');
-                                                        if (title) {
-                                                            titleElem.title = title;
-                                                            titleElem.innerHTML = title;
-                                                        } else {
-                                                            titleElem.title = "Нет трансляции";
-                                                            titleElem.innerHTML = "Нет трансляции";
-                                                        }													
-												  }
-												});
-                                            </script>
-                                            <?php endif; ?>
-
                                         </div>
                                     </div>
                                     <div class="column2">
@@ -356,15 +389,52 @@ if (isset($qode_options_satellite['twitter_via']) && !empty($qode_options_satell
                                             </ul>
                                             <div class="tabs-container">
                                                 <div id="tabiid1" class="tab-content" style="display: block;">
-                                                    <iframe
-                                                        src="https://chat1.kbb1.com/?label=rt.kbb1.com.<?php echo $course_space;?>&lang=ru
-														<?php 
-														$user_id = get_current_user_id(); 
-														$cityName = bp_get_profile_field_data( array( 'field'   => 'Город', 'user_id' => $user_id)); 
-														$userName = bp_get_profile_field_data( array( 'field'   => 'Имя', 'user_id' => $user_id));
-														echo ('&name_text='.$userName.'&from_text='.$cityName);
-														?>
-														"></iframe>
+                                                <?php 
+                                                    if(!empty($hypercomments_id)){
+                                                        $user = array(
+                                                          'nick'        => $current_user->display_name,
+                                                          'avatar'      =>  bp_core_fetch_avatar (  array(  'item_id' => $current_user->ID, 'type'    => 'mini', 'html'   => FALSE) ),
+                                                          'id'          => $current_user->ID
+                                                        );
+                                                        $time        = time();
+                                                        $secret      = "2CI6jAMW4QctDv9g31q94ljx0";
+                                                        $user_base64 = base64_encode( json_encode($user) );
+                                                        $sign        = md5($secret . $user_base64 . $time);
+                                                        $auth        = $user_base64 . "_" . $time . "_" . $sign;
+                                                ?>
+                                                        <div id="hypercomments_widget"></div>
+                                                        <script type="text/javascript">
+                                                        _hcwp = window._hcwp || [];
+                                                        _hcwp.push({widget:"Stream", widget_id: <?php echo $hypercomments_id;?>, auth: "<?php echo $auth;?>"});
+                                                        hypercommentsAPI.initById(<?php echo $hypercomments_id;?>);
+                                                        </script>
+                                                        <?php 
+                                                        
+                                                        if($current_user->has_cap('bbp_keymaster') || $current_user->has_cap('bbp_moderator')){
+                                                            $body = array(
+                                                                'auth'=> $auth,
+                                                                'widget_id'=> $hypercomments_id,
+                                                                );
+                                                            $signature = sha1($secret + json_encode($body));
+                                                            ?>
+                                                            <script>
+                                                                (function (argument) {
+                                                                    var param = {
+                                                                        body: <?php echo json_encode($body) ?>,
+                                                                        signature: "<?php echo $signature;?>"
+                                                                    }
+                                                                    hypercommentsAPI.initModerator(param);
+                                                                }());                         
+                                                            </script>
+                                                            <?php 
+                                                        }
+                                                    } else {
+                                                        $cityName = bp_get_profile_field_data( array( 'field'   => 'Город', 'user_id' => $current_user->ID));
+                                                        $defaultChatParam = '&label=rt.kbb1.com.'.$course_space.'&name_text='.$current_user->display_name.'&from_text='.$cityName;
+                                                  
+                                                        echo('<iframe src="https://chat1.kbb1.com/?lang=ru'.$defaultChatParam.'"></iframe>');
+                                                    } 
+                                                ?>
                                                 </div>
                                                 <div id="tabiid2" class="tab-content" style="display: none;">
                                                     <div class="bx-controls-direction"><a id="bx-prev" href=""></a><a
@@ -616,421 +686,64 @@ if (isset($qode_options_satellite['twitter_via']) && !empty($qode_options_satell
                             ?>
                                 <div class="two_columns_33_66 forum-tab clearfix">
                                     <div class="column1">
-                                        <div id="buddypress" class="group_users">
-                                           <!--  <?php if (bp_group_has_members("group_id=$buddypress_id&exclude_admins_mods=0&per_page=6")) : ?>
-
-                                                <ul id="member-list" class="item-list">
-                                                    <?php while (bp_group_members()) : bp_group_the_member(); ?>
-                                                        <li>
-
-                                                          
-                                                            <div class="photo"><a
-                                                                    href="<?php echo bp_get_group_member_url(); ?>"><?php bp_group_member_avatar(array('height' => 40, 'width' => 40)); ?></a>
-                                                            </div>
-                                                            <div class="name"><a
-                                                                    href="<?php echo bp_get_group_member_url(); ?>"><?php bp_group_member_name(); ?></a>
-                                                            </div>
-
-                                                        </li>
-                                                    <?php endwhile; ?>
-                                                </ul>
-				
-                                            <?php else: ?>
-
-                                                <div id="message" class="info">
-                                                    <p><?php _e('This group has no members', 'qode'); ?></p>
-                                                </div>
-
-                                            <?php endif; ?> -->
-											
-											
-											
-												<?php if ( bp_group_has_members("group_id=$buddypress_id&exclude_admins_mods=1") ) : ?>
-												
-												 	<ul id="member-list" class="item-list" role="main">
-
-														<?php 
-                                                            while ( bp_group_members() ) : bp_group_the_member(); 
-                                                                if(get_user_by('id', bp_get_group_member_id())->user_status == 2)
-                                                                    continue;
-                                                        ?>
-
-															<li>
-																<a href="<?php bp_group_member_domain(); ?>">
-
-																	<?php bp_group_member_avatar_thumb(); ?>
-
-																</a>
-
-																<h5><?php bp_group_member_link(); ?></h5>
-																<span class="activity"><?php bp_group_member_joined_since(); ?></span>
-
-																<?php do_action( 'bp_group_members_list_item' ); ?>
-															</li>
-
-														<?php endwhile; ?>
-
-													</ul>
-													<div id="pag-bottom" class="pagination">
-
-													   <div class="pag-count" id="member-count-bottom">
-
-															<?php //bp_members_pagination_count(); ?>
-															<?php $group = groups_get_group( array( 'group_id' => $buddypress_id) ); $groupLink = '/gruppyi/' . $group->slug . '/members/'; ?>
-
-															<a class="pagination-links button small" href="<?php echo $groupLink; ?>" target="_blank"><?php echo __('View all members','qode')?></a>
-
-														</div>
-
-														<!-- <div class="pagination-links" id="member-pag-bottom">
-
-															<?php //bp_members_pagination_links(); ?>
-
-														</div> -->
-													</div> 
-												<?php else: ?>
-												 
-												  <div id="message" class="info">
-													<p>This group has no members.</p>
-												  </div>
-												 
-												<?php endif;?>											
-                                        </div>
+										<div class="full_width">
+											<?php  
+											if(!empty($forum_instruction_post_id)){
+												$forum_rules_post = get_post($forum_instruction_post_id);
+												echo ("<h3>" .$forum_rules_post->post_title. "</h3><br />");
+												echo ( $forum_rules_post->post_content );
+											} else{
+												include_once 'single-namaste_course_old_user_list.php';
+											}
+											?>                                      
+										</div>
                                     </div>
                                     <div class="column2">
-                                    	<style>
-                                    		.column2{position: relative;}
-                                    		#popUpForum{
-                                    			position: absolute; 
-                                    			top: 0; bottom: 0; left: 0; right: 0; 
-                                    			background: #FFF url("./ajax-loader.gif") center center no-repeat;
-                                    			opacity: 0.8;
-                                    			display: none;
-                                    			z-index: 10;
-                                    		}
-										</style>
-                                    	<div id="popUpForum"></div>
-                                        <div class="add_topic_form_container">
-                                            <form action="" method="post" data-bbp_forum_id = "<?php echo $forum_id ?>" >
-                                                <div class="add_topic_form_header">
-                                                    <div class="publication"><i
-                                                            class="icon"></i><?php _e('Publication', 'qode'); ?></div>
-                                                </div>
-                                                <div class="add_topic_form">
-                                                    <textarea
-                                                        placeholder="<?php _e('Введите текст сообщения...', 'qode'); ?>"
-                                                        name="content"></textarea>
-                                                </div>
-                                                <div class="add_topic_form_files">
-                                                </div>
-                                                <div class="add_topic_form_actions">
-                                                    <a class="image-load" href="#"></a>
-                                                    <button type="submit"><?php _e('Publish', 'qode'); ?></button>
-                                                </div>
-                                                <input type="hidden" name="bbp_forum_id" value="<?php echo $forum_id; ?>">
-                                                <input type="hidden" name="action" value="custom-bbp-topic-create">
-                                                <input type="hidden" name="security"
-                                                       value="<?php echo wp_create_nonce('custom-bbp-topic-create'); ?>">
-                                                <input class="attaches-input" type="hidden" name="attaches"/>
-                                            </form>
-                                        </div>
+                                    	
 
-                                        <div
-                                            class="topics_list_divider"><?php _e('Недавние обсуждения', 'qode'); ?></div>
 
-                                            
-                                    <div class="topics_list" data-list="2" data-forum="<?php echo $forum_id; ?>">
-                                        <?php  
-                                        if ( bbp_has_forums($buddypress_id) ) : 
-                                            $topics = false;	
-                                            while ( bbp_forums() ) : bbp_the_forum();
-	                                        	if($forum_id != bbp_get_forum_id()){
-		                                        	continue;
-	                                        	}
 
-	                                        	$msg = '$forum_id';
-	                                        	$msg .= print_r( $forum_id, true);
-	                                        	rightToLogFileDavgur($msg);
-	                                        	
-	                                        	$topics = bbp_has_topics( array(
-                                        			'post_parent'    => $forum_id,
-	                                        			'posts_per_page' => 11
-	                                        	) );
-
-	                                        	$msg = '$topics';
-	                                        	$msg .= print_r( $topics, true);
-	                                        	rightToLogFileDavgur($msg);
-	                                        	
-	                                            if(!$topics){
-	                                            	_e('This forum does not have topics', 'qode');
-	                                            	break;
-	                                            }
-                                                $counter = 0;
-                                                if (bp_group_is_visible($group))
-                                                {
-                                                	global $post;
-                                                	$post = bbp_get_forum($forum_id);
-                                                	$counter = 0;
-                                                	while (bbp_topics()) : bbp_the_topic();
-                                                	if (++$counter == 12) break;
-                                                	?>
-										            <div class="topics_list_single_topic <?php $postUser = new WP_User(bbp_get_topic_author_id());echo ($postUser->has_cap('bbp_keymaster') || $postUser->has_cap('bbp_moderator')) ? "isAdmin" : "";?>"
-										                id="topic-<?php echo bbp_get_topic_id(); ?>"
-										                data-id="<?php echo bbp_get_topic_id(); ?>">
-										                <div class="single_topic_header">
-										                    <div class="photo"><a
-										                            href="<?php echo bp_core_get_user_domain(bbp_get_topic_author_id()); ?>"><?php echo bp_core_fetch_avatar(array('item_id' => bbp_get_topic_author_id(), 'height' => 40, 'width' => 40)); ?></a>
-										                    </div>
-										                    <div class="info">
-										                        <div class="name"><a
-										                                href="<?php echo bp_core_get_user_domain(bbp_get_topic_author_id()); ?>"><?php echo bbp_get_topic_author_display_name(bbp_get_topic_id()); ?></a>       
-                                                                <?php 
-                                                                    if ($postUser->has_cap('bbp_keymaster'))  echo "<small>(Администратор форума)</small>"; 
-                                                                    elseif ($postUser->has_cap('bbp_moderator'))  echo "<small>(Преподаватель)</small>"; 
-                                                                ?>
-										                        </div>
-										                        <div
-										                            class="date"><?php echo get_post_time('j F ', false, bbp_get_topic_id(), true) . __('at', 'qode') . get_post_time(' H:i', false, bbp_get_topic_id(), true); ?></div>
-										                    </div>
-										                    <?php if (bbp_get_topic_author_id() == get_current_user_id()): ?>
-										                        <a href="#" class="addi_actions_open"></a>
-										                        <div class="addi_actions" style="display:none">
-										                            <ul>
-										                                <li><a class="edit_action" href="#">Редактировать</a>
-										                                </li>
-										                                <li><a class="remove_action"
-										                                       href="#">Удалить</a></li>
-										                            </ul>
-										                        </div>
-										                    <?php endif; ?>
-										                </div>
-										                <div class="single_topic_content">
-										                    <?php $content = bbp_get_topic_content();
-										                    if (mb_strlen($content) > 500) {
-										                        echo '<div class="show">' . mb_substr($content, 0, 500) . '... <a href="#" class="show_all">' . __('More', 'qode') . '</a></div>';
-										                        ?>
-										                        <div class="hide"><?php echo $content; ?></div>
-										                    <?php
-										                    } else {
-										                        echo $content;
-										                    }
-										                    ?>
-										                </div>
-										                <div class="single_topic_attaches">
-										                    <?php $attaches = get_post_meta(bbp_get_topic_id(), 'attaches', true);
-										                    foreach (explode(',', $attaches) as $attach) :
-										                        if (empty($attach)) continue;
-										                        $r = wp_get_attachment_image_src($attach, 'full');
-										                        ?>
-										                        <div class="single_topic_single_attachment">
-										                            <div class="attachment-image"><a target="_blank"
-										                                                             href="<?php echo $r[0]; ?>"><?php echo wp_get_attachment_image($attach, 'full'); ?></a>
-										                            </div>
-										                            <div class="attachment-controls"><a
-										                                    class="delete-attachment"
-										                                    data-id="<?php echo $attach; ?>" href="#">Удалить</a>
-										                            </div>
-										                        </div>
-										                    <?php endforeach; ?>
-										                </div>
-										                <div style="display:none" class="single_topic_content_edit">
-										                    <textarea
-										                        class="edit_content"><?php echo get_post_field('post_content', bbp_get_topic_id()); ?></textarea>
-										                    <input class="attaches-input" type="hidden" name="attaches"
-										                           value="<?php echo get_post_meta(bbp_get_topic_id(), 'attaches', true); ?>"/>
-										
-										                    <div class="edit_actions">
-										                        <a class="image-load" href="#"></a>
-										                        <button
-										                            class="cancel"><?php _e('Cancel', 'qode'); ?></button>
-										                        <button
-										                            class="save"><?php _e('Save', 'qode'); ?></button>
-										                    </div>
-										                </div>
-										                <div class="single_topic_actions">
-										                    <?php $likes = get_post_meta(bbp_get_topic_id(), 'likes', true); ?>
-										                    <?php $like = get_post_meta(bbp_get_topic_id(), 'like_' . get_current_user_id(), true); ?>
-										                    <a class="like"<?php echo (!empty($like)) ? ' style="display:none"' : ''; ?>
-										                       href="#"><?php _e('Like', 'qode'); ?></a><a
-										                        class="like dislike"<?php echo (empty($like)) ? ' style="display:none"' : ''; ?>
-										                        href="#"><?php _e('Dislike', 'qode'); ?></a>
-										
-										                    <div
-										                        class="like-count"<?php if (empty($likes)) echo ' style="display:none"'; ?>>
-										                        <i class="like-img"></i><span
-										                            class="count"><?php echo (int)$likes; ?></span>
-										                    </div>
-										                </div>
-										                <div class="single_topic_replies_container">
-										                    <div class="single_topic_replies">
-										                        <?php
-										                        $replies = get_posts($default = array(
-										                            'post_type' => bbp_get_reply_post_type(),         // Only replies
-										                            'post_parent' => bbp_get_topic_id(),       // Of this topic
-										                            'posts_per_page' => 5, // This many
-										                            'orderby' => 'date',                     // Sorted by date
-										                            'order' => 'DESC',                      // Oldest to newest
-										                            'ignore_sticky_posts' => true                       // Stickies not supported
-										                        ));
-										                        $i = count($replies);
-										                        if ($i == 5) {
-										                            $count = new WP_Query($default = array(
-										                                'numberposts' => -1,
-										                                'post_type' => bbp_get_reply_post_type(),         // Only replies
-										                                'post_parent' => bbp_get_topic_id(),       // Of this topic
-										                                'posts_per_page' => 5, // This many
-										                                'orderby' => 'date',                     // Sorted by date
-										                                'order' => 'DESC',                      // Oldest to newest
-										                                'ignore_sticky_posts' => true                       // Stickies not supported
-										                            ));
-										                            $count = $count->found_posts - 4;
-										                            ?><a href="#" class="load_all_replies"><i
-										                                class="comments_img"></i>Просмотреть
-										                            еще <?php echo $count . ' ' . custom_plural_form($count, 'комментарий', 'комментария', 'комментариев'); ?>
-										                            </a>
-										                        <?php
-										                        }
-										                        $replies = array_reverse($replies);
-										                        //array_shift($replies);
-										                        foreach ($replies as $reply) {
-                                                                    $postUser = new WP_User($reply->post_author);
-                                                                    ?>
-										                            <div class="single_topic_reply <?php $postUser = new WP_User($reply->post_author);echo ($postUser->has_cap('bbp_keymaster') || $postUser->has_cap('bbp_moderator')) ? "isAdmin" : "";?>"
-										                                 id="reply-<?php echo $reply->ID; ?>"
-										                                 data-id="<?php echo $reply->ID; ?>">
-										                                <div class="photo"><a
-										                                        href="<?php echo bp_core_get_user_domain($reply->post_author); ?>"><?php echo bp_core_fetch_avatar(array('item_id' => $reply->post_author, 'height' => 32, 'width' => 32)); ?></a>
-										                                </div>
-										                                <div class="content_wrapper">
-										                                    <div class="reply_content"><a
-										                                            class="author-link"
-										                                            href="<?php echo bp_core_get_user_domain($reply->post_author); ?>"><?php echo bbp_get_reply_author_display_name($reply->ID); ?></a>
-                                                                                    <?php 
-                                                                                        if ($postUser->has_cap('bbp_keymaster'))  echo "<small>(Администратор форума)</small>" ;
-                                                                                        elseif ($postUser->has_cap('bbp_moderator'))  echo "<small>(Преподаватель)</small>" ;
-                                                                                    ?>
-                                                                                    <?php echo bbp_get_reply_content($reply->ID); ?>
-										                                    </div>
-										                                    <div class="single_reply_attaches">
-										                                        <?php $attaches = get_comment_meta($reply->ID, 'attaches', true);
-										                                        foreach (explode(',', $attaches) as $attach) :
-										                                            if (empty($attach)) continue;
-										                                            $r = wp_get_attachment_image_src($attach, 'full');
-										                                            ?>
-										                                            <div
-										                                                class="single_reply_single_attachment">
-										                                                <div class="attachment-image"><a
-										                                                        target="_blank"
-										                                                        href="<?php echo $r[0]; ?>"><?php echo wp_get_attachment_image($attach, 'full'); ?></a>
-										                                                </div>
-										                                                <div
-										                                                    class="attachment-controls">
-										                                                    <a class="delete-attachment"
-										                                                       data-id="<?php echo $attach; ?>"
-										                                                       href="#">Удалить</a>
-										                                                </div>
-										                                            </div>
-										                                        <?php endforeach; ?>
-										                                    </div>
-										                                    <div style="display:none"
-										                                         class="reply_content_edit"><textarea
-										                                            class="reply_content_edit_textarea"><?php echo get_post_field('post_content', $reply->ID); ?></textarea><input
-										                                            class="attaches-input" type="hidden"
-										                                            name="attaches"
-										                                            value="<?php echo get_comment_meta($reply->ID, 'attaches', true); ?>"/><a
-										                                            class="image-load" href="#"></a><a
-										                                            href="#" class="smiles_open"></a>
-										
-										                                        <div class="edit_actions"><a
-										                                                class="cancel"
-										                                                href="#">Отменить</a></div>
-										                                    </div>
-										                                    <?php $likes = get_post_meta($reply->ID, 'likes', true); ?>
-										                                    <div class="actions"><span
-										                                            class="date"><?php echo get_post_time('j F ', false, $reply->ID, true) . __('at', 'qode') . get_post_time(' H:i', false, $reply->ID, true); ?></span><?php $like = get_post_meta($reply->ID, 'like_' . get_current_user_id(), true); ?>
-										                                        <a class="like"<?php echo (!empty($like)) ? ' style="display:none"' : ''; ?>
-										                                           href="#"><?php _e('Like', 'qode'); ?></a><a
-										                                            class="like dislike"<?php echo (empty($like)) ? ' style="display:none"' : ''; ?>
-										                                            href="#"><?php _e('Dislike', 'qode'); ?></a>
-										
-										                                        <div
-										                                            class="like-count"<?php if (empty($likes)) echo ' style="display:none"'; ?>>
-										                                            <i class="like-img"></i><span
-										                                                class="count"><?php echo (int)$likes; ?></span>
-										                                        </div>
-										                                    </div>
-										                                </div>
-										                                <?php if ($reply->post_author == get_current_user_id()): ?>
-										                                    <a class="addi_actions_open" href="#"></a>
-										                                    <div class="addi_actions"
-										                                         style="display:none">
-										                                        <ul>
-										                                            <li><a class="edit_action" href="#">Редактировать</a>
-										                                            </li>
-										                                            <li><a class="remove_action"
-										                                                   href="#">Удалить</a></li>
-										                                        </ul>
-										                                    </div>
-										                                <?php endif; ?>
-										                            </div>
-										                        <?php
-										                        }
-										                        $url = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}";
-										                        ?>
-										                    </div>
-										                    <div class="single_topic_reply_form">
-										                        <form
-										                            action="<?php echo $url; ?>#topic-<?php echo bbp_get_topic_id(); ?>"                                                                    
-																	data-bbp_forum_id = "<?php echo $forum_id;?>"
-										                            data-bbp_topic_id="<?php echo bbp_get_topic_id(); ?>"
-										                            method="post">
-										                            <div class="photo"><a
-										                                    href="<?php echo bp_core_get_user_domain(get_current_user_id()); ?>"><?php echo bp_core_fetch_avatar(array('item_id' => get_current_user_id(), 'height' => 32, 'width' => 32)); ?></a>
-										                            </div>
-										                            <div class="reply-form">
-										                                <textarea  placeholder="<?php _e('Введите текст сообщения...', 'qode'); ?>"
-										                                    name="content" ></textarea>
-										                                    <a class="image-load" href="#"></a>
-										                                    <a href="#" class="smiles_open"></a>
-										
-										                                <div class="add_reply_form_files">
-										                                </div>
-										                            </div>
-										
-										                            <input type="hidden" name="bbp_forum_id"
-										                                   value="<?php echo $forum_id; ?>">
-										                            <input type="hidden" name="bbp_topic_id"
-										                                   value="<?php echo bbp_get_topic_id(); ?>">
-										                            <input type="hidden" name="action"
-										                                   value="custom-bbp-reply-create">
-										                            <input type="hidden" name="security"
-										                                   value="<?php echo wp_create_nonce('custom-bbp-reply-create'); ?>">
-										                            <input class="attaches-input" type="hidden"
-										                                   name="attaches"/>
-										                        </form>
-										                    </div>
-										                </div>
-										            </div>
-										        <?php                                                
-										        endwhile;
-										        wp_reset_postdata();
-										        if ($counter == 11) {
-										            ?><a class="load_more_topics" href="#">Просмотреть больше обсуждений</a>
-										        <?php
-										        }
-										    } else {
-										        _e('This forum does not have topics', 'qode');
-										    }
-											endwhile;
-										endif;
+                                        <?php 
+                                            if(empty($hypercomments_forum_id)){
+                                                include_once 'single-namaste_course_old_forum.php';
+                                            } else {
+                                                $user = array(
+                                                  'nick' => $current_user->display_name,
+                                                  'avatar' =>  bp_core_fetch_avatar ( array( 'item_id' => $current_user->ID, 'type' => 'mini', 'html' => FALSE) ),
+                                                  'id'          => $current_user->ID
+                                                );
+                                                $time = time();
+                                                $secret = "2CI6jAMW4QctDv9g31q94ljx0";
+                                                $user_base64 = base64_encode( json_encode($user) );
+                                                $sign = md5($secret . $user_base64 . $time);
+                                                $auth = $user_base64 . "_" . $time . "_" . $sign;
                                         ?>
-                                    </div>
+                                                <div id="hypercomments_widget"></div>
+                                                <script type="text/javascript">
+                                                    _hcwp = window._hcwp || [];
+                                                    _hcwp.push({widget:"Stream", widget_id: <?php echo $hypercomments_forum_id;?>, auth: "<?php echo $auth;?>"});
+                                                    if (!window.hypercommentsAPI) {
+                                                        setTimeout(function(){
+                                                            hypercommentsAPI.initById(<?php echo $hypercomments_forum_id;?>);
+                                                        }, 10);                                                        
+                                                    } else{
+                                                        hypercommentsAPI.initById(<?php echo $hypercomments_forum_id;?>);
+                                                    }
+                                                </script>
+                                        <?php 
+                                            }
+                                        ?>
+
+
+
+
+
+
 
                                     </div>
                                 </div>
                             <input id="image-uploader" class="image-uploader hidden" type="file" name="image-uploader"
                                    multiple/>
-                            <?php echo get_smiles_list(); ?>
                             <?php
                             } elseif (empty($forum_id)) {
                                 _e('У данного курса нет форума', 'qode');
