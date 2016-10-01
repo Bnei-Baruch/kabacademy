@@ -1,15 +1,3 @@
-/*
-Theme Name: Academy S7 Child
-Theme URI: http://demo.qodeinteractive.com/satellite/
-Description: Academy A child theme of Satellite7 
-Author: Casepress
-Author URI: http://www.qodeinteractive.com/
-Version: 1.0.0
-Template: satellite
-Text Domain: satellite-academy-child
-*/
-@import url("../satellite/style.css");
-
 p {
     font: normal 14px/20px Verdana;
 }
@@ -1757,11 +1745,6 @@ background-size: 21px 21px; background-repeat: no-repeat;}
 
 .form-field label.error {
     margin-top: 4px;
-}
-
-
-.container_inner .single-namaste_course, .container_inner .single-namaste_lesson {
-    /*margin-top: 30px;*/
 }
 
 .namaste-archive-tab-content .tabs-nav {
