@@ -7,22 +7,17 @@ function wp_schools_enqueue_scripts() {
 	wp_register_script('jquery', ("//code.jquery.com/jquery-2.1.4.js"), false, '2.1.4');
 	wp_enqueue_script('jquery');
 	
-	// wp_register_style("bootstrap-css", get_stylesheet_directory_uri() . './bootstrap/css/bootstrap.css');
-	// wp_enqueue_style('bootstrap-css');
-	wp_register_style ( 'childstyle', get_stylesheet_directory_uri () . '/style.css' );
+	wp_register_style ( 'childstyle', get_stylesheet_directory_uri () . '/style/style.css' );
 	wp_enqueue_style ( 'childstyle' );
-	wp_register_style ( 'bxslider', get_stylesheet_directory_uri () . '/jquery.bxslider.css' );
+	wp_register_style ( 'bxslider', get_stylesheet_directory_uri () . '/style/jquery.bxslider.css' );
 	wp_enqueue_style ( 'bxslider' );
 	
-	// wp_enqueue_script("bootstrap", get_stylesheet_directory_uri() . './bootstrap/js/bootstrap.min.js');
-	wp_enqueue_script ( 'watuscript', get_stylesheet_directory_uri () . '/watu-script.js', array (
+	wp_enqueue_script ( 'watuscript', get_stylesheet_directory_uri () . '/js/watu-script.js', array (
 			'watu-script' 
 	), false, true );
-	wp_enqueue_script ( 'bbScript', get_stylesheet_directory_uri () . '/bb-script.js' );
+	wp_enqueue_script ( 'bbScript', get_stylesheet_directory_uri () . '/js/bb-script.js' );
 	wp_enqueue_script ( 'bxslider', get_stylesheet_directory_uri () . '/js/jquery.bxslider.min.js' );
 	wp_enqueue_style ( 'fonts-ptsansnarrow', 'http://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700&subset=latin,cyrillic' );
-	// wp_enqueue_style( 'fonts-ptsans', 'http://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic&subset=cyrillic,latin' );
-	// wp_enqueue_script( 'fonts-ptsans', 'http://webfonts.creativecloud.com/open-sans:n7:all;pt-sans-narrow:n4,n7:all;pt-sans:n4,n7,i4:all.js' );
 }
 
 add_action ( 'wp_enqueue_scripts', 'wp_schools_enqueue_scripts', 1100 );
@@ -128,17 +123,9 @@ function academy_courses($atts) {
 		if ($key == ($numberposts - 1))
 			break;
 		$aCourseData = getCourseDataForHomePage ( $post );
-		// $return = json_encode($aCourseData);
-		// $return = 'asdasdasd';
 		if (! $aCourseData ["registration_closed"]) {
 			if (NamasteLMSStudentModel::is_enrolled ( get_current_user_id (), $post->ID ) == null) {
 				$enrollBtnHTML = '<span class="btnCourse">Войти</span>';
-									/* <div class="btnCourse" style="position: relative; height: 32px; padding: 0px;">
-										<span style="position: absolute;left:80px;color: ##555555">
-											Прогре�?�? ' . $perc . '%
-										</span>
-										<div style="height: 32px; width: ' . $perc . '%; background-color: #FFF4D9;"></div>
-									</div>'; */
 			} else {
 				$enrollBtnHTML = '<span class="btnCourse">' . __ ( 'Enroll', 'qode' ) . '</span>';
 				$perc = get_course_progress ( $my_course->ID, $enrolled_one->ID );
@@ -160,10 +147,6 @@ function academy_courses($atts) {
 	
 	wp_reset_postdata ();
 	$load_more = '';
-	
-	if (count ( $posts ) == $numberposts) {
-		//$load_more .= '<div id="load_more_posts_wrap"><a id="load_more_posts" data-page="' . ($atts ['page'] + 8) . '" href="#">' . __ ( 'MORE COURSES', 'qode' ) . '</a></div>';
-	}
 	
 	return $return . $load_more;
 }
@@ -197,15 +180,6 @@ function getCourseDataForHomePage($post) {
 	$aResult ['title'] = $title;
 	$subtitle = get_post_meta ( $post->ID, 'list_subtitle', true );
 	$aResult ['subtitle'] = $subtitle;
-	
-	/*
-	 * if(mb_strlen($title) > 20){
-	 * $title = mb_substr($title, 0, 20) . '...';
-	 * }
-	 * if(mb_strlen($subtitle) > 30){
-	 * $subtitle = mb_substr($subtitle, 0, 30) . '...';
-	 * }
-	 */
 	
 	$footer = '';
 	$category_color = get_post_meta ( $post->ID, 'course_color', true );
@@ -316,13 +290,6 @@ function namaste_mark() {
 	if (! is_user_logged_in ())
 		return "";
 		
-		// is the lesson in progress?
-		/*
-	 * $in_progress = $wpdb->get_var($wpdb->prepare("SELECT id FROM ".NAMASTE_STUDENT_LESSONS."
-	 * WHERE lesson_id=%d AND student_id=%d AND status!=1", $post->ID, $user_ID));
-	 * if(!$in_progress) return '';
-	 */
-		
 	// ready for completion?
 	if (NamasteLMSLessonModel::is_completed ( $post->ID, $user_ID )) {
 		return __ ( 'Lesson completed!', 'namaste' );
@@ -367,7 +334,6 @@ function namaste_enroll() {
 	global $wpdb, $user_ID, $user_email, $post;
 	
 	if (! is_user_logged_in ()) {
-		// return __('You need to be logged in to enroll in this course', 'namaste');
 		$content = '';
 		
 		$required_lessons_ids = get_post_meta ( $post->ID, 'namaste_required_lessons', true );
@@ -408,7 +374,6 @@ function namaste_enroll() {
 		
 		if (! empty ( $_POST ['enroll'] )) {
 			echo " <script type='text/javascript'> location.reload(true); </script>";
-			// TODO:Davgur - make error (ont go after this)
 			$mesage = NamasteLMSCoursesController::enroll ( $is_manager );
 			namaste_redirect ( $_SERVER ['REQUEST_URI'] );
 		}
@@ -457,17 +422,7 @@ function output_postid() {
 	global $post;
 	if (isset ( $post->ID ) && ! empty ( $post->ID ) && is_singular ( 'namaste_lesson' )) :
 		?>
-<script>
             var lesson_id = <?php echo $post->ID ?>;
-        </script>
-
-
-
-
-
-
-
-
 	<?php endif;
 }
 
@@ -860,8 +815,6 @@ function custom_bbp_topic_create() {
 			'post_content' => $_POST ['content'],
 			'post_title' => (mb_strlen ( $_POST ['content'] ) > 100) ? mb_substr ( $_POST ['content'], 0, 100 ) . '...' : $_POST ['content'] 
 	), 
-			// 'comment_status' => 'closed',
-			// 'menu_order' => 0,
 			array (
 					'forum_id' => ( int ) $_POST ['bbp_forum_id'] 
 			) );
@@ -905,10 +858,7 @@ function wp_disabled_lesson_redirect() {
 
 add_action ( 'wp', 'wp_disabled_lesson_redirect' );
 function filter_content_tags($content) {
-	
-	// $content = nl2br(strip_tags(trim($content), '<br>'));
-	$content = nl2br ( esc_html ( trim ( $content ) ), '<br>' );
-	
+	$content = nl2br ( esc_html ( trim ( $content ) ), '<br>' );	
 	return $content;
 }
 
@@ -1810,21 +1760,4 @@ function add_points_on_registration($user_id) {
 	if ($result) {
 		update_user_meta ( $user_id, 'namaste_points', $action_points );
 	}
-}
-function registrationForm_iframe() {
-	global $post, $wpdb;
-	if ($_POST ['action'] == "loginRregistrationFormShortcode") {
-		$_POST ['userData'] ['courseId'] = $_REQUEST ['courseId'];
-		do_action ( 'wp_ajax_nopriv_registerRregistrationFormShortcode' );
-		// $tesa = new RregistrationFormShortcodeClass();
-		// $return = RregistrationFormShortcodeClass::login();
-	}
-	if ($_POST ['action'] == "registerRregistrationFormShortcode") {
-		$_POST ['userData'] ['courseId'] = $_REQUEST ['courseId'];
-		RregistrationFormShortcodeClass::register ();
-	}
-}
-function is_tashaev_or_davgur(){
-	$current_id = get_current_user_id();
-	return $current_id == 3 || $current_id == 30;
 }
