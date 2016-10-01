@@ -62,7 +62,7 @@ if (isset($qode_options_satellite['twitter_via']) && !empty($qode_options_satell
  $current_user = wp_get_current_user();
 ?>
 <?php get_header(); ?>
-<script type='text/javascript' src='/wp-content/themes/satellite-child-academy/js/hypercomments.js'></script>
+<script type='text/javascript' src='<?php echo get_stylesheet_directory_uri ();?>/js/hypercomments.js'></script>
 <?php if (have_posts()) : ?>
     <?php while (have_posts()) : the_post();
         if ($qode_options_satellite['show_back_button'] == "yes") : ?>
@@ -209,24 +209,33 @@ if (isset($qode_options_satellite['twitter_via']) && !empty($qode_options_satell
 
                                 </div>
                             <?php elseif (is_user_logged_in() && $tab == 'lection'): ?>
-                                <table class="clearfix lection-heading">
-                                    <tr>
-                                        <?php $course_id = $post->ID; ?>
-                                        <td>
-                                            <h3><?php echo get_the_title($course_id); ?></h3> 
-                                            <?php  $next_lection_date = get_next_lection_date($course_id);
-                                            if (!empty($next_lection_date)) {
-                                                echo '<br><div class="subTitle">' . $next_lection_date . ' </div>';
-                                            } ?>
-                                        </td>
+                                <div class="clearfix lection-heading">
+                                <?php 
+                                	$course_id = $post->ID;
+                                	$next_lection_date = get_next_lection_date($course_id);
+                                	if (!empty($next_lection_date)) {
+                                		echo '<br><div class="subTitle">' . $next_lection_date . ' </div>';
+                                	} 
+                                ?>
+                                </div>
+                                <div class="two_columns_60_40 lection-tab clearfix">
+                                    <div class="column1">
 
-                                        <?php
-                                        $width = '18%';
-                                        if (current_user_can('editor') || current_user_can('administrator')) {
-                                            $width = '40%';
-                                        }
-                                        ?>
-                                        <td style="width:<?php echo $width; ?>">
+                                        <div class="lection-video-container">
+                                            <div id="lveventplayer">
+                                                <div style="text-align: center; width: 100%; height: 370px; background-color: #181818;font-size: 2em; line-height: 380px; color: #fff;">
+                                                    Здесь будет плеер с трансляцией
+                                                    <script type='text/javascript' src='<?php echo get_stylesheet_directory_uri ();?>/js/youtube-broadcast.js?ver=1.1'></script>
+                                                    <script type="text/javascript" src = "https://www.youtube.com/iframe_api"></script>
+                                                    <?php if(!empty ( $live_course_video_id)): ?>                                                        
+                                                        <script> window.youtubeCourseVideoLiveId = '<?php echo $live_course_video_id; ?>'; </script>
+                                                    <?php else :?>
+                                                       	<script> window.youtubeBroadcastChannelId = '<?php echo $channelId; ?>'; </script>
+                                                    <?php endif; ?>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
                                             <div class="gototraining">
                                                 <img height="40"
                                                      src="<?php echo get_stylesheet_directory_uri(); ?>/images/icongooglehangoutGrey.png"/>
@@ -357,26 +366,7 @@ if (isset($qode_options_satellite['twitter_via']) && !empty($qode_options_satell
                                                 </a>
                                             	<?php endif; ?>
                                             </div>
-                                        </td>
-                                    </tr>
-                                </table>
-                                <div class="two_columns_60_40 lection-tab clearfix">
-                                    <div class="column1">
-
-                                        <div class="lection-video-container">
-                                            <div id="lveventplayer">
-                                                <div style="text-align: center; width: 100%; height: 370px; background-color: #181818;font-size: 2em; line-height: 380px; color: #fff;">
-                                                    Здесь будет плеер с трансляцией
-                                                    <script type='text/javascript' src='/wp-content/themes/satellite-child-academy/js/youtube-broadcast.js?ver=1.1'></script>
-                                                    <script type="text/javascript" src = "https://www.youtube.com/iframe_api"></script>
-                                                    <?php if(!empty ( $live_course_video_id)): ?>                                                        
-                                                        <script> window.youtubeCourseVideoLiveId = '<?php echo $live_course_video_id; ?>'; </script>
-                                                    <?php else :?>
-                                                       	<script> window.youtubeBroadcastChannelId = '<?php echo $channelId; ?>'; </script>
-                                                    <?php endif; ?>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        
                                     </div>
                                     <div class="column2">
                                         <div class="tabs sidebar-tabs-dmn">
@@ -480,7 +470,6 @@ if (isset($qode_options_satellite['twitter_via']) && !empty($qode_options_satell
                                                     $notes = get_user_meta(get_current_user_id(), 'notes_' . $course_id, true); //[accordion_item caption="Accordion 1" title_color=""]This is some content[/accordion_item][accordion_item caption="Accordion 1" title_color=""]This is some content[/accordion_item]
                                                     $content_notes = '';
 
-                                                    //$notes[] = array('title' => 'test', 'content' => 'Type here...', 'date' => time());
 
                                                     foreach ($notes as $key => $note) {
                                                         $content_notes .= do_shortcode('[accordion_item caption="' . $note['title'] . '" title_color=""]<div class="note_title_wrap"><input class="note_title" value="' . $note['title'] . '" /></div><div class="note_content" contenteditable="true">' . $note['content'] . '</div><div class="note_actions"><a href="#" class="remove_note pull-left"></a><div class="note_status pull-right">' . __('SAVED', 'qode') . '</div><div class="note_date pull-right"><span class="date">' . date('d/m/y', $note['date']) . '</span><span class="time">' . date('h:i A', $note['date']) . '</span></div></div><input style="display: none" class="note_id" value="' . $key . '" />[/accordion_item]');
@@ -513,13 +502,6 @@ if (isset($qode_options_satellite['twitter_via']) && !empty($qode_options_satell
                                                                 jQuery("#tabiid3 h3.ui-accordion-header span").remove();
                                                             });
 
-                                                            /*jQuery(document).on('dblclick', "#tabiid3 h3.ui-accordion-header", function(e){
-                                                             e.preventDefault();
-
-                                                             jQuery(this).addClass('editing').html('<input style="width:100%" value="'+jQuery(this).text()+'" />');
-
-                                                             return false;
-                                                             });*/
                                                             jQuery(document).on('click', '#tabiid3 .note-title-edit-icon', function (e) {
                                                                 e.preventDefault();
                                                                 e.stopPropagation();
