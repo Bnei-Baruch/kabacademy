@@ -709,34 +709,59 @@ if (isset($qode_options_satellite['twitter_via']) && !empty($qode_options_satell
                                             } else {
                                                 $user = array(
                                                   'nick' => $current_user->display_name,
-                                                  'avatar' =>  bp_core_fetch_avatar ( array( 'item_id' => $current_user->ID, 'type' => 'mini', 'html' => FALSE) ),
-                                                  'id'          => $current_user->ID
+                                                  'avatar' => bp_core_fetch_avatar ( array( 'item_id' => $current_user->ID, 'type' => 'mini', 'html' => FALSE) ),
+                                                  'id' => $current_user->ID
                                                 );
                                                 $time = time();
                                                 $secret = "2CI6jAMW4QctDv9g31q94ljx0";
                                                 $user_base64 = base64_encode( json_encode($user) );
                                                 $sign = md5($secret . $user_base64 . $time);
                                                 $auth = $user_base64 . "_" . $time . "_" . $sign;
-                                        ?>
-                                                <div id="hypercomments_widget"></div>
-                                                <script type="text/javascript">
-                                                    _hcwp = window._hcwp || [];
-                                                    _hcwp.push({widget:"Stream", widget_id: <?php echo $hypercomments_forum_id;?>, auth: "<?php echo $auth;?>"});
-                                                    if (!window.hypercommentsAPI) {
-                                                        setTimeout(function(){
-                                                            hypercommentsAPI.initById(<?php echo $hypercomments_forum_id;?>);
-                                                        }, 10);                                                        
-                                                    } else{
-                                                        hypercommentsAPI.initById(<?php echo $hypercomments_forum_id;?>);
-                                                    }
-                                                </script>
-                                        <?php 
+
+                                                //moderators
+                                                if($current_user->ID == 30){
+                                                    $body =  array(
+                                                        'widget_id'=> (int) $hypercomments_forum_id,
+                                                        'auth' => $auth,
+                                                    );
+
+                                                    /*$data = json_encode(array (
+                                                        'body'=> $body,
+                                                        'signature'=> sha1($secret + json_encode($body))
+                                                    ));*/
+                                                    $body = '{"widget_id":24106,"auth":"ewogICAgImlkIjogIjE0NzUyMTEzMzUiLAogICAgIm5pY2siOiAiVGVzdCBOaWNrIiwKICAgICJlbWFpbCI6ICJ0ZXN0QGVtYWlsLmNvbSIsCiAgICAiYXZhdGFyIjogImh0dHBzOi8vd3d3Lmh5cGVyY29tbWVudHMuY29tL3N0YXRpYy9pbWcvaGNsb2dvLnBuZyIsCiAgICAicHJvZmlsZV91cmwiOiAiaHR0cHM6Ly9wcm9maWxlLmh5cGVyY29tbWVudHMuY29tIgp9_1475211479_79e1b93ca36bde4f8ec9f0ca4eac01f1"}';
+                                                    $data = array (
+                                                    	'body'=> $body,
+                                                		'signature'=> '0bd468d4d943713a78713fbde568d30692eac10a'
+                                                    );
+                                                    
+                                                    $url = 'http://c1api.hypercomments.com/1.0/users/add_moderator';
+                                                    $options = array(
+                                                    		'http' => array(
+                                                    //			'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
+                                                    			//'header'  => "Content-type: application/json\r\n",
+                                                    			'method'  => 'GET'
+                                                    		)
+                                                    );
+                                                    $context  = stream_context_create($options, $data);
+                                                    $result = file_get_contents($url, false, $context);
+                                                    var_dump($result);
+                                                }
                                             }
                                         ?>
 
-
-
-
+                                        <div id="hypercomments_widget"></div>
+                                        <script type="text/javascript">
+                                            _hcwp = window._hcwp || [];
+                                            _hcwp.push({widget:"Stream", widget_id: <?php echo $hypercomments_forum_id;?>, auth: "<?php echo $auth;?>"});
+                                            if (!window.hypercommentsAPI) {
+                                                setTimeout(function(){
+                                                    hypercommentsAPI.initById(<?php echo $hypercomments_forum_id;?>);
+                                                }, 10);                                                        
+                                            } else{
+                                                hypercommentsAPI.initById(<?php echo $hypercomments_forum_id;?>);
+                                            }
+                                        </script>
 
 
 

@@ -1811,6 +1811,19 @@ function add_points_on_registration($user_id) {
 		update_user_meta ( $user_id, 'namaste_points', $action_points );
 	}
 }
+function registrationForm_iframe() {
+	global $post, $wpdb;
+	if ($_POST ['action'] == "loginRregistrationFormShortcode") {
+		$_POST ['userData'] ['courseId'] = $_REQUEST ['courseId'];
+		do_action ( 'wp_ajax_nopriv_registerRregistrationFormShortcode' );
+		// $tesa = new RregistrationFormShortcodeClass();
+		// $return = RregistrationFormShortcodeClass::login();
+	}
+	if ($_POST ['action'] == "registerRregistrationFormShortcode") {
+		$_POST ['userData'] ['courseId'] = $_REQUEST ['courseId'];
+		RregistrationFormShortcodeClass::register ();
+	}
+}
 function is_tashaev_or_davgur(){
 	$current_id = get_current_user_id();
 	return $current_id == 3 || $current_id == 30;

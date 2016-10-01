@@ -94,6 +94,12 @@ if(get_post_meta($id, "qode_show-page-title-image", true)) {
                     <p class="help-info">&nbsp;<?php // _e('* asterisk indicates required fields', 'qode'); ?></p>
                     <?php echo do_shortcode('[loginForm]'); ?>
                 </div>
+                <div>
+                    <br />
+                    <p>
+                        <a href="/registration">Нет логина? Зарегистрируйтесь >></a>
+                    </p>
+                </div>
                 <!-- <div class="clearfix or-divider">
                     <div class="hor-line-divider"></div>
                     <div class="hor-line-divider-text"><?php _e('or', 'qode'); ?></div>
@@ -113,3 +119,5 @@ if(get_post_meta($id, "qode_show-page-title-image", true)) {
         <!--</div>-->
     </div>
 </div>
+
+<?php get_footer(); ?>
