@@ -361,7 +361,14 @@ if (isset($qode_options_satellite['twitter_via']) && !empty($qode_options_satell
                                                 </a>
                                                 <?php if (current_user_can('editor') || current_user_can('administrator')) : ?>
                                                 <a target="_blank" class="btnM"
-                                                   href="https://chat1.kbb1.com/admin.html?label=rt.kbb1.com.<?php echo $course_space; ?>" >
+                                                   href="<?php
+                                                        if(!empty($hypercomments_id)){
+                                                            $seminar_button_href =  'http://admin.hypercomments.com/comments/approve/' . $hypercomments_id; 
+                                                        } else {
+                                                            $seminar_button_href = 'https://chat1.kbb1.com/admin.html?label=rt.kbb1.com.'.$course_space;
+                                                        }
+                                                        echo $seminar_button_href;
+                                                    ?>" >
                                                    <?php _e('Manage chat', 'qode'); ?>
                                                 </a>
                                             	<?php endif; ?>
