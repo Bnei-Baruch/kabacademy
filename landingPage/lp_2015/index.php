@@ -34,15 +34,17 @@ $basePath = get_stylesheet_directory_uri () . '/landingPage/'. get_post_meta(get
 		</div>
 		<div id="mainContent">
 			<div id="home">
-				<div id="fall-sticker">
+				<!-- <div id="fall-sticker">
 					<a
 						onClick="_gaq.push(['_trackEvent', 'registration','buttons', 'home-sticker'])"
 						class="reg-button" href="#signup"><img
-						src="<?php echo $basePath.'images'; ?>/winter_2016_sticker.png"
+						src="<?php echo $basePath.'images'; ?>/spring_2016_sticker.png"
 						alt="Зима 2016" /></a>
 				</div>
-				<h2>Начало обучения 17 января</h2>
-				<h3>Запись продлится до 31 января</h3>
+				<h2>Начало занятий 11 мая</h2>
+				<h2>Запись продлится до 12 июня</h2>-->
+				<h1>.</h1>
+				<div class="divider"></div>
 				<div class="divider"></div>
 				<h1>СЕЙЧАС ЗНАЧИТЕЛЬНЫЙ МОМЕНТ В ТВОЕЙ ЖИЗНИ. ВЫБОР ЗА ТОБОЙ!</h1>
 				<div id="signup">
@@ -55,9 +57,9 @@ $basePath = get_stylesheet_directory_uri () . '/landingPage/'. get_post_meta(get
 				<div class="divider"></div>
 			</div>
 			<div class="subpage">
-				<iframe width="580" height="435"
+				    <iframe width="580" height="435"
 					src="http://www.youtube.com/embed/Jt7kJfn9Z2c?rel=0"
-					frameborder="0" allowfullscreen></iframe>
+					frameborder="0" allowfullscreen></iframe> 
 
 				<h2>Этот курс вам позволит:</h2>
 				<ul>
@@ -126,13 +128,14 @@ $basePath = get_stylesheet_directory_uri () . '/landingPage/'. get_post_meta(get
 						<li>Самостоятельное обучение можно начать в любой момент</li>
 						<li>Бесплатный доступ к оригинальным текстам</li>
 						<li>Возможность участия в онлайн-сообществе</li>
-						<li>Базовое обучение - 12 недель <br />(24 занятия, 2 занятия в
-							неделю), полный курс обучения 36 недель (основы науки каббала =
-							12 недель, основы продвижения = 12 недель, практическая каббала =
-							12 недель)
+						<li>Базовое обучение - 10 недель <br />(20 занятий, 2 занятия в
+							неделю), полный курс обучения 40 недель (9 месяцев) (основы науки каббала =
+							10 недель, основы продвижения = 10 недель, практическая каббала =
+							20 недель)
 						</li>
 						<li>Если вы пропустили занятие, запись урока доступна для
 							свободного скачивания</li>
+						<li>По итогам семестра - Конференция преподавателей и студентов 26-27 ноября в Берлине, Киеве, 	  	 Москве, Новосибирске и Тель-Авиве</li>
 					</ul>
 
 					<div class="divider"></div>
@@ -140,7 +143,7 @@ $basePath = get_stylesheet_directory_uri () . '/landingPage/'. get_post_meta(get
 			</div>
 			<div id="register" class="subpage">
 				<h1>Регистрация</h1>
-				<?php echo do_shortcode ( '[registerForm enrollto=5505]' );?>
+				<?php echo do_shortcode ( '[registerForm enrollto=50033]' );?>
 				<div class="divider"></div>
 			</div>
 			<div id="testimonials" class="subpage">
