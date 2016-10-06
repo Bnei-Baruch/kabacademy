@@ -7,7 +7,7 @@ function wp_schools_enqueue_scripts() {
 	wp_register_script('jquery', ("//code.jquery.com/jquery-2.1.4.js"), false, '2.1.4');
 	wp_enqueue_script('jquery');
 	
-	wp_register_style ( 'childstyle', get_stylesheet_directory_uri () . '/style/style.css' );
+	wp_register_style ( 'childstyle', get_stylesheet_directory_uri () . '/style/childstyle.css' );
 	wp_enqueue_style ( 'childstyle' );
 	wp_register_style ( 'bxslider', get_stylesheet_directory_uri () . '/style/jquery.bxslider.css' );
 	wp_enqueue_style ( 'bxslider' );
