@@ -1429,7 +1429,7 @@ function isUserCanEnrollToCourse() {
 // LOGOUT LINK IN MENU
 function academy_menu_logout_link($nav, $args) {
 	$logoutlink = '<li class="loginBtn"><a href="' . wp_logout_url ( home_url () ) . '"><span>' . __ ( 'Logout', 'qode' ) . '</span></a></li>';
-	if ($args->menu == 'Header right menu (Signed)') {
+	if ($args->menu == 'Header right menu (Signed)' || $args->menu == 'Footer menu (Unsigned)') {
 		return $nav . $logoutlink;
 	} else {
 		return $nav;
