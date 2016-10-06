@@ -387,44 +387,49 @@ if (isset($qode_options_satellite['twitter_via']) && !empty($qode_options_satell
                                             <div class="tabs-container">
                                                 <div id="tabiid1" class="tab-content" style="display: block;">
                                                 <?php 
+                                                //@todo - duplicate code with hypercomments forum
                                                     if(!empty($hypercomments_id)){
-                                                        $user = array(
-                                                          'nick'        => $current_user->display_name,
-                                                          'avatar'      =>  bp_core_fetch_avatar (  array(  'item_id' => $current_user->ID, 'type'    => 'mini', 'html'   => FALSE) ),
-                                                          'id'          => $current_user->ID
+                                                        $user_hypercomments = array(
+                                                          'nick' => $current_user->display_name,
+                                                          'avatar' => bp_core_fetch_avatar ( array( 'item_id' => $current_user->ID, 'type' => 'mini', 'html' => FALSE) ),
+                                                          'id' => $current_user->ID
                                                         );
-                                                        $time        = time();
-                                                        $secret      = "2CI6jAMW4QctDv9g31q94ljx0";
-                                                        $user_base64 = base64_encode( json_encode($user) );
-                                                        $sign        = md5($secret . $user_base64 . $time);
-                                                        $auth        = $user_base64 . "_" . $time . "_" . $sign;
-                                                ?>
-                                                        <div id="hypercomments_widget"></div>
-                                                        <script type="text/javascript">
-                                                        _hcwp = window._hcwp || [];
-                                                        _hcwp.push({widget:"Stream", widget_id: <?php echo $hypercomments_id;?>, auth: "<?php echo $auth;?>"});
-                                                        hypercommentsAPI.initById(<?php echo $hypercomments_id;?>);
-                                                        </script>
-                                                        <?php 
-                                                        
-                                                        if($current_user->has_cap('bbp_keymaster') || $current_user->has_cap('bbp_moderator')){
-                                                            $body = array(
-                                                                'auth'=> $auth,
+                                                        $time_hypercomments = time();
+                                                        $secret_hypercomments = "2CI6jAMW4QctDv9g31q94ljx0";
+                                                        $user_base64 = base64_encode( json_encode($user_hypercomments) );
+                                                        $sign_hypercomments = md5($secret_hypercomments . $user_base64 . $time_hypercomments);
+                                                        $auth_hypercomments = $user_base64 . "_" . $time_hypercomments . "_" . $sign_hypercomments;
+
+                                                        //moderators
+                                                        //if($current_user->has_cap('bbp_keymaster') || $current_user->has_cap('bbp_moderator')){
+                                                        if($current_user->ID == 30){
+                                                            $body_hypercomments =  json_encode(array(
                                                                 'widget_id'=> $hypercomments_id,
-                                                                );
-                                                            $signature = sha1($secret + json_encode($body));
-                                                            ?>
-                                                            <script>
-                                                                (function (argument) {
-                                                                    var param = {
-                                                                        body: <?php echo json_encode($body) ?>,
-                                                                        signature: "<?php echo $signature;?>"
-                                                                    }
-                                                                    hypercommentsAPI.initModerator(param);
-                                                                }());                         
-                                                            </script>
-                                                            <?php 
+                                                                'auth' => $auth_hypercomments,
+                                                            ), JSON_HEX_QUOT);
+                                                            $postParams = http_build_query(array (
+                                                                'body'=> $body_hypercomments,
+                                                                'signature'=> sha1($body_hypercomments.$secret_hypercomments)
+                                                            ));
+
+                                                            $curl_hypercomments = curl_init();
+                                                            curl_setopt_array($curl_hypercomments, array(
+                                                                CURLOPT_URL => 'http://c1api.hypercomments.com/1.0/users/add_moderator',
+                                                                CURLOPT_RETURNTRANSFER => true,
+                                                                CURLOPT_POST => true,
+                                                                CURLOPT_POSTFIELDS => $postParams
+                                                            ));
+                                                            $response = curl_exec($curl_hypercomments);
+                                                            curl_close($curl_hypercomments);
                                                         }
+                                                ?>                                                            
+                                                        	<div id="hypercomments_widget"></div>
+                                                        	<script type="text/javascript">
+                                                        	_hcwp = window._hcwp || [];
+                                                        	_hcwp.push({widget:"Stream", widget_id: <?php echo $hypercomments_id;?>, auth: "<?php echo $auth_hypercomments;?>"});
+                                                        	hypercommentsAPI.initById(<?php echo $hypercomments_id;?>);
+                                                        	</script>
+                                                <?php
                                                     } else {
                                                         $cityName = bp_get_profile_field_data( array( 'field'   => 'Город', 'user_id' => $current_user->ID));
                                                         $defaultChatParam = '&label=rt.kbb1.com.'.$course_space.'&name_text='.$current_user->display_name.'&from_text='.$cityName;
@@ -688,53 +693,42 @@ if (isset($qode_options_satellite['twitter_via']) && !empty($qode_options_satell
 										</div>
                                     </div>
                                     <div class="column2">
-                                    	
-
-
 
                                         <?php 
                                             if(empty($hypercomments_forum_id)){
                                                 include_once 'single-namaste_course_old_forum.php';
                                             } else {
-                                                $user = array(
+                                                $user_hypercomments = array(
                                                   'nick' => $current_user->display_name,
                                                   'avatar' => bp_core_fetch_avatar ( array( 'item_id' => $current_user->ID, 'type' => 'mini', 'html' => FALSE) ),
                                                   'id' => $current_user->ID
                                                 );
-                                                $time = time();
-                                                $secret = "2CI6jAMW4QctDv9g31q94ljx0";
-                                                $user_base64 = base64_encode( json_encode($user) );
-                                                $sign = md5($secret . $user_base64 . $time);
-                                                $auth = $user_base64 . "_" . $time . "_" . $sign;
+                                                $time_hypercomments = time();
+                                                $secret_hypercomments = "2CI6jAMW4QctDv9g31q94ljx0";
+                                                $user_base64 = base64_encode( json_encode($user_hypercomments) );
+                                                $sign_hypercomments = md5($secret_hypercomments . $user_base64 . $time_hypercomments);
+                                                $auth_hypercomments = $user_base64 . "_" . $time_hypercomments . "_" . $sign_hypercomments;
 
                                                 //moderators
                                                 if($current_user->ID == 30){
-                                                    $body =  array(
-                                                        'widget_id'=> (int) $hypercomments_forum_id,
-                                                        'auth' => $auth,
-                                                    );
+                                                    $body_hypercomments =  json_encode(array(
+                                                        'widget_id'=> $hypercomments_forum_id,
+                                                        'auth' => $auth_hypercomments,
+                                                    ), JSON_HEX_QUOT);
+                                                    $postParams = http_build_query(array (
+                                                        'body'=> $body_hypercomments,
+                                                        'signature'=> sha1($body_hypercomments.$secret_hypercomments)
+                                                    ));
 
-                                                    /*$data = json_encode(array (
-                                                        'body'=> $body,
-                                                        'signature'=> sha1($secret + json_encode($body))
-                                                    ));*/
-                                                    $body = '{"widget_id":24106,"auth":"ewogICAgImlkIjogIjE0NzUyMTEzMzUiLAogICAgIm5pY2siOiAiVGVzdCBOaWNrIiwKICAgICJlbWFpbCI6ICJ0ZXN0QGVtYWlsLmNvbSIsCiAgICAiYXZhdGFyIjogImh0dHBzOi8vd3d3Lmh5cGVyY29tbWVudHMuY29tL3N0YXRpYy9pbWcvaGNsb2dvLnBuZyIsCiAgICAicHJvZmlsZV91cmwiOiAiaHR0cHM6Ly9wcm9maWxlLmh5cGVyY29tbWVudHMuY29tIgp9_1475211479_79e1b93ca36bde4f8ec9f0ca4eac01f1"}';
-                                                    $data = array (
-                                                    	'body'=> $body,
-                                                		'signature'=> '0bd468d4d943713a78713fbde568d30692eac10a'
-                                                    );
-                                                    
-                                                    $url = 'http://c1api.hypercomments.com/1.0/users/add_moderator';
-                                                    $options = array(
-                                                    		'http' => array(
-                                                    //			'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
-                                                    			//'header'  => "Content-type: application/json\r\n",
-                                                    			'method'  => 'GET'
-                                                    		)
-                                                    );
-                                                    $context  = stream_context_create($options, $data);
-                                                    $result = file_get_contents($url, false, $context);
-                                                    var_dump($result);
+                                                    $curl_hypercomments = curl_init();
+                                                    curl_setopt_array($curl_hypercomments, array(
+                                                        CURLOPT_URL => 'http://c1api.hypercomments.com/1.0/users/add_moderator',
+                                                        CURLOPT_RETURNTRANSFER => true,
+                                                        CURLOPT_POST => true,
+                                                        CURLOPT_POSTFIELDS => $postParams
+                                                    ));
+                                                    $response = curl_exec($curl_hypercomments);
+                                                    curl_close($curl_hypercomments);
                                                 }
                                             }
                                         ?>
@@ -742,7 +736,7 @@ if (isset($qode_options_satellite['twitter_via']) && !empty($qode_options_satell
                                         <div id="hypercomments_widget"></div>
                                         <script type="text/javascript">
                                             _hcwp = window._hcwp || [];
-                                            _hcwp.push({widget:"Stream", widget_id: <?php echo $hypercomments_forum_id;?>, auth: "<?php echo $auth;?>"});
+                                            _hcwp.push({widget:"Stream", widget_id: <?php echo $hypercomments_forum_id;?>, auth: "<?php echo $auth_hypercomments;?>"});
                                             if (!window.hypercommentsAPI) {
                                                 setTimeout(function(){
                                                     hypercommentsAPI.initById(<?php echo $hypercomments_forum_id;?>);
