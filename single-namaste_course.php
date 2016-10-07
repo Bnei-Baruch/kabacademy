@@ -401,8 +401,7 @@ if (isset($qode_options_satellite['twitter_via']) && !empty($qode_options_satell
                                                         $auth_hypercomments = $user_base64 . "_" . $time_hypercomments . "_" . $sign_hypercomments;
 
                                                         //moderators
-                                                        //if($current_user->has_cap('bbp_keymaster') || $current_user->has_cap('bbp_moderator')){
-                                                        if($current_user->ID == 30){
+                                                        if($current_user->has_cap('bbp_keymaster') || $current_user->has_cap('bbp_moderator')){
                                                             $body_hypercomments =  json_encode(array(
                                                                 'widget_id'=> $hypercomments_id,
                                                                 'auth' => $auth_hypercomments,
@@ -710,7 +709,7 @@ if (isset($qode_options_satellite['twitter_via']) && !empty($qode_options_satell
                                                 $auth_hypercomments = $user_base64 . "_" . $time_hypercomments . "_" . $sign_hypercomments;
 
                                                 //moderators
-                                                if($current_user->ID == 30){
+                                                if($current_user->has_cap('bbp_keymaster') || $current_user->has_cap('bbp_moderator')){
                                                     $body_hypercomments =  json_encode(array(
                                                         'widget_id'=> $hypercomments_forum_id,
                                                         'auth' => $auth_hypercomments,
