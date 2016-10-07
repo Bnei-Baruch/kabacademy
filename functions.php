@@ -11,10 +11,7 @@ function wp_schools_enqueue_scripts() {
 	wp_enqueue_style ( 'childstyle' );
 	wp_register_style ( 'bxslider', get_stylesheet_directory_uri () . '/style/jquery.bxslider.css' );
 	wp_enqueue_style ( 'bxslider' );
-	
-	wp_enqueue_script ( 'watuscript', get_stylesheet_directory_uri () . '/js/watu-script.js', array (
-			'watu-script' 
-	), false, true );
+
 	wp_enqueue_script ( 'bbScript', get_stylesheet_directory_uri () . '/js/bb-script.js' );
 	wp_enqueue_script ( 'bxslider', get_stylesheet_directory_uri () . '/js/jquery.bxslider.min.js' );
 	wp_enqueue_style ( 'fonts-ptsansnarrow', 'http://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700&subset=latin,cyrillic' );
