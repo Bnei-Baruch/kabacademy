@@ -679,8 +679,8 @@ if (isset($qode_options_satellite['twitter_via']) && !empty($qode_options_satell
                             ?>
                                 <div class="two_columns_33_66 forum-tab clearfix">
 											<?php
-											if(!empty($forum_instruction_post_id)){
-												echo ("<div class='full_width'><a href='".get_permalink($forum_instruction_post_id)."'>" .get_post($forum_instruction_post_id)->post_title. "</a>");
+                            				if(!empty($forum_instruction_post_id)){
+												echo ("<div class='full_width' style='text-align: right; margin-bottom: 15px; text-decoration: underline;'><a target='_blank' href='".get_permalink($forum_instruction_post_id)."'>" .get_post($forum_instruction_post_id)->post_title. "</a>");
 											} else{
 												include_once 'single-namaste_course_old_user_list.php';
 											}
