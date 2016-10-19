@@ -678,23 +678,14 @@ if (isset($qode_options_satellite['twitter_via']) && !empty($qode_options_satell
                             //echo do_shortcode('[bbp-single-forum id="'.$forum_id.'"]');
                             ?>
                                 <div class="two_columns_33_66 forum-tab clearfix">
-                                    <div class="column1">
-										<div class="full_width">
-											<?php  
+											<?php
 											if(!empty($forum_instruction_post_id)){
-												$forum_rules_post = get_post($forum_instruction_post_id);
-												echo ("<h3>" .$forum_rules_post->post_title. "</h3><br />");
-												echo ( $forum_rules_post->post_content );
+												echo ("<div class='full_width'><a href='".get_permalink($forum_instruction_post_id)."'>" .get_post($forum_instruction_post_id)->post_title. "</a>");
 											} else{
 												include_once 'single-namaste_course_old_user_list.php';
 											}
-											?>                                      
-										</div>
-                                    </div>
-                                    <div class="column2">
-
-                                        <?php 
-                                            if(empty($hypercomments_forum_id)){
+											
+											if(empty($hypercomments_forum_id)){
                                                 include_once 'single-namaste_course_old_forum.php';
                                             } else {
                                                 $user_hypercomments = array(
