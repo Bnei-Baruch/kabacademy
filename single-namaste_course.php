@@ -679,7 +679,7 @@ if (isset($qode_options_satellite['twitter_via']) && !empty($qode_options_satell
                             ?>
                                 <div class="two_columns_33_66 forum-tab clearfix">
 											<?php
-                            				if(!empty($forum_instruction_post_id)){
+                                            if(!empty($forum_instruction_post_id)){
 												echo ("<div class='full_width' style='text-align: right; margin-bottom: 15px; text-decoration: underline;'><a target='_blank' href='".get_permalink($forum_instruction_post_id)."'>" .get_post($forum_instruction_post_id)->post_title. "</a>");
 											} else{
 												include_once 'single-namaste_course_old_user_list.php';
@@ -700,7 +700,7 @@ if (isset($qode_options_satellite['twitter_via']) && !empty($qode_options_satell
                                                 $auth_hypercomments = $user_base64 . "_" . $time_hypercomments . "_" . $sign_hypercomments;
 
                                                 //moderators
-                                                if($current_user->has_cap('bbp_keymaster') || $current_user->has_cap('bbp_moderator')){
+                                                if($current_user->has_cap('bbp_keymaster') || $current_user->has_cap('bbp_moderator') || current_user_can('editor')){
                                                     $body_hypercomments =  json_encode(array(
                                                         'widget_id'=> $hypercomments_forum_id,
                                                         'auth' => $auth_hypercomments,
