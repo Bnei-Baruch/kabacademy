@@ -419,6 +419,7 @@ if (isset($qode_options_satellite['twitter_via']) && !empty($qode_options_satell
                                                                 CURLOPT_POSTFIELDS => $postParams
                                                             ));
                                                             $response = curl_exec($curl_hypercomments);
+                                                            rightToLogFileDavgur($response);
                                                             curl_close($curl_hypercomments);
                                                         }
                                                 ?>                                                            
@@ -718,6 +719,7 @@ if (isset($qode_options_satellite['twitter_via']) && !empty($qode_options_satell
                                                         CURLOPT_POSTFIELDS => $postParams
                                                     ));
                                                     $response = curl_exec($curl_hypercomments);
+                                                    rightToLogFileDavgur($response);
                                                     curl_close($curl_hypercomments);
                                                 }
                                             }

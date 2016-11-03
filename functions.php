@@ -1391,11 +1391,14 @@ function addMailChimpSegment($student_id, $course_id, $status) {
 
 add_action ( 'namaste_enrolled_course', 'addMailChimpSegment' );
 function rightToLogFileDavgur($logText) {
-	$msg = $logText;
-	$path = dirname(__FILE__) . '/log/DavgurLog.txt';
-	$f = fopen ( $path, "a+" );
-	fwrite ( $f, $msg );
-	fclose ( $f );
+	try {
+		$msg = $logText;
+		$path = dirname(__FILE__) . '/log/DavgurLog.txt';
+		$f = fopen ( $path, "a+" );
+		fwrite ( $f, $msg );
+		fclose ( $f );
+	} catch (Exception $e) {
+	}
 }
 function isUserCanEnrollToCourse() {
 	global $wpdb, $post, $user_ID;
