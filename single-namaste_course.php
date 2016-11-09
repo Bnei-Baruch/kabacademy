@@ -426,8 +426,14 @@ if (isset($qode_options_satellite['twitter_via']) && !empty($qode_options_satell
                                                         	<div id="hypercomments_widget"></div>
                                                         	<script type="text/javascript">
                                                         	_hcwp = window._hcwp || [];
-                                                        	_hcwp.push({widget:"Stream", widget_id: <?php echo $hypercomments_id;?>, auth: "<?php echo $auth_hypercomments;?>"});
-                                                        	hypercommentsAPI.initById(<?php echo $hypercomments_id;?>);
+                                                        	_hcwp.push({widget:"Stream", widget_id: <?php echo $hypercomments_id;?>, auth: "<?php echo $auth_hypercomments;?>", eager_load: true});
+                                                        	  if (!window.hypercommentsAPI) {
+                                                                  setTimeout(function(){
+                                                                	  hypercommentsAPI.initById(<?php echo $hypercomments_id;?>);
+                                                                  }, 10);                                                        
+                                                              } else{
+                                                            	  hypercommentsAPI.initById(<?php echo $hypercomments_id;?>);
+                                                              }
                                                         	</script>
                                                 <?php
                                                     } else {
@@ -728,7 +734,7 @@ if (isset($qode_options_satellite['twitter_via']) && !empty($qode_options_satell
                                         <div id="hypercomments_widget"></div>
                                         <script type="text/javascript">
                                             _hcwp = window._hcwp || [];
-                                            _hcwp.push({widget:"Stream", widget_id: <?php echo $hypercomments_forum_id;?>, auth: "<?php echo $auth_hypercomments;?>"});
+                                            _hcwp.push({widget:"Stream", widget_id: <?php echo $hypercomments_forum_id;?>, auth: "<?php echo $auth_hypercomments;?>", eager_load:true});
                                             if (!window.hypercommentsAPI) {
                                                 setTimeout(function(){
                                                     hypercommentsAPI.initById(<?php echo $hypercomments_forum_id;?>);
