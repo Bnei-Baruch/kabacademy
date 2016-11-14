@@ -1761,3 +1761,49 @@ function add_points_on_registration($user_id) {
 		update_user_meta ( $user_id, 'namaste_points', $action_points );
 	}
 }
+
+add_action('namaste_earned_points', 'alert_namaste_earned_points', 99, 2);
+function alert_namaste_earned_points($user_id, $award_points) {
+	$total_points = get_user_meta($user_id, 'namaste_points', true);
+
+	$out  = <<<HTML
+		<script>
+		  jQuery(function($) {
+		    $("#dialog-namaste-earned-points-message").dialog({
+		      modal: true,
+		      buttons: {
+		        Ok: function() {
+		          $(this).dialog( "close" );
+		        }
+		      }
+		    });
+		  } );
+		</script>
+
+		<div id="dialog-namaste-earned-points-message" title="Очки начислены">
+		  <p>
+		    Вам было начислено <b>{$award_points}</b> очков.
+		  </p>
+		  <p>
+		    Теперь у вас есть <b>{$total_points}</b> очков.
+		  </p>
+		</div>
+HTML;
+
+	echo $out;
+}
+
+add_action('bp_before_profile_content', 'profile_namaste_earned_points');
+function profile_namaste_earned_points() {
+	$total_points = get_user_meta(bp_displayed_user_id(), 'namaste_points', true);
+
+	$out  = <<<HTML
+		<h4>
+			<div id="profile-namaste-points">
+			    Начислено <b>{$total_points}</b> очков.
+			</div>
+		</h4>
+HTML;
+
+	echo $out;
+}
