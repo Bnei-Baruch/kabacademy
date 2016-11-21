@@ -142,9 +142,10 @@ $basePath = get_stylesheet_directory_uri () . '/landingPage/'. get_post_meta(get
 				</div>
 			</div>
 			<div id="register" class="subpage">
-				<h1>Регистрация</h1>
+				<h1>Регистрация на курс откроется 11 декабря.</h1>
+				<!--<h1>Регистрация</h1>
 				<?php echo do_shortcode ( '[registerForm enrollto=50033]' );?>
-				<div class="divider"></div>
+				<div class="divider"></div> -->
 			</div>
 			<div id="testimonials" class="subpage">
 				<h1>ОТЗЫВЫ ОБ ЭТОМ КУРСЕ</h1>
