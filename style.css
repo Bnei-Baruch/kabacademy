@@ -6,20 +6,3 @@ Template: satellite
 Text Domain: satellite-academy-child
 */
 @import url("../satellite/style.css");
-
-
-.course_single_unsubscribe a {
-    color: #f8931f;
-    border-bottom: 1px dashed #f8931f;
-    cursor: pointer;
-}
-
-.course_single_unsubscribe a:hover {
-    color: #749bb6;
-    border-bottom-color: #749bb6;
-    cursor: pointer;
-}
-
-.course_single_unsubscribe {
-    margin-top: 10px;
-}
