@@ -937,6 +937,43 @@ if (isset($qode_options_satellite['twitter_via']) && !empty($qode_options_satell
 								<?php else: ?>
 									<div class="T1"><?php _e('About a course', 'qode'); ?></div>
 									<?php the_content(); ?>
+                                                                        <?php
+                                        if (!NamasteLMSStudentModel::is_enrolled(get_current_user_id(), $post->ID) == null):
+                                            if(!empty($_GET['unsubscribe'])) {
+                                                NamasteLMSStudentModel :: cleanup($post->ID, get_current_user_id()); 
+                                                namaste_redirect(get_home_url());
+                                            }
+                                    ?>
+                                        <div class="course_single_unsubscribe">
+                                            <a id='unsubscriber'>Отписаться</a>
+                                        </div>
+                                        <script>
+                                          jQuery(function($) {
+                                            $("#dialog-namaste-unsubscribe-message").dialog({
+                                              modal: true,
+                                              autoOpen: false,
+                                              buttons: {
+                                                Подтвердить: function() {
+                                                  location.href = '?unsubscribe=1';
+                                                  $(this).dialog( "close" );                  
+                                                },
+                                                Отменить: function() {
+                                                  $(this).dialog( "close" );
+                                                }
+                                              }
+                                            });
+
+                                            $( "#unsubscriber" ).click(function() {
+                                              $("#dialog-namaste-unsubscribe-message").dialog( "open" );
+                                            });
+                                          } );
+                                        </script>
+
+                                        <div id="dialog-namaste-unsubscribe-message" title="Отписаться от курса">
+                                          <p>
+                                            Вы действительно хотите отписатья от курса <b><?php echo $title; ?></b>?
+                                          </p>
+                                        </div>
 								<?php endif; ?>	
                             </div>
                         </div>
