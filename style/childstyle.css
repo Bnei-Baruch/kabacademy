@@ -3710,3 +3710,7 @@ h2.homeTitle {
 	{
 	height: auto;
 }
+
+.page-template-default .container_inner p{
+	margin: 10px 0;
+}
