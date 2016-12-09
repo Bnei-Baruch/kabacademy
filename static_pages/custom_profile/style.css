@@ -1,0 +1,24 @@
+.course-navigation-item {
+	display: block;
+	height: 100%;
+}
+
+.course-navigation li {
+	display: inline-block;
+	width: 50%;
+	box-sizing: border-box;
+}
+
+.ui-state-active {
+	background: #f8931f;
+}
+
+.course-navigation-item {
+	display: block;
+	background: transparent;
+	outline: none;
+}
+
+.ui-state-active .course-navigation-item {
+	color: #FFF;
+}
