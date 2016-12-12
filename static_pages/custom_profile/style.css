@@ -22,3 +22,11 @@
 .ui-state-active .course-navigation-item {
 	color: #FFF;
 }
+
+#saveMyAccount {
+	float: right;
+}
+
+.ui-tabs-panel {
+	margin: 60px 0 20px;
+}

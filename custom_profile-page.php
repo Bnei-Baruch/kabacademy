@@ -26,7 +26,7 @@ $myAccountData = ( object ) KabCustomRegistrationHelper::getUpdateProfile ();
 							profil</a></li>
 				</ul>
 			</div>
-			<div  class="col-xs-12">
+			<div  class="row" style="clear: both;">
 			<?php
 			include_once ($PATH_TO_FILES . 'view_account.php');
 			include_once ($PATH_TO_FILES . 'edit_account.php');
