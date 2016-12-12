@@ -897,7 +897,9 @@ if (isset($qode_options_satellite['twitter_via']) && !empty($qode_options_satell
 											
 											<?php $var = do_shortcode('[namaste-course-lessons 0 0 post_date ASC]'); if ($var && $var !="<ul></ul>") echo '<div class="course_single_course_title">'. __("Program",'qode') .'</div><div class="course_single_programm_list  course_single_details">' .$var. '</div>'; ?>
 										<?php endif; ?>	
-										
+                                        <?php 
+										  echo do_shortcode("[button size='medium' text='Помочь академии' link='http://neworg.kbb1.com/ru/node/260' target='_blank' background_color='rgba(224, 146, 47, 0.7)' ]");
+                                        ?>
 									</div>
 
 									
