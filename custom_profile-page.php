@@ -11,6 +11,7 @@ wp_enqueue_script ( "jquery-ui-tabs", "jquery" );
 wp_enqueue_script ( "customProfileJs", $URL_TO_FILES . "script.js" );
 wp_enqueue_style ( "customProfileCss", $URL_TO_FILES . "style.css" );
 wp_enqueue_style ( "bootstrapCss", "//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" );
+wp_enqueue_style ( 'fonts-Roboto', 'https://fonts.googleapis.com/css?family=Roboto' );
 
 $myAccountData = ( object ) KabCustomRegistrationHelper::getUpdateProfile ();
 ?>
