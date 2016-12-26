@@ -974,6 +974,7 @@ if (isset($qode_options_satellite['twitter_via']) && !empty($qode_options_satell
                                             Вы действительно хотите отписатья от курса <b><?php echo $title; ?></b>?
                                           </p>
                                         </div>
+									<?php endif; ?>
 								<?php endif; ?>	
                             </div>
                         </div>
