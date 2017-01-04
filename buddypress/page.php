@@ -1,10 +1,3 @@
-<?php 
-	$isNotForumModerator = (bbp_get_user_role( get_current_user_id() ) != 'bbp_moderator') && (bbp_get_user_role( get_current_user_id() ) != 'bbp_keymaster');
-	if(get_current_user_id() != bp_displayed_user_id() && $isNotForumModerator){
-		wp_redirect( 'http://kabacademy.com/dostup-zapreshhen' );
-		exit;
-	}
-?>
 <?php get_header(); ?>
 
 	<div id="content">

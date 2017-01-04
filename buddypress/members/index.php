@@ -1,17 +1,3 @@
-<?php 
-	if(!is_user_logged_in()){
-		wp_redirect( 'http://kabacademy.com/');
-		exit;
-	}
-
-	$isNotForumModerator = (bbp_get_user_role( get_current_user_id() ) != 'bbp_moderator') && (bbp_get_user_role( get_current_user_id() ) != 'bbp_keymaster');
-	if($isNotForumModerator){
-		wp_redirect( 'http://kabacademy.com/dostup-zapreshhen' );
-		exit;
-	}
-?>
-
-
 <?php
 /**
  * BuddyPress - Members Directory
