@@ -209,15 +209,6 @@ if (isset($qode_options_satellite['twitter_via']) && !empty($qode_options_satell
 
                                 </div>
                             <?php elseif (is_user_logged_in() && $tab == 'lection'): ?>
-                                <div class="clearfix lection-heading">
-                                <?php 
-                                	$course_id = $post->ID;
-                                	$next_lection_date = get_next_lection_date($course_id);
-                                	if (!empty($next_lection_date)) {
-                                		echo '<br><div class="subTitle">' . $next_lection_date . ' </div>';
-                                	} 
-                                ?>
-                                </div>
                                 <div class="two_columns_60_40 lection-tab clearfix">
                                     <div class="column1">
 
@@ -484,7 +475,6 @@ if (isset($qode_options_satellite['twitter_via']) && !empty($qode_options_satell
                                                 </div>
                                                 <div id="tabiid3" class="tab-content nopadding" style="display: none;">
                                                     <?php
-                                                    $course_id = $post->ID;
                                                     $notes = get_user_meta(get_current_user_id(), 'notes_' . $course_id, true); //[accordion_item caption="Accordion 1" title_color=""]This is some content[/accordion_item][accordion_item caption="Accordion 1" title_color=""]This is some content[/accordion_item]
                                                     $content_notes = '';
 
