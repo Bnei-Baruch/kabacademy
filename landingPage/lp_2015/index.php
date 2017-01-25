@@ -46,7 +46,7 @@ $basePath = get_stylesheet_directory_uri () . '/landingPage/'. get_post_meta(get
 				<h1>.</h1>
 				<div class="divider"></div>
 				<div class="divider"></div>
-				<h1>Начало занятий 18 января <br />СЕЙЧАС ЗНАЧИТЕЛЬНЫЙ МОМЕНТ В ТВОЕЙ ЖИЗНИ. ВЫБОР ЗА ТОБОЙ!</h1>
+				<h1>Регистрация продлится до 31 января<br />СЕЙЧАС ЗНАЧИТЕЛЬНЫЙ МОМЕНТ В ТВОЕЙ ЖИЗНИ. ВЫБОР ЗА ТОБОЙ!</h1>
 				<div id="signup">
 					<a
 						onClick="_gaq.push(['_trackEvent', 'registration','buttons', 'home-signup'])"
