@@ -121,7 +121,10 @@ if (isset($qode_options_satellite['twitter_via']) && !empty($qode_options_satell
 								<h1<?php if (get_post_meta($id, "qode_page-title-color", true)) { ?> style="color:<?php echo get_post_meta($id, "qode_page-title-color", true) ?>" <?php } ?>><?php the_title(); ?></h1>
 								<?php if (get_post_meta($id, "qode_page-subtitle", true)) { ?><span
 									class="subtitle"<?php if (get_post_meta($id, "qode_page-subtitle-color", true)) { ?> style="color:<?php echo get_post_meta($id, "qode_page-subtitle-color", true) ?>" <?php } ?>> <?php echo get_post_meta($id, "qode_page-subtitle", true) ?></span><?php } ?>
+
+									<?php if(!in_category('on-layn-obuchenie')): ?>
 									<h3 style="color: white"><?php echo do_shortcode('[namaste-enroll]'); ?></h3>
+									<?php endif; ?>
 							</div>
 						</div>
 					</div>
