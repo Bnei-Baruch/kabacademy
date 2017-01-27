@@ -3711,6 +3711,64 @@ h2.homeTitle {
 	height: auto;
 }
 
+.page-template-default .container_inner p{
+	margin: 10px 0;
+}
+
+
+#watupro_quiz .question-content{
+	margin-top: 0;
+}
+#watupro_quiz .watu-question{
+	margin-bottom: 20px;
+}
+#watupro_quiz .question-choices{
+	margin-top: 0;
+}
+#watupro_quiz .question-choices td{
+	padding: 0px 5px;
+	background: #EEEEEE;
+}
+
+#watupro_quiz .question-choices tr:nth-child(odd) td{
+	color: #626262;
+}
+#watupro_quiz .question-choices tr:nth-child(even) td{
+	background: #E0E0E0;
+	color: #626262;
+}
+#watupro_quiz .question-choices td .watupro-nmatrix-unselect{
+	display: none;
+}
+#watupro_quiz .question-choices td .watupro-nmatrix-unselect{
+	display: none;
+}
+
+#watupro_quiz .question-choices td .watupro-matrix-draggable{
+	border-style: solid;
+	cursor: pointer;
+}
+#watupro_quiz .question-choices td .watupro-matrix-draggable:hover{
+	background: #bbbbbb;
+}
+#watupro_quiz .watupro_buttons{
+	margin-top: 20px;
+}
+#watupro_quiz .watupro_buttons td{
+	padding: 0;
+}
+
+#watupro_quiz .watupro_buttons input[type="button"]{
+	display: block;
+	border: 0 none;
+	background: transparent;
+	cursor: pointer;
+	font: normal 300 30px/58px 'Roboto Condensed', sans-serif;
+    color: white;
+    padding: 0 40px;
+    height: 60px;
+}
+
 
 /*отписаться от определенного курса*/
 .course_single_unsubscribe a {

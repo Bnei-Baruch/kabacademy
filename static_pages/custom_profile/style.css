@@ -1,0 +1,83 @@
+#tabs {
+	margin-bottom: 20px;
+}
+#editMyAccount{
+	margin-top: 30px;
+}
+
+h1.pageTitle {
+	color: #017ba1;
+	font: 35px "Roboto";
+	text-align: center;
+}
+
+h2.myCourses {
+	color: #017ba1;
+	font: 25px "Roboto";
+	text-align: center;
+}
+h3.courseTitle {
+	position: relative;
+	text-align: center;	 
+}
+h3.courseTitle::before {
+	content: '';
+	display: block;
+	height: 1px;
+	width: 100%;
+	position: absolute;
+	z-index: -1;
+	left: 0;
+	top: 50%;
+	background-color: #f8931f; 
+}
+h3.courseTitle span {
+	 display: inline-block;
+	 padding: 0 20px;
+	 background: white;
+	 color: #f8931f;
+}
+
+.avatar img {
+	border: 10px solid #55b3e0;
+	margin-right: 10px;
+}
+
+.namastepro-progress .namastepro-text {
+	font-size: 11px;
+}
+
+.namastepro-bar-holder {
+	border-radius: 2px;
+	background-color: #e8e8e8;
+}
+
+.namastepro-bar {
+	border-radius: 2px;
+	background-color: #f8931f;
+}
+
+.courseItem {
+	margin: 3px 0;
+}
+
+.courseItem .courseName {
+	color: #017ba1;
+	font: 16px/24px "Roboto";
+}
+
+.ui-state-default {
+	display: table-cell;
+	text-align: center;
+}
+
+.ui-state-default a {
+	display: inline;
+}
+
+#saveMyAccount{
+	font-size: 16px;
+	line-height: 36px;
+	height: 36px;
+	float: right;	
+}
