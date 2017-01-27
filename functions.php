@@ -977,7 +977,8 @@ function load_all_replies() {
 	ob_start ();
 	foreach ( $replies as $reply ) {
 		?>
-<div class="single_topic_reply  <?php $postUser = new WP_User($reply->post_author);echo ($postUser->has_cap('bbp_keymaster') || $postUser->has_cap('bbp_moderator')) ? "isAdmin" : "";?>" 
+<div
+	class="single_topic_reply  <?php $postUser = new WP_User($reply->post_author);echo ($postUser->has_cap('bbp_keymaster') || $postUser->has_cap('bbp_moderator')) ? "isAdmin" : "";?>"
 	data-id="<?php echo $reply->ID; ?>">
 	<div class="photo">
 		<a href="<?php echo bp_core_get_user_domain($reply->post_author); ?>"><?php echo bp_core_fetch_avatar(array('item_id' => $reply->post_author, 'height' => 32, 'width' => 32)); ?></a>
@@ -994,7 +995,7 @@ function load_all_replies() {
         </div>
 		<div style="display: none" class="reply_content_edit">
 			<textarea class="reply_content_edit_textarea"><?php echo get_post_field('post_content', $reply->ID); ?></textarea>
-			
+
 			<div class="edit_actions">
 				<a class="cancel" href="#">Отменить</a>
 			</div>
@@ -1045,7 +1046,8 @@ function load_more_topics() {
 				break;
 			
 			?>
-<div class="topics_list_single_topic  <?php $postUser = new WP_User(bbp_get_topic_author_id());echo ($postUser->has_cap('bbp_keymaster') || $postUser->has_cap('bbp_moderator')) ? "isAdmin" : "";?>"
+<div
+	class="topics_list_single_topic  <?php $postUser = new WP_User(bbp_get_topic_author_id());echo ($postUser->has_cap('bbp_keymaster') || $postUser->has_cap('bbp_moderator')) ? "isAdmin" : "";?>"
 	id="topic-<?php echo bbp_get_topic_id(); ?>"
 	data-bbp_forum_id="<?php echo $forum_id;?>"
 	data-id="<?php echo bbp_get_topic_id(); ?>">
@@ -1133,7 +1135,8 @@ function load_more_topics() {
 			foreach ( $replies as $reply ) {
 				
 				?>
-				<div class="single_topic_reply <?php $postUser = new WP_User($reply->post_author);echo ($postUser->has_cap('bbp_keymaster') || $postUser->has_cap('bbp_moderator')) ? "isAdmin" : "";?>"
+				<div
+				class="single_topic_reply <?php $postUser = new WP_User($reply->post_author);echo ($postUser->has_cap('bbp_keymaster') || $postUser->has_cap('bbp_moderator')) ? "isAdmin" : "";?>"
 				data-id="<?php echo $reply->ID; ?>">
 				<div class="photo">
 					<a
@@ -1152,7 +1155,7 @@ function load_more_topics() {
                     </div>
 					<div style="display: none" class="reply_content_edit">
 						<textarea class="reply_content_edit_textarea"><?php echo get_post_field('post_content', $reply->ID); ?></textarea>
-						
+
 						<div class="edit_actions">
 							<a class="cancel" href="#">Отменить</a>
 						</div>
@@ -1431,28 +1434,20 @@ function get_all_user_courses($user_ID) {
 			AND tC.post_type='namaste_course' $filter_sql ORDER BY tC.post_title", $user_ID ) );
 }
 
+
+
 // LOGOUT LINK IN MENU
-function academy_menu_logout_link($nav, $args) {
-	$logoutlink = '<li class="loginBtn"><a href="' . wp_logout_url ( home_url () ) . '"><span>' . __ ( 'Logout', 'qode' ) . '</span></a></li>';
-	if ($args->menu == 'Header right menu (Signed)' || $args->menu == 'Footer menu (Unsigned)') {
-		return $nav . $logoutlink;
-	} else {
-		return $nav;
-	}
-}
-
-add_filter ( 'wp_nav_menu_items', 'academy_menu_logout_link', 10, 2 );
-
-// Filter wp_nav_menu() to add profile link
-add_filter( 'wp_nav_menu_items', 'my_nav_menu_profile_link' );
-function my_nav_menu_profile_link($menu) {
-	if (!is_user_logged_in())
+function academy_menu_logout_link($menu, $args) {
+	if (($args->menu != 'Header right menu (Signed)' && $args->menu != 'Footer menu (Unsigned)') || ! is_user_logged_in ()) {
 		return $menu;
-	else
-		$profilelink = '<li class="loginBtn"><a href="' . bp_loggedin_user_domain( '/' ) . '"><span>' . wp_get_current_user()->display_name . '</span></a></li>';
-	$menu = $menu . $profilelink;
+	}
+	$logoutlink = '<li class="loginBtn"><a href="' . wp_logout_url ( home_url () ) . '"><span>' . __ ( 'Logout', 'qode' ) . '</span></a></li>';
+	$profilelink = '<li class="loginBtn"><a href="' . bp_loggedin_user_domain ( '/' ) . '"><span>' . wp_get_current_user ()->display_name . '</span></a></li>';
+	$menu = $menu . $logoutlink . $profilelink;
 	return $menu;
 }
+add_filter ( 'wp_nav_menu_items', 'academy_menu_logout_link', 10, 2 );
+
 
 
 add_filter ( 'wpmu_welcome_user_notification', '__return_false' ); // Disable welcome email
