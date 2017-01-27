@@ -44,7 +44,9 @@
 								</option>
 							</select>
 						</div>
-						<div id="saveMyAccount" class="button medium">submit</div>
+						<div class="col-md-12">
+							<div id="saveMyAccount" class="button small">submit</div>											
+						</div>
 					</fieldset>
 				</form>
 HTML;

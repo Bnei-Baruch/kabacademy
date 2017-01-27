@@ -13,7 +13,7 @@
 		}
 	}
 	?>
-	<h3>Aktivnye</h3>	
+	<h3 class="courseTitle"><span>Активные курсы</span></h3>	
 	<?php
 	foreach ( $enrolled_courses as $course ) {
 		$progress_bar = NamastePROCourses::progress_bar ( $course->post_id, $user_ID );
@@ -26,7 +26,7 @@
 HTML;
 	}
 	?>
-	<h3>Proidennye</h3>
+	<h3 class="courseTitle"><span>Пройденные курсы</span></h3>
 	<?php
 	foreach ( $completed_courses as $course ) {
 		$completion_time_str = date ( get_option ( 'date_format' ), strtotime ( $course->completion_time ) );

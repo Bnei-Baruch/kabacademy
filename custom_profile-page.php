@@ -20,13 +20,14 @@ $current_user_id = get_current_user_id ();
 <div class="full_width">
 	<div class="container">
 		<h1 class="pageTitle"><?php echo $myAccountData->display_name['val'];?></h1>
-		<div class="row">
-			<div class="col-sm-1 col-xs-offset-3 avatar">
+			<div class="col-sm-2 col-xs-offset-2 avatar">
 				<?php echo get_avatar ( $current_user_id, 135); ?>
 			</div>
 			
-<?php
 
+		<div id="tabs">
+			<div class="col-xs-6 row">
+<?php
 echo <<<HTML
 			<div class="col-sm-5">
 				<div>
@@ -41,9 +42,6 @@ echo <<<HTML
 			</div>
 HTML;
 ?>
-		</div>
-		<div id="tabs">
-			<div class="col-xs-6 col-xs-offset-3 row">
 				<ul class="course-navigation">
 					<li><a href="#viewMyAccount" class="course-navigation-item">Мой
 							профиль</a></li>

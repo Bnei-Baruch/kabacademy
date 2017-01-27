@@ -1,3 +1,10 @@
+#tabs {
+	margin-bottom: 20px;
+}
+#editMyAccount{
+	margin-top: 30px;
+}
+
 h1.pageTitle {
 	color: #017ba1;
 	font: 35px "Roboto";
@@ -8,6 +15,27 @@ h2.myCourses {
 	color: #017ba1;
 	font: 25px "Roboto";
 	text-align: center;
+}
+h3.courseTitle {
+	position: relative;
+	text-align: center;	 
+}
+h3.courseTitle::before {
+	content: '';
+	display: block;
+	height: 1px;
+	width: 100%;
+	position: absolute;
+	z-index: -1;
+	left: 0;
+	top: 50%;
+	background-color: #f8931f; 
+}
+h3.courseTitle span {
+	 display: inline-block;
+	 padding: 0 20px;
+	 background: white;
+	 color: #f8931f;
 }
 
 .avatar img {
@@ -45,4 +73,11 @@ h2.myCourses {
 
 .ui-state-default a {
 	display: inline;
+}
+
+#saveMyAccount{
+	font-size: 16px;
+	line-height: 36px;
+	height: 36px;
+	float: right;	
 }
