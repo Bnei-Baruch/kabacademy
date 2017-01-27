@@ -212,15 +212,6 @@ if (isset($qode_options_satellite['twitter_via']) && !empty($qode_options_satell
 
                                 </div>
                             <?php elseif (is_user_logged_in() && $tab == 'lection'): ?>
-                                <div class="clearfix lection-heading">
-                                <?php 
-                                	$course_id = $post->ID;
-                                	$next_lection_date = get_next_lection_date($course_id);
-                                	if (!empty($next_lection_date)) {
-                                		echo '<br><div class="subTitle">' . $next_lection_date . ' </div>';
-                                	} 
-                                ?>
-                                </div>
                                 <div class="two_columns_60_40 lection-tab clearfix">
                                     <div class="column1">
 
@@ -487,7 +478,6 @@ if (isset($qode_options_satellite['twitter_via']) && !empty($qode_options_satell
                                                 </div>
                                                 <div id="tabiid3" class="tab-content nopadding" style="display: none;">
                                                     <?php
-                                                    $course_id = $post->ID;
                                                     $notes = get_user_meta(get_current_user_id(), 'notes_' . $course_id, true); //[accordion_item caption="Accordion 1" title_color=""]This is some content[/accordion_item][accordion_item caption="Accordion 1" title_color=""]This is some content[/accordion_item]
                                                     $content_notes = '';
 
@@ -942,6 +932,44 @@ if (isset($qode_options_satellite['twitter_via']) && !empty($qode_options_satell
 								<?php else: ?>
 									<div class="T1"><?php _e('About a course', 'qode'); ?></div>
 									<?php the_content(); ?>
+                                                                        <?php
+                                        if (!NamasteLMSStudentModel::is_enrolled(get_current_user_id(), $post->ID) == null):
+                                            if(!empty($_GET['unsubscribe'])) {
+                                                NamasteLMSStudentModel :: cleanup($post->ID, get_current_user_id()); 
+                                                namaste_redirect(get_home_url());
+                                            }
+                                    ?>
+                                        <div class="course_single_unsubscribe">
+                                            <a id='unsubscriber'>Отписаться</a>
+                                        </div>
+                                        <script>
+                                          jQuery(function($) {
+                                            $("#dialog-namaste-unsubscribe-message").dialog({
+                                              modal: true,
+                                              autoOpen: false,
+                                              buttons: {
+                                                Подтвердить: function() {
+                                                  location.href = '?unsubscribe=1';
+                                                  $(this).dialog( "close" );                  
+                                                },
+                                                Отменить: function() {
+                                                  $(this).dialog( "close" );
+                                                }
+                                              }
+                                            });
+
+                                            $( "#unsubscriber" ).click(function() {
+                                              $("#dialog-namaste-unsubscribe-message").dialog( "open" );
+                                            });
+                                          } );
+                                        </script>
+
+                                        <div id="dialog-namaste-unsubscribe-message" title="Отписаться от курса">
+                                          <p>
+                                            Вы действительно хотите отписатья от курса <b><?php echo $title; ?></b>?
+                                          </p>
+                                        </div>
+									<?php endif; ?>
 								<?php endif; ?>	
                             </div>
                         </div>

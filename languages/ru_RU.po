@@ -2495,7 +2495,7 @@ msgstr "Форум"
 #: course-header.php:59
 #@ qode
 msgid "Shedule"
-msgstr "Расписание вебинаров"
+msgstr "Расписание"
 
 #: footer.php:25
 #@ qode

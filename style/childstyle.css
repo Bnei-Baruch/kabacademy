@@ -3768,3 +3768,21 @@ h2.homeTitle {
     padding: 0 40px;
     height: 60px;
 }
+
+
+/*отпи�?ать�?�? от определенного кур�?а*/
+.course_single_unsubscribe a {
+    color: #f8931f;
+    border-bottom: 1px dashed #f8931f;
+    cursor: pointer;
+}
+
+.course_single_unsubscribe a:hover {
+    color: #749bb6;
+    border-bottom-color: #749bb6;
+    cursor: pointer;
+}
+
+.course_single_unsubscribe {
+    margin-top: 10px;
+}
