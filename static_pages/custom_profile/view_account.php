@@ -1,30 +1,5 @@
-<?php
-$current_user_id = get_current_user_id ();
-?>
-<h1 class="pageTitle"><?php echo $myAccountData->display_name['val'];?></h1>
-<div id="viewMyAccount">
-	<div class="col-sm-4 row">
 
-		<div class="col-sm-6 avatar">
-			<?php echo get_avatar ( $current_user_id, 135); ?>
-		</div>
-	<?php
-	echo <<<HTML
-	<div class="col-sm-6">
-		<div>
-			<label>{$myAccountData->country['translate']}: </label>{$myAccountData->country['val']}
-		</div>
-		<div>
-			<label>{$myAccountData->city['translate']}: </label>{$myAccountData->city['val']}
-		</div>
-		<div>
-			<label>{$myAccountData->age['translate']}: </label>{$myAccountData->age['val']}
-		</div>
-	</div>
-HTML;
-	?>
-	</div>
-	<div class="col-sm-8 row myCourses myAccountProgress">
+<div class="col-sm-8 col-xs-offset-2 row myCourses myAccountProgress" id="viewMyAccount">
 	<?php
 	$courses = get_all_user_courses ( $current_user_id );
 	$enrolled_courses = array ();
@@ -63,5 +38,4 @@ HTML;
 HTML;
 	}
 	?>
-	</div>
 </div>

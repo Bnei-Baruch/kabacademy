@@ -1,4 +1,4 @@
-<div id="editMyAccount">
+<div id="editMyAccount" style="display: none;">
 		<?php
 		echo <<<HTML
 				<form>
