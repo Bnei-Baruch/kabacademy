@@ -2,8 +2,8 @@
 /*
  * Template Name: Custom profile
  */
-$PATH_TO_FILES = '/static_pages/custom_profile/';
-$URL_TO_FILES = get_stylesheet_directory_uri () . $PATH_TO_FILES;
+$PATH_TO_FILES = get_stylesheet_directory() . '/static_pages/custom_profile/';
+$URL_TO_FILES = get_stylesheet_directory_uri () . '/static_pages/custom_profile/';
 
 /* include dependency */
 include_once ($PATH_TO_FILES . 'header.php');
