@@ -1442,9 +1442,19 @@ function academy_menu_logout_link($menu, $args) {
 		return $menu;
 	}
 	$logoutlink = '<li class="loginBtn"><a href="' . wp_logout_url ( home_url () ) . '"><span>' . __ ( 'Logout', 'qode' ) . '</span></a></li>';
-	$profilelink = '<li class="loginBtn"><a href="' . bp_loggedin_user_domain ( '/' ) . '"><span>' . wp_get_current_user ()->display_name . '</span></a></li>';
+	$profilelink = '<li class="loginBtn"><a href="' . get_my_profile_url() . '"><span>' . wp_get_current_user ()->display_name . '</span></a></li>';
 	$menu = $menu . $logoutlink . $profilelink;
 	return $menu;
+}
+
+function get_my_profile_url(){
+	$the_query = new WP_Query(array(
+			'post_type'  => 'page',
+			'meta_key'   => '_wp_page_template',
+			'meta_value' => 'custom_profile-page.php'
+	));
+	$the_post = $the_query->posts[0];  
+	return get_permalink($the_post->ID);
 }
 add_filter ( 'wp_nav_menu_items', 'academy_menu_logout_link', 10, 2 );
 
