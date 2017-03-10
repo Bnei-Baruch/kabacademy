@@ -2,7 +2,7 @@
 /*
  * Template Name: Custom profile
  */
-$PATH_TO_FILES = get_stylesheet_directory() . '/static_pages/custom_profile/';
+$PATH_TO_FILES = get_stylesheet_directory () . '/static_pages/custom_profile/';
 $URL_TO_FILES = get_stylesheet_directory_uri () . '/static_pages/custom_profile/';
 
 /* include dependency */
@@ -19,11 +19,17 @@ $current_user_id = get_current_user_id ();
 
 <div class="full_width">
 	<div class="container">
-		<h1 class="pageTitle"><?php echo $myAccountData->display_name['val'];?></h1>
-			<div class="col-sm-2 col-xs-offset-2 avatar">
+	<?php
+	$displayName = $myAccountData->display_name ['val'];
+	if ($myAccountData->first_name ['val'] != null && $myAccountData->last_name ['val'] != null) {
+		$displayName = $myAccountData->first_name ['val'] . ' ' . $myAccountData->last_name ['val'];
+	}
+	?>
+		<h1 class="pageTitle"><?php echo $displayName;?></h1>
+		<div class="col-sm-2 col-xs-offset-2 avatar">
 				<?php echo get_avatar ( $current_user_id, 135); ?>
 			</div>
-			
+
 
 		<div id="tabs">
 			<div class="col-xs-6 row">
