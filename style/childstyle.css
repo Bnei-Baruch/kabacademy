@@ -51,49 +51,49 @@ li {
 #u8315 {
 	height: 14px;
 	width: 107px;
-	background: url("./images/u8315.png") no-repeat 0px 0px;
+	background: url("../images/u8315.png") no-repeat 0px 0px;
 	position: relative;
 }
 
 #u8285 {
 	height: 14px;
 	width: 43px;
-	background: url("./images/u8285.png") no-repeat 0px 0px;
+	background: url("../images/u8285.png") no-repeat 0px 0px;
 	position: relative;
 }
 
 #u8835 {
 	height: 12px;
 	width: 22px;
-	background: url("./images/u8835.png") no-repeat 0px 0px;
+	background: url("../images/u8835.png") no-repeat 0px 0px;
 }
 
 li.some-children-active #u8835 {
 	height: 12px;
 	width: 22px;
-	background: url("./images/u8835-a.png") no-repeat 0px 0px;
+	background: url("../images/u8835-a.png") no-repeat 0px 0px;
 }
 
 li:hover .main_menu_first_lvl {
-	background: url("./images/left-hover-bg.png") left center no-repeat,
-		url("./images/right-hover-bg.png") right center no-repeat,
-		url("./images/hover-bg.png") center center repeat-x;
+	background: url("../images/left-hover-bg.png") left center no-repeat,
+		url("../images/right-hover-bg.png") right center no-repeat,
+		url("../images/hover-bg.png") center center repeat-x;
 }
 
 li:hover .main_menu_first_lvl {
-	background: url("./images/left-active-bg.png") left center no-repeat,
-		url("./images/right-active-bg.png") right center no-repeat,
-		url("./images/active-bg.png") center center repeat-x;
+	background: url("../images/left-active-bg.png") left center no-repeat,
+		url("../images/right-active-bg.png") right center no-repeat,
+		url("../images/active-bg.png") center center repeat-x;
 }
 
 li.some-children-active .main_menu_first_lvl {
-	background: url("./images/left-visited-bg.png") left center no-repeat,
-		url("./images/right-visited-bg.png") right center no-repeat,
-		url("./images/visited-bg.png") center center repeat-x;
+	background: url("../images/left-visited-bg.png") left center no-repeat,
+		url("../images/right-visited-bg.png") right center no-repeat,
+		url("../images/visited-bg.png") center center repeat-x;
 }
 
 li.some-children-active .main_menu_first_lvl #u8315 {
-	background: url("./images/u8315-a.png") no-repeat 0px 0px;
+	background: url("../images/u8315-a.png") no-repeat 0px 0px;
 }
 
 .menu-divider {
@@ -109,7 +109,7 @@ li.some-children-active .main_menu_first_lvl #u8315 {
 }
 
 .usergray {
-	background: url("./images/iconusergrey.png") no-repeat;
+	background: url("../images/iconusergrey.png") no-repeat;
 	display: inline-block;
 	/* line-height: 54px; */
 	/* float: left; */
@@ -122,7 +122,7 @@ li.some-children-active .main_menu_first_lvl #u8315 {
 }
 
 .arrowdown {
-	background: url("./images/icondropdown.png") no-repeat;
+	background: url("../images/icondropdown.png") no-repeat;
 	display: inline-block;
 	width: 12px;
 	height: 12px;
@@ -177,19 +177,19 @@ li.some-children-active .main_menu_first_lvl #u8315 {
 }
 
 .mycourses_icon {
-	background: url('./images/iconcoursesmenu.png') no-repeat;
+	background: url('../images/iconcoursesmenu.png') no-repeat;
 }
 
 .mynotes_icon {
-	background: url('./images/iconnotes.png') no-repeat;
+	background: url('../images/iconnotes.png') no-repeat;
 }
 
 .profile_icon {
-	background: url('./images/iconprofile.png') no-repeat;
+	background: url('../images/iconprofile.png') no-repeat;
 }
 
 .logout_icon {
-	background: url('./images/iconlogout.png') no-repeat;
+	background: url('../images/iconlogout.png') no-repeat;
 }
 
 footer {
@@ -202,10 +202,10 @@ footer {
 #mainpage-slider-new {
 	margin: 0 -25px;
 	padding: 20px 0;
-	background: url('./images/u9812_top_mid.png') top center repeat-x,
-		url('./images/u9812_bot_mid.png') bottom center repeat-x,
-		url('./images/homebanner_large_ver4.png') 0 0 no-repeat,
-		url('./images/u9812_center.png') repeat;
+	background: url('../images/u9812_top_mid.png') top center repeat-x,
+		url('../images/u9812_bot_mid.png') bottom center repeat-x,
+		url('../images/homebanner_large_ver4.png') 0 0 no-repeat,
+		url('../images/u9812_center.png') repeat;
 }
 
 #mainpage-slider-new .slider-content>div {
@@ -284,35 +284,35 @@ footer {
 #u8285
 {
     vertical-align: top;
-    background: url("./images/u8285.png") no-repeat 0px 0px;
+    background: url("../images/u8285.png") no-repeat 0px 0px;
     position: relative;
 }
 
 #pu8282:hover #u8285
 {
-    background: url("./images/u8285-r.png") no-repeat 0px 0px;
+    background: url("../images/u8285-r.png") no-repeat 0px 0px;
 }
 
 #pu8282.MuseMenuActive #u8285
 {
-    background: url("./images/u8285-a.png") no-repeat 0px 0px;
+    background: url("../images/u8285-a.png") no-repeat 0px 0px;
 }
 
 #u8315
 {
     vertical-align: top;
-    background: url("./images/u8315.png") no-repeat 0px 0px;
+    background: url("../images/u8315.png") no-repeat 0px 0px;
     position: relative;
 }
 
 #pu8314:hover #u8315
 {
-    background: url("./images/u8315-r.png") no-repeat 0px 0px;
+    background: url("../images/u8315-r.png") no-repeat 0px 0px;
 }
 
 #pu8314.MuseMenuActive #u8315
 {
-    background: url("./images/u8315-a.png") no-repeat 0px 0px;
+    background: url("../images/u8315-a.png") no-repeat 0px 0px;
 }*/
 
 /*
@@ -1082,7 +1082,7 @@ body .tabs .tabs-nav li:nth-child(n) a, .tabs .tabs-nav li.active:nth-child(n) a
 .single-namaste_lesson .column1 .tabs .tabs-nav li.active:before {
 	content: '';
 	position: absolute;
-	background: url('./images/slider-arrow.png') top center no-repeat;
+	background: url('../images/slider-arrow.png') top center no-repeat;
 	width: 34px;
 	height: 21px;
 	left: 50%;
@@ -1184,7 +1184,7 @@ body .tabs .tabs-nav li:nth-child(n) a, .tabs .tabs-nav li.active:nth-child(n) a
 .single-namaste_lesson .column2 .tabs .tabs-nav li.active:before {
     content: '';
     position: absolute;
-    background: url('./images/slider-arrow.png') top center no-repeat;
+    background: url('../images/slider-arrow.png') top center no-repeat;
     width: 34px;
     height: 21px;
     left: 50%;
@@ -1998,7 +1998,7 @@ nav.main_menu>ul>li:hover>a, nav.main_menu>ul>li.some-children-active>a
 	width: 12px;
 	height: 15px;
 	font-weight: bold;
-	background: url('images/white-arrow.png') no-repeat;
+	background: url('../images/white-arrow.png') no-repeat;
 	background-size: 12px 15px;
 	vertical-align: -2px;
 	margin-left: 10px;
@@ -2010,7 +2010,7 @@ nav.main_menu>ul>li:hover>a, nav.main_menu>ul>li.some-children-active>a
 	width: 12px;
 	height: 15px;
 	font-weight: bold;
-	background: url('images/white-arrow.png') no-repeat;
+	background: url('../images/white-arrow.png') no-repeat;
 	background-size: 12px 15px;
 	vertical-align: -2px;
 	margin-right: 10px;
@@ -2413,7 +2413,7 @@ nav.main_menu>ul>li:hover>a, nav.main_menu>ul>li.some-children-active>a
 	width: 16px;
 	height: 16px;
 	opacity: 0.6;
-	background: url("images/trash_can.png") no-repeat;
+	background: url("../images/trash_can.png") no-repeat;
 }
 
 #tabiid3 .accordion .remove_note:hover {
@@ -2713,7 +2713,7 @@ nav.main_menu>ul>li:hover>a, nav.main_menu>ul>li.some-children-active>a
 }
 
 .topics_list_single_topic .reply-form .smiles_open {
-	background-image: url('images/bAzFFlgS9H8.png');
+	background-image: url('../images/bAzFFlgS9H8.png');
 	background-repeat: no-repeat;
 	background-size: auto;
 	background-position: -123px -473px;
@@ -2726,7 +2726,7 @@ nav.main_menu>ul>li:hover>a, nav.main_menu>ul>li.some-children-active>a
 }
 
 .topics_list_single_topic .reply_content_edit .smiles_open {
-	background-image: url('images/bAzFFlgS9H8.png');
+	background-image: url('../images/bAzFFlgS9H8.png');
 	background-repeat: no-repeat;
 	background-size: auto;
 	background-position: -123px -473px;
@@ -2747,7 +2747,7 @@ nav.main_menu>ul>li:hover>a, nav.main_menu>ul>li.some-children-active>a
 }
 
 .topics_list_single_topic .reply-form .image-load {
-	/* background-image: url('images/4MVfm-oUBZo.png');*/
+	/* background-image: url('../images/4MVfm-oUBZo.png');*/
 	background-repeat: no-repeat;
 	background-size: auto;
 	background-position: -13px -54px;
@@ -2760,7 +2760,7 @@ nav.main_menu>ul>li:hover>a, nav.main_menu>ul>li.some-children-active>a
 }
 
 .topics_list_single_topic .reply_content_edit .image-load {
-	/*background-image: url('images/4MVfm-oUBZo.png');*/
+	/*background-image: url('../images/4MVfm-oUBZo.png');*/
 	background-repeat: no-repeat;
 	background-size: auto;
 	background-position: -13px -54px;
@@ -2850,7 +2850,7 @@ nav.main_menu>ul>li:hover>a, nav.main_menu>ul>li.some-children-active>a
 
 .add_topic_form_header .publication .icon {
 	background-position: -357px -394px;
-	background-image: url('images/mZ8gB-PuZLO.png');
+	background-image: url('../images/mZ8gB-PuZLO.png');
 	background-size: auto;
 	background-repeat: no-repeat;
 	display: inline-block;
@@ -2890,7 +2890,7 @@ nav.main_menu>ul>li:hover>a, nav.main_menu>ul>li.some-children-active>a
 }
 
 .add_topic_form_actions .image-load {
-	background-image: url('images/045GxUz4aWC.png');
+	background-image: url('../images/045GxUz4aWC.png');
 	background-repeat: no-repeat;
 	background-size: auto;
 	background-position: 0 0;
@@ -2905,7 +2905,7 @@ nav.main_menu>ul>li:hover>a, nav.main_menu>ul>li.some-children-active>a
 }
 
 .topics_list_single_topic .image-load {
-	background-image: url('images/045GxUz4aWC.png');
+	background-image: url('../images/045GxUz4aWC.png');
 	background-repeat: no-repeat;
 	background-size: auto;
 	background-position: -3px -3px;
@@ -2928,7 +2928,7 @@ nav.main_menu>ul>li:hover>a, nav.main_menu>ul>li.some-children-active>a
 }
 
 .single_topic_header .addi_actions_open {
-	background-image: url("images/bAzFFlgS9H8.png");
+	background-image: url("../images/bAzFFlgS9H8.png");
 	background-repeat: no-repeat;
 	background-size: auto;
 	background-position: -91px -441px;
@@ -2979,7 +2979,7 @@ nav.main_menu>ul>li:hover>a, nav.main_menu>ul>li.some-children-active>a
 	opacity: 0;
 	height: 10px;
 	width: 10px;
-	background-image: url('images/FmFTRQkgqr0.png');
+	background-image: url('../images/FmFTRQkgqr0.png');
 	background-repeat: no-repeat;
 	background-size: auto;
 	background-position: 0 -151px;
@@ -3147,7 +3147,7 @@ nav.main_menu>ul>li:hover>a, nav.main_menu>ul>li.some-children-active>a
 }
 
 .like-count .like-img {
-	background-image: url('images/bAzFFlgS9H8.png');
+	background-image: url('../images/bAzFFlgS9H8.png');
 	background-repeat: no-repeat;
 	background-size: auto;
 	background-position: -178px -465px;
@@ -3175,7 +3175,7 @@ nav.main_menu>ul>li:hover>a, nav.main_menu>ul>li.some-children-active>a
 }
 
 .load_all_replies .comments_img {
-	background-image: url('images/bAzFFlgS9H8.png');
+	background-image: url('../images/bAzFFlgS9H8.png');
 	background-repeat: no-repeat;
 	background-size: auto;
 	background-position: -192px -467px;
@@ -3322,7 +3322,7 @@ h2.homeTitle {
 	z-index: 9999;
 	width: 95px;
 	height: 97px;
-	background: url(images/courseLive.png) 100% 100% no-repeat;
+	background: url(../images/courseLive.png) 100% 100% no-repeat;
 	right: -5px;
 	top: -6px;
 }
