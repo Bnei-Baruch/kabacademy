@@ -1338,6 +1338,15 @@ nav.main_menu>ul>li>a span {
 	padding: 0 8px;
 	display: inline-block;
 }
+.home-page nav.main_menu>ul>li>a span{
+	line-height: 20px !important;
+	margin-top: 34px;
+	margin-bottom: 33px;
+}
+.home-page .scrolled nav.main_menu>ul>li>a span{	
+	margin-top: 17px;
+	margin-bottom: 17px;
+}
 
 nav.main_menu>ul>li.has_sub>a span {
 	padding-right: 21px;
