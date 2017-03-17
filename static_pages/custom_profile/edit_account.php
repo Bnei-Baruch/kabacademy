@@ -45,8 +45,10 @@
 							</select>
 						</div>
 						<div class="col-md-12">
-							<div id="saveMyAccount" class="button small">submit</div>											
+							<div id="saveMyAccount" class="button small">сохранить</div>											
 						</div>
+						
+						<div><?php echo do_shortcode('[removeUser]'); ?></div>	
 					</fieldset>
 				</form>
 HTML;
