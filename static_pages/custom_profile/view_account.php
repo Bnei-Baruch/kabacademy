@@ -8,8 +8,11 @@
 	$online_courses = array ();
 	
 	foreach ( $courses as $course ) {
-		if (in_category ( 'on-lain-obuchenie' )) {
-			var_dump($course->status);
+		if(strpos($course->post_title, '</br>') !== false){
+			$course->post_title = str_replace('</br>', '', $course->post_title);
+		}
+
+		if (has_category ( 'Он-лайн обучение', $course->post_id )) {
 			array_push ( $online_courses, $course );
 		} else if ($course->status == 'enrolled') {
 			array_push ( $enrolled_courses, $course );
@@ -23,10 +26,13 @@
 		<span>On-line курсы</span>
 	</h3>	
 	<?php		
-		foreach ( $online_courses as $course ) {
-			echo <<<HTML
+	foreach ( $online_courses as $course ) {			
+		$courseLink = get_page_link($course->post_id);
+		echo <<<HTML
 		<div class="row courseItem">
-		 	<div class="col-sm-5 courseName">{$course->post_title}</div>
+		 	<div class="col-sm-5 courseName">
+		 		<a href="{$courseLink}">{$course->post_title}</a>
+		 	</div>
 		</div>
 HTML;
 		}	
@@ -39,10 +45,12 @@ HTML;
 	<?php
 	foreach ( $enrolled_courses as $course ) {
 		$progress_bar = NamastePROCourses::progress_bar ( $course->post_id, $user_ID );
-		
+		$courseLink = get_page_link($course->post_id);
 		echo <<<HTML
 		<div class="row courseItem">
-		 	<div class="col-sm-5 courseName">{$course->post_title}</div>
+		 	<div class="col-sm-5 courseName">
+		 		<a href="{$courseLink}">{$course->post_title}</a>
+	 		</div>
 		 	<div class="col-sm-7">{$progress_bar}</div>
 		</div>
 HTML;
