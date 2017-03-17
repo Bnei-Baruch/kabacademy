@@ -2,6 +2,13 @@
 /*
  * Template Name: Custom profile
  */
+
+$current_user_id = get_current_user_id ();
+if($current_user_id == 0){
+	wp_redirect(home_url());	
+	return;
+}
+
 $PATH_TO_FILES = get_stylesheet_directory () . '/static_pages/custom_profile/';
 $URL_TO_FILES = get_stylesheet_directory_uri () . '/static_pages/custom_profile/';
 
@@ -14,7 +21,6 @@ wp_enqueue_style ( "bootstrapCss", "//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/cs
 wp_enqueue_style ( 'fonts-Roboto', 'https://fonts.googleapis.com/css?family=Roboto' );
 
 $myAccountData = ( object ) KabCustomRegistrationHelper::getUpdateProfile ();
-$current_user_id = get_current_user_id ();
 ?>
 
 <div class="full_width">
