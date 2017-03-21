@@ -48,9 +48,12 @@
 							<div id="saveMyAccount" class="button small">сохранить</div>											
 						</div>
 						
-						<div><?php echo do_shortcode('[removeUser]'); ?></div>	
 					</fieldset>
 				</form>
 HTML;
-		?>
+?>
+		<div id="removeUserConfirmModal" style="display: none;">
+			Vy deistvitelno hotite udalit vash account?
+		</div>
+		<?php  echo( '<div class="clearfix">'. do_shortcode('[removeUser]').'</div>'); ?>
 </div>

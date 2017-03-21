@@ -17,6 +17,7 @@
       data: data,
       dataType: 'json'
     }).done(function(data) {
+      document.location.reload();
     })
   }
 }())
