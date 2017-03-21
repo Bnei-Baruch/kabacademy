@@ -36,10 +36,10 @@
 						<div class="form-group col-md-2">
 							<label for="gender">{$myAccountData->gender['translate']['gender']}</label> 
 							<select id="gender" name="gender" class="form-control">
-								<option value="{$myAccountData->gender['translate']['male']}" selected="{$myAccountData->gender['male']}">
+								<option value="{$myAccountData->gender['translate']['male']}" {$myAccountData->gender['male']}>
 									{$myAccountData->gender['translate']['male']}
 								</option>
-								<option value="{$myAccountData->gender['translate']['female']}"  selected="{$myAccountData->gender['female']}">
+								<option value="{$myAccountData->gender['translate']['female']}"  {$myAccountData->gender['female']}>
 									{$myAccountData->gender['translate']['female']}
 								</option>
 							</select>
