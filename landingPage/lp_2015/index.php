@@ -8,7 +8,7 @@ $basePath = get_stylesheet_directory_uri () . '/landingPage/'. get_post_meta(get
 		Уже есть login? </a>
 	<div id="header">
 		<h1>ОСНОВЫ КАББАЛЫ</h1>
-		<span id="subtitle">Бесплатный онлайн-курс - новый опыт в Вашей жизни
+		<span id="subtitle">Онлайн-курс - новый опыт в Вашей жизни
 			от САМОЙ ПРИРОДЫ</span>
 
 	</div>
