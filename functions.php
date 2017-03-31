@@ -1761,3 +1761,62 @@ function add_points_on_registration($user_id) {
 		update_user_meta ( $user_id, 'namaste_points', $action_points );
 	}
 }
+/*hypercomments by id*/
+add_shortcode ( 'insert_hypercomments','insert_hypercomments_func' );
+function  insert_hypercomments_func($atts, $content)
+ {
+ 	$hypercomment_id = $content;
+	$current_user = wp_get_current_user();
+	
+    $user_hypercomments = array(
+      'nick' => $current_user->display_name,
+      'avatar' => bp_core_fetch_avatar ( array( 'item_id' => $current_user->ID, 'type' => 'mini', 'html' => FALSE) ),
+      'id' => $current_user->ID
+    );
+    $time_hypercomments = time();
+    $secret_hypercomments = "2CI6jAMW4QctDv9g31q94ljx0";
+    $user_base64 = base64_encode( json_encode($user_hypercomments) );
+    $sign_hypercomments = md5($secret_hypercomments . $user_base64 . $time_hypercomments);
+    $auth_hypercomments = $user_base64 . "_" . $time_hypercomments . "_" . $sign_hypercomments;
+
+    //moderators
+    if($current_user->has_cap('bbp_keymaster') || $current_user->has_cap('bbp_moderator')){
+        $body_hypercomments =  json_encode(array(
+            'widget_id'=> $hypercomment_id,
+            'auth' => $auth_hypercomments,
+        ), JSON_HEX_QUOT);
+        $postParams = http_build_query(array (
+            'body'=> $body_hypercomments,
+            'signature'=> sha1($body_hypercomments.$secret_hypercomments)
+        ));
+
+        $curl_hypercomments = curl_init();
+        curl_setopt_array($curl_hypercomments, array(
+            CURLOPT_URL => 'http://c1api.hypercomments.com/1.0/users/add_moderator',
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_POST => true,
+            CURLOPT_POSTFIELDS => $postParams
+        ));
+        $response = curl_exec($curl_hypercomments);
+        rightToLogFileDavgur($response);
+        curl_close($curl_hypercomments);
+    }
+
+	$hypercomment_js_path = get_stylesheet_directory_uri ().'/js/hypercomments.js';
+	$result = <<<HTML
+		<div id="hypercomments_widget"></div>
+		<script type='text/javascript' src='{$hypercomment_js_path}'></script>
+		<script type="text/javascript">
+		_hcwp = window._hcwp || [];
+		_hcwp.push({widget:"Stream", widget_id: {$hypercomment_id}, auth: "{$auth_hypercomments}", eager_load: true});
+		  if (!window.hypercommentsAPI) {
+	          setTimeout(function(){
+	        	  hypercommentsAPI.initById({$hypercomment_id});
+	          }, 10);                                                        
+	      } else{
+	    	  hypercommentsAPI.initById({$hypercomment_id});
+	      }
+		</script>
+HTML;
+	return $result;
+ }
