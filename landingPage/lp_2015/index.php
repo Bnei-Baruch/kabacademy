@@ -46,7 +46,10 @@ $basePath = get_stylesheet_directory_uri () . '/landingPage/'. get_post_meta(get
 				<h1>.</h1>
 				<div class="divider"></div>
 				<div class="divider"></div>
-				<h1>Начало обучения 6 апреля<br />СЕЙЧАС ЗНАЧИТЕЛЬНЫЙ МОМЕНТ В ТВОЕЙ ЖИЗНИ. ВЫБОР ЗА ТОБОЙ!</h1>
+				<h1>
+					Начало обучения 13 сентября<br />
+					СЕЙЧАС ЗНАЧИТЕЛЬНЫЙ МОМЕНТ В ТВОЕЙ ЖИЗНИ. ВЫБОР ЗА ТОБОЙ!
+				</h1>
 				<div id="signup">
 					<a
 						onClick="_gaq.push(['_trackEvent', 'registration','buttons', 'home-signup'])"
@@ -136,7 +139,7 @@ $basePath = get_stylesheet_directory_uri () . '/landingPage/'. get_post_meta(get
 			</div>
 			<div id="register" class="subpage">
 				<h1>Регистрация</h1>
-				<?php echo do_shortcode ( '[registerForm enrollto=59782]' );?>
+				<?php echo do_shortcode ( '[registerForm enrollto=60640]' );?>
 				<div class="divider"></div>
 			</div>
 			<div id="testimonials" class="subpage">
