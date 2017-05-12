@@ -69,10 +69,22 @@ h3.courseTitle span {
 .ui-state-default {
 	display: table-cell;
 	text-align: center;
+	width: 50%;
 }
 
-.ui-state-default a {
+.ui-state-default a, .ui-state-default a:focus, .ui-state-default a:hover {
 	display: inline;
+	outline: none;
+	background: none;
+}
+
+.ui-tabs-active{
+	background-color: rgba(224, 146, 47, 1);
+}
+.ui-tabs-active a, .ui-tabs-active a:hover{
+	color: #FFF;
+	background: none;
+	font-size: 21px;
 }
 
 #saveMyAccount{
