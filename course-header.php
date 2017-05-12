@@ -60,7 +60,7 @@ if(is_user_logged_in()):
             <?php if(!get_post_meta($course_id, 'disable_shedule', true)): ?>
                 <a class="course-navigation-item<?php echo $tab == 'shedule' ? ' active' : ''; ?>" href="<?php echo add_query_arg(array('tab' => 'shedule'), get_permalink($course_id)); ?>"><?php _e('Shedule', 'qode'); ?></a>
             <?php endif; ?>
-            <?php if(!empty($forum_id) && !get_post_meta($course_id, 'disable_forum', true)): ?>
+            <?php if(!get_post_meta($course_id, 'disable_forum', true)): ?>
                 <a onClick="add_points('forum','<?php echo get_current_user_id(); ?>','<?php echo $course_id; ?>','<?php echo $forum_url ?>')" id="course-nav-forum" class="course-navigation-item<?php echo $tab == 'forum' ? ' active' : ''; ?>" href="<?php echo $forum_url ?>"><?php _e('Forum', 'qode'); ?></a>
             <?php endif; ?>
             <?php if(!get_post_meta($course_id, 'disable_archive', true)): ?>

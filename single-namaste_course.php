@@ -674,7 +674,7 @@ if (isset($qode_options_satellite['twitter_via']) && !empty($qode_options_satell
                                 $forum_id = $forum_id[0];
                             }
 
-                            if (NamasteLMSStudentModel::is_enrolled(get_current_user_id(), $course_id) && !empty($forum_id)){
+                            if (NamasteLMSStudentModel::is_enrolled(get_current_user_id(), $course_id)){
                             //echo do_shortcode('[bbp-single-forum id="'.$forum_id.'"]');
                             ?>
                                 <div class="two_columns_33_66 forum-tab clearfix">
