@@ -1572,7 +1572,7 @@ function update_points_system() {
 		echo true;
 		die ();
 	}
-	
+
 	// update database
 	$sql = "INSERT INTO {$wpdb->prefix}namaste_history (user_id,num_value,action, for_item_type,value,date,datetime,for_item_id) VALUES (%d,%d,%s,%s,%s,%s,%s,%d)";
 	$sql = $wpdb->prepare ( $sql, $user_id, $action_points, 'awarded_points', $points_type, $text, $date, $datetime, $course_id );
@@ -1580,11 +1580,9 @@ function update_points_system() {
 	
 	// if problems with the db
 	if ($result === false) {
-		var_dump ( $result );
-		die ();
+		return false;
 	}
 	
-	do_action ( 'namaste_earned_points', $user_id, $action_points );
 	// update total the points
 	$current_total_points = get_user_meta ( $user_id, 'namaste_points', true );
 	if ($current_total_points == "") {
@@ -1593,10 +1591,15 @@ function update_points_system() {
 		$total_points = $current_total_points + $action_points;
 		update_user_meta ( $user_id, 'namaste_points', $total_points );
 	}
+
+	do_action ( 'namaste_earned_points', $user_id, $action_points );
 	
 	// just die
+
+	/* кажется очень странным, закомментирую пока
 	echo true;
 	die ();
+	*/
 }
 
 /* Add some more fields in the namaste options page for additional points */
@@ -1739,7 +1742,6 @@ function namaste_enrolled_course_add_points($student_id, $course_id, $status) {
 		return false;
 	}
 	
-	do_action ( 'namaste_earned_points', $user_id, $action_points );
 	// update total the points
 	$current_total_points = get_user_meta ( $user_id, 'namaste_points', true );
 	if ($current_total_points == "") {
@@ -1748,6 +1750,8 @@ function namaste_enrolled_course_add_points($student_id, $course_id, $status) {
 		$total_points = $current_total_points + $action_points;
 		update_user_meta ( $user_id, 'namaste_points', $total_points );
 	}
+
+	do_action ( 'namaste_earned_points', $user_id, $action_points );
 }
 
 add_action ( 'namaste_enrolled_course', 'namaste_enrolled_course_add_points', 10, 3 );
@@ -1766,8 +1770,56 @@ function add_points_on_registration($user_id) {
 	$sql = "INSERT INTO {$wpdb->prefix}namaste_history (user_id,num_value,action, for_item_type,value,date,datetime,for_item_id) VALUES (%d,%d,%s,%s,%s,%s,%s,%d)";
 	$sql = $wpdb->prepare ( $sql, $user_id, $action_points, 'awarded_points', $points_type, $text, $date, $datetime, $course_id );
 	$result = $wpdb->query ( $sql );
-	do_action ( 'namaste_earned_points', $user_id, $action_points );
+	
 	if ($result) {
 		update_user_meta ( $user_id, 'namaste_points', $action_points );
+		do_action ( 'namaste_earned_points', $user_id, $action_points );
 	}
+
+}
+
+add_action('namaste_earned_points', 'alert_namaste_earned_points', 99, 2);
+function alert_namaste_earned_points($user_id, $award_points) {
+	$total_points = get_user_meta($user_id, 'namaste_points', true);
+
+	$out  = <<<HTML
+		<script>
+		  jQuery(function($) {
+		    $("#dialog-namaste-earned-points-message").dialog({
+		      modal: true,
+		      buttons: {
+		        Ok: function() {
+		          $(this).dialog( "close" );
+		        }
+		      }
+		    });
+		  } );
+		</script>
+
+		<div id="dialog-namaste-earned-points-message" title="Очки начислены">
+		  <p>
+		    Вам было начислено <b>{$award_points}</b> очков.
+		  </p>
+		  <p>
+		    Теперь у вас есть <b>{$total_points}</b> очков.
+		  </p>
+		</div>
+HTML;
+
+	echo $out;
+}
+
+add_action('bp_before_profile_content', 'profile_namaste_earned_points');
+function profile_namaste_earned_points() {
+	$total_points = get_user_meta(bp_displayed_user_id(), 'namaste_points', true);
+
+	$out  = <<<HTML
+		<h4>
+			<div id="profile-namaste-points">
+			    Начислено <b>{$total_points}</b> очков.
+			</div>
+		</h4>
+HTML;
+
+	echo $out;
 }
